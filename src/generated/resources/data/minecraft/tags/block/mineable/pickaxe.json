@@ -1,0 +1,28 @@
+{
+  "values": [
+    "mccoursemod:enchant",
+    "mccoursemod:disenchant_individual",
+    "mccoursemod:disenchant_grouped",
+    "mccoursemod:bismuth_block",
+    "mccoursemod:magic",
+    "mccoursemod:mccoursemod_elevator",
+    "mccoursemod:mccoursemod_generator",
+    "mccoursemod:bismuth_lamp",
+    "mccoursemod:forced_stained_glass",
+    "mccoursemod:forced_stained_glass_pane",
+    "mccoursemod:alexandrite_lamp",
+    "mccoursemod:alexandrite_block",
+    "mccoursemod:raw_alexandrite_block",
+    "mccoursemod:sound",
+    "mccoursemod:pink_block",
+    "mccoursemod:kaupen_furnace",
+    "mccoursemod:dice",
+    "mccoursemod:crafting_plus",
+    "#mccoursemod:mccourse_mod_ores",
+    "#mccoursemod:bismuth_blocks",
+    "#mccoursemod:alexandrite_blocks",
+    "#mccoursemod:ender_pearl_blocks",
+    "#mccoursemod:mobs_blocks_drops",
+    "#mccoursemod:mccourse_mod_oxidizable_blocks"
+  ]
+}

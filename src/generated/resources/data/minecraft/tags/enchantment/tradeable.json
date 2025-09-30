@@ -1,0 +1,64 @@
+{
+  "values": [
+    {
+      "id": "mccoursemod:lightning_striker",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:block_fly",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:auto_smelt",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:magnet",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:magnetism",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:rainbow",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:more_ores",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:immortal",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:lightstring",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:glowing_mobs",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:peaceful_mobs",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:xp_boost",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:unlock",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:glowing_blocks",
+      "required": false
+    },
+    {
+      "id": "mccoursemod:mobs_critical",
+      "required": false
+    }
+  ]
+}

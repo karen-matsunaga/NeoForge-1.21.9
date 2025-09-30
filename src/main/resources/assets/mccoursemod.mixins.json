@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_21",
+  "package": "net.karen.mccoursemod.mixin",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "AbstractContainerMenuMixin",
+    "AnvilMenuMixin",
+    "BowItemMixin",
+    "EnchantmentMenuMixin",
+    "EnchantmentMixin",
+    "FishingHookMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "SculkShriekerBlockEntityMixin",
+    "ServerPlayerMixin",
+    "ShieldDecorationRecipeMixin",
+    "VibrationListenerMixin"
+  ],
+  "client": [
+    "AnvilScreenMixin",
+    "EnchantmentScreenMixin"
+  ]
+}

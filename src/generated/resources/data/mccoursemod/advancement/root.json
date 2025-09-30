@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "has_alexandrite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mccoursemod:alexandrite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "mccoursemod:block/alexandrite_ore",
+    "description": "Collect all exclusive ores, armors, tools, etc. on your journey! The Power lies in the Alexandrite!",
+    "icon": {
+      "count": 1,
+      "id": "mccoursemod:alexandrite"
+    },
+    "title": "Mccourse Mod"
+  },
+  "requirements": [
+    [
+      "has_alexandrite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

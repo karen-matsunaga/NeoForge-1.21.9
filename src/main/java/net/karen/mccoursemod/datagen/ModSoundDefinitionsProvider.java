@@ -1,0 +1,72 @@
+package net.karen.mccoursemod.datagen;
+
+import net.karen.mccoursemod.MccourseMod;
+import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.data.SoundDefinition;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
+import org.jetbrains.annotations.NotNull;
+
+public class ModSoundDefinitionsProvider extends SoundDefinitionsProvider {
+    public ModSoundDefinitionsProvider(PackOutput output) {
+        super(output, MccourseMod.MOD_ID);
+    }
+
+    @Override
+    public void registerSounds() {
+        // CHISEL USE
+        add("chisel_use", SoundDefinition.definition().subtitle("sounds.mccoursemod.chisel_use")
+                                                                 .with(sound("mccoursemod:chisel_use")));
+
+        // METAL DETECTOR FOUND ORE
+        add("metal_detector_found_ore", SoundDefinition.definition()
+                                                                  .subtitle("sounds.mccoursemod.metal_detector_found_ore")
+                                                                  .with(sound("mccoursemod:metal_detector_found_ore")));
+
+        // MAGIC BREAK
+        add("magic_block_break", SoundDefinition.definition().subtitle("sounds.mccoursemod.magic_block_break")
+                                                                        .with(sound("mccoursemod:magic_block_break")));
+
+        // MAGIC STEP
+        add("magic_block_step", SoundDefinition.definition().subtitle("sounds.mccoursemod.magic_block_step")
+                                                                       .with(sound("mccoursemod:magic_block_step")));
+
+        // MAGIC PLACE
+        add("magic_block_place", SoundDefinition.definition().subtitle("sounds.mccoursemod.magic_block_place")
+                                                                        .with(sound("mccoursemod:magic_block_place")));
+
+        // MAGIC HIT
+        add("magic_block_hit", SoundDefinition.definition().subtitle("sounds.mccoursemod.magic_block_hit")
+                                                                      .with(sound("mccoursemod:magic_block_hit")));
+
+        // MAGIC FALL
+        add("magic_block_fall", SoundDefinition.definition().subtitle("sounds.mccoursemod.magic_block_fall")
+                                                                       .with(sound("mccoursemod:magic_block_fall")));
+
+        // ALEXANDRITE BREAK
+        add("alexandrite_lamp_break", SoundDefinition.definition().subtitle("sounds.mccoursemod.alexandrite_lamp_break")
+                                                                             .with(sound("mccoursemod:alexandrite_lamp_break")));
+
+        // ALEXANDRITE STEP
+        add("alexandrite_lamp_step", SoundDefinition.definition().subtitle("sounds.mccoursemod.alexandrite_lamp_step")
+                                                                            .with(sound("mccoursemod:alexandrite_lamp_step")));
+
+        // ALEXANDRITE PLACE
+        add("alexandrite_lamp_place", SoundDefinition.definition().subtitle("sounds.mccoursemod.alexandrite_lamp_place")
+                                                                             .with(sound("mccoursemod:alexandrite_lamp_place")));
+
+        // ALEXANDRITE HIT
+        add("alexandrite_lamp_hit", SoundDefinition.definition().subtitle("sounds.mccoursemod.alexandrite_lamp_hit")
+                                                                           .with(sound("mccoursemod:alexandrite_lamp_hit")));
+
+        // ALEXANDRITE FALL
+        add("alexandrite_lamp_fall", SoundDefinition.definition().subtitle("sounds.mccoursemod.alexandrite_lamp_fall")
+                                                                            .with(sound("mccoursemod:alexandrite_lamp_fall")));
+
+        // BAR BRAWL
+        add("bar_brawl", SoundDefinition.definition().with(sound("mccoursemod:bar_brawl",
+                                                                            SoundDefinition.SoundType.SOUND).stream(true)));
+    }
+
+    @Override
+    public @NotNull String getName() { return "Mccourse Mod Sound Tags"; }
+}
