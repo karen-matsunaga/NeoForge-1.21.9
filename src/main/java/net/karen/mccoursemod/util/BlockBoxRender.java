@@ -49,9 +49,9 @@ public class BlockBoxRender {
         if (!toolComponent.isCorrectForDrops(block)) { return; }
         BoundingBox boundingBox = HammerItem.getAreaOfEffect(blockPos, direction, hammer.getRadius() * 2 + 1);
         poseStack.pushPose();
-        double camX = -camera.entityPos.x();
-        double camY = -camera.entityPos.y();
-        double camZ = -camera.entityPos.z();
+        double camX = -camera.pos.x;
+        double camY = -camera.pos.y;
+        double camZ = -camera.pos.z;
         poseStack.translate(camX, camY, camZ);
         Iterator<BlockPos> blockPosStream = BlockPos.betweenClosedStream(boundingBox).iterator();
         while (blockPosStream.hasNext()) {

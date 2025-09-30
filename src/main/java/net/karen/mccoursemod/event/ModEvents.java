@@ -177,9 +177,9 @@ public class ModEvents {
             PoseStack poseStack = event.getPoseStack();
             CameraRenderState camera = event.getCamera();
             MultiBufferSource.BufferSource buffer = mc.renderBuffers().bufferSource();
-            double camX = camera.entityPos.x();
-            double camY = camera.entityPos.y();
-            double camZ = camera.entityPos.z();
+            double camX = camera.pos.x;
+            double camY = camera.pos.y;
+            double camZ = camera.pos.z;
             BlockPos center = player.blockPosition();
             int radius = 10;
             poseStack.pushPose();
