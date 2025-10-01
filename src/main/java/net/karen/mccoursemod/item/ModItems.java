@@ -487,14 +487,14 @@ public class ModItems {
 
     // ** CUSTOM Mob **
     // GECKO
-//    public static final DeferredItem<Item> GECKO_SPAWN_EGG =
-//           ITEMS.registerItem("gecko_spawn_egg", SpawnEggItem::new,
-//                              new Item.Properties().spawnEgg(ModEntities.GECKO.get()));
-//
-//    // RHINO
-//    public static final DeferredItem<Item> RHINO_SPAWN_EGG =
-//           ITEMS.registerItem("rhino_spawn_egg", SpawnEggItem::new,
-//                              new Item.Properties().spawnEgg(ModEntities.RHINO.get()));
+    public static final DeferredItem<Item> GECKO_SPAWN_EGG =
+           ITEMS.registerItem("gecko_spawn_egg", properties ->
+                              new SpawnEggItem(properties.spawnEgg(ModEntities.GECKO.get())));
+
+    // RHINO
+    public static final DeferredItem<Item> RHINO_SPAWN_EGG =
+           ITEMS.registerItem("rhino_spawn_egg", properties ->
+                              new SpawnEggItem(properties.spawnEgg(ModEntities.RHINO.get())));
 
     // ** CUSTOM Throwable Projectiles **
     public static final DeferredItem<Item> TOMAHAWK =

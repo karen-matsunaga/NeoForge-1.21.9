@@ -181,8 +181,8 @@ public class ModCreativeModeTabs {
                  // ** CUSTOM bush **
                  output.accept(ModItems.GOJI_BERRIES);
                  // ** CUSTOM mob **
-                 //output.accept(ModItems.GECKO_SPAWN_EGG);
-                 //output.accept(ModItems.RHINO_SPAWN_EGG);
+                 output.accept(ModItems.GECKO_SPAWN_EGG);
+                 output.accept(ModItems.RHINO_SPAWN_EGG);
                  // ** CUSTOM Throwable Projectiles **
                  output.accept(ModItems.TOMAHAWK);
                  output.accept(ModItems.TORCH_BALL);
