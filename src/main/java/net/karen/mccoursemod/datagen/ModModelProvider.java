@@ -195,10 +195,10 @@ public class ModModelProvider extends ModelProvider {
         createChairTexture(blockModels, itemModels, ModBlocks.CHAIR.get());
 
         // ** CUSTOM block entity **
-        createPedestalTexture(blockModels, itemModels, ModBlocks.PEDESTAL.get());
+        //createPedestalTexture(blockModels, itemModels, ModBlocks.PEDESTAL.get());
 
         // ** CUSTOM crafting block entity **
-        blockModels.createTrivialCube(ModBlocks.GROWTH_CHAMBER.get());
+        //blockModels.createTrivialCube(ModBlocks.GROWTH_CHAMBER.get());
 
         // ** CUSTOM glass block **
         createGlassBlocksTransparent(blockModels, ModBlocks.FORCED_STAINED_GLASS.get(),
@@ -557,16 +557,16 @@ public class ModModelProvider extends ModelProvider {
     }
 
     // CUSTOM METHOD - Pedestal texture
-    protected static void createPedestalTexture(BlockModelGenerators blockModels,
-                                                ItemModelGenerators itemModels, Block block) {
-        ResourceLocation modelLoc = getBlockTexture(block);
-        MultiVariant multiVariant = plainVariant(modelLoc);
-        // assets\mccoursemod\blockstates
-        blockModels.blockStateOutput.accept(createSimpleBlock(ModBlocks.PEDESTAL.value(), multiVariant));
-        // assets\mccoursemod\items
-        ItemModel.Unbaked pedestalModel = ItemModelUtils.plainModel(modelLoc);
-        itemModels.itemModelOutput.accept(block.asItem(), pedestalModel);
-    }
+//    protected static void createPedestalTexture(BlockModelGenerators blockModels,
+//                                                ItemModelGenerators itemModels, Block block) {
+//        ResourceLocation modelLoc = getBlockTexture(block);
+//        MultiVariant multiVariant = plainVariant(modelLoc);
+//        // assets\mccoursemod\blockstates
+//        blockModels.blockStateOutput.accept(createSimpleBlock(ModBlocks.PEDESTAL.value(), multiVariant));
+//        // assets\mccoursemod\items
+//        ItemModel.Unbaked pedestalModel = ItemModelUtils.plainModel(modelLoc);
+//        itemModels.itemModelOutput.accept(block.asItem(), pedestalModel);
+//    }
 
     // CUSTOM METHOD - Sapling Texture
     protected static void createSaplingTexture(BlockModelGenerators blockModels,
@@ -876,7 +876,7 @@ public class ModModelProvider extends ModelProvider {
     protected @NotNull Stream<? extends Holder<Block>> getKnownBlocks() {
         return ModBlocks.BLOCKS.getEntries()
                                .stream().filter(x ->
-                                                !(x.get() == ModBlocks.PEDESTAL.get()) &&
+                                                //!(x.get() == ModBlocks.PEDESTAL.get()) &&
                                                 !(x.get() == ModBlocks.CHAIR.get()));
     }
 
@@ -885,7 +885,7 @@ public class ModModelProvider extends ModelProvider {
     protected @NotNull Stream<? extends Holder<Item>> getKnownItems() {
         return ModItems.ITEMS.getEntries()
                              .stream().filter(x ->
-                                              x.get() != ModBlocks.PEDESTAL.asItem() &&
+                                              //x.get() != ModBlocks.PEDESTAL.asItem() &&
                                               x.get() != ModBlocks.CHAIR.asItem() &&
                                               !(x.get() == ModItems.TOMAHAWK.get()) &&
                                               !(x.get() == ModItems.ALEXANDRITE_SHIELD.get()) &&

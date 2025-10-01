@@ -2,9 +2,9 @@ package net.karen.mccoursemod.screen;
 
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.screen.custom.CraftingPlusMenu;
-import net.karen.mccoursemod.screen.custom.GrowthChamberMenu;
+//import net.karen.mccoursemod.screen.custom.GrowthChamberMenu;
 import net.karen.mccoursemod.screen.custom.KaupenFurnaceMenu;
-import net.karen.mccoursemod.screen.custom.PedestalMenu;
+//import net.karen.mccoursemod.screen.custom.PedestalMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -19,11 +19,11 @@ public class ModMenuTypes {
            DeferredRegister.create(Registries.MENU, MccourseMod.MOD_ID);
 
     // Register all custom block entity menus
-    public static final DeferredHolder<MenuType<?>, MenuType<PedestalMenu>> PEDESTAL_MENU =
-           registerMenuType("pedestal_menu", PedestalMenu::new);
+//    public static final DeferredHolder<MenuType<?>, MenuType<PedestalMenu>> PEDESTAL_MENU =
+//           registerMenuType("pedestal_menu", PedestalMenu::new);
 
-    public static final DeferredHolder<MenuType<?>, MenuType<GrowthChamberMenu>> GROWTH_CHAMBER_MENU =
-           registerMenuType("growth_chamber_menu", GrowthChamberMenu::new);
+//    public static final DeferredHolder<MenuType<?>, MenuType<GrowthChamberMenu>> GROWTH_CHAMBER_MENU =
+//           registerMenuType("growth_chamber_menu", GrowthChamberMenu::new);
 
     public static final DeferredHolder<MenuType<?>, MenuType<KaupenFurnaceMenu>> KAUPEN_FURNACE_MENU =
            registerMenuType("kaupen_furnace_menu", KaupenFurnaceMenu::new);

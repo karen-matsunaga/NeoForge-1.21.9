@@ -11,7 +11,7 @@ import org.lwjgl.glfw.GLFW;
 public class KeyBinding {
     // Mccourse custom category
     public static final KeyMapping.Category KEY_CATEGORY_MCCOURSE =
-           new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "key.category.mccoursemod"));
+           new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "main"));
 
     //public static final String KEY_CATEGORY_MCCOURSE = "key.category.mccoursemod";
     public static final String KEY_GLOWING_BLOCKS = "key.mccoursemod_glowing_blocks"; // Glowing Blocks custom key input

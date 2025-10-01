@@ -356,8 +356,8 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.CHAIR, "§e");
 
         // ** CUSTOM block entity **
-        blockLang(ModBlocks.PEDESTAL, "§8");
-        blockLang(ModBlocks.GROWTH_CHAMBER, "§8");
+        //blockLang(ModBlocks.PEDESTAL, "§8");
+        //blockLang(ModBlocks.GROWTH_CHAMBER, "§8");
 
         // ** CUSTOM Fluid block **
         blockLang(ModFluids.SOAP_WATER_BLOCK, "§d");
@@ -659,7 +659,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("mccoursemod.networking.failed", "Mccourse Mod network failed!");
 
         // ** CUSTOM KEY BINDING **
-        add("key.category.mccoursemod", "Mccourse Mod");
+        add("key.category.mccoursemod.main", "Mccourse Mod");
         add("key.mccoursemod_glowing_blocks", "Glowing Blocks");
         add("key.mccoursemod_glowing_mobs", "Glowing Mobs");
         add("key.mccoursemod_mccoursemod_bottle_stored", "Mccourse Mod Bottle Stored");
