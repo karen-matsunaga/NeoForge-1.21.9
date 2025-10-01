@@ -8,7 +8,6 @@ import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BannerRenderer;
-import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.MaterialSet;
@@ -32,11 +31,11 @@ public class ShieldSpecialModelRenderer implements SpecialModelRenderer<DataComp
     public static final Material ALEXANDRITE_SHIELD_BASE =
            new Material(Sheets.SHIELD_SHEET,
                         ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                        "entity/alexandrite_shield_base"));
+                                                              "entity/alexandrite_shield_base"));
     public static final Material ALEXANDRITE_SHIELD_BASE_NO_PATTERN =
            new Material(Sheets.SHIELD_SHEET,
                         ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                        "entity/alexandrite_shield_base_nopattern"));
+                                                              "entity/alexandrite_shield_base_nopattern"));
 
     public ShieldSpecialModelRenderer(MaterialSet materials, ShieldModel model) {
         this.materials = materials;
@@ -89,8 +88,8 @@ public class ShieldSpecialModelRenderer implements SpecialModelRenderer<DataComp
         public static final MapCodec<ShieldSpecialModelRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
 
         @Override
-        public SpecialModelRenderer<?> bake(BakingContext context) {
-            return new ShieldSpecialRenderer(context.materials(),
+        public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext context) {
+            return new ShieldSpecialModelRenderer(context.materials(),
                                              new ShieldModel(context.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
 
