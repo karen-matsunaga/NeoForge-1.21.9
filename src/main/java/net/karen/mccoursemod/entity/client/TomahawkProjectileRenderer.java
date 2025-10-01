@@ -4,11 +4,13 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.entity.custom.TomahawkProjectileEntity;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
@@ -45,16 +47,20 @@ public class TomahawkProjectileRenderer extends EntityRenderer<TomahawkProjectil
         if (!entity.neverIsInGround() && entity != null) {
             poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partial, entity.yRotO, entity.getYRot())));
             poseStack.mulPose(Axis.XP.rotationDegrees(entity.getRenderingRotation() * 5f));
-            poseStack.translate(0, -1.0f, 0);
+            poseStack.translate(0, -1.0F, 0);
         }
         else {
             if (entity != null && entity.groundedOffset != null) {
                 poseStack.mulPose(Axis.YP.rotationDegrees(entity.groundedOffset.y));
                 poseStack.mulPose(Axis.XP.rotationDegrees(entity.groundedOffset.x));
-                poseStack.translate(0, -1.0f, 0);
+                poseStack.translate(0, -1.0F, 0);
             }
         }
-        this.model.renderType(this.getTextureLocation());
+        // Render item
+        submitNodeCollector.submitModel(this.model, state, poseStack,
+                                        RenderType.entityCutout(this.getTextureLocation()),
+                                        state.lightCoords, OverlayTexture.NO_OVERLAY, -1,
+                                        null, state.outlineColor, null);
         poseStack.popPose();
         super.submit(state, poseStack, submitNodeCollector, cameraRenderState);
     }

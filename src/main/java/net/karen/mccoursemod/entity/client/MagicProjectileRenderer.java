@@ -1,17 +1,16 @@
 package net.karen.mccoursemod.entity.client;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.entity.custom.MagicProjectileEntity;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.client.renderer.entity.state.HitboxRenderState;
-import net.minecraft.client.renderer.entity.state.HitboxesRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
@@ -47,12 +46,14 @@ public class MagicProjectileRenderer extends EntityRenderer<MagicProjectileEntit
     public void submit(@NotNull EntityRenderState state, @NotNull PoseStack poseStack,
                        @NotNull SubmitNodeCollector submitNodeCollector,
                        @NotNull CameraRenderState cameraRenderState) {
-        submitNodeCollector.submitHitbox(poseStack, state, new HitboxesRenderState(entity.getX(), entity.getY(), entity.getZ(),
-                                         ImmutableList.<HitboxRenderState>builderWithExpectedSize(1).build()));
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partial, entity.yRotO, entity.getYRot()) - 90.0F));
         poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partial, entity.xRotO, entity.getXRot()) + 90.0F));
-        this.model.renderType(this.getTextureLocation());
+        // Render item
+        submitNodeCollector.submitModel(this.model, state, poseStack,
+                                        RenderType.entityCutout(this.getTextureLocation()),
+                                        state.lightCoords, OverlayTexture.NO_OVERLAY, -1,
+                                        null, state.outlineColor, null);
         poseStack.popPose();
         super.submit(state, poseStack, submitNodeCollector, cameraRenderState);
     }
