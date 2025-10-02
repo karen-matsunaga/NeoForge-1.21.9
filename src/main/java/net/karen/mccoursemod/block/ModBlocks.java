@@ -259,7 +259,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WALNUT_SIGN =
            BLOCKS.register("walnut_sign",
            () -> new ModStandingSignBlock(ModWoodTypes.WALNUT,
-                                          BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)
+                                          BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).forceSolidOn()
+                                                                   .instrument(NoteBlockInstrument.BASS)
+                                                                   .noCollision().strength(1.0F).ignitedByLava()
                                                                    .setId(ResourceKey.create(Registries.BLOCK,
                                                                           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
                                                                           "walnut_sign")))));
@@ -267,7 +269,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WALNUT_WALL_SIGN =
            BLOCKS.register("walnut_wall_sign",
            () -> new ModWallSignBlock(ModWoodTypes.WALNUT,
-                                      BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)
+                                      BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).forceSolidOn()
+                                                               .instrument(NoteBlockInstrument.BASS).noCollision()
+                                                               .strength(1.0F).ignitedByLava()
                                                                .setId(ResourceKey.create(Registries.BLOCK,
                                                                       ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
                                                                       "walnut_wall_sign")))));
@@ -275,7 +279,10 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WALNUT_HANGING_SIGN =
            BLOCKS.register("walnut_hanging_sign",
            () -> new ModHangingSignBlock(ModWoodTypes.WALNUT,
-                                         BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)
+                                         BlockBehaviour.Properties.of()
+                                                                  .mapColor(ModBlocks.WALNUT_LOG.get().defaultMapColor())
+                                                                  .forceSolidOn().instrument(NoteBlockInstrument.BASS)
+                                                                  .noCollision().strength(1.0F).ignitedByLava()
                                                                   .setId(ResourceKey.create(Registries.BLOCK,
                                                                          ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
                                                                          "walnut_hanging_sign")))));
@@ -283,8 +290,10 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WALNUT_WALL_HANGING_SIGN =
            BLOCKS.register("walnut_wall_hanging_sign",
            () -> new ModWallHangingSignBlock(ModWoodTypes.WALNUT,
-                                             BlockBehaviour.Properties
-                                                           .ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)
+                                             BlockBehaviour.Properties.of()
+                                                           .mapColor(ModBlocks.WALNUT_LOG.get().defaultMapColor())
+                                                           .forceSolidOn().instrument(NoteBlockInstrument.BASS)
+                                                           .noCollision().strength(1.0F).ignitedByLava()
                                                            .setId(ResourceKey.create(Registries.BLOCK,
                                                                   ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
                                                                   "walnut_wall_hanging_sign")))));

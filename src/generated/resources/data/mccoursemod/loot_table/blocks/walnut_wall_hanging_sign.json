@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "mccoursemod:walnut_sign"
+          "name": "mccoursemod:walnut_hanging_sign"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "minecraft:blocks/oak_sign"
+  "random_sequence": "mccoursemod:blocks/walnut_wall_hanging_sign"
 }
