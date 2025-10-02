@@ -3,7 +3,6 @@ package net.karen.mccoursemod.block;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.custom.*;
 import net.karen.mccoursemod.item.ModItems;
-//import net.karen.mccoursemod.block.custom.GrowthChamberBlock;
 import net.karen.mccoursemod.block.custom.MccourseModGeneratorBlock;
 import net.karen.mccoursemod.sound.ModSounds;
 import net.karen.mccoursemod.util.ModTags;
@@ -257,46 +256,32 @@ public class ModBlocks {
 
     // ** CUSTOM sign and hanging sign **
     public static final DeferredBlock<Block> WALNUT_SIGN =
-           BLOCKS.register("walnut_sign",
-           () -> new ModStandingSignBlock(ModWoodTypes.WALNUT,
-                                          BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).forceSolidOn()
+           BLOCKS.registerBlock("walnut_sign", properties ->
+                                new ModStandingSignBlock(ModWoodTypes.WALNUT,
+                                                         properties.mapColor(MapColor.WOOD).forceSolidOn()
                                                                    .instrument(NoteBlockInstrument.BASS)
-                                                                   .noCollision().strength(1.0F).ignitedByLava()
-                                                                   .setId(ResourceKey.create(Registries.BLOCK,
-                                                                          ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                          "walnut_sign")))));
+                                                                   .noCollision().strength(1.0F).ignitedByLava()));
 
     public static final DeferredBlock<Block> WALNUT_WALL_SIGN =
-           BLOCKS.register("walnut_wall_sign",
-           () -> new ModWallSignBlock(ModWoodTypes.WALNUT,
-                                      BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).forceSolidOn()
+           BLOCKS.registerBlock("walnut_wall_sign", properties ->
+                                new ModWallSignBlock(ModWoodTypes.WALNUT,
+                                                     properties.mapColor(MapColor.WOOD).forceSolidOn()
                                                                .instrument(NoteBlockInstrument.BASS).noCollision()
-                                                               .strength(1.0F).ignitedByLava()
-                                                               .setId(ResourceKey.create(Registries.BLOCK,
-                                                                      ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                      "walnut_wall_sign")))));
+                                                               .strength(1.0F).ignitedByLava()));
 
     public static final DeferredBlock<Block> WALNUT_HANGING_SIGN =
-           BLOCKS.register("walnut_hanging_sign",
-           () -> new ModHangingSignBlock(ModWoodTypes.WALNUT,
-                                         BlockBehaviour.Properties.of()
-                                                                  .mapColor(ModBlocks.WALNUT_LOG.get().defaultMapColor())
+           BLOCKS.registerBlock("walnut_hanging_sign", properties ->
+                                new ModHangingSignBlock(ModWoodTypes.WALNUT,
+                                                        properties.mapColor(ModBlocks.WALNUT_LOG.get().defaultMapColor())
                                                                   .forceSolidOn().instrument(NoteBlockInstrument.BASS)
-                                                                  .noCollision().strength(1.0F).ignitedByLava()
-                                                                  .setId(ResourceKey.create(Registries.BLOCK,
-                                                                         ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                         "walnut_hanging_sign")))));
+                                                                  .noCollision().strength(1.0F).ignitedByLava()));
 
     public static final DeferredBlock<Block> WALNUT_WALL_HANGING_SIGN =
-           BLOCKS.register("walnut_wall_hanging_sign",
-           () -> new ModWallHangingSignBlock(ModWoodTypes.WALNUT,
-                                             BlockBehaviour.Properties.of()
-                                                           .mapColor(ModBlocks.WALNUT_LOG.get().defaultMapColor())
-                                                           .forceSolidOn().instrument(NoteBlockInstrument.BASS)
-                                                           .noCollision().strength(1.0F).ignitedByLava()
-                                                           .setId(ResourceKey.create(Registries.BLOCK,
-                                                                  ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                  "walnut_wall_hanging_sign")))));
+           BLOCKS.registerBlock("walnut_wall_hanging_sign", properties ->
+                                new ModWallHangingSignBlock(ModWoodTypes.WALNUT,
+                                                            properties.mapColor(ModBlocks.WALNUT_LOG.get().defaultMapColor())
+                                                                      .forceSolidOn().instrument(NoteBlockInstrument.BASS)
+                                                                      .noCollision().strength(1.0F).ignitedByLava()));
 
     // ** CUSTOM sittable block model **
     public static final DeferredBlock<Block> CHAIR = registerBlock("chair",
