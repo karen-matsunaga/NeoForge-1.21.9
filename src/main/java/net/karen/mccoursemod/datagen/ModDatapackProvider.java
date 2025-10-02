@@ -9,6 +9,8 @@ import net.karen.mccoursemod.trim.ModTrimPatterns;
 import net.karen.mccoursemod.worldgen.ModBiomeModifiers;
 import net.karen.mccoursemod.worldgen.ModConfiguredFeatures;
 import net.karen.mccoursemod.worldgen.ModPlacedFeatures;
+import net.karen.mccoursemod.worldgen.biome.ModBiomes;
+import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
 import net.karen.mccoursemod.worldgen.structure.ModPools;
 import net.karen.mccoursemod.worldgen.structure.ModStructureSets;
 import net.karen.mccoursemod.worldgen.structure.ModStructures;
@@ -33,6 +35,7 @@ public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
                                    .add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap)
                                    .add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap)
                                    .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap)
+                                   .add(Registries.BIOME, ModBiomes::bootstrap)
                                    // Jukebox Songs
                                    .add(Registries.JUKEBOX_SONG, ModSounds::bootstrap)
                                    // Painting Variants
@@ -40,7 +43,10 @@ public class ModDatapackProvider extends DatapackBuiltinEntriesProvider {
                                    // Structures
                                    .add(Registries.TEMPLATE_POOL, ModPools::bootstrap)
                                    .add(Registries.STRUCTURE, ModStructures::bootstrap)
-                                   .add(Registries.STRUCTURE_SET, ModStructureSets::bootstrap);
+                                   .add(Registries.STRUCTURE_SET, ModStructureSets::bootstrap)
+                                   // Dimension Types and Level Stems
+                                   .add(Registries.LEVEL_STEM, ModDimensions::bootstrapStem)
+                                   .add(Registries.DIMENSION_TYPE, ModDimensions::bootstrapType);
 
     // CUSTOM METHOD - Registry all custom trims, enchantments, world generations, jukebox songs, painting variants, etc.
     public ModDatapackProvider(PackOutput output,

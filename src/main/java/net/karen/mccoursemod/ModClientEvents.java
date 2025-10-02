@@ -24,6 +24,8 @@ import net.karen.mccoursemod.screen.custom.CraftingPlusScreen;
 import net.karen.mccoursemod.screen.custom.KaupenFurnaceScreen;
 //import net.karen.mccoursemod.screen.custom.PedestalScreen;
 import net.karen.mccoursemod.util.*;
+import net.karen.mccoursemod.worldgen.biome.ModBiomes;
+import net.karen.mccoursemod.worldgen.biome.ModSurfaceRules;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ElytraModel;
@@ -52,6 +54,7 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import terrablender.api.SurfaceRuleManager;
 import java.util.function.Function;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
@@ -86,17 +89,21 @@ public class ModClientEvents {
         EntityRenderers.register(ModEntities.CHAIR_ENTITY.get(), ChairRenderer::new);
         // ** CUSTOM Boats **
         EntityRenderers.register(ModEntities.MOD_BOAT.get(),
-                context -> new ModBoatRenderer(context, ModModelLayers.WALNUT_BOAT_LAYER));
+                                 context -> new ModBoatRenderer(context, ModModelLayers.WALNUT_BOAT_LAYER));
         EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(),
-                context -> new ModBoatRenderer(context, ModModelLayers.WALNUT_CHEST_BOAT_LAYER));
+                                 context -> new ModBoatRenderer(context, ModModelLayers.WALNUT_CHEST_BOAT_LAYER));
         event.enqueueWork(() -> {
-            // ** CUSTOM Wood types -> Sign and Hanging Sign **
-            Sheets.addWoodType(ModWoodTypes.WALNUT);
-            // ** CUSTOM Fluid **
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), ChunkSectionLayer.TRANSLUCENT);
-            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), ChunkSectionLayer.TRANSLUCENT);
-            // ** CUSTOM Flower and Pot Flowers **
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SNAPDRAGON.getId(), ModBlocks.POTTED_SNAPDRAGON);
+              // ** CUSTOM Wood types -> Sign and Hanging Sign **
+              Sheets.addWoodType(ModWoodTypes.WALNUT);
+              // ** CUSTOM Fluid **
+              ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_SOAP_WATER.get(), ChunkSectionLayer.TRANSLUCENT);
+              ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SOAP_WATER.get(), ChunkSectionLayer.TRANSLUCENT);
+              // ** CUSTOM Flower and Pot Flowers **
+              ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SNAPDRAGON.getId(), ModBlocks.POTTED_SNAPDRAGON);
+              // ** CUSTOM Biomes and Surface Rules **
+              ModBiomes.registerBiomes();
+              SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD,
+                                                 MccourseMod.MOD_ID, ModSurfaceRules.makeRules());
         });
     }
 
@@ -122,31 +129,31 @@ public class ModClientEvents {
         final PayloadRegistrar registrar = event.registrar("1");
         // Network -> Mccourse Mod Elevator block
         registrar.playToServer(MccourseModElevatorPacketPayload.TYPE,
-                // STREAM CODEC
-                MccourseModElevatorPacketPayload.STREAM_CODEC,
-                // Server Payload Handler
-                MccourseModElevatorPacketPayload::onMccourseModElevatorServerPayloadHandler);
+                               // STREAM CODEC
+                               MccourseModElevatorPacketPayload.STREAM_CODEC,
+                               // Server Payload Handler
+                               MccourseModElevatorPacketPayload::onMccourseModElevatorServerPayloadHandler);
 
         // Network -> Mccourse Mod Bottle item
         registrar.playToServer(MccourseModBottlePacketPayload.TYPE,
-                // STREAM CODEC
-                MccourseModBottlePacketPayload.STREAM_CODEC,
-                // Server Payload Handler
-                MccourseModBottlePacketPayload::onMccourseModBottleServerPayloadHandler);
+                               // STREAM CODEC
+                               MccourseModBottlePacketPayload.STREAM_CODEC,
+                               // Server Payload Handler
+                               MccourseModBottlePacketPayload::onMccourseModBottleServerPayloadHandler);
 
         // Network -> Level Charger items
         registrar.playToServer(LevelChargerSlotPacketPayload.TYPE,
-                // STREAM CODEC
-                LevelChargerSlotPacketPayload.STREAM_CODEC,
-                // Server Payload Handler
-                LevelChargerSlotPacketPayload::onLevelChargerServerPayloadHandler);
+                               // STREAM CODEC
+                               LevelChargerSlotPacketPayload.STREAM_CODEC,
+                               // Server Payload Handler
+                               LevelChargerSlotPacketPayload::onLevelChargerServerPayloadHandler);
 
         // Network -> Unlock enchantment
         registrar.playToServer(UnlockEnchantmentPacketPayload.TYPE,
-                // STREAM CODEC
-                UnlockEnchantmentPacketPayload.STREAM_CODEC,
-                // Server Payload Handler
-                UnlockEnchantmentPacketPayload::onUnlockEnchantmentServerPayloadHandler);
+                               // STREAM CODEC
+                               UnlockEnchantmentPacketPayload.STREAM_CODEC,
+                               // Server Payload Handler
+                               UnlockEnchantmentPacketPayload::onUnlockEnchantmentServerPayloadHandler);
     }
 
     // CUSTOM EVENT - Register all custom Key Inputs
@@ -168,7 +175,7 @@ public class ModClientEvents {
     public static void registerConditionalProperties(RegisterConditionalItemModelPropertyEvent event) {
         // The name to reference as the type
         event.register(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "has_data_info"),
-                AlternateTexture.MAP_CODEC); // The map codec
+                       AlternateTexture.MAP_CODEC); // The map codec
     }
 
     // CUSTOM EVENT - Register all custom bows zoom
@@ -176,12 +183,12 @@ public class ModClientEvents {
     public static void onComputeFovModifierEvent(ComputeFovModifierEvent event) {
         Player player = event.getPlayer();
         if (player.isUsingItem() && player.getUseItem().is(ModTags.Items.BOW_TOOLS)) {
-            float fovModifier = 1f;
+            float fovModifier = 1F;
             int ticksUsingItem = player.getTicksUsingItem();
-            float deltaTicks = (float) ticksUsingItem / 20f;
-            if (deltaTicks > 1f) { deltaTicks = 1f; }
+            float deltaTicks = (float) ticksUsingItem / 20F;
+            if (deltaTicks > 1F) { deltaTicks = 1F; }
             else { deltaTicks *= deltaTicks; }
-            fovModifier *= 1f - deltaTicks * 0.15f;
+            fovModifier *= 1F - deltaTicks * 0.15F;
             event.setNewFovModifier(fovModifier);
         }
     }
@@ -228,24 +235,22 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerFluids(RegisterClientExtensionsEvent event) {
         event.registerFluidType(((BaseFluidType) ModFluidTypes.SOAP_WATER_FLUID_TYPE.get())
-                        .getClientFluidTypeExtensions(),
-                ModFluidTypes.SOAP_WATER_FLUID_TYPE.get());
+                                .getClientFluidTypeExtensions(), ModFluidTypes.SOAP_WATER_FLUID_TYPE.get());
     }
 
     // CUSTOM EVENT - Registry all custom shield special model renderers
     @SubscribeEvent
     public static void registerSpecialModelRenderers(RegisterSpecialModelRendererEvent event) {
         event.register(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "alexandrite_shield"),
-                ShieldSpecialModelRenderer.Unbaked.MAP_CODEC);
+                       ShieldSpecialModelRenderer.Unbaked.MAP_CODEC);
     }
 
     // CUSTOM EVENT - Register all custom colored blocks
     @SubscribeEvent
     public static void registerColoredBlocks(RegisterColorHandlersEvent.Block event) {
         event.register((state, level, pos, tintIndex) ->
-                level != null && pos != null
-                        ? BiomeColors.getAverageFoliageColor(level, pos)
-                        : FoliageColor.FOLIAGE_DEFAULT, ModBlocks.COLORED_LEAVES.get());
+                       (level != null && pos != null) ? BiomeColors.getAverageFoliageColor(level, pos)
+                                                      : FoliageColor.FOLIAGE_DEFAULT, ModBlocks.COLORED_LEAVES.get());
     }
 
     // CUSTOM EVENT - Register all custom RENDER PIPELINES

@@ -470,6 +470,14 @@ public class ModBlocks {
                }
            });
 
+    // ** CUSTOM portal block **
+    public static final DeferredBlock<Block> KAUPEN_PORTAL =
+           registerBlock("kaupen_portal", properties ->
+                         new KaupenPortalBlock(properties.randomTicks().strength(-1.0F).sound(SoundType.NETHERRACK)
+                                                         .lightLevel(state -> 15)
+                                                         .pushReaction(PushReaction.BLOCK).liquid().forceSolidOn()
+                                                         .noLootTable().noOcclusion().noCollision()));
+
     // ** CUSTOM block projectile **
     public static final DeferredBlock<Block> DICE = BLOCKS.register("dice",
            properties -> new DiceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
