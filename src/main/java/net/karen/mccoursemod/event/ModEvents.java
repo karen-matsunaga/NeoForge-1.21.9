@@ -477,8 +477,10 @@ public class ModEvents {
                                    ARGB.color(233, 210, 114));
             // BIOME
             ResourceKey<Biome> biome = playerLevel.getBiome(pos).getKey();
-            guiGraphics.drawString(font, biomeColor(biome),
-                                   10, 40, ARGB.color(254, 153, 0));
+            if (biome != null) {
+                guiGraphics.drawString(font, biomeColor(biome.location().getPath(), dimensionPath),
+                                       10, 40, ARGB.color(254, 153, 0));
+            }
             // HOUR:MINUTES:SECONDS:DAY
             long dayTime = level.getDayTime();
             guiGraphics.drawString(font, dayNumber(dayTime),

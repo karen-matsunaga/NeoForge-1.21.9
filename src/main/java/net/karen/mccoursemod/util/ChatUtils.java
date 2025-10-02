@@ -15,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import java.time.LocalTime;
@@ -282,24 +281,16 @@ public class ChatUtils {
     }
 
     // CUSTOM METHOD - Player biome name
-    public static String biomeName(ResourceKey<Biome> biome) {
-        if (biome != null) {
-            String biomeName = biome.location().getPath();
-            String upperCase = biomeName.substring(0, 1).toUpperCase();
-            String lowerCase = biomeName.substring(1).toLowerCase();
-            String biomeFormatted = upperCase + lowerCase;
-            return itemLines(splitWord(biomeFormatted));
-        }
-        return "";
+    public static String biomeName(String biome) {
+        String upperCase = biome.substring(0, 1).toUpperCase();
+        String lowerCase = biome.substring(1).toLowerCase();
+        String biomeFormatted = upperCase + lowerCase;
+        return itemLines(splitWord(biomeFormatted));
     }
 
     // CUSTOM METHOD - Player biome color name
-    public static Component biomeColor(ResourceKey<Biome> biome) {
-        if (biome != null) {
-            return Component.literal("Biome: ")
-                            .append(componentLiteralIntColor(biomeName(biome), ARGB.color(125, 218, 88)));
-        }
-        return Component.nullToEmpty("");
+    public static Component biomeColor(String biome, String dimension) {
+        return Component.literal("Biome: ").append(componentLiteralIntColor(biomeName(biome), dimensionColorName(dimension)));
     }
 
     // CUSTOM METHOD - Player day number
