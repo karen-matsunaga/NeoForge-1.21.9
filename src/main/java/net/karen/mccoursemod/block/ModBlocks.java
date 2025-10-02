@@ -11,9 +11,6 @@ import net.karen.mccoursemod.util.ModWoodTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -122,11 +119,8 @@ public class ModBlocks {
 
     // CUSTOM Crafting Plus custom Crafting Table
     public static final DeferredBlock<Block> CRAFTING_PLUS = registerBlock("crafting_plus",
-           properties -> new CraftingPlusBlock(BlockBehaviour.Properties
-                                                                       .ofFullCopy(Blocks.CRAFTING_TABLE)
-                                                                       .setId(ResourceKey.create(Registries.BLOCK,
-                                                                              ResourceLocation.fromNamespaceAndPath(
-                                                                              MccourseMod.MOD_ID, "crafting_plus")))));
+           properties -> new CraftingPlusBlock(properties.mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS)
+                                                                   .strength(2.5F).sound(SoundType.WOOD).ignitedByLava()));
 
     // ** CUSTOM Block Family -> (Button, Door, Fence, Fence Gate, Pressure Plate, Slab, Stairs, Trapdoor and Wall) **
     // BISMUTH
@@ -425,44 +419,17 @@ public class ModBlocks {
     // SNAPDRAGON
     public static final DeferredBlock<Block> SNAPDRAGON = registerBlock("snapdragon",
            properties -> new FlowerBlock(MobEffects.BLINDNESS, 6.0F,
-                                                   BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)
-                                                                 .setId(ResourceKey.create(Registries.BLOCK,
-                                                                        ResourceLocation.fromNamespaceAndPath(
-                                                                        MccourseMod.MOD_ID, "snapdragon")))));
+                                                   properties.mapColor(MapColor.PLANT).noCollision().instabreak()
+                                                             .sound(SoundType.GRASS).offsetType(BlockBehaviour.OffsetType.XZ)
+                                                             .pushReaction(PushReaction.DESTROY)));
 
     public static final DeferredBlock<Block> POTTED_SNAPDRAGON = registerBlock("potted_snapdragon",
            properties -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, SNAPDRAGON,
-                                                      BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)
-                                                                    .setId(ResourceKey.create(Registries.BLOCK,
-                                                                           ResourceLocation.fromNamespaceAndPath(
-                                                                           MccourseMod.MOD_ID, "potted_snapdragon")))));
+                                                      properties.instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     // ** CUSTOM colored block **
     public static final DeferredBlock<Block> COLORED_LEAVES = registerBlock("colored_leaves",
-           properties -> new UntintedParticleLeavesBlock(0.01F,
-                                                                   ParticleTypes.PALE_OAK_LEAVES,
-                                                                   BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)
-                                                                                 .setId(ResourceKey.create(Registries.BLOCK,
-                                                                                        ResourceLocation.fromNamespaceAndPath(
-                                                                                        MccourseMod.MOD_ID, "colored_leaves")))) {
-               @Override
-               public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level,
-                                          @NotNull BlockPos pos, @NotNull Direction direction) {
-                   return true;
-               }
-
-               @Override
-               public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level,
-                                          @NotNull BlockPos pos, @NotNull Direction direction) {
-                   return 60;
-               }
-
-               @Override
-               public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level,
-                                             @NotNull BlockPos pos, @NotNull Direction direction) {
-                   return 30;
-               }
-           });
+           properties -> new Block(properties.noOcclusion()));
 
     // ** CUSTOM portal block **
     public static final DeferredBlock<Block> KAUPEN_PORTAL =
@@ -473,30 +440,26 @@ public class ModBlocks {
                                                          .noLootTable().noOcclusion().noCollision()));
 
     // ** CUSTOM block projectile **
-    public static final DeferredBlock<Block> DICE = BLOCKS.register("dice",
-           properties -> new DiceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
-                                                                     .noLootTable()
-                                                                     .setId(ResourceKey.create(Registries.BLOCK,
-                                                                            ResourceLocation.fromNamespaceAndPath(
-                                                                            MccourseMod.MOD_ID, "dice")))));
+    public static final DeferredBlock<Block> DICE = BLOCKS.registerBlock("dice",
+           properties -> new DiceBlock(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                                                           .requiresCorrectToolForDrops()
+                                                           .strength(1.5F, 6.0F).noLootTable()));
 
     // ** CUSTOM METHOD - OXIDIZABLE blocks **
     private static DeferredBlock<Block> oxidizableBlock(String name,
                                                         GemDegradable.GemDegradationLevel gemDegradation) {
         return registerBlock(name, properties ->
-                             new DegradableRubyBlock(gemDegradation,
-                                                     BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
-                                                                   .setId(ResourceKey.create(Registries.BLOCK,
-                                                                          ResourceLocation.fromNamespaceAndPath(
-                                                                          MccourseMod.MOD_ID, name)))));
+                             new DegradableRubyBlock(gemDegradation, properties.mapColor(MapColor.STONE)
+                                                                               .instrument(NoteBlockInstrument.BASEDRUM)
+                                                                               .requiresCorrectToolForDrops()
+                                                                               .strength(1.5F, 6.0F)));
     }
 
     // ** CUSTOM METHOD - WAXED OXIDIZABLE blocks **
     private static DeferredBlock<Block> waxedOxidizableBlock(String name) {
         return registerBlock(name, properties ->
-                             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)
-                                                     .setId(ResourceKey.create(Registries.BLOCK,
-                                                            ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, name)))));
+                             new Block(properties.mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM)
+                                                 .requiresCorrectToolForDrops().strength(1.5F, 6.0F)));
     }
 
     // ** CUSTOM METHOD - DISENCHANT blocks **
@@ -587,21 +550,15 @@ public class ModBlocks {
                                                                        .ignitedByLava().pushReaction(PushReaction.DESTROY)) {
                              @Override
                              public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level,
-                                                        @NotNull BlockPos pos, @NotNull Direction direction) {
-                                 return true;
-                             }
+                                                        @NotNull BlockPos pos, @NotNull Direction direction) { return true; }
 
                              @Override
                              public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level,
-                                                        @NotNull BlockPos pos, @NotNull Direction direction) {
-                                 return 60;
-                             }
+                                                        @NotNull BlockPos pos, @NotNull Direction direction) { return 60; }
 
                              @Override
                              public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level,
-                                                           @NotNull BlockPos pos, @NotNull Direction direction) {
-                                 return 30;
-                             }
+                                                           @NotNull BlockPos pos, @NotNull Direction direction) { return 30; }
         });
     }
 
@@ -617,21 +574,15 @@ public class ModBlocks {
         return registerBlock(name, properties -> new Block(properties) {
                              @Override
                              public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level,
-                                                        @NotNull BlockPos pos, @NotNull Direction direction) {
-                                 return true;
-                             }
+                                                        @NotNull BlockPos pos, @NotNull Direction direction) { return true; }
 
                              @Override
                              public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level,
-                                                        @NotNull BlockPos pos, @NotNull Direction direction) {
-                                 return 20;
-                             }
+                                                        @NotNull BlockPos pos, @NotNull Direction direction) { return 20; }
 
                              @Override
                              public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level,
-                                                           @NotNull BlockPos pos, @NotNull Direction direction) {
-                                 return 5;
-                             }
+                                                           @NotNull BlockPos pos, @NotNull Direction direction) { return 5; }
         });
     }
 
@@ -658,22 +609,17 @@ public class ModBlocks {
     // ** CUSTOM METHOD - ENDER PEARL blocks **
     private static DeferredBlock<Block> enderPearlBlock(String name, MapColor color) {
         return registerBlock(name, properties ->
-                             new Block(properties.mapColor(color)
-                                                 .instrument(NoteBlockInstrument.BELL)
-                                                 .requiresCorrectToolForDrops()
-                                                 .strength(5.0F, 6.0F)
-                                                 .sound(SoundType.METAL)
-                                                 .lightLevel(state -> 50)));
+                             new Block(properties.mapColor(color).instrument(NoteBlockInstrument.BELL)
+                                                 .requiresCorrectToolForDrops().strength(5.0F, 6.0F)
+                                                 .sound(SoundType.METAL).lightLevel(state -> 50)));
     }
 
     // ** CUSTOM METHOD - MOB blocks **
     private static DeferredBlock<Block> mobBlock(String name, MapColor color,
                                                    NoteBlockInstrument noteBlock, SoundType soundType) {
        return registerBlock(name, properties ->
-                            new Block(properties.mapColor(color)
-                                                .instrument(noteBlock)
-                                                .requiresCorrectToolForDrops()
-                                                .strength(5.0F, 6.0F)
+                            new Block(properties.mapColor(color).instrument(noteBlock)
+                                                .requiresCorrectToolForDrops().strength(5.0F, 6.0F)
                                                 .sound(soundType)));
     }
 
