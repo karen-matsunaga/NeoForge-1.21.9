@@ -294,12 +294,12 @@ public class ModBlocks {
            properties -> new ChairBlock(properties.noOcclusion()));
 
     // ** CUSTOM block entity **
-//    public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal",
-//           properties -> new PedestalBlock(properties.noOcclusion()));
+    public static final DeferredBlock<Block> PEDESTAL = registerBlock("pedestal",
+           properties -> new PedestalBlock(properties.noOcclusion()));
 
     // ** CUSTOM crafting block entity **
-//    public static final DeferredBlock<Block> GROWTH_CHAMBER =
-//           registerBlock("growth_chamber", GrowthChamberBlock::new);
+    public static final DeferredBlock<Block> GROWTH_CHAMBER =
+           registerBlock("growth_chamber", GrowthChamberBlock::new);
 
     public static final DeferredBlock<Block> KAUPEN_FURNACE_BLOCK =
            registerBlock("kaupen_furnace", KaupenFurnaceBlock::new);

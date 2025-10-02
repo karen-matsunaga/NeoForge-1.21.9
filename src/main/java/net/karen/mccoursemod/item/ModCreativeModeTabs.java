@@ -295,8 +295,8 @@ public class ModCreativeModeTabs {
                  // ** CUSTOM Sittable blocks **
                  output.accept(ModBlocks.CHAIR);
                  // ** CUSTOM Block entity **
-                 //output.accept(ModBlocks.PEDESTAL);
-                 //output.accept(ModBlocks.GROWTH_CHAMBER);
+                 output.accept(ModBlocks.PEDESTAL);
+                 output.accept(ModBlocks.GROWTH_CHAMBER);
                  // ** CUSTOM Glass blocks **
                  output.accept(ModBlocks.FORCED_STAINED_GLASS);
                  output.accept(ModBlocks.FORCED_STAINED_GLASS_PANE);

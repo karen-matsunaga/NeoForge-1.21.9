@@ -358,8 +358,8 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.CHAIR, "§e");
 
         // ** CUSTOM block entity **
-        //blockLang(ModBlocks.PEDESTAL, "§8");
-        //blockLang(ModBlocks.GROWTH_CHAMBER, "§8");
+        blockLang(ModBlocks.PEDESTAL, "§8");
+        blockLang(ModBlocks.GROWTH_CHAMBER, "§8");
 
         // ** CUSTOM Fluid block **
         blockLang(ModFluids.SOAP_WATER_BLOCK, "§d");

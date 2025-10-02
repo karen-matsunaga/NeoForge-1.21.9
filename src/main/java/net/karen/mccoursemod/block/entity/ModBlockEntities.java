@@ -13,13 +13,13 @@ public class ModBlockEntities {
            DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, MccourseMod.MOD_ID);
 
 //    // Registry all custom BLOCK ENTITIES
-//    public static final Supplier<BlockEntityType<PedestalBlockEntity>> PEDESTAL_BE =
-//           BLOCK_ENTITIES.register("pedestal_be",
-//           () -> new BlockEntityType<>(PedestalBlockEntity::new, ModBlocks.PEDESTAL.get()));
+    public static final Supplier<BlockEntityType<PedestalBlockEntity>> PEDESTAL_BE =
+           BLOCK_ENTITIES.register("pedestal_be",
+           () -> new BlockEntityType<>(PedestalBlockEntity::new, ModBlocks.PEDESTAL.get()));
 
-//    public static final Supplier<BlockEntityType<GrowthChamberBlockEntity>> GROWTH_CHAMBER_BE =
-//            BLOCK_ENTITIES.register("growth_chamber_be",
-//            () -> new BlockEntityType<>(GrowthChamberBlockEntity::new, ModBlocks.GROWTH_CHAMBER.get()));
+    public static final Supplier<BlockEntityType<GrowthChamberBlockEntity>> GROWTH_CHAMBER_BE =
+           BLOCK_ENTITIES.register("growth_chamber_be",
+           () -> new BlockEntityType<>(GrowthChamberBlockEntity::new, ModBlocks.GROWTH_CHAMBER.get()));
 
     public static final Supplier<BlockEntityType<KaupenFurnaceBlockEntity>> KAUPEN_FURNACE_BLOCK_ENTITY =
            BLOCK_ENTITIES.register("kaupen_furnace_block_entity",

@@ -39,8 +39,8 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                       ModBlocks.PINK_BLOCK.get(),
                                                       ModBlocks.KAUPEN_FURNACE_BLOCK.get(),
                                                       ModBlocks.DICE.get(),
-//                                                      ModBlocks.GROWTH_CHAMBER.get(),
-//                                                      ModBlocks.PEDESTAL.get(),
+                                                      ModBlocks.GROWTH_CHAMBER.get(),
+                                                      ModBlocks.PEDESTAL.get(),
                                                       ModBlocks.CRAFTING_PLUS.get())
                                                  .addTag(ModTags.Blocks.MCCOURSE_MOD_ORES)
                                                  .addTag(ModTags.Blocks.BISMUTH_BLOCKS)

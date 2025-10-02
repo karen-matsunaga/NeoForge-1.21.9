@@ -2,7 +2,7 @@ package net.karen.mccoursemod;
 
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.block.entity.ModBlockEntities;
-//import net.karen.mccoursemod.block.entity.renderer.PedestalBlockEntityRenderer;
+import net.karen.mccoursemod.block.entity.renderer.PedestalBlockEntityRenderer;
 import net.karen.mccoursemod.component.custom.AlternateTexture;
 import net.karen.mccoursemod.entity.ModEntities;
 import net.karen.mccoursemod.entity.client.*;
@@ -20,9 +20,9 @@ import net.karen.mccoursemod.particle.BouncyBallsParticles;
 import net.karen.mccoursemod.particle.ModParticles;
 import net.karen.mccoursemod.screen.ModMenuTypes;
 import net.karen.mccoursemod.screen.custom.CraftingPlusScreen;
-//import net.karen.mccoursemod.screen.custom.GrowthChamberScreen;
+import net.karen.mccoursemod.screen.custom.GrowthChamberScreen;
 import net.karen.mccoursemod.screen.custom.KaupenFurnaceScreen;
-//import net.karen.mccoursemod.screen.custom.PedestalScreen;
+import net.karen.mccoursemod.screen.custom.PedestalScreen;
 import net.karen.mccoursemod.util.*;
 import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.karen.mccoursemod.worldgen.biome.ModSurfaceRules;
@@ -216,7 +216,7 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         // ** CUSTOM Block entity renderers **
-        //event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL_BE.get(), PedestalBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL_BE.get(), PedestalBlockEntityRenderer::new);
         // ** CUSTOM Sign and Hanging Sing renderers **
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
@@ -225,8 +225,8 @@ public class ModClientEvents {
     // CUSTOM EVENT - Registry all custom screens
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event) {
-        //event.register(ModMenuTypes.PEDESTAL_MENU.get(), PedestalScreen::new);
-        //event.register(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), GrowthChamberScreen::new);
+        event.register(ModMenuTypes.PEDESTAL_MENU.get(), PedestalScreen::new);
+        event.register(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), GrowthChamberScreen::new);
         event.register(ModMenuTypes.KAUPEN_FURNACE_MENU.get(), KaupenFurnaceScreen::new);
         event.register(ModMenuTypes.CRAFTING_PLUS_MENU.get(), CraftingPlusScreen::new);
     }
