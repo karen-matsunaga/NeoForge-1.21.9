@@ -574,20 +574,16 @@ public class ModItems {
 
     // ** CUSTOM sign and Hanging sign **
     public static final DeferredItem<Item> WALNUT_SIGN =
-           ITEMS.register("walnut_sign", properties ->
-                          new SignItem(ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get(),
-                                       new Item.Properties().stacksTo(16)
-                                                            .setId(ResourceKey.create(Registries.ITEM,
-                                                                   ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                   "walnut_sign")))));
+           ITEMS.registerItem("walnut_sign", properties ->
+                              new SignItem(ModBlocks.WALNUT_SIGN.get(),
+                                           ModBlocks.WALNUT_WALL_SIGN.get(),
+                                           properties.stacksTo(16)));
 
     public static final DeferredItem<Item> WALNUT_HANGING_SIGN =
-           ITEMS.register("walnut_hanging_sign", properties ->
-                          new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
-                                              new Item.Properties().stacksTo(16)
-                                                                   .setId(ResourceKey.create(Registries.ITEM,
-                                                                          ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                          "walnut_hanging_sign")))));
+           ITEMS.registerItem("walnut_hanging_sign", properties ->
+                              new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(),
+                                                  ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
+                                                  properties.stacksTo(16)));
 
     // TORCH BALL item
     public static final DeferredItem<Item> TORCH_BALL =
