@@ -12,7 +12,6 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.Level;
 //import net.minecraft.world.level.block.entity.BlockEntity;
-//import net.neoforged.neoforge.items.SlotItemHandler;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class PedestalMenu extends AbstractContainerMenu {
@@ -29,7 +28,7 @@
 //        this.level = inv.player.level();
 //        addPlayerInventory(inv);
 //        addPlayerHotbar(inv);
-//        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, 80, 35));
+//        this.addSlot(new Slot(inv, 0, 80, 35));
 //    }
 //
 //    // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons

@@ -14,30 +14,51 @@
 //import net.minecraft.world.entity.player.Inventory;
 //import net.minecraft.world.entity.player.Player;
 //import net.minecraft.world.inventory.AbstractContainerMenu;
+//import net.minecraft.world.inventory.ContainerData;
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.block.entity.BlockEntity;
 //import net.minecraft.world.level.block.state.BlockState;
 //import net.minecraft.world.level.storage.ValueInput;
 //import net.minecraft.world.level.storage.ValueOutput;
 //import net.neoforged.neoforge.items.ItemStackHandler;
+//import net.neoforged.neoforge.transfer.ResourceHandler;
+//import net.neoforged.neoforge.transfer.item.ItemAccessItemHandler;
+//import net.neoforged.neoforge.transfer.item.ItemResource;
 //import org.jetbrains.annotations.NotNull;
 //import javax.annotation.Nullable;
 //
 //public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
-//    public final ItemStackHandler inventory = new ItemStackHandler(1) {
+//    private final ContainerData inv = new ContainerData() {
 //        @Override
-//        protected int getStackLimit(int slot, @NotNull ItemStack stack) {
-//            return 1;
+//        public int get(int i) {
+//            return 0;
 //        }
 //
 //        @Override
-//        protected void onContentsChanged(int slot) {
-//            setChanged();
-//            if (level != null && !level.isClientSide()) {
-//                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-//            }
+//        public void set(int i, int i1) {
+//
 //        }
-//    };
+//
+//        @Override
+//        public int getCount() {
+//            return 0;
+//        }
+//    }
+//
+////    public final ItemStackHandler inventory = new ItemStackHandler(1) {
+////        @Override
+////        protected int getStackLimit(int slot, @NotNull ItemStack stack) {
+////            return 1;
+////        }
+////
+////        @Override
+////        protected void onContentsChanged(int slot) {
+////            setChanged();
+////            if (level != null && !level.isClientSide()) {
+////                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+////            }
+////        }
+////    };
 //    private float rotation;
 //
 //    public PedestalBlockEntity(BlockPos pos, BlockState blockState) {
@@ -52,6 +73,14 @@
 //
 //    public void clearContents() {
 //        inventory.setStackInSlot(0, ItemStack.EMPTY);
+//    }
+//
+//    @Override
+//    public void setChanged() {
+//        super.setChanged();
+//        if (level != null && !level.isClientSide()) {
+//            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+//        }
 //    }
 //
 //    public void drops() {

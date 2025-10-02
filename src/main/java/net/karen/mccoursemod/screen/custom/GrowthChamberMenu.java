@@ -10,7 +10,6 @@
 //import net.minecraft.world.item.ItemStack;
 //import net.minecraft.world.level.Level;
 //import net.minecraft.world.level.block.entity.BlockEntity;
-//import net.neoforged.neoforge.items.SlotItemHandler;
 //import org.jetbrains.annotations.NotNull;
 //
 //public class GrowthChamberMenu extends AbstractContainerMenu {
@@ -29,8 +28,8 @@
 //        this.data = data;
 //        addPlayerInventory(inv);
 //        addPlayerHotbar(inv);
-//        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 0, 54, 34));
-//        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, 1, 104, 34));
+//        this.addSlot(new Slot(inv, 0, 54, 34));
+//        this.addSlot(new Slot(inv, 1, 104, 34));
 //        addDataSlots(data);
 //    }
 //
