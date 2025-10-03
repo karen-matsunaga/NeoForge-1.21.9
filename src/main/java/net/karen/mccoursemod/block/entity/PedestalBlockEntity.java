@@ -8,10 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -20,60 +17,48 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 
 public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
-    public final Container inventory = new Container() {
+    public final ItemStacksResourceHandler inventory = new ItemStacksResourceHandler(1) {
         @Override
-        public int getContainerSize() { return 1; }
-
-        @Override
-        public boolean isEmpty() { return false; }
-
-        @Override
-        public ItemStack getItem(int i) { return null; }
-
-        @Override
-        public ItemStack removeItem(int i, int i1) { return null; }
-
-        @Override
-        public ItemStack removeItemNoUpdate(int i) { return null; }
-
-        @Override
-        public void setItem(int i, @NotNull ItemStack itemStack) {}
-
-        @Override
-        public void setChanged() {
+        protected void onContentsChanged(int index, @NotNull ItemStack previousContents) {
+            setChanged();
             if (level != null && !level.isClientSide()) {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
-
-        @Override
-        public boolean stillValid(@NotNull Player player) { return false; }
-
-        @Override
-        public void clearContent() { inventory.setItem(0, ItemStack.EMPTY); }
     };
-
     private float rotation;
+
+    // CUSTOM METHOD - Output SLOT
+    public ItemStacksResourceHandler getInventory() {
+        return inventory;
+    }
 
     public PedestalBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.PEDESTAL_BE.get(), pos, blockState);
     }
 
+    // CUSTOM METHOD - Render item rotation
     public float getRenderingRotation() {
         rotation += 0.5f;
         if (rotation >= 360) { rotation = 0; }
         return rotation;
     }
 
+    // CUSTOM METHOD - Remove item
+    public void clearContents() {
+        inventory.set(0, ItemResource.of(ItemStack.EMPTY), 0);
+    }
+
+    // CUSTOM METHOD - Item drop
     public void drops() {
-        SimpleContainer inv = new SimpleContainer(inventory.getContainerSize());
-        for (int i = 0; i < inventory.getContainerSize(); i++) {
-            inv.setItem(i, inventory.getItem(i));
-        }
+        SimpleContainer inv = new SimpleContainer(inventory.size());
+        for (int i = 0; i < inventory.size(); i++) { inv.setItem(i, inventory.getResource(i).toStack()); }
         if (this.level != null) { Containers.dropContents(this.level, this.worldPosition, inv); }
     }
 
@@ -86,13 +71,13 @@ public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     protected void saveAdditional(@NotNull ValueOutput output) {
         super.saveAdditional(output);
-        //inventory.serialize(output);
+        inventory.serialize(output);
     }
 
     @Override
     protected void loadAdditional(@NotNull ValueInput input) {
         super.loadAdditional(input);
-        //inventory.deserialize(input);
+        inventory.deserialize(input);
     }
 
     @Override

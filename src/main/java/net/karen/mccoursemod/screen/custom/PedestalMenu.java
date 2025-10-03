@@ -12,6 +12,8 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 import org.jetbrains.annotations.NotNull;
 
 public class PedestalMenu extends AbstractContainerMenu {
@@ -26,9 +28,12 @@ public class PedestalMenu extends AbstractContainerMenu {
         super(ModMenuTypes.PEDESTAL_MENU.get(), containerId);
         this.blockEntity = ((PedestalBlockEntity) blockEntity);
         this.level = inv.player.level();
+        // Player inventory SLOTS
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
-        this.addSlot(new Slot(inv, 0, 80, 35));
+        // Output SLOT
+        ItemStacksResourceHandler item = this.blockEntity.getInventory();
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 0, 80, 35));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -51,7 +56,7 @@ public class PedestalMenu extends AbstractContainerMenu {
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (!sourceSlot.hasItem()) return ItemStack.EMPTY; // EMPTY_ITEM
+        if (!sourceSlot.hasItem()) { return ItemStack.EMPTY; } // EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
         // Check if the slot clicked is one of the vanilla container slots
@@ -85,6 +90,7 @@ public class PedestalMenu extends AbstractContainerMenu {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.PEDESTAL.get());
     }
 
+    // CUSTOM METHOD - Player inventory SLOTS
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
@@ -93,6 +99,7 @@ public class PedestalMenu extends AbstractContainerMenu {
         }
     }
 
+    // CUSTOM METHOD - Player HOT BAR
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));

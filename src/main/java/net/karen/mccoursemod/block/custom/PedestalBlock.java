@@ -21,6 +21,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.transfer.item.ItemResource;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 
@@ -66,17 +69,24 @@ public class PedestalBlock extends BaseEntityBlock {
                 player.openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pos);
                 return InteractionResult.SUCCESS;
             }
-            if (pedestalBlockEntity.inventory.getItem(0).isEmpty() && !stack.isEmpty()) {
-                //pedestalBlockEntity.inventory.setItem(0, stack.copy(), false);
-                pedestalBlockEntity.inventory.getItem(0).copy();
-                stack.shrink(1);
-                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
-            }
-            else if (stack.isEmpty()) {
-                ItemStack stackOnPedestal = pedestalBlockEntity.inventory.removeItem(0, 1);
-                player.setItemInHand(InteractionHand.MAIN_HAND, stackOnPedestal);
-                pedestalBlockEntity.inventory.clearContent();
-                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
+            ItemStacksResourceHandler slot = pedestalBlockEntity.inventory;
+            ItemResource pedestal = slot.getResource(0);
+            ItemStack copy = slot.getResource(0).toStack().copy();
+            ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
+            try (Transaction tx = Transaction.open(null)) {
+                if (pedestal.toStack().isEmpty() && !stack.isEmpty()) {
+                    slot.insert(ItemResource.of(mainHand), 1, tx);
+                    tx.commit();
+                    stack.shrink(1);
+                    level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 2F);
+                }
+                else if (stack.isEmpty() && !pedestal.isEmpty()) {
+                    slot.extract(pedestal, 1, tx);
+                    tx.commit();
+                    player.setItemInHand(InteractionHand.MAIN_HAND, copy);
+                    pedestalBlockEntity.clearContents();
+                    level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 1F);
+                }
             }
         }
         return InteractionResult.SUCCESS;
