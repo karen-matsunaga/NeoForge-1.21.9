@@ -12,6 +12,7 @@
     "EnchantmentMenuMixin",
     "EnchantmentMixin",
     "FishingHookMixin",
+    "ItemEnchantmentsMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "SculkShriekerBlockEntityMixin",
