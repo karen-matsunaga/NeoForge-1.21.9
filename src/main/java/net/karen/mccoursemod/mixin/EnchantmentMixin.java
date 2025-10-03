@@ -1,23 +1,16 @@
 package net.karen.mccoursemod.mixin;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import java.util.List;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 @Mixin(value = Enchantment.class)
@@ -39,21 +32,8 @@ public abstract class EnchantmentMixin {
                    enchantmentComponent.append(CommonComponents.SPACE)
                                        .append(standardLiteral(level + " / " + maxLevel)) // Level
                                        .append(CommonComponents.SPACE).append(standardLiteral(icon)); // Icon
-            Enchantment enchName = holder.value();
-            Level mcLevel = Minecraft.getInstance().level;
-            if (mcLevel != null) {
-                Registry<Enchantment> enchantmentRegistry = mcLevel.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-                ResourceLocation enchantKey = enchantmentRegistry.getKey(enchName);
-                if (enchantKey != null) {
-                    String descriptionKey = "enchantment." + enchantKey.getNamespace() + "." + enchantKey.getPath() + ".desc";
-                    if (I18n.exists(descriptionKey)) {
-                        MutableComponent line1 = description(I18n.get(descriptionKey), colors, List.of(false, false));
-                        Component combined = ComponentUtils.formatList(List.of(line, line1), CommonComponents.NEW_LINE);
-                        // Return NEW enchantment tooltip
-                        cir.setReturnValue(combined);
-                    }
-                }
-            }
+            // Return NEW enchantment tooltip
+            cir.setReturnValue(line);
         }
     }
 
