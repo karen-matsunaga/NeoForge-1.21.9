@@ -7,7 +7,7 @@ import mezz.jei.api.registration.*;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.recipe.CraftingPlusRecipe;
-//import net.karen.mccoursemod.recipe.GrowthChamberRecipe;
+import net.karen.mccoursemod.recipe.GrowthChamberRecipe;
 import net.karen.mccoursemod.recipe.KaupenFurnaceRecipe;
 import net.karen.mccoursemod.recipe.ModRecipes;
 import net.karen.mccoursemod.screen.ModMenuTypes;
@@ -30,7 +30,7 @@ public class JEIModPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         IGuiHelper guiHelper = registration.getJeiHelpers().getGuiHelper();
-        //registration.addRecipeCategories(new GrowthChamberRecipeCategory(guiHelper));
+        registration.addRecipeCategories(new GrowthChamberRecipeCategory(guiHelper));
         registration.addRecipeCategories(new KaupenFurnaceRecipeCategory(guiHelper));
         registration.addRecipeCategories(new CraftingPlusRecipeCategory(guiHelper));
     }
@@ -40,12 +40,12 @@ public class JEIModPlugin implements IModPlugin {
         MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
         if (server != null) {
             // GROWTH CHAMBER
-//            server.getRecipeManager().recipeMap().byType(ModRecipes.GROWTH_CHAMBER_TYPE.get())
-//                  .forEach(holder -> {
-//                           GrowthChamberRecipe recipe = holder.value();
-//                           registration.addRecipes(GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
-//                                                   List.of(new GrowthChamberRecipe(recipe.inputItem(), recipe.output())));
-//                  });
+            server.getRecipeManager().recipeMap().byType(ModRecipes.GROWTH_CHAMBER_TYPE.get())
+                  .forEach(holder -> {
+                           GrowthChamberRecipe recipe = holder.value();
+                           registration.addRecipes(GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
+                                                   List.of(new GrowthChamberRecipe(recipe.inputItem(), recipe.output())));
+                  });
 
             // KAUPEN FURNACE
             server.getRecipeManager().recipeMap().byType(ModRecipes.KAUPEN_FURNACE_TYPE.get())
@@ -83,8 +83,8 @@ public class JEIModPlugin implements IModPlugin {
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
         // GROWTH CHAMBER
-//        registration.addRecipeClickArea(GrowthChamberScreen.class, 70, 30, 25, 20,
-//                                        GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE);
+        registration.addRecipeClickArea(GrowthChamberScreen.class, 70, 30, 25, 20,
+                                        GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE);
 
         // KAUPEN FURNACE
         registration.addRecipeClickArea(KaupenFurnaceScreen.class, 60, 30, 20, 30,
@@ -98,8 +98,8 @@ public class JEIModPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         // GROWTH CHAMBER
-//        registration.addCraftingStation(GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
-//                                        ModBlocks.GROWTH_CHAMBER.get());
+        registration.addCraftingStation(GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
+                                        ModBlocks.GROWTH_CHAMBER.get());
 
         // KAUPEN FURNACE
         registration.addCraftingStation(KaupenFurnaceRecipeCategory.KAUPEN_FURNACE_TYPE,
@@ -129,9 +129,9 @@ public class JEIModPlugin implements IModPlugin {
                                               1, 49, 50, 36);
 
         // GROWTH CHAMBER - Menu Class, Menu Type and Recipe Type
-//        registration.addRecipeTransferHandler(GrowthChamberMenu.class,
-//                                              ModMenuTypes.GROWTH_CHAMBER_MENU.get(),
-//                                              GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
-//                                              36, 2, 0, 36);
+        registration.addRecipeTransferHandler(GrowthChamberMenu.class,
+                                              ModMenuTypes.GROWTH_CHAMBER_MENU.get(),
+                                              GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
+                                              36, 2, 0, 36);
     }
 }

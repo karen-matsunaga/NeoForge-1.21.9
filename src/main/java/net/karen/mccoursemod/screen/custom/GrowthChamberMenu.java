@@ -10,6 +10,8 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
+import net.neoforged.neoforge.transfer.item.ResourceHandlerSlot;
 import org.jetbrains.annotations.NotNull;
 
 public class GrowthChamberMenu extends AbstractContainerMenu {
@@ -26,17 +28,22 @@ public class GrowthChamberMenu extends AbstractContainerMenu {
         this.blockEntity = ((GrowthChamberBlockEntity) entity);
         this.level = inv.player.level();
         this.data = data;
+        // Player inventory SLOTS
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
-        this.addSlot(new Slot(this.blockEntity.itemHandler, 0, 54, 34));
-        this.addSlot(new Slot(this.blockEntity.itemHandler, 1, 104, 34));
+        // Input + Output SLOTS
+        ItemStacksResourceHandler item = this.blockEntity.getItemHandler();
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 0, 54, 34));
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 1, 104, 34));
         addDataSlots(data);
     }
 
+    // CUSTOM METHOD - Crafting items
     public boolean isCrafting() {
         return data.get(0) > 0;
     }
 
+    // CUSTOM METHOD - Draw arrow progress
     public int getScaledArrowProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);
@@ -64,7 +71,7 @@ public class GrowthChamberMenu extends AbstractContainerMenu {
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (!sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+        if (!sourceSlot.hasItem()) { return ItemStack.EMPTY; } // EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
         // Check if the slot clicked is one of the vanilla container slots
@@ -99,6 +106,7 @@ public class GrowthChamberMenu extends AbstractContainerMenu {
                           player, ModBlocks.GROWTH_CHAMBER.get());
     }
 
+    // CUSTOM METHOD - Player INVENTORY
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
@@ -107,6 +115,7 @@ public class GrowthChamberMenu extends AbstractContainerMenu {
         }
     }
 
+    // CUSTOM METHOD - Player HOT BAR
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
