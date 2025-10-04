@@ -731,6 +731,15 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // ** CUSTOM ENCHANTMENT LEVEL **
         vanillaEnchantment();
+
+        // ** CUSTOM CONFIGS **
+        add("mccoursemod.configuration.title", "Mccourse Mod Configs");
+        add("mccoursemod.configuration.section.mccoursemod.common.toml", "Mccourse Mod Configs");
+        add("mccoursemod.configuration.section.mccoursemod.common.toml.title", "Mccourse Mod Configs");
+        add("mccoursemod.configuration.items", "Item List");
+        add("mccoursemod.configuration.logDirtBlock", "Log Dirt Block");
+        add("mccoursemod.configuration.magicNumberIntroduction", "Magic Number Text");
+        add("mccoursemod.configuration.magicNumber", "Magic Number");
     }
 
     // CUSTOM METHOD - Register Block and Block Item
