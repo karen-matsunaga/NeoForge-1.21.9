@@ -434,8 +434,8 @@ public class ModItems {
                      ModTags.Items.PINK_TOOL_MATERIALS, 0xF433C1);
 
     public static final DeferredItem<Item> COPPER_SWORD =
-           swordItem("copper_sword", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                     ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
+           swordEffectItem("copper_sword", ModToolMaterials.COPPER, 2.0F, 2.5F,
+                           ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_SWORD =
            swordItem("lapis_lazuli_sword", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
@@ -751,6 +751,14 @@ public class ModItems {
                                                     return componentTranslatableIntColor(this.getDescriptionId(), color);
                                                 }
                                            });
+    }
+
+    // ** CUSTOM METHOD - Special SWORD tool **
+    public static DeferredItem<Item> swordEffectItem(String name, ToolMaterial material,
+                                                     float attackDamage, float attackSpeed,
+                                                     TagKey<Item> repair, int color) {
+        return ITEMS.registerItem(name, properties ->
+                                  new SwordEffectItem(properties, material, attackDamage, attackSpeed, repair, color));
     }
 
     // ** CUSTOM METHOD - Helmet armor **
