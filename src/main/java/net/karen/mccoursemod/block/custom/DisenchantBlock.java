@@ -2,7 +2,6 @@ package net.karen.mccoursemod.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -20,8 +19,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static net.karen.mccoursemod.util.ChatUtils.darkAqua;
-import static net.karen.mccoursemod.util.ChatUtils.purple;
 import static net.karen.mccoursemod.util.Utils.*;
 
 public class DisenchantBlock extends Block {
@@ -51,12 +48,7 @@ public class DisenchantBlock extends Block {
         super.stepOn(level, pos, state, entity);
     }
 
-    @Override
-    public @NotNull MutableComponent getName() {
-        return super.getName().copy().withStyle((type == 1) ? darkAqua : purple);
-    }
-
-    // CUSTOM METHOD - TYPE 1
+    // CUSTOM METHOD - TYPE 1 [INDIVIDUAL enchantment] -> Each enchantment on an enchanted book separated
     private static void individualEnchantedBook(Level level, BlockPos pos, ItemStack item,
                                                 ItemEntity itemEntity, Map<Holder<Enchantment>, Integer> enchant) {
         if (enchant.isEmpty()) { return; }
@@ -71,8 +63,7 @@ public class DisenchantBlock extends Block {
         itemEntity.discard(); // Removed item original
     }
 
-
-    // CUSTOM METHOD - TYPE 2
+    // CUSTOM METHOD - TYPE 2 [GROUPED enchantment] -> Several enchantments on an enchanted book
     private static void groupedEnchantedBook(Level level, BlockPos pos, ItemStack item,
                                              ItemEntity itemEntity, Map<Holder<Enchantment>, Integer> enchant) {
         // Skip if item has no enchantments - Only process if it's not a previously split book (to avoid infinite loop)
