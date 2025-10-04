@@ -1,4 +1,4 @@
-// 1.21.9	2025-09-30T17:34:14.1283854	Mccourse Mod Item Tags
+// 1.21.9	2025-10-04T12:41:09.0178096	Mccourse Mod Item Tags
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets.json
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets/entity_water.json
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets/water.json
@@ -17,7 +17,7 @@ e3240995426e8b46bf8cf1d62d20f00f50e6be74 data/mccoursemod/tags/item/bismuth_tool
 3042c75c3334ec4bd86267ec1599a0f75f5d4753 data/mccoursemod/tags/item/bow_tools.json
 0bc8cd739dc46202f2c3e69684cfddc5d38f4292 data/mccoursemod/tags/item/chestplate_fly.json
 8fc8431b2b479ba31487118e6ad2857095824630 data/mccoursemod/tags/item/compactor_items.json
-ea5a825d24352ed6ebb698a7953bba8643e5d8ba data/mccoursemod/tags/item/copper_armor.json
+59619fbf5c237afcdc0ae2b2a65663d856b5c0b7 data/mccoursemod/tags/item/copper_armor.json
 6222fd0d7d2ce08ee1f70be68a61f4e167dda650 data/mccoursemod/tags/item/copper_tool_materials.json
 9f117baa16a9f576daf317dabbc707d980ef0d7c data/mccoursemod/tags/item/helmet_fly.json
 a1801fb48088e0b13ff96e868cf4ddff58f63594 data/mccoursemod/tags/item/lapis_lazuli_armor.json
@@ -50,27 +50,27 @@ e3240995426e8b46bf8cf1d62d20f00f50e6be74 data/mccoursemod/tags/item/repairs_bism
 2fdbd2b6ab32e20c3a31fb2a55581d4c364be123 data/mccoursemod/tags/item/ultra_compactor_items.json
 1dd942f7a578100b857661b20a19c22aee5dae48 data/mccoursemod/tags/item/ultra_compactor_result.json
 774205992e78cc4b0cce335e5a396e3a2426ecab data/mccoursemod/tags/item/walnut_logs.json
-e93cb59488f4738d6dc22dd512bf06d233348acd data/minecraft/tags/item/axes.json
+6cf45da874fc8749014e8d8fed70b9db4ad46f99 data/minecraft/tags/item/axes.json
 d3450747fa065931cf4ea3f9bf415f885c981dfc data/minecraft/tags/item/beacon_payment_items.json
 7b931db4f1395bf4662244ddcca54886f9544a10 data/minecraft/tags/item/bee_food.json
-0ccfe8b0103e383fbc010deee56e45064df8eaa0 data/minecraft/tags/item/chest_armor.json
+4bc22d62953352573e66e6f78eab4ae4365a3c09 data/minecraft/tags/item/chest_armor.json
 641d6e9ec6e02fb870479de7da76c7020aa5ee61 data/minecraft/tags/item/enchantable/bow.json
 b16636ae44638b7b33ba4fd20fbfaec0a168d6aa data/minecraft/tags/item/enchantable/durability.json
 d8fc688e10164d96802c427816aa052fd193a01c data/minecraft/tags/item/enchantable/equippable.json
 9c282bdcff9fd68b31446b59ab15bd12039d5eb2 data/minecraft/tags/item/enchantable/fishing.json
 7b931db4f1395bf4662244ddcca54886f9544a10 data/minecraft/tags/item/flowers.json
-72a3558c1039f29ac6ab4a4bb84b860a5bffd3ca data/minecraft/tags/item/foot_armor.json
-c0979c1ed814e6f634ca7191bcf8f5a649cfea3f data/minecraft/tags/item/head_armor.json
-8d0539b4159e132c2f5f1b26c8c441832169a329 data/minecraft/tags/item/hoes.json
+38036eeba5fa674c6ba7b75628738fe2e874b18c data/minecraft/tags/item/foot_armor.json
+1c557fc88fbeba27071789a83785b96d389dc24a data/minecraft/tags/item/head_armor.json
+b3d221a7e1a3cbed358287804ceb8f55ab438b80 data/minecraft/tags/item/hoes.json
 7a5dd8815002431512c87ae04041ff84e1a05cd2 data/minecraft/tags/item/leaves.json
-9b8c2840328420d681bf9bb26b0694c3b3d877b9 data/minecraft/tags/item/leg_armor.json
+dca90549aafc1dbab5eff03beca59571b2340a42 data/minecraft/tags/item/leg_armor.json
 4b057e3e5e6f7b9026d5871433fccbb5eb4dfe1a data/minecraft/tags/item/logs_that_burn.json
-5da4fdf6d5d84cba59e635943de9d06c743bed36 data/minecraft/tags/item/pickaxes.json
+3b8df4e9a9697f1c334c40dee425662e55cecb84 data/minecraft/tags/item/pickaxes.json
 2cb28474625576092652fd1b578b683666883b3a data/minecraft/tags/item/planks.json
 d8700cb59c359611790eaf34c5351f0bfe3e081e data/minecraft/tags/item/saplings.json
-2080ae34aaa3fe9624e4d4fedf561d773ec79943 data/minecraft/tags/item/shovels.json
+7213ba754f591f4f8818f57c3f8e1719328cad3d data/minecraft/tags/item/shovels.json
 641d6e9ec6e02fb870479de7da76c7020aa5ee61 data/minecraft/tags/item/skeleton_preferred_weapons.json
 7b931db4f1395bf4662244ddcca54886f9544a10 data/minecraft/tags/item/small_flowers.json
-bb4f15549dce284a9fde19c40689f08605e19993 data/minecraft/tags/item/swords.json
+fc3fc56988770c98894e6e3731afac8ba98f9226 data/minecraft/tags/item/swords.json
 6d293387f3262b8aeb04e2d80777c0b69c807e6e data/minecraft/tags/item/trim_materials.json
 641d6e9ec6e02fb870479de7da76c7020aa5ee61 data/minecraft/tags/item/wither_skeleton_disliked_weapons.json

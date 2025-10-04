@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "equipment",
   "ingredients": [
-    "mccoursemod:copper_pickaxe",
-    "mccoursemod:copper_axe",
-    "mccoursemod:copper_shovel"
+    "mccoursemod:ultra_copper_pickaxe",
+    "mccoursemod:ultra_copper_axe",
+    "mccoursemod:ultra_copper_shovel"
   ],
   "result": {
     "count": 1,

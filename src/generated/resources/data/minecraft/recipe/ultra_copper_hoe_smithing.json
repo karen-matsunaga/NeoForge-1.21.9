@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#mccoursemod:copper_tool_materials",
+  "base": "minecraft:copper_hoe",
+  "result": {
+    "id": "mccoursemod:ultra_copper_hoe"
+  },
+  "template": "mccoursemod:copper_upgrade_smithing_template"
+}

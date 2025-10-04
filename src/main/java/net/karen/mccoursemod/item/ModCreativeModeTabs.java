@@ -88,10 +88,10 @@ public class ModCreativeModeTabs {
                  output.accept(ModItems.PINK_LEGGINGS);
                  output.accept(ModItems.PINK_BOOTS);
                  // COPPER
-                 output.accept(ModItems.COPPER_HELMET);
-                 output.accept(ModItems.COPPER_CHESTPLATE);
-                 output.accept(ModItems.COPPER_LEGGINGS);
-                 output.accept(ModItems.COPPER_BOOTS);
+                 output.accept(ModItems.ULTRA_COPPER_HELMET);
+                 output.accept(ModItems.ULTRA_COPPER_CHESTPLATE);
+                 output.accept(ModItems.ULTRA_COPPER_LEGGINGS);
+                 output.accept(ModItems.ULTRA_COPPER_BOOTS);
                  // LAPIS LAZULI
                  output.accept(ModItems.LAPIS_LAZULI_HELMET);
                  output.accept(ModItems.LAPIS_LAZULI_CHESTPLATE);
@@ -126,27 +126,27 @@ public class ModCreativeModeTabs {
                  output.accept(ModItems.REDSTONE_HAMMER);
                  // SHOVEL
                  output.accept(ModItems.PINK_SHOVEL);
-                 output.accept(ModItems.COPPER_SHOVEL);
+                 output.accept(ModItems.ULTRA_COPPER_SHOVEL);
                  output.accept(ModItems.LAPIS_LAZULI_SHOVEL);
                  output.accept(ModItems.REDSTONE_SHOVEL);
                  // AXE
                  output.accept(ModItems.PINK_AXE);
-                 output.accept(ModItems.COPPER_AXE);
+                 output.accept(ModItems.ULTRA_COPPER_AXE);
                  output.accept(ModItems.LAPIS_LAZULI_AXE);
                  output.accept(ModItems.REDSTONE_AXE);
                  // HOE
                  output.accept(ModItems.PINK_HOE);
-                 output.accept(ModItems.COPPER_HOE);
+                 output.accept(ModItems.ULTRA_COPPER_HOE);
                  output.accept(ModItems.LAPIS_LAZULI_HOE);
                  output.accept(ModItems.REDSTONE_HOE);
                  // PICKAXE
                  output.accept(ModItems.PINK_PICKAXE);
-                 output.accept(ModItems.COPPER_PICKAXE);
+                 output.accept(ModItems.ULTRA_COPPER_PICKAXE);
                  output.accept(ModItems.LAPIS_LAZULI_PICKAXE);
                  output.accept(ModItems.REDSTONE_PICKAXE);
                  // SWORD
                  output.accept(ModItems.PINK_SWORD);
-                 output.accept(ModItems.COPPER_SWORD);
+                 output.accept(ModItems.ULTRA_COPPER_SWORD);
                  output.accept(ModItems.LAPIS_LAZULI_SWORD);
                  output.accept(ModItems.REDSTONE_SWORD);
                  // ** CUSTOM elytra **
@@ -168,8 +168,10 @@ public class ModCreativeModeTabs {
                  output.accept(ModItems.FARMER);
                  // ** CUSTOM music disc **
                  output.accept(ModItems.BAR_BRAWL_MUSIC_DISC);
-                 // CUSTOM Smithing Template
+                 // ** CUSTOM Armor Trim Smithing Template **
                  output.accept(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE);
+                 // ** CUSTOM Ores Smithing Upgrade Template **
+                 output.accept(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE);
                  // ** CUSTOM seeds **
                  output.accept(ModItems.RADISH_SEEDS);
                  output.accept(ModItems.KOHLRABI_SEEDS);

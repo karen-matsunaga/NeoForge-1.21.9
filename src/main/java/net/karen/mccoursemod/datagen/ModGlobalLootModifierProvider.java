@@ -82,6 +82,8 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
 
         addDropOnStructure("metal_detector_from_jungle_temple", 0.1F, ModItems.METAL_DETECTOR.get());
         addDropOnStructure("chisel_from_jungle_temple", 0.5F, ModItems.CHISEL.get());
+        addDropOnStructure("copper_upgrade_smithing_template_from_village_weaponsmith",
+                           0.5F, ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE.get());
 
         addDropOnEntity("berry_from_creeper", "entities/creeper", ModItems.GOJI_BERRIES.get());
 

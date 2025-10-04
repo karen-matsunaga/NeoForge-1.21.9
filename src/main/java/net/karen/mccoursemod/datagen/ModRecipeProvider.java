@@ -119,10 +119,6 @@ public class ModRecipeProvider extends RecipeProvider {
                               ModItems.PINK_SHOVEL.get(), ModItems.PINK_AXE.get(),
                               ModItems.PINK_HOE.get(), ModItems.PINK.get()));
 
-        this.allTools(List.of(ModItems.COPPER_SWORD.get(), ModItems.COPPER_PICKAXE.get(),
-                              ModItems.COPPER_SHOVEL.get(), ModItems.COPPER_AXE.get(),
-                              ModItems.COPPER_HOE.get(), Items.COPPER_INGOT));
-
         this.allTools(List.of(ModItems.LAPIS_LAZULI_SWORD.get(), ModItems.LAPIS_LAZULI_PICKAXE.get(),
                               ModItems.LAPIS_LAZULI_SHOVEL.get(), ModItems.LAPIS_LAZULI_AXE.get(),
                               ModItems.LAPIS_LAZULI_HOE.get(), Items.LAPIS_LAZULI));
@@ -130,6 +126,22 @@ public class ModRecipeProvider extends RecipeProvider {
         this.allTools(List.of(ModItems.REDSTONE_SWORD.get(), ModItems.REDSTONE_PICKAXE.get(),
                               ModItems.REDSTONE_SHOVEL.get(), ModItems.REDSTONE_AXE.get(),
                               ModItems.REDSTONE_HOE.get(), Items.REDSTONE));
+
+        // ARMOR
+        this.copperSmithing(Items.COPPER_HELMET, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_HELMET.get());
+        this.copperSmithing(Items.COPPER_CHESTPLATE, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_CHESTPLATE.get());
+        this.copperSmithing(Items.COPPER_LEGGINGS, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_LEGGINGS.get());
+        this.copperSmithing(Items.COPPER_BOOTS, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_BOOTS.get());
+
+        // TOOLS
+        this.copperSmithing(Items.COPPER_SWORD, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_SWORD.get());
+        this.copperSmithing(Items.COPPER_PICKAXE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_PICKAXE.get());
+        this.copperSmithing(Items.COPPER_SHOVEL, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_SHOVEL.get());
+        this.copperSmithing(Items.COPPER_AXE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_AXE.get());
+        this.copperSmithing(Items.COPPER_HOE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_HOE.get());
+
+        // UPGRADE SMITHING TEMPLATE
+        this.copySmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, Items.COPPER_INGOT);
 
         // ** CUSTOM hammer **
         this.hammerTool(List.of(ModItems.BISMUTH_HAMMER.get(), ModBlocks.BISMUTH_BLOCK.get()));
@@ -155,8 +167,8 @@ public class ModRecipeProvider extends RecipeProvider {
         this.paxelTool(List.of(ModItems.PINK_PAXEL.get(), ModItems.PINK_PICKAXE.get(),
                                ModItems.PINK_AXE.get(), ModItems.PINK_SHOVEL.get()));
 
-        this.paxelTool(List.of(ModItems.COPPER_PAXEL.get(), ModItems.COPPER_PICKAXE.get(),
-                               ModItems.COPPER_AXE.get(), ModItems.COPPER_SHOVEL.get()));
+        this.paxelTool(List.of(ModItems.COPPER_PAXEL.get(), ModItems.ULTRA_COPPER_PICKAXE.get(),
+                               ModItems.ULTRA_COPPER_AXE.get(), ModItems.ULTRA_COPPER_SHOVEL.get()));
 
         this.paxelTool(List.of(ModItems.LAPIS_LAZULI_PAXEL.get(), ModItems.LAPIS_LAZULI_PICKAXE.get(),
                                ModItems.LAPIS_LAZULI_AXE.get(), ModItems.LAPIS_LAZULI_SHOVEL.get()));
@@ -198,10 +210,6 @@ public class ModRecipeProvider extends RecipeProvider {
         this.fullArmor(List.of(ModItems.PINK_HELMET.get(), ModItems.PINK_CHESTPLATE.get(),
                                ModItems.PINK_LEGGINGS.get(), ModItems.PINK_BOOTS.get(),
                                ModItems.PINK.get()));
-
-        this.fullArmor(List.of(ModItems.COPPER_HELMET.get(), ModItems.COPPER_CHESTPLATE.get(),
-                               ModItems.COPPER_LEGGINGS.get(), ModItems.COPPER_BOOTS.get(),
-                               Items.COPPER_INGOT));
 
         this.fullArmor(List.of(ModItems.LAPIS_LAZULI_HELMET.get(), ModItems.LAPIS_LAZULI_CHESTPLATE.get(),
                                ModItems.LAPIS_LAZULI_LEGGINGS.get(), ModItems.LAPIS_LAZULI_BOOTS.get(),
@@ -677,5 +685,15 @@ public class ModRecipeProvider extends RecipeProvider {
         // 0 -> BOAT; 1 -> CHEST BOAT; 2 -> PLANKS;
         this.woodenBoat(items.getFirst(), items.get(2)); // Boat block
         this.chestBoat(items.get(1), items.getFirst()); // Chest boat block
+    }
+
+    // CUSTOM METHOD - COPPER SMITHING UPGRADE
+    protected void copperSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE),
+                                                Ingredient.of(ingredientItem),
+                                                this.tag(ModTags.Items.COPPER_TOOL_MATERIALS),
+                                                category, resultItem)
+                                                .unlocks("has_copper_ingot", this.has(ModTags.Items.COPPER_TOOL_MATERIALS))
+                                                .save(this.output, getItemName(resultItem) + "_smithing");
     }
 }

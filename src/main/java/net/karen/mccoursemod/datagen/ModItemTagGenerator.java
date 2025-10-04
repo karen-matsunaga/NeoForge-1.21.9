@@ -79,7 +79,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.AXES).add(ModItems.BISMUTH_AXE.get(),
                                ModItems.ALEXANDRITE_AXE.get(),
                                ModItems.PINK_AXE.get(),
-                               ModItems.COPPER_AXE.get(),
+                               ModItems.ULTRA_COPPER_AXE.get(),
                                ModItems.LAPIS_LAZULI_AXE.get(),
                                ModItems.REDSTONE_AXE.get());
 
@@ -87,7 +87,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.PICKAXES).add(ModItems.BISMUTH_PICKAXE.get(),
                                    ModItems.ALEXANDRITE_PICKAXE.get(),
                                    ModItems.PINK_PICKAXE.get(),
-                                   ModItems.COPPER_PICKAXE.get(),
+                                   ModItems.ULTRA_COPPER_PICKAXE.get(),
                                    ModItems.LAPIS_LAZULI_PICKAXE.get(),
                                    ModItems.REDSTONE_PICKAXE.get(),
                                    ModItems.BISMUTH_HAMMER.get(),
@@ -119,7 +119,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.SWORDS).add(ModItems.BISMUTH_SWORD.get(),
                                  ModItems.ALEXANDRITE_SWORD.get(),
                                  ModItems.PINK_SWORD.get(),
-                                 ModItems.COPPER_SWORD.get(),
+                                 ModItems.ULTRA_COPPER_SWORD.get(),
                                  ModItems.LAPIS_LAZULI_SWORD.get(),
                                  ModItems.REDSTONE_SWORD.get());
 
@@ -127,7 +127,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.SHOVELS).add(ModItems.BISMUTH_SHOVEL.get(),
                                   ModItems.ALEXANDRITE_SHOVEL.get(),
                                   ModItems.PINK_SHOVEL.get(),
-                                  ModItems.COPPER_SHOVEL.get(),
+                                  ModItems.ULTRA_COPPER_SHOVEL.get(),
                                   ModItems.LAPIS_LAZULI_SHOVEL.get(),
                                   ModItems.REDSTONE_SHOVEL.get());
 
@@ -135,7 +135,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.HOES).add(ModItems.BISMUTH_HOE.get(),
                                ModItems.ALEXANDRITE_HOE.get(),
                                ModItems.PINK_HOE.get(),
-                               ModItems.COPPER_HOE.get(),
+                               ModItems.ULTRA_COPPER_HOE.get(),
                                ModItems.LAPIS_LAZULI_HOE.get(),
                                ModItems.REDSTONE_HOE.get());
 
@@ -185,8 +185,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ModTags.Items.PINK_ARMOR).add(ModItems.PINK_HELMET.get(), ModItems.PINK_CHESTPLATE.get(),
                                           ModItems.PINK_LEGGINGS.get(), ModItems.PINK_BOOTS.get());
 
-        tag(ModTags.Items.COPPER_ARMOR).add(ModItems.COPPER_HELMET.get(), ModItems.COPPER_CHESTPLATE.get(),
-                                            ModItems.COPPER_LEGGINGS.get(), ModItems.COPPER_BOOTS.get());
+        tag(ModTags.Items.COPPER_ARMOR).add(ModItems.ULTRA_COPPER_HELMET.get(), ModItems.ULTRA_COPPER_CHESTPLATE.get(),
+                                            ModItems.ULTRA_COPPER_LEGGINGS.get(), ModItems.ULTRA_COPPER_BOOTS.get());
 
         tag(ModTags.Items.LAPIS_LAZULI_ARMOR).add(ModItems.LAPIS_LAZULI_HELMET.get(), ModItems.LAPIS_LAZULI_CHESTPLATE.get(),
                                                   ModItems.LAPIS_LAZULI_LEGGINGS.get(), ModItems.LAPIS_LAZULI_BOOTS.get());
@@ -203,7 +203,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.FOOT_ARMOR).add(ModItems.BISMUTH_BOOTS.get(),
                                      ModItems.ALEXANDRITE_BOOTS.get(),
                                      ModItems.PINK_BOOTS.get(),
-                                     ModItems.COPPER_BOOTS.get(),
+                                     ModItems.ULTRA_COPPER_BOOTS.get(),
                                      ModItems.LAPIS_LAZULI_BOOTS.get(),
                                      ModItems.REDSTONE_BOOTS.get());
 
@@ -211,7 +211,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.LEG_ARMOR).add(ModItems.BISMUTH_LEGGINGS.get(),
                                     ModItems.ALEXANDRITE_LEGGINGS.get(),
                                     ModItems.PINK_LEGGINGS.get(),
-                                    ModItems.COPPER_LEGGINGS.get(),
+                                    ModItems.ULTRA_COPPER_LEGGINGS.get(),
                                     ModItems.LAPIS_LAZULI_LEGGINGS.get(),
                                     ModItems.REDSTONE_LEGGINGS.get());
 
@@ -219,7 +219,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.CHEST_ARMOR).add(ModItems.BISMUTH_CHESTPLATE.get(),
                                       ModItems.ALEXANDRITE_CHESTPLATE.get(),
                                       ModItems.PINK_CHESTPLATE.get(),
-                                      ModItems.COPPER_CHESTPLATE.get(),
+                                      ModItems.ULTRA_COPPER_CHESTPLATE.get(),
                                       ModItems.LAPIS_LAZULI_CHESTPLATE.get(),
                                       ModItems.REDSTONE_CHESTPLATE.get());
 
@@ -227,7 +227,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.HEAD_ARMOR).add(ModItems.BISMUTH_HELMET.get(),
                                      ModItems.ALEXANDRITE_HELMET.get(),
                                      ModItems.PINK_HELMET.get(),
-                                     ModItems.COPPER_HELMET.get(),
+                                     ModItems.ULTRA_COPPER_HELMET.get(),
                                      ModItems.LAPIS_LAZULI_HELMET.get(),
                                      ModItems.REDSTONE_HELMET.get());
 

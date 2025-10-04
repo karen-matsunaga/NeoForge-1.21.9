@@ -354,31 +354,31 @@ public class ModModelProvider extends ModelProvider {
 
         // ** CUSTOM shovel **
         itemModels.generateFlatItem(ModItems.PINK_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(ModItems.COPPER_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ULTRA_COPPER_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.LAPIS_LAZULI_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.REDSTONE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         // ** CUSTOM axe **
         itemModels.generateFlatItem(ModItems.PINK_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(ModItems.COPPER_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ULTRA_COPPER_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.LAPIS_LAZULI_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.REDSTONE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         // ** CUSTOM hoe **
         itemModels.generateFlatItem(ModItems.PINK_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(ModItems.COPPER_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ULTRA_COPPER_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.LAPIS_LAZULI_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.REDSTONE_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         // ** CUSTOM pickaxe **
         itemModels.generateFlatItem(ModItems.PINK_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(ModItems.COPPER_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ULTRA_COPPER_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.LAPIS_LAZULI_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.REDSTONE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         // ** CUSTOM sword **
         itemModels.generateFlatItem(ModItems.PINK_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(ModItems.COPPER_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.ULTRA_COPPER_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.LAPIS_LAZULI_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.REDSTONE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
@@ -405,8 +405,8 @@ public class ModModelProvider extends ModelProvider {
 
         // COPPER
         createArmorTrim(itemModels, ModEquipmentAssetProvider.COPPER,
-                        List.of(ModItems.COPPER_HELMET.get(), ModItems.COPPER_CHESTPLATE.get(),
-                                ModItems.COPPER_LEGGINGS.get(), ModItems.COPPER_BOOTS.get()));
+                        List.of(ModItems.ULTRA_COPPER_HELMET.get(), ModItems.ULTRA_COPPER_CHESTPLATE.get(),
+                                ModItems.ULTRA_COPPER_LEGGINGS.get(), ModItems.ULTRA_COPPER_BOOTS.get()));
 
         // LAPIS LAZULI
         createArmorTrim(itemModels, ModEquipmentAssetProvider.LAPIS_LAZULI,
@@ -447,6 +447,7 @@ public class ModModelProvider extends ModelProvider {
 
         // ** CUSTOM Smithing Template **
         itemModels.generateFlatItem(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
 
         // ** CUSTOM seeds **
         itemModels.generateFlatItem(ModItems.RADISH.get(), ModelTemplates.FLAT_ITEM);

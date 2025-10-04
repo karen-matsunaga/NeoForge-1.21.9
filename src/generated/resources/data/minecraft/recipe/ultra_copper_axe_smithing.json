@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#mccoursemod:copper_tool_materials",
+  "base": "minecraft:copper_axe",
+  "result": {
+    "id": "mccoursemod:ultra_copper_axe"
+  },
+  "template": "mccoursemod:copper_upgrade_smithing_template"
+}

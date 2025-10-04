@@ -93,10 +93,10 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.PINK_LEGGINGS, "Pink Leggings");
         addItem(ModItems.PINK_BOOTS, "Pink Boots");
         // COPPER
-        addItem(ModItems.COPPER_HELMET, "Copper Helmet");
-        addItem(ModItems.COPPER_CHESTPLATE, "Copper Chestplate");
-        addItem(ModItems.COPPER_LEGGINGS, "Copper Leggings");
-        addItem(ModItems.COPPER_BOOTS, "Copper Boots");
+        addItem(ModItems.ULTRA_COPPER_HELMET, "Ultra Copper Helmet");
+        addItem(ModItems.ULTRA_COPPER_CHESTPLATE, "Ultra Copper Chestplate");
+        addItem(ModItems.ULTRA_COPPER_LEGGINGS, "Ultra Copper Leggings");
+        addItem(ModItems.ULTRA_COPPER_BOOTS, "Ultra Copper Boots");
         // LAPIS LAZULI
         addItem(ModItems.LAPIS_LAZULI_HELMET, "Lapis Lazuli Helmet");
         addItem(ModItems.LAPIS_LAZULI_CHESTPLATE, "Lapis Lazuli Chestplate");
@@ -134,31 +134,31 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // ** CUSTOM Shovel **
         addItem(ModItems.PINK_SHOVEL, "Pink Shovel");
-        addItem(ModItems.COPPER_SHOVEL, "Copper Shovel");
+        addItem(ModItems.ULTRA_COPPER_SHOVEL, "Ultra Copper Shovel");
         addItem(ModItems.LAPIS_LAZULI_SHOVEL, "Lapis Lazuli Shovel");
         addItem(ModItems.REDSTONE_SHOVEL, "Redstone Shovel");
 
         // ** CUSTOM Axe **
         addItem(ModItems.PINK_AXE, "Pink Axe");
-        addItem(ModItems.COPPER_AXE, "Copper Axe");
+        addItem(ModItems.ULTRA_COPPER_AXE, "Ultra Copper Axe");
         addItem(ModItems.LAPIS_LAZULI_AXE, "Lapis Lazuli Axe");
         addItem(ModItems.REDSTONE_AXE, "Redstone Axe");
 
         // ** CUSTOM Hoe **
         addItem(ModItems.PINK_HOE, "Pink Hoe");
-        addItem(ModItems.COPPER_HOE, "Copper Hoe");
+        addItem(ModItems.ULTRA_COPPER_HOE, "Ultra Copper Hoe");
         addItem(ModItems.LAPIS_LAZULI_HOE, "Lapis Lazuli Hoe");
         addItem(ModItems.REDSTONE_HOE, "Redstone Hoe");
 
         // ** CUSTOM Pickaxe **
         addItem(ModItems.PINK_PICKAXE, "Pink Pickaxe");
-        addItem(ModItems.COPPER_PICKAXE, "Copper Pickaxe");
+        addItem(ModItems.ULTRA_COPPER_PICKAXE, "Ultra Copper Pickaxe");
         addItem(ModItems.LAPIS_LAZULI_PICKAXE, "Lapis Lazuli Pickaxe");
         addItem(ModItems.REDSTONE_PICKAXE, "Redstone Pickaxe");
 
         // ** CUSTOM Pickaxe **
         addItem(ModItems.PINK_SWORD, "Pink Sword");
-        addItem(ModItems.COPPER_SWORD, "Copper Sword");
+        addItem(ModItems.ULTRA_COPPER_SWORD, "Ultra Copper Sword");
         addItem(ModItems.LAPIS_LAZULI_SWORD, "Lapis Lazuli Sword");
         addItem(ModItems.REDSTONE_SWORD, "Redstone Sword");
 
@@ -174,6 +174,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // ** CUSTOM SMITHING TEMPLATE **
         addItem(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Kaupen Armor Trim Smithing Template");
+        addItem(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "Copper Upgrade Smithing Template");
 
         // ** CUSTOM TRIM MATERIAL **
         add("trim_material.mccoursemod.bismuth", "Bismuth Material");

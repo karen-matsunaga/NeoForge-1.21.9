@@ -1,27 +1,27 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_copper_pickaxe": {
-      "conditions": {
-        "items": [
-          {
-            "items": "mccoursemod:copper_pickaxe"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "mccoursemod:copper_paxel"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_ultra_copper_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mccoursemod:ultra_copper_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_copper_pickaxe"
+      "has_ultra_copper_pickaxe"
     ]
   ],
   "rewards": {

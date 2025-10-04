@@ -139,17 +139,17 @@ public class ModItems {
            bootsArmor("pink_boots", ModArmorMaterials.PINK_ARMOR_MATERIAL, 0xF433C1);
 
     // COPPER
-    public static final DeferredItem<Item> COPPER_HELMET =
-           helmetArmor("copper_helmet", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
+    public static final DeferredItem<Item> ULTRA_COPPER_HELMET =
+           helmetArmor("ultra_copper_helmet", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
 
-    public static final DeferredItem<Item> COPPER_CHESTPLATE =
-           chestplateArmor("copper_chestplate", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
+    public static final DeferredItem<Item> ULTRA_COPPER_CHESTPLATE =
+           chestplateArmor("ultra_copper_chestplate", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
 
-    public static final DeferredItem<Item> COPPER_LEGGINGS =
-           leggingsArmor("copper_leggings", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
+    public static final DeferredItem<Item> ULTRA_COPPER_LEGGINGS =
+           leggingsArmor("ultra_copper_leggings", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
 
-    public static final DeferredItem<Item> COPPER_BOOTS =
-           bootsArmor("copper_boots", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
+    public static final DeferredItem<Item> ULTRA_COPPER_BOOTS =
+           bootsArmor("ultra_copper_boots", ModArmorMaterials.COPPER_ARMOR_MATERIAL, 0x9C4529);
 
     // LAPIS LAZULI
     public static final DeferredItem<Item> LAPIS_LAZULI_HELMET =
@@ -333,8 +333,8 @@ public class ModItems {
            shovelItem("pink_shovel", ModToolMaterials.PINK, 2.0F, 2.0F,
                       ModTags.Items.PINK_TOOL_MATERIALS, 0xF433C1);
 
-    public static final DeferredItem<Item> COPPER_SHOVEL =
-           shovelItem("copper_shovel", ModToolMaterials.COPPER, 2.0F, 2.5F,
+    public static final DeferredItem<Item> ULTRA_COPPER_SHOVEL =
+           shovelItem("ultra_copper_shovel", ModToolMaterials.COPPER, 2.0F, 2.5F,
                       ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_SHOVEL =
@@ -358,8 +358,8 @@ public class ModItems {
            axeItem("pink_axe", ModToolMaterials.PINK, 2.0F, 2.0F,
                    ModTags.Items.PINK_TOOL_MATERIALS, 0xF433C1);
 
-    public static final DeferredItem<Item> COPPER_AXE =
-           axeItem("copper_axe", ModToolMaterials.COPPER, 2.0F, 2.5F,
+    public static final DeferredItem<Item> ULTRA_COPPER_AXE =
+           axeItem("ultra_copper_axe", ModToolMaterials.COPPER, 2.0F, 2.5F,
                    ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_AXE =
@@ -383,8 +383,8 @@ public class ModItems {
            hoeItem("pink_hoe", ModToolMaterials.PINK, 2.0F, 2.0F,
                    ModTags.Items.PINK_TOOL_MATERIALS, 0xF433C1);
 
-    public static final DeferredItem<Item> COPPER_HOE =
-           hoeItem("copper_hoe", ModToolMaterials.COPPER, 2.0F, 2.5F,
+    public static final DeferredItem<Item> ULTRA_COPPER_HOE =
+           hoeItem("ultra_copper_hoe", ModToolMaterials.COPPER, 2.0F, 2.5F,
                    ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_HOE =
@@ -408,8 +408,8 @@ public class ModItems {
            pickaxeItem("pink_pickaxe", ModToolMaterials.PINK, 2.0F, 2.0F,
                        ModTags.Items.PINK_TOOL_MATERIALS, 0xF433C1);
 
-    public static final DeferredItem<Item> COPPER_PICKAXE =
-           pickaxeItem("copper_pickaxe", ModToolMaterials.COPPER, 2.0F, 2.5F,
+    public static final DeferredItem<Item> ULTRA_COPPER_PICKAXE =
+           pickaxeItem("ultra_copper_pickaxe", ModToolMaterials.COPPER, 2.0F, 2.5F,
                        ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_PICKAXE =
@@ -433,8 +433,8 @@ public class ModItems {
            swordItem("pink_sword", ModToolMaterials.PINK, 2.0F, 2.0F,
                      ModTags.Items.PINK_TOOL_MATERIALS, 0xF433C1);
 
-    public static final DeferredItem<Item> COPPER_SWORD =
-           swordEffectItem("copper_sword", ModToolMaterials.COPPER, 2.0F, 2.5F,
+    public static final DeferredItem<Item> ULTRA_COPPER_SWORD =
+           swordEffectItem("ultra_copper_sword", ModToolMaterials.COPPER, 2.0F, 2.5F,
                            ModTags.Items.COPPER_TOOL_MATERIALS, 0x9C4529);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_SWORD =
@@ -450,11 +450,17 @@ public class ModItems {
            elytraArmor("diamond_elytra", 10000, ModEquipmentAssetProvider.DIAMOND_ELYTRA,
                        ItemTags.DIAMOND_TOOL_MATERIALS, MobEffects.REGENERATION, 4);
 
-    // ** CUSTOM Smithing Template **
+    // ** CUSTOM Armor Trim Smithing Template **
     public static final DeferredItem<Item> KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE =
            ITEMS.registerItem("kaupen_armor_trim_smithing_template",
                               SmithingTemplateItem::createArmorTrimTemplate,
                               new Item.Properties().rarity(Rarity.COMMON));
+
+    // ** CUSTOM Ores Smithing Upgrade Template **
+    public static final DeferredItem<Item> COPPER_UPGRADE_SMITHING_TEMPLATE =
+           ITEMS.registerItem("copper_upgrade_smithing_template",
+                              SmithingTemplateItem::createNetheriteUpgradeTemplate,
+                              new Item.Properties().rarity(Rarity.EPIC));
 
     // ** CUSTOM Music Disc **
     public static final DeferredItem<Item> BAR_BRAWL_MUSIC_DISC =
