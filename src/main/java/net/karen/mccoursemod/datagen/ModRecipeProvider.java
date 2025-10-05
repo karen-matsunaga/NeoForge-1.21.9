@@ -686,10 +686,9 @@ public class ModRecipeProvider extends RecipeProvider {
     // CUSTOM METHOD - COPPER SMITHING UPGRADE
     protected void copperSmithing(Item ingredientItem, RecipeCategory category, Item resultItem) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE),
-                                                Ingredient.of(ingredientItem),
-                                                this.tag(ModTags.Items.COPPER_TOOL_MATERIALS),
+                                                Ingredient.of(ingredientItem), this.tag(ModTags.Items.COPPER_TOOL_MATERIALS),
                                                 category, resultItem)
-                                                .unlocks("has_copper_ingot", this.has(ModTags.Items.COPPER_TOOL_MATERIALS))
-                                                .save(this.output, getItemName(resultItem) + "_smithing");
+                                      .unlocks(getHasName(Items.COPPER_BLOCK), this.has(ModTags.Items.COPPER_TOOL_MATERIALS))
+                                      .save(this.output, getItemName(resultItem) + "_smithing");
     }
 }
