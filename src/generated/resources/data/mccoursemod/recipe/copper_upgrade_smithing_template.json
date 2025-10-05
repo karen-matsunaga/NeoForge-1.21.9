@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": "minecraft:diamond",
-    "C": "minecraft:copper_ingot",
+    "C": "minecraft:copper_block",
     "S": "mccoursemod:copper_upgrade_smithing_template"
   },
   "pattern": [

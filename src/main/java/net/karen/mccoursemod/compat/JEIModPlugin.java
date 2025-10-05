@@ -103,7 +103,7 @@ public class JEIModPlugin implements IModPlugin {
 
         // KAUPEN FURNACE
         registration.addCraftingStation(KaupenFurnaceRecipeCategory.KAUPEN_FURNACE_TYPE,
-                                        ModBlocks.KAUPEN_FURNACE_BLOCK.get());
+                                        ModBlocks.KAUPEN_FURNACE.get());
 
         // CRAFTING PLUS
         registration.addCraftingStation(CraftingPlusRecipeCategory.CRAFTING_PLUS_TYPE,

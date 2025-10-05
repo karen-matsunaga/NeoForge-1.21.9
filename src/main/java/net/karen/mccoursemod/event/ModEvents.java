@@ -152,7 +152,7 @@ public class ModEvents {
     public static void onHammerBlockRenderLast(RenderLevelStageEvent.AfterTranslucentBlocks event) {
         Minecraft instance = Minecraft.getInstance();
         ClientLevel level = instance.level;
-        CameraRenderState camera = event.getCamera();
+        CameraRenderState camera = event.getLevelRenderState().cameraRenderState;
         PoseStack poseStack = event.getPoseStack();
         MultiBufferSource.BufferSource bufferSource = instance.renderBuffers().bufferSource();
         BlockBoxRender.render(level, camera, poseStack, bufferSource);
@@ -166,16 +166,15 @@ public class ModEvents {
         Minecraft mc = Minecraft.getInstance();
         LocalPlayer player = mc.player;
         Level world = mc.level;
-        Level level = event.getLevel();
-        HolderLookup.RegistryLookup<Enchantment> ench = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-        if (player == null || world == null || !glowingBlocksEnabled) { return; }
+        if (world == null || player == null || !glowingBlocksEnabled) { return; }
+        HolderLookup.RegistryLookup<Enchantment> ench = world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
         ItemStack mainHand = player.getMainHandItem();
         ItemStack helmetSlot = player.getItemBySlot(EquipmentSlot.HEAD);
         boolean metalDetector = !mainHand.isEmpty() && mainHand.is(ModItems.METAL_DETECTOR.get());
         boolean glowingBlocks = !helmetSlot.isEmpty() && toolEnchant(ench, ModEnchantments.GLOWING_BLOCKS, helmetSlot) > 0;
         if (metalDetector || glowingBlocks) {
             PoseStack poseStack = event.getPoseStack();
-            CameraRenderState camera = event.getCamera();
+            CameraRenderState camera = event.getLevelRenderState().cameraRenderState;
             MultiBufferSource.BufferSource buffer = mc.renderBuffers().bufferSource();
             double camX = camera.pos.x;
             double camY = camera.pos.y;

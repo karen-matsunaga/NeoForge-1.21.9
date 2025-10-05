@@ -164,14 +164,14 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ModTags.Items.BISMUTH_TOOL_MATERIALS).add(ModItems.BISMUTH.get());
         tag(ModTags.Items.ALEXANDRITE_TOOL_MATERIALS).add(ModItems.ALEXANDRITE.get());
         tag(ModTags.Items.PINK_TOOL_MATERIALS).add(ModItems.PINK.get());
-        tag(ModTags.Items.COPPER_TOOL_MATERIALS).add(Items.COPPER_INGOT);
+        tag(ModTags.Items.COPPER_TOOL_MATERIALS).add(Items.COPPER_BLOCK);
         tag(ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS).add(Items.LAPIS_LAZULI);
         tag(ModTags.Items.REDSTONE_TOOL_MATERIALS).add(Items.REDSTONE);
         // ARMOR MATERIALS
         tag(ModTags.Items.REPAIRS_BISMUTH_ARMOR).add(ModItems.BISMUTH.get());
         tag(ModTags.Items.REPAIRS_ALEXANDRITE_ARMOR).add(ModItems.ALEXANDRITE.get());
         tag(ModTags.Items.REPAIRS_PINK_ARMOR).add(ModItems.PINK.get());
-        tag(ModTags.Items.REPAIRS_COPPER_ARMOR).add(Items.COPPER_INGOT);
+        tag(ModTags.Items.REPAIRS_COPPER_ARMOR).add(Items.COPPER_BLOCK);
         tag(ModTags.Items.REPAIRS_LAPIS_LAZULI_ARMOR).add(Items.LAPIS_LAZULI);
         tag(ModTags.Items.REPAIRS_REDSTONE_ARMOR).add(Items.REDSTONE);
 

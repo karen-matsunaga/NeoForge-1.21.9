@@ -32,15 +32,13 @@ import java.util.List;
 import java.util.function.Consumer;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
-@Mixin(value = ItemStack.class)
+@Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
     @Shadow public abstract String toString();
 
     @Shadow public abstract <T extends TooltipProvider>
-                            void addToTooltip(DataComponentType<T> component,
-                                              Item.TooltipContext context,
-                                              TooltipDisplay display,
-                                              Consumer<Component> consumer,
+                            void addToTooltip(DataComponentType<T> component, Item.TooltipContext context,
+                                              TooltipDisplay display, Consumer<Component> consumer,
                                               TooltipFlag flag);
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"), cancellable = true)

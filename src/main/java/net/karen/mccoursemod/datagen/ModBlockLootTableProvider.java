@@ -273,7 +273,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.COLORED_LEAVES.get());
 
         // ** CUSTOM furnace block **
-        this.dropSelf(ModBlocks.KAUPEN_FURNACE_BLOCK.get());
+        this.dropSelf(ModBlocks.KAUPEN_FURNACE.get());
     }
 
     // CUSTOM METHOD - Custom ore loot table drops

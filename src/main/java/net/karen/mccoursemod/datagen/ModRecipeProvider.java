@@ -127,21 +127,11 @@ public class ModRecipeProvider extends RecipeProvider {
                               ModItems.REDSTONE_SHOVEL.get(), ModItems.REDSTONE_AXE.get(),
                               ModItems.REDSTONE_HOE.get(), Items.REDSTONE));
 
-        // ARMOR
-        this.copperSmithing(Items.COPPER_HELMET, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_HELMET.get());
-        this.copperSmithing(Items.COPPER_CHESTPLATE, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_CHESTPLATE.get());
-        this.copperSmithing(Items.COPPER_LEGGINGS, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_LEGGINGS.get());
-        this.copperSmithing(Items.COPPER_BOOTS, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_BOOTS.get());
-
-        // TOOLS
         this.copperSmithing(Items.COPPER_SWORD, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_SWORD.get());
         this.copperSmithing(Items.COPPER_PICKAXE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_PICKAXE.get());
         this.copperSmithing(Items.COPPER_SHOVEL, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_SHOVEL.get());
         this.copperSmithing(Items.COPPER_AXE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_AXE.get());
         this.copperSmithing(Items.COPPER_HOE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_HOE.get());
-
-        // UPGRADE SMITHING TEMPLATE
-        this.copySmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, Items.COPPER_INGOT);
 
         // ** CUSTOM hammer **
         this.hammerTool(List.of(ModItems.BISMUTH_HAMMER.get(), ModBlocks.BISMUTH_BLOCK.get()));
@@ -219,6 +209,11 @@ public class ModRecipeProvider extends RecipeProvider {
                                ModItems.REDSTONE_LEGGINGS.get(), ModItems.REDSTONE_BOOTS.get(),
                                Items.REDSTONE));
 
+        this.copperSmithing(Items.COPPER_HELMET, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_HELMET.get());
+        this.copperSmithing(Items.COPPER_CHESTPLATE, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_CHESTPLATE.get());
+        this.copperSmithing(Items.COPPER_LEGGINGS, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_LEGGINGS.get());
+        this.copperSmithing(Items.COPPER_BOOTS, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_BOOTS.get());
+
         // ** CUSTOM Block Families **
         this.blockFamilies(List.of(ModBlocks.BISMUTH_STAIRS.get(), ModBlocks.BISMUTH_SLAB.get(),
                                    ModBlocks.BISMUTH_BUTTON.get(), ModBlocks.BISMUTH_PRESSURE_PLATE.get(),
@@ -234,9 +229,11 @@ public class ModRecipeProvider extends RecipeProvider {
                                    ModBlocks.ALEXANDRITE_TRAPDOOR.get()),
                            ModItems.ALEXANDRITE.get(), "alexandrite", this.output);
 
-        // ** CUSTOM Trim Smithing **
-        // CRAFTING TABLE
+        // ** CUSTOM Armor Trim Smithing ** -> CRAFTING TABLE
         this.copySmithingTemplate(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModItems.BISMUTH.get());
+
+        // ** CUSTOM Ores UPGRADE SMITHING TEMPLATE ** -> CRAFTING TABLE
+        this.copySmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, Items.COPPER_BLOCK);
 
         // ** CUSTOM glass block **
         this.glassBlocks(List.of(ModBlocks.FORCED_STAINED_GLASS.get(),
@@ -324,9 +321,8 @@ public class ModRecipeProvider extends RecipeProvider {
         kaupenFurnace("misc", CookingBookCategory.MISC,
                       Ingredient.of(Items.BONE_MEAL), Items.PHANTOM_MEMBRANE, 10.0F, 100);
 
-        // ** CRAFTING PLUS recipes **
-        // Crafting Plus 7x7 - (One item)
-        craftSeven(List.of(ModBlocks.KAUPEN_FURNACE_BLOCK.get(), Items.FURNACE));
+        // ** CRAFTING PLUS recipes ** -> Crafting Plus 7x7 - (One item)
+        craftSeven(List.of(ModBlocks.KAUPEN_FURNACE.get(), Items.FURNACE));
         craftSeven(List.of(ModBlocks.MCCOURSEMOD_ELEVATOR.get(), Items.WHITE_WOOL));
         // ** ENCHANTMENT recipes **
         craftSeven(List.of(ModBlocks.ENCHANT.get(), Items.ENCHANTING_TABLE));

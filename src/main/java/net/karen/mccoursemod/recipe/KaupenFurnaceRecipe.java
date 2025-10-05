@@ -34,7 +34,7 @@ public class KaupenFurnaceRecipe extends AbstractCookingRecipe {
 
     @Override
     protected @NotNull Item furnaceIcon() {
-        return ModBlocks.KAUPEN_FURNACE_BLOCK.asItem();
+        return ModBlocks.KAUPEN_FURNACE.asItem();
     }
 
     public static class Serializer extends AbstractCookingRecipe.Serializer<KaupenFurnaceRecipe> {

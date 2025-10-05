@@ -349,7 +349,7 @@ public class ModCreativeModeTabs {
                  // ** CUSTOM portal **
                  output.accept(ModBlocks.KAUPEN_PORTAL);
                  // ** CUSTOM furnace **
-                 output.accept(ModBlocks.KAUPEN_FURNACE_BLOCK);
+                 output.accept(ModBlocks.KAUPEN_FURNACE);
            }).build());
 
     // CUSTOM METHOD - Registry Creative Mode Tab on event bus

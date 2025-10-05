@@ -37,7 +37,7 @@ public class KaupenFurnaceRecipeCategory implements IRecipeCategory<KaupenFurnac
 
     public KaupenFurnaceRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 83);
-        this.icon = helper.createDrawableItemLike(ModBlocks.KAUPEN_FURNACE_BLOCK.get());
+        this.icon = helper.createDrawableItemLike(ModBlocks.KAUPEN_FURNACE.get());
     }
 
     @Override

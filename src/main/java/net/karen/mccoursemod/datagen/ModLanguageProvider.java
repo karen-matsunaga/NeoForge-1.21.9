@@ -412,7 +412,7 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.KAUPEN_PORTAL, "§7");
 
         // ** CUSTOM furnace **
-        blockLang(ModBlocks.KAUPEN_FURNACE_BLOCK, "§7");
+        blockLang(ModBlocks.KAUPEN_FURNACE, "§7");
 
         // ** CUSTOM block projectile **
         blockLang(ModBlocks.DICE, "§7");

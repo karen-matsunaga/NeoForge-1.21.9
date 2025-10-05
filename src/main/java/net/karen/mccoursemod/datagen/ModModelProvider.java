@@ -262,7 +262,7 @@ public class ModModelProvider extends ModelProvider {
         blockModels.createTrivialCube(ModBlocks.KAUPEN_PORTAL.get());
 
         // ** CUSTOM furnace **
-        blockModels.createFurnace(ModBlocks.KAUPEN_FURNACE_BLOCK.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
+        blockModels.createFurnace(ModBlocks.KAUPEN_FURNACE.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
 
         // ** CUSTOM block projectile **
         dynamicProjectile(blockModels, ModBlocks.DICE.get());

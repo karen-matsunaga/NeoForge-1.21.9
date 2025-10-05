@@ -287,10 +287,14 @@ public class ModBlocks {
 
     // ** CUSTOM crafting block entity **
     public static final DeferredBlock<Block> GROWTH_CHAMBER =
-           registerBlock("growth_chamber", GrowthChamberBlock::new);
+           registerBlock("growth_chamber", properties ->
+                         new GrowthChamberBlock(properties.requiresCorrectToolForDrops()
+                                                          .strength(4.0F, 4.0F)));
 
-    public static final DeferredBlock<Block> KAUPEN_FURNACE_BLOCK =
-           registerBlock("kaupen_furnace", KaupenFurnaceBlock::new);
+    public static final DeferredBlock<Block> KAUPEN_FURNACE =
+           registerBlock("kaupen_furnace", properties ->
+                         new KaupenFurnaceBlock(properties.requiresCorrectToolForDrops()
+                                                          .strength(4.0F, 4.0F)));
 
     // ** CUSTOM glass block **
     public static final DeferredBlock<Block> FORCED_STAINED_GLASS =

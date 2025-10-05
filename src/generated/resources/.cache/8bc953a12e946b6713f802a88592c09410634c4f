@@ -1,4 +1,4 @@
-// 1.21.9	2025-10-04T12:41:09.0306247	Mccourse Mod Recipes
+// 1.21.9	2025-10-04T20:28:07.7754816	Mccourse Mod Recipes
 4791b16da0c9ab1aa82bbb7d699e7ee74ede08c4 data/mccoursemod/advancement/recipes/bismuth_from_growth_chamber.json
 71db3072a7df5eeb556fe03bf2154ca020825fd3 data/mccoursemod/advancement/recipes/building_blocks/alexandrite_slabs.json
 64a3f81015048f8519d40af525ac966a99374aa4 data/mccoursemod/advancement/recipes/building_blocks/alexandrite_stairs.json
@@ -228,7 +228,7 @@ d852f8230c6d640ac54d4fa38e719415f6d321bc data/mccoursemod/recipe/bloodwood_plank
 00f41654a36987cc69c256bd19a02d814d15a20d data/mccoursemod/recipe/brown_ender_pearl_block.json
 ced341af107a15ff9d19b63c9623803d7ab112a4 data/mccoursemod/recipe/copper_hammer.json
 27aa785445906f3340caa8fea38fe9d04e85fcde data/mccoursemod/recipe/copper_paxel.json
-26a7d17b72ee34db364c5d5daf5fbb09fc5bfabd data/mccoursemod/recipe/copper_upgrade_smithing_template.json
+d18af7a8206b2e12e54da064e0d68997630137cc data/mccoursemod/recipe/copper_upgrade_smithing_template.json
 9d75c352e4f8a50753e92fe7fc03ac7f5f768e3a data/mccoursemod/recipe/crafting_plus.json
 1e590d57964a0d98cbf8e55c303da66dfcb3b7e1 data/mccoursemod/recipe/cyan_ender_pearl_block.json
 ac4e186a94aa05c959768933e68cc79aba18feb4 data/mccoursemod/recipe/diamond_block_from_growth_chamber.json

@@ -23,7 +23,7 @@ public class ModBlockEntities {
 
     public static final Supplier<BlockEntityType<KaupenFurnaceBlockEntity>> KAUPEN_FURNACE_BLOCK_ENTITY =
            BLOCK_ENTITIES.register("kaupen_furnace_block_entity",
-           () -> new BlockEntityType<>(KaupenFurnaceBlockEntity::new, ModBlocks.KAUPEN_FURNACE_BLOCK.get()));
+           () -> new BlockEntityType<>(KaupenFurnaceBlockEntity::new, ModBlocks.KAUPEN_FURNACE.get()));
 
     // Register all custom SIGN and HANGING SIGN
     public static final Supplier<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
