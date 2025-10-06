@@ -458,9 +458,7 @@ public class ModItems {
 
     // ** CUSTOM Ores Smithing Upgrade Template **
     public static final DeferredItem<Item> COPPER_UPGRADE_SMITHING_TEMPLATE =
-           ITEMS.registerItem("copper_upgrade_smithing_template",
-                              SmithingTemplateItem::createNetheriteUpgradeTemplate,
-                              new Item.Properties().rarity(Rarity.EPIC));
+           oresSmithingTemplate("copper_upgrade_smithing_template");
 
     // ** CUSTOM Music Disc **
     public static final DeferredItem<Item> BAR_BRAWL_MUSIC_DISC =
@@ -865,6 +863,12 @@ public class ModItems {
                                                                       Optional.of(SoundEvents.SHIELD_BREAK)))
                                                            .component(DataComponents.BREAK_SOUND,
                                                                       SoundEvents.SHIELD_BREAK)));
+    }
+
+    // ** CUSTOM METHOD - Ores Smithing Upgrade Template **
+    public static DeferredItem<Item> oresSmithingTemplate(String name) {
+        return ITEMS.registerItem(name, OresSmithingTemplateItem::createOresUpgradeTemplate,
+                                  new Item.Properties().fireResistant().rarity(Rarity.EPIC));
     }
 
     // CUSTOM METHOD - Registry all items on event bus

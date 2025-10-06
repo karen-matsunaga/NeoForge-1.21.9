@@ -4,6 +4,7 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.fluid.ModFluids;
 import net.karen.mccoursemod.item.ModItems;
+import net.karen.mccoursemod.item.custom.OresSmithingTemplateItem;
 import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
 import net.minecraft.data.PackOutput;
@@ -172,9 +173,15 @@ public class ModLanguageProvider extends LanguageProvider {
         // ALEXANDRITE
         addItem(ModItems.ALEXANDRITE_HORSE_ARMOR, "Alexandrite Horse Armor");
 
-        // ** CUSTOM SMITHING TEMPLATE **
+        // ** CUSTOM ARMOR TRIM SMITHING TEMPLATE **
         addItem(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Kaupen Armor Trim Smithing Template");
+
+        // ** CUSTOM ORES UPGRADE SMITHING TEMPLATE **
         addItem(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "Copper Upgrade Smithing Template");
+        add(OresSmithingTemplateItem.ORES_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Copper Block");
+        add(OresSmithingTemplateItem.ORES_UPGRADE_APPLIES_TO.getString(), "Copper Equipment");
+        add(OresSmithingTemplateItem.ORES_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add Copper armor, weapon or tool");
+        add(OresSmithingTemplateItem.ORES_UPGRADE_INGREDIENTS.getString(), "Copper Block");
 
         // ** CUSTOM TRIM MATERIAL **
         add("trim_material.mccoursemod.bismuth", "Bismuth Material");
@@ -770,7 +777,5 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     @Override
-    public @NotNull String getName() {
-        return "Mccourse Mod Languages";
-    }
+    public @NotNull String getName() { return "Mccourse Mod Languages"; }
 }
