@@ -174,10 +174,10 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.ALEXANDRITE_HORSE_ARMOR, "Alexandrite Horse Armor");
 
         // ** CUSTOM ARMOR TRIM SMITHING TEMPLATE **
-        addItem(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Kaupen Armor Trim Smithing Template");
+        oresArmorTrimSmithingTemplate(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "kaupen");
 
         // ** CUSTOM ORES UPGRADE SMITHING TEMPLATE **
-        oresSmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "copper", false);
+        oresUpgradeSmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "copper", false);
 
         // ** CUSTOM TRIM MATERIAL **
         add("trim_material.mccoursemod.bismuth", "Bismuth Material");
@@ -773,7 +773,8 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     // CUSTOM METHOD - Ores Upgrade Smithing Template
-    public void oresSmithingTemplate(Supplier<? extends Item> item, String ore, boolean isIngot) {
+    public void oresUpgradeSmithingTemplate(Supplier<? extends Item> item,
+                                            String ore, boolean isIngot) {
         String firstLetter = ore.substring(0, 1).toUpperCase();
         String letters = ore.substring(1).toLowerCase();
         String oreName = firstLetter + letters;
@@ -785,6 +786,21 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.mccoursemod.smithing_template." + ore + "_upgrade.base_slot_description",
             "Add " + oreName + " armor, weapon or tool");
         add("item.mccoursemod.smithing_template." + ore + "_upgrade.ingredients", repairItem);
+    }
+
+    // CUSTOM METHOD - Ores Armor Trim Smithing Upgrade
+    public void oresArmorTrimSmithingTemplate(Supplier<? extends Item> item, String ore) {
+        String firstLetter = ore.substring(0, 1).toUpperCase();
+        String letters = ore.substring(1).toLowerCase();
+        String oreName = firstLetter + letters;
+        addItem(item, oreName + " Armor Trim Smithing Template");
+        add("item.mccoursemod.smithing_template." + ore + ".armor_trim.additions_slot_description", "Add ingot or crystal");
+        add("item.mccoursemod.smithing_template." + ore + ".armor_trim.applies_to", "Armor");
+        add("item.mccoursemod.smithing_template." + ore + ".armor_trim.base_slot_description", "Add a piece of armor");
+        add("item.mccoursemod.smithing_template." + ore + ".armor_trim.ingredients", "Ingots & Crystals");
+        add("item.mccoursemod.smithing_template.applies_to", "Applies to:");
+        add("item.mccoursemod.smithing_template.ingredients", "Ingredients:");
+        add("item.mccoursemod.smithing_template", "Mccourse Mod Smithing Template");
     }
 
     @Override

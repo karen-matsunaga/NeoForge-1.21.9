@@ -453,9 +453,8 @@ public class ModItems {
 
     // ** CUSTOM Armor Trim Smithing Template **
     public static final DeferredItem<Item> KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE =
-           ITEMS.registerItem("kaupen_armor_trim_smithing_template",
-                              SmithingTemplateItem::createArmorTrimTemplate,
-                              new Item.Properties().rarity(Rarity.COMMON));
+           oresArmorTrimSmithingTemplate("kaupen_armor_trim_smithing_template", "kaupen",
+                                         131, 195, 223);
 
     // ** CUSTOM Ores Smithing Upgrade Template **
     public static final DeferredItem<Item> COPPER_UPGRADE_SMITHING_TEMPLATE =
@@ -869,18 +868,32 @@ public class ModItems {
     // ** CUSTOM METHOD - Ores Smithing Upgrade Template **
     public static DeferredItem<Item> oresSmithingTemplate(String name, String ore,
                                                           int red, int green, int blue) {
-        String smithingName = "smithing_template." + ore;
+        String smithingName = "smithing_template." + ore + "_upgrade.";
         return ITEMS.registerItem(name, properties ->
-                                  new OresSmithingTemplateItem(lines(smithingName + "_upgrade.applies_to",
+                                  new OresSmithingTemplateItem(lines(smithingName + "applies_to", red, green, blue),
+                                                               lines(smithingName + "ingredients", red, green, blue),
+                                                               lines(smithingName + "base_slot_description",
                                                                      red, green, blue),
-                                                               lines(smithingName + "_upgrade.ingredients",
-                                                                     red, green, blue),
-                                                               lines(smithingName + "_upgrade.base_slot_description",
-                                                                     red, green, blue),
-                                                               lines(smithingName + "_upgrade.additions_slot_description",
+                                                               lines(smithingName + "additions_slot_description",
                                                                      red, green, blue),
                                                                createOresUpgradeIconList(), createOresUpgradeMaterialList(),
                                                                properties.fireResistant().rarity(Rarity.EPIC)));
+    }
+
+    // ** CUSTOM METHOD - Ores Armor Trim Smithing Template **
+    public static DeferredItem<Item> oresArmorTrimSmithingTemplate(String name, String ore,
+                                                                   int red, int green, int blue) {
+        String smithingName = "smithing_template." + ore + ".armor_trim.";
+        return ITEMS.registerItem(name, properties ->
+                                  new OresSmithingTemplateItem(lines(smithingName + "applies_to", red, green, blue),
+                                                               lines(smithingName + "ingredients", red, green, blue),
+                                                               lines(smithingName + "base_slot_description",
+                                                                     red, green, blue),
+                                                               lines(smithingName + "additions_slot_description",
+                                                                     red, green, blue),
+                                                               createOresTrimmableArmorIconList(),
+                                                               createOresTrimmableMaterialIconList(),
+                                                               properties.rarity(Rarity.UNCOMMON)));
     }
 
     // CUSTOM METHOD - Registry all items on event bus
