@@ -37,12 +37,12 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
                                    @Nullable ModelFeatureRenderer.CrumblingOverlay crumblingOverlay) {
         this.pedestalBlockEntity = entity;
         // Render item
-        ItemModelResolver itemModelResolver = Minecraft.getInstance().getItemModelResolver();
-        itemModelResolver.updateForTopItem(item, entity.inventory.getResource(0).toStack(),
-                                           ItemDisplayContext.GUI, entity.getLevel(), null, 1);
-        state.blockPos = entity.getBlockPos();
-        state.blockState = entity.getBlockState();
-        if (entity.getLevel() != null) { state.lightCoords = getLightLevel(entity.getLevel(), entity.getBlockPos()); }
+        Level level = entity.getLevel();
+        if (level != null) {
+            state.lightCoords = getLightLevel(level, entity.getBlockPos());
+            ItemModelResolver itemModelResolver = Minecraft.getInstance().getItemModelResolver();
+            itemModelResolver.updateForTopItem(item, entity.getItem(), ItemDisplayContext.GUI, level, null, 1);
+        }
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTick, vec3, crumblingOverlay);
     }
 
@@ -52,15 +52,13 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
     @Override
     public void submit(@NotNull BlockEntityRenderState state, @NotNull PoseStack poseStack,
                        @NotNull SubmitNodeCollector submitNodeCollector, @NotNull CameraRenderState cameraRenderState) {
-        if (!item.isEmpty()) {
-            PedestalBlockEntity pedestalBlock = this.pedestalBlockEntity;
-            poseStack.pushPose();
-            poseStack.translate(0.5F, 1.15F, 0.5F);
-            poseStack.scale(0.5F, 0.5F, 0.5F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(pedestalBlock.getRenderingRotation()));
-            item.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
-            poseStack.popPose();
-        }
+        PedestalBlockEntity pedestalBlock = this.pedestalBlockEntity;
+        poseStack.pushPose();
+        poseStack.translate(0.5F, 1.15F, 0.5F);
+        poseStack.scale(0.5F, 0.5F, 0.5F);
+        poseStack.mulPose(Axis.YP.rotationDegrees(pedestalBlock.getRenderingRotation()));
+        item.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+        poseStack.popPose();
     }
 
     // CUSTOM METHOD - Item light

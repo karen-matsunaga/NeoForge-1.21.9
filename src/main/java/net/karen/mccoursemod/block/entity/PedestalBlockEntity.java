@@ -31,12 +31,22 @@ public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
+
+        @Override
+        public int size() { return 1; }
     };
     private float rotation;
 
     // CUSTOM METHOD - Output SLOT
     public ItemStacksResourceHandler getInventory() {
-        return inventory;
+        return this.inventory;
+    }
+
+    // CUSTOM METHOD - Item Stack on OUTPUT SLOT
+    public ItemStack getItem() {
+        ItemStack itemStack = getInventory().getResource(0).toStack();
+        if (!itemStack.isEmpty()) { return itemStack; }
+        return ItemStack.EMPTY;
     }
 
     public PedestalBlockEntity(BlockPos pos, BlockState blockState) {
