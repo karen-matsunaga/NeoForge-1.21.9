@@ -45,6 +45,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
+import static net.karen.mccoursemod.item.custom.OresSmithingTemplateItem.*;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ModItems {
@@ -458,7 +459,7 @@ public class ModItems {
 
     // ** CUSTOM Ores Smithing Upgrade Template **
     public static final DeferredItem<Item> COPPER_UPGRADE_SMITHING_TEMPLATE =
-           oresSmithingTemplate("copper_upgrade_smithing_template");
+           oresSmithingTemplate("copper_upgrade_smithing_template", "copper", 156, 69, 41);
 
     // ** CUSTOM Music Disc **
     public static final DeferredItem<Item> BAR_BRAWL_MUSIC_DISC =
@@ -866,9 +867,20 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Ores Smithing Upgrade Template **
-    public static DeferredItem<Item> oresSmithingTemplate(String name) {
-        return ITEMS.registerItem(name, OresSmithingTemplateItem::createOresUpgradeTemplate,
-                                  new Item.Properties().fireResistant().rarity(Rarity.EPIC));
+    public static DeferredItem<Item> oresSmithingTemplate(String name, String ore,
+                                                          int red, int green, int blue) {
+        String smithingName = "smithing_template." + ore;
+        return ITEMS.registerItem(name, properties ->
+                                  new OresSmithingTemplateItem(lines(smithingName + "_upgrade.applies_to",
+                                                                     red, green, blue),
+                                                               lines(smithingName + "_upgrade.ingredients",
+                                                                     red, green, blue),
+                                                               lines(smithingName + "_upgrade.base_slot_description",
+                                                                     red, green, blue),
+                                                               lines(smithingName + "_upgrade.additions_slot_description",
+                                                                     red, green, blue),
+                                                               createOresUpgradeIconList(), createOresUpgradeMaterialList(),
+                                                               properties.fireResistant().rarity(Rarity.EPIC)));
     }
 
     // CUSTOM METHOD - Registry all items on event bus

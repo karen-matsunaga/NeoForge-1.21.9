@@ -4,10 +4,10 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.fluid.ModFluids;
 import net.karen.mccoursemod.item.ModItems;
-import net.karen.mccoursemod.item.custom.OresSmithingTemplateItem;
 import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import org.jetbrains.annotations.NotNull;
@@ -177,11 +177,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Kaupen Armor Trim Smithing Template");
 
         // ** CUSTOM ORES UPGRADE SMITHING TEMPLATE **
-        addItem(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "Copper Upgrade Smithing Template");
-        add(OresSmithingTemplateItem.ORES_UPGRADE_ADDITIONS_SLOT_DESCRIPTION.getString(), "Add Copper Block");
-        add(OresSmithingTemplateItem.ORES_UPGRADE_APPLIES_TO.getString(), "Copper Equipment");
-        add(OresSmithingTemplateItem.ORES_UPGRADE_BASE_SLOT_DESCRIPTION.getString(), "Add Copper armor, weapon or tool");
-        add(OresSmithingTemplateItem.ORES_UPGRADE_INGREDIENTS.getString(), "Copper Block");
+        oresSmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "copper", false);
 
         // ** CUSTOM TRIM MATERIAL **
         add("trim_material.mccoursemod.bismuth", "Bismuth Material");
@@ -774,6 +770,21 @@ public class ModLanguageProvider extends LanguageProvider {
         for (int i = 1; i < 256; i++) {
             add("enchantment.level." + i, String.valueOf(i));
         }
+    }
+
+    // CUSTOM METHOD - Ores Upgrade Smithing Template
+    public void oresSmithingTemplate(Supplier<? extends Item> item, String ore, boolean isIngot) {
+        String firstLetter = ore.substring(0, 1).toUpperCase();
+        String letters = ore.substring(1).toLowerCase();
+        String oreName = firstLetter + letters;
+        String blockOrIngot = isIngot ? " Ingot" : " Block";
+        String repairItem = oreName + blockOrIngot;
+        addItem(item, oreName + " Upgrade Smithing Template");
+        add("item.mccoursemod.smithing_template." + ore + "_upgrade.additions_slot_description", "Add " + repairItem);
+        add("item.mccoursemod.smithing_template." + ore + "_upgrade.applies_to", oreName + " Equipment");
+        add("item.mccoursemod.smithing_template." + ore + "_upgrade.base_slot_description",
+            "Add " + oreName + " armor, weapon or tool");
+        add("item.mccoursemod.smithing_template." + ore + "_upgrade.ingredients", repairItem);
     }
 
     @Override

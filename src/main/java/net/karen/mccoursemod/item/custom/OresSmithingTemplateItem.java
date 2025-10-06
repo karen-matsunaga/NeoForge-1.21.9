@@ -1,27 +1,14 @@
 package net.karen.mccoursemod.item.custom;
 
 import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.util.ChatUtils;
-import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
-import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.item.*;
 import java.util.List;
 
 public class OresSmithingTemplateItem extends SmithingTemplateItem {
-    public static final Component ORES_UPGRADE_APPLIES_TO =
-           lines("smithing_template.ores_upgrade.applies_to", ChatUtils.gold);
-
-    public static final Component ORES_UPGRADE_INGREDIENTS =
-           lines("smithing_template.ores_upgrade.ingredients", ChatUtils.gold);
-
-    public static final Component ORES_UPGRADE_BASE_SLOT_DESCRIPTION =
-           lines("smithing_template.ores_upgrade.base_slot_description", ChatUtils.gold);
-
-    public static final Component ORES_UPGRADE_ADDITIONS_SLOT_DESCRIPTION =
-           lines("smithing_template.ores_upgrade.additions_slot_description", ChatUtils.gold);
-
     private static final ResourceLocation EMPTY_SLOT_HELMET = emptySlot("helmet");
     private static final ResourceLocation EMPTY_SLOT_CHESTPLATE = emptySlot("chestplate");
     private static final ResourceLocation EMPTY_SLOT_LEGGINGS = emptySlot("leggings");
@@ -41,27 +28,26 @@ public class OresSmithingTemplateItem extends SmithingTemplateItem {
               baseSlotEmptyIcons, additionalSlotEmptyIcons, properties);
     }
 
-    public static SmithingTemplateItem createOresUpgradeTemplate(Item.Properties properties) {
-        return new SmithingTemplateItem(ORES_UPGRADE_APPLIES_TO, ORES_UPGRADE_INGREDIENTS,
-                                        ORES_UPGRADE_BASE_SLOT_DESCRIPTION, ORES_UPGRADE_ADDITIONS_SLOT_DESCRIPTION,
-                                        createOresUpgradeIconList(), List.of(EMPTY_SLOT_INGOT), // Ores Upgrade Material List
-                                        properties);
-    }
-
-    private static List<ResourceLocation> createOresUpgradeIconList() {
+    // CUSTOM METHOD - Upgrade armor or tool empty slot
+    public static List<ResourceLocation> createOresUpgradeIconList() {
         return List.of(EMPTY_SLOT_HELMET, EMPTY_SLOT_SWORD, EMPTY_SLOT_CHESTPLATE, EMPTY_SLOT_PICKAXE,
                        EMPTY_SLOT_LEGGINGS, EMPTY_SLOT_AXE, EMPTY_SLOT_BOOTS, EMPTY_SLOT_HOE, EMPTY_SLOT_SHOVEL);
     }
 
+    // CUSTOM METHOD - Upgrade material empty slot
+    public static List<ResourceLocation> createOresUpgradeMaterialList() {
+        return List.of(EMPTY_SLOT_INGOT);
+    }
+
     // CUSTOM METHOD - Texture empty slot
-    private static ResourceLocation emptySlot(String item) {
+    public static ResourceLocation emptySlot(String item) {
        return ResourceLocation.withDefaultNamespace("container/slot/" + item);
     }
 
     // CUSTOM METHOD - Ores Upgrade Smithing Template item description
-    private static Component lines(String text, ChatFormatting color) {
+    public static Component lines(String text, int red, int green, int blue) {
         return Component.translatable(Util.makeDescriptionId("item",
                                                              ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, text)))
-                        .withStyle(color);
+                        .withStyle(Style.EMPTY.withColor(ARGB.color(red, green, blue)));
     }
 }
