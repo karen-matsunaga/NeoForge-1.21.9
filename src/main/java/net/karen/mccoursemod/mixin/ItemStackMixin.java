@@ -79,7 +79,12 @@ public abstract class ItemStackMixin {
         // DATA TABLET item
         if (stack.is(ModItems.DATA_TABLET.get().asItem())) {
             if (item instanceof DataTabletItem dataTablet) {
-                tooltip.add(componentLiteral(dataTablet.getItemName(stack), darkGray));
+                String block = dataTablet.getItemDescription(stack).getFirst();
+                String biome = dataTablet.getItemDescription(stack).get(1);
+                String dimension = dataTablet.getItemDescription(stack).get(2);
+                tooltip.add(componentLiteral(block, darkGray));
+                tooltip.add(biomeColor(biome, dimension).copy().withStyle(yellow));
+                tooltip.add(componentLiteralIntColor("Dimension: " + dimension, dimensionColorName(dimension)));
             }
         }
         // ELYTRA PLUS item

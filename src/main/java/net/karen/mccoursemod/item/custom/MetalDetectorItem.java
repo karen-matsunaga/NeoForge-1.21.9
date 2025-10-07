@@ -94,9 +94,11 @@ public class MetalDetectorItem extends Item {
 
     // CUSTOM METHOD - DATA TABLET item function
     private void addDataToDataTablet(Player player, BlockPos below, Block block) {
+        Level level = player.level();
         ItemStack dataTablet =
             player.getInventory().getItem(InventoryUtil.getFirstInventoryIndex(player, ModItems.DATA_TABLET.get()));
-        FoundBlock foundBlockData = new FoundBlock(block.defaultBlockState(), below, player.level().dimension());
+        FoundBlock foundBlockData = new FoundBlock(block.defaultBlockState(), below, level.dimension(),
+                                                   level.getBiome(below).getKey());
         // Added x, y, z coordinates on Data Tablet
         dataTablet.set(ModDataComponentTypes.FOUND_BLOCK.get(), foundBlockData);
     }
@@ -125,7 +127,6 @@ public class MetalDetectorItem extends Item {
                 break;
             }
         }
-
         // OUTPUT message on screen
         playDisplayLiteral(player, Component.literal("Ore found: ").withStyle(white).withStyle(bold)
                                             .append(componentTranslatableBold(block.getDescriptionId(), color))
