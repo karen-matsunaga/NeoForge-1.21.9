@@ -347,7 +347,7 @@ public class ModCreativeModeTabs {
                  // ** CUSTOM colored blocks **
                  output.accept(ModBlocks.COLORED_LEAVES);
                  // ** CUSTOM portal **
-                 output.accept(ModBlocks.KAUPEN_PORTAL);
+//                 output.accept(ModBlocks.KAUPEN_PORTAL);
                  // ** CUSTOM furnace **
                  output.accept(ModBlocks.KAUPEN_FURNACE);
            }).build());

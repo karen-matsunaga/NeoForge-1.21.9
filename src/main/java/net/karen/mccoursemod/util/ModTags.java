@@ -261,7 +261,7 @@ public class ModTags {
         // CUSTOM JIGSAW STRUCTURES
         public static final TagKey<Biome> HAS_STORAGE_PLATFORM = create("has_structure/storage_platform");
         // CUSTOM BIOMES
-        public static final TagKey<Biome> IS_KAUPENDIM = create("is_kaupendim");
+//        public static final TagKey<Biome> IS_KAUPENDIM = create("is_kaupendim");
 
         // CUSTOM METHOD - Registry all custom biome tags
         private static TagKey<Biome> create(String name) {

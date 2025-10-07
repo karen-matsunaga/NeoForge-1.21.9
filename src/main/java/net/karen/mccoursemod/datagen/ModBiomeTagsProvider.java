@@ -2,7 +2,7 @@ package net.karen.mccoursemod.datagen;
 
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.util.ModTags;
-import net.karen.mccoursemod.worldgen.biome.ModBiomes;
+//import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -23,7 +23,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
         this.tag(ModTags.Biomes.HAS_KAUPEN_HOUSE).addOptionalTag(BiomeTags.IS_JUNGLE)
                                                  .addOptionalTag(BiomeTags.IS_FOREST)
                                                  .addOptionalTag(BiomeTags.IS_TAIGA)
-                                                 .addOptionalTag(ModTags.Biomes.IS_KAUPENDIM)
+//                                                 .addOptionalTag(ModTags.Biomes.IS_KAUPENDIM)
                                                  .addOptional(Biomes.DESERT)
                                                  .addOptional(Biomes.PLAINS)
                                                  .addOptional(Biomes.SNOWY_PLAINS)
@@ -37,7 +37,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
         this.tag(ModTags.Biomes.HAS_STORAGE_PLATFORM).addOptionalTag(BiomeTags.IS_JUNGLE)
                                                      .addOptionalTag(BiomeTags.IS_FOREST)
                                                      .addOptionalTag(BiomeTags.IS_TAIGA)
-                                                     .addOptionalTag(ModTags.Biomes.IS_KAUPENDIM)
+//                                                     .addOptionalTag(ModTags.Biomes.IS_KAUPENDIM)
                                                      .addOptional(Biomes.DESERT)
                                                      .addOptional(Biomes.PLAINS)
                                                      .addOptional(Biomes.SNOWY_PLAINS)
@@ -48,9 +48,9 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
                                                      .replace(false);
 
         // CUSTOM BIOMES -> KAUPENDIM dimension
-        this.tag(ModTags.Biomes.IS_KAUPENDIM).addOptional(ModBiomes.TEST_BIOME)
-                                             .addOptional(ModBiomes.TEST_BIOME_2)
-                                             .replace(false);
+//        this.tag(ModTags.Biomes.IS_KAUPENDIM).addOptional(ModBiomes.TEST_BIOME)
+//                                             .addOptional(ModBiomes.TEST_BIOME_2)
+//                                             .replace(false);
     }
 
     @Override

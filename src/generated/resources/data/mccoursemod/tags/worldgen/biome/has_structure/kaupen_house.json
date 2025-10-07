@@ -13,10 +13,6 @@
       "required": false
     },
     {
-      "id": "#mccoursemod:is_kaupendim",
-      "required": false
-    },
-    {
       "id": "minecraft:desert",
       "required": false
     },

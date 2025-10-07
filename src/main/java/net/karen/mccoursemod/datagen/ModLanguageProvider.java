@@ -4,8 +4,8 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.fluid.ModFluids;
 import net.karen.mccoursemod.item.ModItems;
-import net.karen.mccoursemod.worldgen.biome.ModBiomes;
-import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
+//import net.karen.mccoursemod.worldgen.biome.ModBiomes;
+//import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -412,7 +412,7 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.POTTED_SNAPDRAGON, "§5");
 
         // ** CUSTOM portal **
-        blockLang(ModBlocks.KAUPEN_PORTAL, "§7");
+//        blockLang(ModBlocks.KAUPEN_PORTAL, "§7");
 
         // ** CUSTOM furnace **
         blockLang(ModBlocks.KAUPEN_FURNACE, "§7");
@@ -727,11 +727,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add("container.inventory", "");
 
         // ** CUSTOM DIMENSIONS **
-        addDimension(ModDimensions.KAUPENDIM_LEVEL_KEY, "Kaupendim");
+//        addDimension(ModDimensions.KAUPENDIM_LEVEL_KEY, "Kaupendim");
 
         // ** CUSTOM BIOMES **
-        addBiome(ModBiomes.TEST_BIOME, "Test Biome");
-        addBiome(ModBiomes.TEST_BIOME_2, "Test Biome 2");
+//        addBiome(ModBiomes.TEST_BIOME, "Test Biome");
+//        addBiome(ModBiomes.TEST_BIOME_2, "Test Biome 2");
 
         // ** CUSTOM ENCHANTMENT LEVEL **
         vanillaEnchantment();
