@@ -232,6 +232,11 @@ public class ModRecipeProvider extends RecipeProvider {
         // ** CUSTOM Armor Trim Smithing ** -> CRAFTING TABLE
         this.copySmithingTemplate(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModItems.BISMUTH.get());
 
+        // (ERROR) ** CUSTOM Armor Trim Smithing ** -> SMITHING TABLE
+        //trimSmithing(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModTrimPatterns.KAUPEN,
+        //             ResourceKey.create(Registries.RECIPE,
+        //             ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "kaupen")));
+
         // ** CUSTOM Ores UPGRADE SMITHING TEMPLATE ** -> CRAFTING TABLE
         this.copySmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, Items.COPPER_BLOCK);
 
