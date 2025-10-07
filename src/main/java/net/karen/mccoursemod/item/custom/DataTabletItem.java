@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class DataTabletItem extends Item {
@@ -34,17 +33,6 @@ public class DataTabletItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        return componentTranslatable(this.getDescriptionId(), gray);
-    }
-
-    // CUSTOM METHOD - DATA TABLET item description
-    public List<String> getItemDescription(ItemStack stack) {
-        FoundBlock foundBlockData = stack.get(ModDataComponentTypes.FOUND_BLOCK.get());
-        if (foundBlockData != null) {
-            return List.of(foundBlockData.getOutputString(),
-                           biomeName(foundBlockData.biome().location().getPath()),
-                           dimensionName(foundBlockData.dimension().location().getPath()));
-        }
-        else { return List.of(); }
+        return componentTranslatable(this.getDescriptionId(), darkGray);
     }
 }

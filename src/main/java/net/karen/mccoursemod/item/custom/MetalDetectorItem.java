@@ -29,7 +29,14 @@ import java.util.Map;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class MetalDetectorItem extends Item {
+    public static Map<TagKey<Block>, ChatFormatting> oreColors =
+           Map.ofEntries(Map.entry(Tags.Blocks.ORES_DIAMOND, aqua), Map.entry(ModTags.Blocks.METAL_DETECTOR_COLORS, gold),
+                         Map.entry(Tags.Blocks.ORES_IRON, gray), Map.entry(Tags.Blocks.ORES_EMERALD, darkGreen),
+                         Map.entry(Tags.Blocks.ORES_REDSTONE, darkRed), Map.entry(Tags.Blocks.ORES_LAPIS, darkBlue),
+                         Map.entry(Tags.Blocks.ORES_COAL, black), Map.entry(ModTags.Blocks.MCCOURSE_MOD_ORES, purple),
+                         Map.entry(ModTags.Blocks.SPECIAL_METAL_DETECTOR_VALUABLES, red));
     TagKey<Block> type;
+
     public MetalDetectorItem(Properties properties,
                              TagKey<Block> type) {
         super(properties);
@@ -111,13 +118,6 @@ public class MetalDetectorItem extends Item {
     // CUSTOM METHOD - Output message if found ore -> Screen
     private void outputValuableCoordinates(BlockPos pos, Player player, Block block) {
         ChatFormatting color = white; // DEFAULT COLOR
-        Map<TagKey<Block>, ChatFormatting> oreColors =
-           Map.ofEntries(Map.entry(Tags.Blocks.ORES_DIAMOND, aqua), Map.entry(ModTags.Blocks.METAL_DETECTOR_COLORS, gold),
-                         Map.entry(Tags.Blocks.ORES_IRON, gray), Map.entry(Tags.Blocks.ORES_EMERALD, darkGreen),
-                         Map.entry(Tags.Blocks.ORES_REDSTONE, darkRed), Map.entry(Tags.Blocks.ORES_LAPIS, darkBlue),
-                         Map.entry(Tags.Blocks.ORES_COAL, black), Map.entry(ModTags.Blocks.MCCOURSE_MOD_ORES, purple),
-                         Map.entry(ModTags.Blocks.SPECIAL_METAL_DETECTOR_VALUABLES, red));
-
         // KEY -> Ores || VALUE -> Ore colors message
         for (Map.Entry<TagKey<Block>, ChatFormatting> entry : oreColors.entrySet()) {
             TagKey<Block> ores = entry.getKey(); // Ore blocks
@@ -128,15 +128,15 @@ public class MetalDetectorItem extends Item {
             }
         }
         // OUTPUT message on screen
-        playDisplayLiteral(player, Component.literal("Ore found: ").withStyle(white).withStyle(bold)
+        playDisplayLiteral(player, Component.literal("Ore found: ").withStyle(gray).withStyle(bold)
                                             .append(componentTranslatableBold(block.getDescriptionId(), color))
-                                            .append(componentLiteralBold(" at [X: ", white))
+                                            .append(componentLiteralBold(" at [X: ", gray))
                                             .append(componentLiteralBold(String.valueOf(pos.getX()), color))
-                                            .append(componentLiteralBold(", Y: ", white))
+                                            .append(componentLiteralBold(", Y: ", gray))
                                             .append(componentLiteralBold(String.valueOf(pos.getY()), color))
-                                            .append(componentLiteralBold(", Z: ", white))
+                                            .append(componentLiteralBold(", Z: ", gray))
                                             .append(componentLiteralBold(String.valueOf(pos.getZ()), color))
-                                            .append(componentLiteralBold("]", white)));
+                                            .append(componentLiteralBold("]", gray)));
     }
 
     // CUSTOM METHOD - Identifies ALL BLOCKS added in metal_detector_valuables.json on CUSTOM BLOCK TAGS

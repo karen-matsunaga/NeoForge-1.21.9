@@ -317,8 +317,7 @@ public class ChatUtils {
         int minute = (int) ((time % 1000) * 0.06);
         int day = (int) dayTime / 24000;
         return Component.literal("Time: " + String.format("%d:%02d %s", hour, minute, amOrPm))
-                        .append(componentLiteralIntColor(String.format(" [Day %d]", day),
-                                                         ARGB.color(113, 255, 241)));
+                        .append(componentLiteralIntColor(String.format(" [Day %d]", day), ARGB.color(113, 255, 241)));
     }
 
     // CUSTOM METHOD - Total light, Skylight and Block light + [X, Y, Z] Coordinates

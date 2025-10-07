@@ -2,6 +2,7 @@ package net.karen.mccoursemod.mixin;
 
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.component.ModDataComponentTypes;
+import net.karen.mccoursemod.component.custom.FoundBlock;
 import net.karen.mccoursemod.enchantment.ModEnchantments;
 import net.karen.mccoursemod.item.ModItems;
 import net.karen.mccoursemod.item.custom.*;
@@ -12,6 +13,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -78,13 +80,13 @@ public abstract class ItemStackMixin {
         }
         // DATA TABLET item
         if (stack.is(ModItems.DATA_TABLET.get().asItem())) {
-            if (item instanceof DataTabletItem dataTablet) {
-                String block = dataTablet.getItemDescription(stack).getFirst();
-                String biome = dataTablet.getItemDescription(stack).get(1);
-                String dimension = dataTablet.getItemDescription(stack).get(2);
-                tooltip.add(componentLiteral(block, darkGray));
-                tooltip.add(biomeColor(biome, dimension).copy().withStyle(yellow));
-                tooltip.add(componentLiteralIntColor("Dimension: " + dimension, dimensionColorName(dimension)));
+            FoundBlock foundBlockData = stack.get(ModDataComponentTypes.FOUND_BLOCK.get());
+            if (foundBlockData != null) {
+                String biome = biomeName(foundBlockData.biome().location().getPath()); // Biome name
+                String dimensionPath = foundBlockData.dimension().location().getPath(); // Dimension name
+                tooltip.add(foundBlockData.blockPosition()); // Block position + X, Y, Z coordinates
+                tooltip.add(biomeColor(biome, dimensionPath).copy().withColor(ARGB.color(254, 153, 0)));
+                tooltip.add(dimension(dimensionPath).copy().withColor(ARGB.color(233, 210, 114)));
             }
         }
         // ELYTRA PLUS item

@@ -447,8 +447,6 @@ public class ModEvents {
     }
 
     // CUSTOM EVENT - Render GUI screen OVERLAY
-    // Credits by giok3r (Where Am I?) MIT License - https://github.com/giok3r/Where-Am-I/blob/1.21.x/TEMPLATE_LICENSE.txt
-    // https://github.com/giok3r/Where-Am-I/blob/1.21.x/src/main/java/net/giok3r/whereami/ClientEvents.java
     @SubscribeEvent
     public static void onRenderGuiScreenOverlay(RenderGuiEvent.Post event) {
         Minecraft mc = Minecraft.getInstance();
@@ -470,20 +468,18 @@ public class ModEvents {
             int totalLight = Math.max(blockLight, skyLight);
             guiGraphics.drawString(font, light(totalLight, skyLight, blockLight), 10, 20,
                                    ARGB.color(219, 233, 71));
-            // DIMENSION
-            String dimensionPath = playerLevel.dimension().location().getPath();
-            guiGraphics.drawString(font, dimension(dimensionPath), 10, 30,
-                                   ARGB.color(233, 210, 114));
             // BIOME
+            String dimensionPath = playerLevel.dimension().location().getPath();
             ResourceKey<Biome> biome = playerLevel.getBiome(pos).getKey();
             if (biome != null) {
-                guiGraphics.drawString(font, biomeColor(biome.location().getPath(), dimensionPath),
-                                       10, 40, ARGB.color(254, 153, 0));
+                guiGraphics.drawString(font, biomeColor(biome.location().getPath(), dimensionPath), 10, 30,
+                                       ARGB.color(254, 153, 0));
             }
+            // DIMENSION
+            guiGraphics.drawString(font, dimension(dimensionPath), 10, 40, ARGB.color(233, 210, 114));
             // HOUR:MINUTES:SECONDS:DAY
             long dayTime = level.getDayTime();
-            guiGraphics.drawString(font, dayNumber(dayTime),
-                                   10, 50, ARGB.color(249, 206, 141));
+            guiGraphics.drawString(font, dayNumber(dayTime), 10, 50, ARGB.color(249, 206, 141));
             // HOUR:MINUTES:SECONDS
             guiGraphics.drawString(font, "Hour: " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")),
                                    10, 60, ARGB.color(173, 154, 221));
