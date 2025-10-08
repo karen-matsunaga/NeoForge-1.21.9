@@ -3,7 +3,6 @@ package net.karen.mccoursemod.block.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.karen.mccoursemod.block.entity.PedestalBlockEntity;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -19,31 +18,30 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.*;
 
 public class PedestalBlockEntityRenderer implements BlockEntityRenderer<PedestalBlockEntity,
                                                                         BlockEntityRenderState> {
 
     PedestalBlockEntity pedestalBlockEntity;
-    public final ItemStackRenderState item = new ItemStackRenderState();
+    private final ItemStackRenderState item = new ItemStackRenderState();
+    private final ItemModelResolver itemModelResolver;
 
-    public PedestalBlockEntityRenderer(BlockEntityRendererProvider.Context context) {}
+    public PedestalBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
+        this.itemModelResolver = context.itemModelResolver();
+    }
 
     @Override
-    public void extractRenderState(@NotNull PedestalBlockEntity entity,
-                                   @NotNull BlockEntityRenderState state,
+    public void extractRenderState(@NotNull PedestalBlockEntity entity, @NotNull BlockEntityRenderState state,
                                    float partialTick, @NotNull Vec3 vec3,
                                    @Nullable ModelFeatureRenderer.CrumblingOverlay crumblingOverlay) {
-        this.pedestalBlockEntity = entity;
-        // Render item
-        Level level = entity.getLevel();
-        if (level != null) {
-            state.lightCoords = getLightLevel(level, entity.getBlockPos());
-            ItemModelResolver itemModelResolver = Minecraft.getInstance().getItemModelResolver();
-            itemModelResolver.updateForTopItem(item, entity.getItem(), ItemDisplayContext.GUI, level, null, 1);
-        }
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTick, vec3, crumblingOverlay);
+        this.pedestalBlockEntity = entity;
+        Level level = entity.getLevel();
+        if (level != null) { // Render item
+            state.lightCoords = getLightLevel(level, entity.getBlockPos());
+            this.itemModelResolver.updateForTopItem(item, entity.getItem(), ItemDisplayContext.FIXED, level, null, 1);
+        }
     }
 
     @Override
@@ -61,10 +59,10 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         poseStack.popPose();
     }
 
-    // CUSTOM METHOD - Item light
+    // CUSTOM METHOD - ITEM light
     private int getLightLevel(Level world, BlockPos pos) {
-        int bLight = world.getBrightness(LightLayer.BLOCK, pos);
-        int sLight = world.getBrightness(LightLayer.SKY, pos);
-        return LightTexture.pack(bLight, Math.max(sLight, 15));
+        int blockLight = world.getBrightness(LightLayer.BLOCK, pos);
+        int skyLight = world.getBrightness(LightLayer.SKY, pos);
+        return LightTexture.pack(blockLight, Math.max(skyLight, 15));
     }
 }
