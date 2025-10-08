@@ -187,7 +187,9 @@ public class RhinoEntity extends TamableAnimal implements PlayerRideable {
                                                  @Nullable SpawnGroupData data) {
         RhinoVariant variant = Util.getRandom(RhinoVariant.values(), this.random);
         this.setVariant(variant);
-        return super.finalizeSpawn(accessor, instance, spawnReason, data);
+        SpawnGroupData data1 = super.finalizeSpawn(accessor, instance, spawnReason, data);
+        assert data1 != null;
+        return data1;
     }
 
     @Override

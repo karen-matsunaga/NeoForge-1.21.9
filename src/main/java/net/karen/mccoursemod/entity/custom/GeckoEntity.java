@@ -131,11 +131,12 @@ public class GeckoEntity extends Animal {
                                                  SpawnGroupData spawnGroupData) {
         GeckoVariant variant = Util.getRandom(GeckoVariant.values(), this.random);
         this.setVariant(variant);
-        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+        SpawnGroupData spawnGroupData1 = super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
+        assert spawnGroupData1 != null;
+        return spawnGroupData1;
     }
 
     /* SOUNDS */
-
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
