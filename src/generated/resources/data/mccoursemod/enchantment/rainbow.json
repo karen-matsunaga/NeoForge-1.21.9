@@ -6,6 +6,9 @@
   "effects": {
     "mccoursemod:rainbow_enchantment_effect": {
       "map": {
+        "mccoursemod:alexandrite_block": "mccoursemod:alexandrite_ores",
+        "mccoursemod:bismuth_block": "mccoursemod:bismuth_ores",
+        "mccoursemod:pink_block": "mccoursemod:pink_ores",
         "minecraft:coal_block": "c:ores/coal",
         "minecraft:copper_block": "c:ores/copper",
         "minecraft:diamond_block": "c:ores/diamond",

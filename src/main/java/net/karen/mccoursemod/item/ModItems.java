@@ -191,7 +191,7 @@ public class ModItems {
            bowItem("kaupen_bow", ModTags.Items.BISMUTH_TOOL_MATERIALS, 0xE85480);
 
     public static final DeferredItem<Item> MINER_BOW =
-           hammerBowItem("miner_bow", ModTags.Items.BISMUTH_TOOL_MATERIALS);
+           hammerBowItem("miner_bow", ModTags.Items.BISMUTH_TOOL_MATERIALS, 1, 2);
 
     public static final DeferredItem<Item> ALEXANDRITE_BOW =
            bowItem("alexandrite_bow", ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, 0x30D5C8);
@@ -824,9 +824,10 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Hammer Bow tool **
-    public static DeferredItem<Item> hammerBowItem(String name, TagKey<Item> repair) {
+    public static DeferredItem<Item> hammerBowItem(String name, TagKey<Item> repair,
+                                                   int radius, int depth) {
         return ITEMS.registerItem(name, properties ->
-                                  new MinerBowItem(properties.repairable(repair)));
+                                  new MinerBowItem(properties.repairable(repair), radius, depth));
     }
 
     // ** CUSTOM METHOD - Horse armor **

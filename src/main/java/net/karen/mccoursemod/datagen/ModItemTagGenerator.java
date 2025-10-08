@@ -113,7 +113,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                    ModItems.WOODEN_PAXEL.get(),
                                    ModItems.NETHERITE_PAXEL.get(),
                                    ModItems.LAPIS_LAZULI_PAXEL.get(),
-                                   ModItems.REDSTONE_PAXEL.get());
+                                   ModItems.REDSTONE_PAXEL.get(),
+                                   ModItems.MINER_BOW.get());
 
         // CUSTOM Sword
         tag(ItemTags.SWORDS).add(ModItems.BISMUTH_SWORD.get(),

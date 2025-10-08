@@ -1,6 +1,7 @@
 package net.karen.mccoursemod.enchantment;
 
 import net.karen.mccoursemod.MccourseMod;
+import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.component.ModDataComponentTypes;
 import net.karen.mccoursemod.enchantment.custom.*;
 import net.karen.mccoursemod.util.ModTags;
@@ -173,7 +174,10 @@ public class ModEnchantments {
                                                Map.entry(Blocks.IRON_BLOCK, Tags.Blocks.ORES_IRON),
                                                Map.entry(Blocks.LAPIS_BLOCK, Tags.Blocks.ORES_LAPIS),
                                                Map.entry(Blocks.REDSTONE_BLOCK, Tags.Blocks.ORES_REDSTONE),
-                                               Map.entry(Blocks.NETHERITE_BLOCK, Tags.Blocks.ORES_NETHERITE_SCRAP)))));
+                                               Map.entry(Blocks.NETHERITE_BLOCK, Tags.Blocks.ORES_NETHERITE_SCRAP),
+                                               Map.entry(ModBlocks.ALEXANDRITE_BLOCK.get(), ModTags.Blocks.ALEXANDRITE_ORES),
+                                               Map.entry(ModBlocks.BISMUTH_BLOCK.get(), ModTags.Blocks.BISMUTH_ORES),
+                                               Map.entry(ModBlocks.PINK_BLOCK.get(), ModTags.Blocks.PINK_ORES)))));
 
         // Xp Boost - Armor and Tools
         register(context, XP_BOOST,

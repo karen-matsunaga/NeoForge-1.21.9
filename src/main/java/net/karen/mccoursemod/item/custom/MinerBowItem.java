@@ -11,9 +11,20 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class MinerBowItem extends BowItem {
-    public MinerBowItem(Properties properties) {
+    private final int radius;
+    private final int depth;
+
+    public MinerBowItem(Properties properties, int radius, int depth) {
         super(properties);
+        this.radius = radius;
+        this.depth = depth;
     }
+
+    // CUSTOM METHOD - RADIUS
+    public int getRadius() { return radius; }
+
+    // CUSTOM METHOD - DEPTH
+    public int getDepth() { return depth; }
 
     @Override
     public boolean releaseUsing(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity entity, int i) {
@@ -28,7 +39,5 @@ public class MinerBowItem extends BowItem {
     }
 
     @Override
-    public @NotNull Component getName(@NotNull ItemStack stack) {
-        return ChatUtils.rgbItemName(stack);
-    }
+    public @NotNull Component getName(@NotNull ItemStack stack) { return ChatUtils.rgbItemName(stack); }
 }

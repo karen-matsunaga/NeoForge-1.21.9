@@ -138,7 +138,6 @@ public class ModEntities {
                            .clientTrackingRange(10)
                            .build(MOD_CHEST_KEY));
 
-
     // CUSTOM METHOD - Register all Boat entity types
     private static EntityType.EntityFactory<ModBoatEntity> boatFactory() {
         return (boatEntityType, level) ->

@@ -1,4 +1,4 @@
-// 1.21.10	2025-10-07T12:39:30.6279967	Mccourse Mod Item Tags
+// 1.21.10	2025-10-07T16:29:32.7021902	Mccourse Mod Item Tags
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets.json
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets/entity_water.json
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets/water.json
@@ -65,7 +65,7 @@ b3d221a7e1a3cbed358287804ceb8f55ab438b80 data/minecraft/tags/item/hoes.json
 7a5dd8815002431512c87ae04041ff84e1a05cd2 data/minecraft/tags/item/leaves.json
 dca90549aafc1dbab5eff03beca59571b2340a42 data/minecraft/tags/item/leg_armor.json
 4b057e3e5e6f7b9026d5871433fccbb5eb4dfe1a data/minecraft/tags/item/logs_that_burn.json
-3b8df4e9a9697f1c334c40dee425662e55cecb84 data/minecraft/tags/item/pickaxes.json
+403d243e17b9cc8b02ef2ac054f098950c4c10cf data/minecraft/tags/item/pickaxes.json
 2cb28474625576092652fd1b578b683666883b3a data/minecraft/tags/item/planks.json
 d8700cb59c359611790eaf34c5351f0bfe3e081e data/minecraft/tags/item/saplings.json
 7213ba754f591f4f8818f57c3f8e1719328cad3d data/minecraft/tags/item/shovels.json

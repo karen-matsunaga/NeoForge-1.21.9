@@ -96,7 +96,7 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
 
         // ** CUSTOM enchantments **
         // Auto Smelt enchantment effect
-        this.tag(ModTags.Blocks.AUTO_SMELT_ORES).addTag(Tags.Blocks.ORES).addTag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE);
+        this.tag(ModTags.Blocks.AUTO_SMELT_ORES).addTag(ModTags.Blocks.ALL_ORES);
 
         // More Ores break block and random drop enchantment effect
         this.tag(ModTags.Blocks.MORE_ORES_BREAK_BLOCK).add(Blocks.STONE, Blocks.NETHERRACK);
@@ -104,7 +104,8 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
         this.tag(ModTags.Blocks.MORE_ORES_TWO_DROPS).add(Blocks.IRON_ORE, Blocks.LAPIS_ORE);
         this.tag(ModTags.Blocks.MORE_ORES_THREE_DROPS).add(Blocks.REDSTONE_ORE, Blocks.GOLD_ORE);
         this.tag(ModTags.Blocks.MORE_ORES_FOUR_DROPS).add(Blocks.DIAMOND_ORE, Blocks.EMERALD_ORE);
-        this.tag(ModTags.Blocks.MORE_ORES_FIVE_DROPS).add(ModBlocks.PINK_ORE.get(), ModBlocks.ALEXANDRITE_ORE.get());
+        this.tag(ModTags.Blocks.MORE_ORES_FIVE_DROPS).add(ModBlocks.PINK_ORE.get(), ModBlocks.ALEXANDRITE_ORE.get(),
+                                                          ModBlocks.BISMUTH_ORE.get());
         this.tag(ModTags.Blocks.MORE_ORES_SIX_DROPS).add(Blocks.ANCIENT_DEBRIS, Blocks.NETHER_GOLD_ORE,
                                                          Blocks.NETHER_QUARTZ_ORE);
         this.tag(ModTags.Blocks.MORE_ORES_ALL_DROPS).addTag(ModTags.Blocks.MORE_ORES_ONE_DROPS)
@@ -130,6 +131,7 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
         tag(BlockTags.SLABS).add(ModBlocks.BISMUTH_SLAB.get(), ModBlocks.ALEXANDRITE_SLABS.get());
         tag(BlockTags.TRAPDOORS).add(ModBlocks.BISMUTH_TRAPDOOR.get(), ModBlocks.ALEXANDRITE_TRAPDOOR.get());
         tag(BlockTags.WALLS).add(ModBlocks.BISMUTH_WALL.get(), ModBlocks.ALEXANDRITE_WALL.get());
+
         // BISMUTH
         this.tag(ModTags.Blocks.BISMUTH_BLOCKS).add(ModBlocks.BISMUTH_BUTTON.get(),
                                                     ModBlocks.BISMUTH_DOOR.get(),
@@ -140,6 +142,12 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                     ModBlocks.BISMUTH_SLAB.get(),
                                                     ModBlocks.BISMUTH_TRAPDOOR.get(),
                                                     ModBlocks.BISMUTH_WALL.get());
+
+        this.tag(ModTags.Blocks.BISMUTH_ORES).add(ModBlocks.BISMUTH_ORE.get(),
+                                                  ModBlocks.BISMUTH_DEEPSLATE_ORE.get(),
+                                                  ModBlocks.BISMUTH_END_ORE.get(),
+                                                  ModBlocks.BISMUTH_NETHER_ORE.get());
+
         // ALEXANDRITE
         this.tag(ModTags.Blocks.ALEXANDRITE_BLOCKS).add(ModBlocks.ALEXANDRITE_BUTTON.get(),
                                                         ModBlocks.ALEXANDRITE_DOOR.get(),
@@ -150,6 +158,17 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                         ModBlocks.ALEXANDRITE_SLABS.get(),
                                                         ModBlocks.ALEXANDRITE_TRAPDOOR.get(),
                                                         ModBlocks.ALEXANDRITE_WALL.get());
+
+        this.tag(ModTags.Blocks.ALEXANDRITE_ORES).add(ModBlocks.ALEXANDRITE_ORE.get(),
+                                                      ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get(),
+                                                      ModBlocks.END_STONE_ALEXANDRITE_ORE.get(),
+                                                      ModBlocks.NETHER_ALEXANDRITE_ORE.get());
+
+        // PINK
+        this.tag(ModTags.Blocks.PINK_ORES).add(ModBlocks.PINK_ORE.get(),
+                                               ModBlocks.DEEPSLATE_PINK_ORE.get(),
+                                               ModBlocks.END_STONE_PINK_ORE.get(),
+                                               ModBlocks.NETHER_PINK_ORE.get());
 
         // ** CUSTOM Crop blocks **
         tag(BlockTags.CROPS).add(ModBlocks.RADISH_CROP.get(), ModBlocks.KOHLRABI_CROP.get(),

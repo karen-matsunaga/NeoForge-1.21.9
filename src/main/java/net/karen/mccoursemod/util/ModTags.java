@@ -63,9 +63,14 @@ public class ModTags {
 
         // BISMUTH blocks
         public static final TagKey<Block> BISMUTH_BLOCKS = createTag("bismuth_blocks");
+        public static final TagKey<Block> BISMUTH_ORES = createTag("bismuth_ores");
 
         // ALEXANDRITE blocks
         public static final TagKey<Block> ALEXANDRITE_BLOCKS = createTag("alexandrite_blocks");
+        public static final TagKey<Block> ALEXANDRITE_ORES = createTag("alexandrite_ores");
+
+        // PINK blocks
+        public static final TagKey<Block> PINK_ORES = createTag("pink_ores");
 
         // METAL DETECTOR
         public static final TagKey<Block> METAL_DETECTOR_VALUABLES = createTag("metal_detector_valuables");

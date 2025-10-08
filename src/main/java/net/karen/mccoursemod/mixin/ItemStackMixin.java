@@ -132,7 +132,12 @@ public abstract class ItemStackMixin {
         }
         // MINER bow item
         if (stack.is(ModItems.MINER_BOW)) {
-            tooltipLineLiteralRGB(tooltip, COLORS, stack, " Blocks: " + 3 + " x " + 3 + " x " + 2);
+            if (item instanceof MinerBowItem minerBow) {
+                int radius = minerBow.getRadius();
+                int value = radius * 2 + 1;
+                int depth = minerBow.getDepth();
+                tooltipLineLiteralRGB(tooltip, COLORS, stack, " Blocks: " + value + " x " + value + " x " + depth);
+            }
         }
         // LUCK items
         if (stack.is(ModTags.Items.LUCK_ITEMS)) {

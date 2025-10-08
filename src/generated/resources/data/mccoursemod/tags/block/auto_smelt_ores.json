@@ -1,6 +1,5 @@
 {
   "values": [
-    "#c:ores",
-    "#c:ores_in_ground/deepslate"
+    "#mccoursemod:all_ores"
   ]
 }
