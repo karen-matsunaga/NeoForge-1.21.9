@@ -42,7 +42,7 @@ public class ModBoatEntity extends Boat {
 
     @Override
     protected double rideHeight(@NotNull EntityDimensions entityDimensions) {
-        return (entityDimensions.height() / 3.0F);
+        return entityDimensions.height() / 3.0F;
     }
 
     @Override
@@ -55,17 +55,14 @@ public class ModBoatEntity extends Boat {
 
     @Nullable
     @Override
-    public LeashData getLeashData() {
-        return this.leashData;
-    }
+    public LeashData getLeashData() { return this.leashData; }
 
     @Override
-    protected void addAdditionalSaveData(@NotNull ValueOutput output) {
-        this.writeLeashData(output, this.leashData);
-    }
+    protected void addAdditionalSaveData(@NotNull ValueOutput output) { this.writeLeashData(output, this.leashData); }
 
     @Override
-    protected void readAdditionalSaveData(@NotNull ValueInput input) {
-        this.readLeashData(input);
-    }
+    protected void readAdditionalSaveData(@NotNull ValueInput input) { this.readLeashData(input); }
+
+    @Override
+    public void setLeashData(@Nullable LeashData leashData) { this.leashData = leashData; }
 }

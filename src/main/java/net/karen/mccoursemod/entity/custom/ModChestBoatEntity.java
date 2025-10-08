@@ -13,14 +13,14 @@ import java.util.function.Supplier;
 public class ModChestBoatEntity extends ChestBoat {
     private final NonNullList<ItemStack> itemStacks;
 
-    public ModChestBoatEntity(EntityType<? extends ChestBoat> entityType, Level level,
-                              Supplier<Item> item) {
+    public ModChestBoatEntity(EntityType<? extends ChestBoat> entityType,
+                              Level level, Supplier<Item> item) {
         super(entityType, level, item);
         this.itemStacks = NonNullList.withSize(27, ItemStack.EMPTY);
     }
 
     protected double rideHeight(EntityDimensions entityDimensions) {
-        return (entityDimensions.height() / 3.0F);
+        return entityDimensions.height() / 3.0F;
     }
 
     public @NotNull NonNullList<ItemStack> getItemStacks() {
