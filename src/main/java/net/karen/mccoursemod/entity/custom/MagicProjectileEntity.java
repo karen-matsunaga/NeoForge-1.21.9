@@ -11,6 +11,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerEntity;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -34,6 +35,7 @@ public class MagicProjectileEntity extends Projectile {
     private static final EntityDataAccessor<Boolean> HIT =
             SynchedEntityData.defineId(MagicProjectileEntity.class, EntityDataSerializers.BOOLEAN);
     private int counter = 0;
+    Level level = this.level();
 
     public MagicProjectileEntity(EntityType<? extends Projectile> entityType,
                                  Level level) {
@@ -47,8 +49,7 @@ public class MagicProjectileEntity extends Projectile {
         double d0 = (double) blockpos.getX() + 0.5D;
         double d1 = (double) blockpos.getY() + 1.75D;
         double d2 = (double) blockpos.getZ() + 0.5D;
-        // Player hit with RADIATION STAFF item
-        this.snapTo(d0, d1, d2, this.getYRot(), this.getXRot());
+        this.snapTo(d0, d1, d2, this.getYRot(), this.getXRot()); // Player hit with RADIATION STAFF item
     }
 
     @Override
@@ -60,7 +61,7 @@ public class MagicProjectileEntity extends Projectile {
         if (this.tickCount >= 300) { this.remove(RemovalReason.DISCARDED); }
         Vec3 vec3 = this.getDeltaMovement();
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-        // Player hit on particular entity
+        // Player HIT on particular entity
         if (hitresult.getType() != HitResult.Type.MISS && !EventHooks.onProjectileImpact(this, hitresult)) {
             this.onHit(hitresult); // Player hit on a block or an entity
         }
@@ -73,13 +74,13 @@ public class MagicProjectileEntity extends Projectile {
         double d7 = vec3.z;
         // Added custom particles
         for (int i = 1; i < 5; ++i) {
-            this.level().addParticle(ModParticles.ALEXANDRITE_PARTICLES.get(), d0-(d5*2), d1-(d6*2), d2-(d7*2),
-                                     -d5, -d6 - 0.1D, -d7);
+            level.addParticle(ModParticles.ALEXANDRITE_PARTICLES.get(),
+                              d0-(d5*2), d1-(d6*2), d2-(d7*2), -d5, -d6 - 0.1D, -d7);
         }
-        if (this.level().getBlockStates(this.getBoundingBox()).noneMatch(BlockBehaviour.BlockStateBase::isAir)) {
+        if (level.getBlockStates(this.getBoundingBox()).noneMatch(BlockBehaviour.BlockStateBase::isAir)) {
             this.discard();
         }
-        else if (this.isInWater() || this.level().getBlockState(this.blockPosition()).is(Blocks.BUBBLE_COLUMN)) {
+        else if (this.isInWater() || level.getBlockState(this.blockPosition()).is(Blocks.BUBBLE_COLUMN)) {
             this.discard();
         }
         else {
@@ -93,29 +94,30 @@ public class MagicProjectileEntity extends Projectile {
         super.onHitEntity(hitResult);
         Entity hitEntity = hitResult.getEntity(); // Who receive hit on RADIATION STAFF item
         Entity owner = this.getOwner(); // Player is an owner
-        if (hitEntity == owner && this.level().isClientSide()) { return; }
-        this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
-                               ModSounds.METAL_DETECTOR_FOUND_ORE.get(), SoundSource.NEUTRAL, 2F, 1F);
-        LivingEntity livingentity = owner instanceof LivingEntity ? (LivingEntity) owner : null;
-        float damage = 2f;
-        hitEntity.hurt(this.damageSources().mobProjectile(this, livingentity), damage);
-        if (hitEntity instanceof LivingEntity livingHitEntity) { // If hit an entity added POISON effect
-            livingHitEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1), owner);
+        if (hitEntity == owner && level.isClientSide()) { return; }
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.playSound(null, this.getX(), this.getY(), this.getZ(),
+                                  ModSounds.METAL_DETECTOR_FOUND_ORE.get(), SoundSource.NEUTRAL, 2F, 1F);
+            LivingEntity livingentity = owner instanceof LivingEntity livingEntity ? livingEntity : null;
+            float damage = 2F;
+            hitEntity.hurtServer(serverLevel, this.damageSources().mobProjectile(this, livingentity), damage);
+            if (hitEntity instanceof LivingEntity livingHitEntity) { // If hit an entity added POISON effect
+                livingHitEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1), owner);
+            }
         }
     }
 
     @Override
     protected void onHit(@NotNull HitResult hitResult) {
         super.onHit(hitResult);
-        // Spawn custom particle
-        for (int x = 0; x < 18; ++x) {
+        for (int x = 0; x < 18; ++x) { // Spawn custom particle
             for (int y = 0; y < 18; ++y) {
-                 this.level().addParticle(ModParticles.ALEXANDRITE_PARTICLES.get(), this.getX(), this.getY(), this.getZ(),
-                                          Math.cos(x * 20) * 0.15d, Math.cos(y * 20) * 0.15d,
-                                          Math.sin(x * 20) * 0.15d);
+                level.addParticle(ModParticles.ALEXANDRITE_PARTICLES.get(), this.getX(), this.getY(), this.getZ(),
+                                  Math.cos(x * 20) * 0.15D, Math.cos(y * 20) * 0.15D,
+                                  Math.sin(x * 20) * 0.15D);
             }
         }
-        if (this.level().isClientSide()) { return; }
+        if (level.isClientSide()) { return; }
         if (hitResult.getType() == HitResult.Type.ENTITY && hitResult instanceof EntityHitResult entityHitResult) {
             Entity hit = entityHitResult.getEntity();
             Entity owner = this.getOwner();

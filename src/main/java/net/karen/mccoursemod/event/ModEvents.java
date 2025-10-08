@@ -20,6 +20,7 @@ import net.karen.mccoursemod.item.ModItems;
 import net.karen.mccoursemod.item.custom.HammerItem;
 import net.karen.mccoursemod.item.custom.LevelChargerItem;
 import net.karen.mccoursemod.item.custom.MccourseModBottleItem;
+import net.karen.mccoursemod.item.custom.SwordEffectItem;
 import net.karen.mccoursemod.network.LevelChargerSlotPacketPayload;
 import net.karen.mccoursemod.network.MccourseModBottlePacketPayload;
 import net.karen.mccoursemod.network.MccourseModElevatorPacketPayload;
@@ -81,8 +82,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -117,6 +116,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static net.karen.mccoursemod.enchantment.custom.AutoSmeltEnchantmentEffect.autoSmeltEnch;
 import static net.karen.mccoursemod.enchantment.custom.MoreOresEnchantmentEffect.moreOresEnch;
 import static net.karen.mccoursemod.enchantment.custom.RainbowEnchantmentEffect.rainbowEnch;
+import static net.karen.mccoursemod.item.custom.SwordEffectItem.*;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 import static net.karen.mccoursemod.util.Utils.*;
 
@@ -1044,35 +1044,23 @@ public class ModEvents {
         }
     }
 
-    // CUSTOM EVENT - TELEPORT effect
+    // CUSTOM EVENT - TELEPORT effect -> Right click
     @SubscribeEvent
     public static void teleportEffectOnItemRightClick(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();
         ItemStack stack = event.getItemStack();
-        Level level = event.getLevel();
-        if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
-            if (player instanceof ServerPlayer serverPlayer) { // Teleport when using item (like tools, etc.)
-                // Check if holding Alexandrite Sword item
-                if (!stack.isEmpty() && stack.is(ModItems.ALEXANDRITE_SWORD)) {
-                    /* 1. Get the direction the player is looking;
-                       2. It starts from the eyes;
-                       3. Block render distance. How many blocks ahead to ray trace (reach distance). */
-                    Vec3 look = serverPlayer.getLookAngle();
-                    Vec3 start = serverPlayer.getEyePosition();
-                    Vec3 end = start.add(look.scale(5.0));
-                    // Ray trace until it hits a block
-                    BlockHitResult hitResult = hitBlock(serverLevel, start, end, serverPlayer);
-                    if (hitResult.getType() == HitResult.Type.BLOCK) {
-                        BlockPos blockPos = hitResult.getBlockPos(); // Teleports to the top of the block hit (+1 height)
-                        double x = blockPos.getX() + 0.5;
-                        double y = blockPos.getY() + 1.0;
-                        double z = blockPos.getZ() + 0.5;
-                        float xRot = serverPlayer.getXRot();
-                        float yRot = serverPlayer.getYRot();
-                        serverPlayer.teleportTo(serverLevel, x, y, z, Set.of(), yRot, xRot, true);
-                    }
-                }
-            }
-        }
+        createTeleportEffect(new PlayerInteractEvent.RightClickItem(player, player.getUsedItemHand()),
+                             stack.is(ModItems.ALEXANDRITE_SWORD));
+    }
+
+    // CUSTOM EVENT - TELEPORT effect -> Left click
+    @SubscribeEvent
+    public static void teleportEffectOnItemLeftClick(PlayerInteractEvent.LeftClickBlock event) {
+        Player player = event.getEntity();
+        Item item = event.getItemStack().getItem();
+        BlockPos blockPos = player.blockPosition();
+        PlayerInteractEvent.LeftClickBlock.Action action = PlayerInteractEvent.LeftClickBlock.Action.START;
+        createTeleportEffect(new PlayerInteractEvent.LeftClickBlock(player, blockPos, Direction.UP, action),
+                             item instanceof SwordEffectItem);
     }
 }
