@@ -259,7 +259,7 @@ public class ModModelProvider extends ModelProvider {
                       ModBlocks.POTTED_SNAPDRAGON.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         // ** CUSTOM portal **
-//        blockModels.createTrivialCube(ModBlocks.KAUPEN_PORTAL.get());
+        blockModels.createTrivialCube(ModBlocks.KAUPEN_PORTAL.get());
 
         // ** CUSTOM furnace **
         blockModels.createFurnace(ModBlocks.KAUPEN_FURNACE.get(), TexturedModel.ORIENTABLE_ONLY_TOP);

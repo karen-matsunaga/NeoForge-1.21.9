@@ -1,3 +1,4 @@
-// 1.21.10	2025-10-07T12:39:30.6310925	Mccourse Mod Biome Tags
-fafae8724b563c278fe020aae9e5cf65d174af14 data/mccoursemod/tags/worldgen/biome/has_structure/kaupen_house.json
-fafae8724b563c278fe020aae9e5cf65d174af14 data/mccoursemod/tags/worldgen/biome/has_structure/storage_platform.json
+// 1.21.10	2025-10-08T13:19:53.0543291	Mccourse Mod Biome Tags
+74a82de2e1b03717e78d4c59213a48e6b1064d88 data/mccoursemod/tags/worldgen/biome/has_structure/kaupen_house.json
+74a82de2e1b03717e78d4c59213a48e6b1064d88 data/mccoursemod/tags/worldgen/biome/has_structure/storage_platform.json
+0a41c7c888ff71acf512d18bd175ede34c52f663 data/mccoursemod/tags/worldgen/biome/is_kaupendim.json

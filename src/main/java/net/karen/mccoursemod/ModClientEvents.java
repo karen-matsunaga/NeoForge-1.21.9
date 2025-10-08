@@ -24,8 +24,8 @@ import net.karen.mccoursemod.screen.custom.GrowthChamberScreen;
 import net.karen.mccoursemod.screen.custom.KaupenFurnaceScreen;
 import net.karen.mccoursemod.screen.custom.PedestalScreen;
 import net.karen.mccoursemod.util.*;
-//import net.karen.mccoursemod.worldgen.biome.ModBiomes;
-//import net.karen.mccoursemod.worldgen.biome.ModSurfaceRules;
+import net.karen.mccoursemod.worldgen.biome.ModBiomes;
+import net.karen.mccoursemod.worldgen.biome.ModSurfaceRules;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.BoatModel;
 import net.minecraft.client.model.ElytraModel;
@@ -54,7 +54,7 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-//import terrablender.api.SurfaceRuleManager;
+import terrablender.api.SurfaceRuleManager;
 import java.util.function.Function;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
@@ -101,9 +101,9 @@ public class ModClientEvents {
               // ** CUSTOM Flower and Pot Flowers **
               ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SNAPDRAGON.getId(), ModBlocks.POTTED_SNAPDRAGON);
               // ** CUSTOM Biomes and Surface Rules **
-//              ModBiomes.registerBiomes();
-//              SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD,
-//                                                 MccourseMod.MOD_ID, ModSurfaceRules.makeRules());
+              ModBiomes.registerBiomes();
+              SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD,
+                                                 MccourseMod.MOD_ID, ModSurfaceRules.makeRules());
         });
     }
 
