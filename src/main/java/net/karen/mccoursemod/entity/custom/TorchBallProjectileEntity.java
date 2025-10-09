@@ -34,34 +34,37 @@ public class TorchBallProjectileEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitBlock(@NotNull BlockHitResult result) {
         super.onHitBlock(result);
-        if (level().isClientSide()) { return; }
-        Direction hitDir = result.getDirection();
-        BlockPos hitPos = result.getBlockPos(), placePos;
+        Level level = this.level();
+        if (level.isClientSide()) { return; }
+        Direction hitDirection = result.getDirection();
+        BlockPos hitPosition = result.getBlockPos();
+        BlockPos placePos;
         BlockState placeState = null;
-        Block torch = Blocks.TORCH, wallTorch = Blocks.WALL_TORCH,
-                blockToPlace = getItem().getItem() instanceof BlockItem item ? item.getBlock() : torch; // Get the associated item
+        Block torch = Blocks.TORCH;
+        Block wallTorch = Blocks.WALL_TORCH;
+        Item item = this.getItem().getItem();
+        Block blockToPlace = item instanceof BlockItem blockItem ? blockItem.getBlock() : torch; // Get the associated item
         if (blockToPlace == torch || blockToPlace == wallTorch) {
-            if (hitDir == Direction.UP) {
-                placePos = hitPos.above(); // Place a normal torch on top of the block
+            if (hitDirection == Direction.UP) {
+                placePos = hitPosition.above(); // Place a normal torch on top of the block
                 placeState = torch.defaultBlockState();
             }
-            else if (hitDir.getAxis().isHorizontal()) {
-                placePos = hitPos.relative(hitDir); // Air block where the torch will be placed
-                if (!level().getBlockState(hitPos).isSolidRender()) { return; } // Check if the wall is solid
-                if (WallTorchBlock.FACING.getPossibleValues().contains(hitDir)) { // Check the direction is valid
-                    placeState = wallTorch.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, hitDir);
-                    level().setBlock(placePos, placeState, Block.UPDATE_ALL_IMMEDIATE); // Place the torch in the air, glued to the wall
+            else if (hitDirection.getAxis().isHorizontal()) {
+                placePos = hitPosition.relative(hitDirection); // Air block where the torch will be placed
+                if (!level.getBlockState(hitPosition).isSolidRender()) { return; } // Check if the wall is solid
+                if (WallTorchBlock.FACING.getPossibleValues().contains(hitDirection)) { // Check the direction is valid
+                    placeState = wallTorch.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, hitDirection);
+                    level.setBlock(placePos, placeState, Block.UPDATE_ALL_IMMEDIATE); // Place the torch in the air, glued to the wall
                 }
             }
             else { return; } // Does not support placement on the ceiling
         }
         else { // Place normal blocks on any valid face
-            placePos = hitPos.relative(hitDir);
+            placePos = hitPosition.relative(hitDirection);
             placeState = blockToPlace.defaultBlockState();
         }
-
-        if (placeState != null && level().getBlockState(placePos).isAir() && placeState.canSurvive(level(), placePos)) {
-            level().setBlockAndUpdate(placePos, placeState); // Place the block if the location is empty and can hold it
+        if (placeState != null && level.getBlockState(placePos).isAir() && placeState.canSurvive(level, placePos)) {
+            level.setBlockAndUpdate(placePos, placeState); // Place the block if the location is empty and can hold it
         }
         this.discard(); // Remove the entity after use
     }
