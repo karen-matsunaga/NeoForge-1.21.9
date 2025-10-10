@@ -6,87 +6,60 @@ import com.mojang.datafixers.util.Either;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.command.DeleteHomeCommand;
-import net.karen.mccoursemod.command.ListHomesCommand;
-import net.karen.mccoursemod.command.ReturnHomeCommand;
-import net.karen.mccoursemod.command.SetHomeCommand;
+import net.karen.mccoursemod.command.*;
 import net.karen.mccoursemod.component.ModDataComponentTypes;
 import net.karen.mccoursemod.effect.ModEffects;
 import net.karen.mccoursemod.enchantment.ModEnchantments;
+import net.karen.mccoursemod.enchantment.custom.LightningStrikerEnchantmentEffect;
 import net.karen.mccoursemod.entity.ModEntities;
-import net.karen.mccoursemod.entity.custom.GeckoEntity;
-import net.karen.mccoursemod.entity.custom.RhinoEntity;
+import net.karen.mccoursemod.entity.custom.*;
 import net.karen.mccoursemod.item.ModItems;
-import net.karen.mccoursemod.item.custom.HammerItem;
-import net.karen.mccoursemod.item.custom.LevelChargerItem;
-import net.karen.mccoursemod.item.custom.MccourseModBottleItem;
-import net.karen.mccoursemod.item.custom.SwordEffectItem;
-import net.karen.mccoursemod.network.LevelChargerSlotPacketPayload;
-import net.karen.mccoursemod.network.MccourseModBottlePacketPayload;
-import net.karen.mccoursemod.network.MccourseModElevatorPacketPayload;
-import net.karen.mccoursemod.network.UnlockEnchantmentPacketPayload;
+import net.karen.mccoursemod.item.custom.*;
+import net.karen.mccoursemod.network.*;
 import net.karen.mccoursemod.potion.ModPotions;
 import net.karen.mccoursemod.util.*;
 import net.karen.mccoursemod.villager.ModVillagers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.ShapeRenderer;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.core.*;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.*;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.*;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ARGB;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.sheep.Sheep;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.npc.*;
+import net.minecraft.world.entity.player.*;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.BowItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionBrewing;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.trading.ItemCost;
-import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.*;
+import net.minecraft.world.item.enchantment.*;
+import net.minecraft.world.item.trading.*;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraft.world.scores.PlayerTeam;
-import net.minecraft.world.scores.Scoreboard;
+import net.minecraft.world.phys.shapes.*;
+import net.minecraft.world.scores.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
@@ -94,19 +67,13 @@ import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.event.entity.item.ItemExpireEvent;
-import net.neoforged.neoforge.event.entity.item.ItemTossEvent;
+import net.neoforged.neoforge.event.entity.*;
+import net.neoforged.neoforge.event.entity.item.*;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
-import net.neoforged.neoforge.event.level.BlockEvent;
-import net.neoforged.neoforge.event.level.ExplosionEvent;
-import net.neoforged.neoforge.event.tick.LevelTickEvent;
-import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-import net.neoforged.neoforge.event.village.VillagerTradesEvent;
-import net.neoforged.neoforge.event.village.WandererTradesEvent;
+import net.neoforged.neoforge.event.level.*;
+import net.neoforged.neoforge.event.tick.*;
+import net.neoforged.neoforge.event.village.*;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 import org.lwjgl.glfw.GLFW;
 import java.time.LocalTime;
@@ -387,7 +354,7 @@ public class ModEvents {
                         1, 10, 0.2F));
     }
 
-    // CUSTOM EVENT -> AUTO SMELT, MAGNET, MORE ORES, MULTIPLIER and RAINBOW custom effects
+    // CUSTOM EVENT -> AUTO SMELT, MAGNET, MORE ORES, MULTIPLIER and RAINBOW custom enchantment effects
     @SubscribeEvent
     public static void onAutoSmeltMagnetMoreOresMultiplierRainbowActivated(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
@@ -486,7 +453,7 @@ public class ModEvents {
         }
     }
 
-    // CUSTOM EVENT - Double Jump
+    // CUSTOM EVENT - DOUBLE JUMP attribute
     private static boolean wasJumping = false;
 
     @SubscribeEvent
@@ -510,7 +477,7 @@ public class ModEvents {
         else { if (level != null && hasEffect) { enableFlight(player, fly, level.getAmplifier()); } }
     }
 
-    // CUSTOM EVENT - Fly effect
+    // CUSTOM EVENT - FLY custom effect
     @SubscribeEvent
     public static void onFlyEffectActivated(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
@@ -586,7 +553,7 @@ public class ModEvents {
         }
     }
 
-    // CUSTOM EVENT - Block Fly custom enchantment
+    // CUSTOM EVENT - BLOCK FLY custom enchantment
     @SubscribeEvent
     public static void onBlockFlyBreakSpeed(PlayerEvent.BreakSpeed event) {
         Player player = event.getEntity(); // Entity is a player
@@ -1062,5 +1029,26 @@ public class ModEvents {
         PlayerInteractEvent.LeftClickBlock.Action action = PlayerInteractEvent.LeftClickBlock.Action.START;
         createTeleportEffect(new PlayerInteractEvent.LeftClickBlock(player, blockPos, Direction.UP, action),
                              item instanceof SwordEffectItem);
+    }
+
+    // CUSTOM METHOD - LIGHTNING STRIKER custom enchantment -> Right click
+    @SubscribeEvent
+    public static void activatedLightningStrikerEnchantment(PlayerInteractEvent.EntityInteract event) {
+        Player player = event.getEntity();
+        Entity target = event.getTarget();
+        Level level = event.getLevel();
+        LightningStrikerEnchantmentEffect light =
+                 new LightningStrikerEnchantmentEffect(LevelBasedValue.perLevel(0.5F, 0.15F));
+        if (!level.isClientSide() && level instanceof ServerLevel serverLevel &&
+            target instanceof LivingEntity living && player instanceof ServerPlayer serverPlayer) {
+            HolderLookup.RegistryLookup<Enchantment> ench =
+                  serverLevel.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+            ItemStack stack = serverPlayer.getWeaponItem();
+            int lightningStriker = Utils.toolEnchant(ench, ModEnchantments.LIGHTNING_STRIKER, stack);
+            if (lightningStriker > 0) {
+                light.apply(serverLevel, lightningStriker, new EnchantedItemInUse(stack, EquipmentSlot.MAINHAND, serverPlayer),
+                            living, living.position());
+            }
+        }
     }
 }
