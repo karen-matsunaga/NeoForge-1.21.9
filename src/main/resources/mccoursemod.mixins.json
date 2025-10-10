@@ -6,11 +6,13 @@
     "defaultRequire": 1
   },
   "mixins": [
+    "AbstractBoatMixin",
     "AbstractContainerMenuMixin",
     "AnvilMenuMixin",
     "BowItemMixin",
     "EnchantmentMenuMixin",
     "EnchantmentMixin",
+    "EntityMixin",
     "FishingHookMixin",
     "ItemEnchantmentsMixin",
     "ItemStackMixin",
