@@ -28,8 +28,8 @@ public class MccourseModGeneratorBlock extends Block {
     }
 
     @Override
-    public boolean onDestroyedByPlayer(@NotNull BlockState state,
-                                       Level level, @NotNull BlockPos pos, Player player,
+    public boolean onDestroyedByPlayer(@NotNull BlockState state, Level level, @NotNull BlockPos pos,
+                                       Player player, @NotNull ItemStack toolStack,
                                        boolean willHarvest, @NotNull FluidState fluid) {
         boolean destroy = player.isCreative() || player.getMainHandItem().is(ModItems.PINK_PICKAXE.get());
         // ENABLES destruction only CREATIVE mode or uses PINK PICKAXE, but not received DROP items
