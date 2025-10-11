@@ -34,6 +34,9 @@ public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
 
         @Override
         public int size() { return 1; }
+
+        @Override
+        protected int getCapacity(int index, @NotNull ItemResource resource) { return 1; }
     };
     private float rotation;
 

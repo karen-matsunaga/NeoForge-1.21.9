@@ -65,25 +65,23 @@ public class PedestalBlock extends BaseEntityBlock {
                                                    @NotNull Player player, @NotNull InteractionHand hand,
                                                    @NotNull BlockHitResult hitResult) {
         if (level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
-            if (player.isCrouching() && !level.isClientSide()) {
+            if (player.isShiftKeyDown() && !level.isClientSide()) {
                 player.openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pos);
                 return InteractionResult.SUCCESS;
             }
+            ItemStack itemStack = pedestalBlockEntity.getItem();
             ItemStacksResourceHandler slot = pedestalBlockEntity.inventory;
-            ItemResource pedestal = slot.getResource(0);
-            ItemStack copy = slot.getResource(0).toStack().copy();
-            ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
-            try (Transaction tx = Transaction.open(null)) {
-                if (pedestal.toStack().isEmpty() && !stack.isEmpty()) {
-                    slot.insert(ItemResource.of(mainHand), 1, tx);
+            try (Transaction tx = Transaction.openRoot()) {
+                if (itemStack.isEmpty() && !stack.isEmpty() &&
+                    slot.insert(0, ItemResource.of(stack.copy()), 1, tx) == 1) {
                     tx.commit();
                     stack.shrink(1);
                     level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 2F);
                 }
-                else if (stack.isEmpty() && !pedestal.isEmpty()) {
-                    slot.extract(pedestal, 1, tx);
+                else if (stack.isEmpty() && !itemStack.isEmpty() &&
+                         slot.extract(0, ItemResource.of(itemStack), 1, tx) == 1) {
                     tx.commit();
-                    player.setItemInHand(InteractionHand.MAIN_HAND, copy);
+                    player.setItemInHand(InteractionHand.MAIN_HAND, itemStack);
                     pedestalBlockEntity.clearContents();
                     level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1F, 1F);
                 }
