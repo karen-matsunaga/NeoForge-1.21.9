@@ -7,6 +7,7 @@
 //import net.karen.mccoursemod.util.ModEnergyStorage;
 //import net.minecraft.core.BlockPos;
 //import net.minecraft.core.HolderLookup;
+//import net.minecraft.core.NonNullList;
 //import net.minecraft.nbt.CompoundTag;
 //import net.minecraft.network.Connection;
 //import net.minecraft.network.chat.Component;
@@ -22,6 +23,7 @@
 //import net.minecraft.world.inventory.ContainerData;
 //import net.minecraft.world.item.Item;
 //import net.minecraft.world.item.ItemStack;
+//import net.minecraft.world.item.crafting.Ingredient;
 //import net.minecraft.world.item.crafting.RecipeHolder;
 //import net.minecraft.world.level.Level;
 //import net.minecraft.world.level.block.entity.BlockEntity;
@@ -29,6 +31,7 @@
 //import net.minecraft.world.level.storage.ValueInput;
 //import net.minecraft.world.level.storage.ValueOutput;
 //import net.neoforged.neoforge.capabilities.Capabilities;
+//import net.neoforged.neoforge.common.extensions.IFluidExtension;
 //import net.neoforged.neoforge.fluids.FluidStack;
 //import net.neoforged.neoforge.transfer.energy.EnergyHandler;
 //import net.neoforged.neoforge.transfer.fluid.FluidResource;
@@ -54,13 +57,19 @@
 //            return switch (index) {
 //                case 0 -> true; // Input an item = Item input slot
 //                // Input a fluid item = Fluid input slot
-//                case 1 -> resource.toStack().getCapability(Capabilities.Fluid.ITEM, null).isValid(index, FluidResource.of(getFluid()));
+//                case 1 -> resource.toStack().getCapability(Capabilities.Fluid.ITEM, null)
+//                                            .isValid(index, FluidResource.of(getFluid()));
 //                case 2 -> resource.getItem() == ModItems.KOHLRABI.get(); // Transform an item on energy = Energy item slot
 //                case 3 -> false; // Output an item = Item output slot
 //                default -> super.isValid(index, resource);
 //            };
 //        }
 //    };
+//
+//    // CUSTOM METHOD - Item index
+//    public ItemResource itemHandler(int index) {
+//        return this.itemHandler.getResource(index);
+//    }
 //
 //    // Constants are the items inserted on custom block entity
 //    private static final int INPUT_SLOT = 0;
@@ -173,7 +182,7 @@
 //        output.putInt("gem_empowering_station.progress", progress);
 //        output.putInt("gem_empowering_station.max_progress", maxProgress);
 //        output.putInt("gem_empowering_station.energy_amount", energyAmount);
-//        neededFluidStack.writeToNBT(tag);
+//        neededFluidStack.copy();
 //        output.putInt("energy", ENERGY_STORAGE.getAmountAsInt());
 //        FLUID_TANK.serialize(output);
 //        super.saveAdditional(output);
@@ -186,7 +195,7 @@
 //        progress = input.getIntOr("gem_empowering_station.progress", 0);
 //        maxProgress = input.getIntOr("gem_empowering_station.max_progress", 0);
 //        energyAmount = input.getIntOr("gem_empowering_station.energy_amount", 0);
-//        neededFluidStack = FluidStack.fixedAmountCodec(input.getIntOr("fluid", 0));
+//        neededFluidStack = FluidStack.EMPTY;
 //        ENERGY_STORAGE.setEnergy(input.getIntOr("energy", 0));
 //        FLUID_TANK.deserialize(input);
 //    }
@@ -218,7 +227,7 @@
 //
 //    private void transferItemFluidToTank() {
 //        this.itemHandler.getResource(GemEmpoweringStationBlockEntity.FLUID_INPUT_SLOT).toStack().getCapability(
-//                Capabilities.Fluid.ITEM).ifPresent(iFluidHandlerItem -> {
+//                Capabilities.Fluid.ITEM, null).ifPresent(iFluidHandlerItem -> {
 //            int drainAmount = Math.min(this.FLUID_TANK.getResource(0).getFluid(), 1000);
 //
 //            FluidStack stack = iFluidHandlerItem.drain(drainAmount, IFluidHandler.FluidAction.SIMULATE);
@@ -298,7 +307,8 @@
 //        energyAmount = recipe.get().value().getEnergyAmount();
 //        neededFluidStack = recipe.get().value().getFluidStack();
 //        assert getLevel() != null;
-//        ItemStack resultItem = recipe.get().value().assemble(new GemEmpoweringStationRecipeInput(),
+//        ItemStack resultItem = recipe.get().value().assemble(new GemEmpoweringStationRecipeInput(NonNullList.of(Ingredient.of()),
+//                                                             ItemStack.EMPTY, maxProgress, energyAmount, getFluid()),
 //                                                             getLevel().registryAccess());
 //        return canInsertAmountIntoOutputSlot(resultItem.getCount())
 //                && canInsertItemIntoOutputSlot(resultItem.getItem()) && hasEnoughEnergyToCraft()
@@ -322,24 +332,22 @@
 //        Level level1 = this.level;
 //        assert level1 != null && level1.getServer() != null;
 //        return level1.getServer().getRecipeManager()
-//                                 .getRecipeFor(new GemEmpoweringStationRecipeInput(),
-//                                               inventory, level);
+//                                 .getRecipeFor(new GemEmpoweringStationRecipeInput(NonNullList.of(Ingredient.of()),
+//                                                                                   ItemStack.EMPTY, maxProgress, energyAmount,
+//                                                                                   getFluid()), level);
 //    }
 //
 //    private boolean canInsertItemIntoOutputSlot(Item item) {
-//        return this.itemHandler.getResource(OUTPUT_SLOT).isEmpty() ||
-//               this.itemHandler.getResource(OUTPUT_SLOT).is(item);
+//        return itemHandler(OUTPUT_SLOT).isEmpty() || itemHandler(OUTPUT_SLOT).is(item);
 //    }
 //
 //    private boolean canInsertAmountIntoOutputSlot(int count) {
-//        return this.itemHandler.getResource(OUTPUT_SLOT).getMaxStackSize() >=
-//               this.itemHandler.getResource(OUTPUT_SLOT).toStack().getCount() + count;
+//        return itemHandler(OUTPUT_SLOT).getMaxStackSize() >= itemHandler(OUTPUT_SLOT).toStack().getCount() + count;
 //    }
 //
 //    private boolean isOutputSlotEmptyOrReceivable() {
-//        return this.itemHandler.getResource(OUTPUT_SLOT).isEmpty() ||
-//               this.itemHandler.getResource(OUTPUT_SLOT).toStack().getCount() <
-//               this.itemHandler.getResource(OUTPUT_SLOT).getMaxStackSize();
+//        return itemHandler(OUTPUT_SLOT).isEmpty() ||
+//               itemHandler(OUTPUT_SLOT).toStack().getCount() < itemHandler(OUTPUT_SLOT).getMaxStackSize();
 //    }
 //
 //    // Save and restore on disk the energy storage

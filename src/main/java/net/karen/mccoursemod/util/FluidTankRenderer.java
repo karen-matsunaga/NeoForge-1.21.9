@@ -89,7 +89,6 @@
 //        Fluid fluid = fluidStack.getFluid();
 //        IClientFluidTypeExtensions renderProperties = IClientFluidTypeExtensions.of(fluid);
 //        ResourceLocation fluidStill = renderProperties.getStillTexture(fluidStack);
-//
 //        Minecraft minecraft = Minecraft.getInstance();
 //        return minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(fluidStill);
 //    }
