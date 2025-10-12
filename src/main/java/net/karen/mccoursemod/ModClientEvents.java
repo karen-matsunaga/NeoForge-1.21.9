@@ -19,10 +19,7 @@ import net.karen.mccoursemod.particle.BismuthParticles;
 import net.karen.mccoursemod.particle.BouncyBallsParticles;
 import net.karen.mccoursemod.particle.ModParticles;
 import net.karen.mccoursemod.screen.ModMenuTypes;
-import net.karen.mccoursemod.screen.custom.CraftingPlusScreen;
-import net.karen.mccoursemod.screen.custom.GrowthChamberScreen;
-import net.karen.mccoursemod.screen.custom.KaupenFurnaceScreen;
-import net.karen.mccoursemod.screen.custom.PedestalScreen;
+import net.karen.mccoursemod.screen.custom.*;
 import net.karen.mccoursemod.util.*;
 import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.karen.mccoursemod.worldgen.biome.ModSurfaceRules;
@@ -229,6 +226,7 @@ public class ModClientEvents {
         event.register(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), GrowthChamberScreen::new);
         event.register(ModMenuTypes.KAUPEN_FURNACE_MENU.get(), KaupenFurnaceScreen::new);
         event.register(ModMenuTypes.CRAFTING_PLUS_MENU.get(), CraftingPlusScreen::new);
+//        event.register(ModMenuTypes.GEM_EMPOWERING_MENU.get(), GemEmpoweringStationScreen::new);
     }
 
     // CUSTOM EVENT - Registry all custom fluid types

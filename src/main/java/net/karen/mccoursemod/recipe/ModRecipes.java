@@ -29,6 +29,9 @@ public class ModRecipes {
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<CraftingPlusRecipe>>
            CRAFTING_PLUS_SERIALIZER = SERIALIZERS.register("crafting_plus", CraftingPlusRecipe.Serializer::new);
 
+//    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<GemEmpoweringStationRecipe>>
+//           GEM_EMPOWERING_SERIALIZER = SERIALIZERS.register("gem_empowering", GemEmpoweringStationRecipe.Serializer::new);
+
     // Registry all custom recipes types
     public static final DeferredHolder<RecipeType<?>, RecipeType<GrowthChamberRecipe>> GROWTH_CHAMBER_TYPE =
            RECIPE_TYPES.register("growth_chamber", () -> new RecipeType<>() {
@@ -53,6 +56,14 @@ public class ModRecipes {
                     return "crafting_plus";
                 }
            });
+
+//    public static final DeferredHolder<RecipeType<?>, RecipeType<GemEmpoweringStationRecipe>> GEM_EMPOWERING_TYPE =
+//           RECIPE_TYPES.register("gem_empowering", () -> new RecipeType<>() {
+//               @Override
+//               public String toString() {
+//                   return "gem_empowering";
+//               }
+//           });
 
     // CUSTOM METHOD - Registry all custom recipes on event bus
     public static void register(IEventBus eventBus) {

@@ -40,6 +40,7 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                       ModBlocks.KAUPEN_FURNACE.get(),
                                                       ModBlocks.DICE.get(),
                                                       ModBlocks.GROWTH_CHAMBER.get(),
+//                                                      ModBlocks.GEM_EMPOWERING_STATION.get(),
                                                       ModBlocks.PEDESTAL.get(),
                                                       ModBlocks.CRAFTING_PLUS.get())
                                                  .addTag(ModTags.Blocks.MCCOURSE_MOD_ORES)

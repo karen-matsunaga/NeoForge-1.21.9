@@ -341,6 +341,8 @@ public class ModRecipeProvider extends RecipeProvider {
         // Crafting Plus 7x7 - (Three items)
         craftSevenItems(List.of(ModBlocks.MCCOURSEMOD_GENERATOR.get(), ModBlocks.CRAFTING_PLUS.get(),
                                 Items.NETHER_STAR, Items.ENCHANTED_GOLDEN_APPLE));
+//        craftSevenItems(List.of(ModBlocks.GEM_EMPOWERING_STATION.get(), Items.FURNACE, ModItems.ALEXANDRITE.get(),
+//                                Items.BOOK));
     }
 
     // ** CUSTOM METHOD - CRAFTING PLUS custom recipes **
