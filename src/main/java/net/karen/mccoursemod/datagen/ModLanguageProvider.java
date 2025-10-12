@@ -364,7 +364,7 @@ public class ModLanguageProvider extends LanguageProvider {
         // ** CUSTOM block entity **
         blockLang(ModBlocks.PEDESTAL, "§8");
         blockLang(ModBlocks.GROWTH_CHAMBER, "§8");
-//        blockLang(ModBlocks.GEM_EMPOWERING_STATION, "§8");
+        blockLang(ModBlocks.GEM_EMPOWERING_STATION, "§8");
 
         // ** CUSTOM Fluid block **
         blockLang(ModFluids.SOAP_WATER_BLOCK, "§d");
@@ -745,10 +745,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add("mccoursemod.configuration.logDirtBlock", "Log Dirt Block");
         add("mccoursemod.configuration.magicNumberIntroduction", "Magic Number Text");
         add("mccoursemod.configuration.magicNumber", "Magic Number");
-
-        // Gem Empowering Station block entity container
-//        add("mccoursemod.tooltip.liquid.amount.with.capacity", "%s / %s mB");
-//        add("mccoursemod.tooltip.liquid.amount", "%s mB");
     }
 
     // CUSTOM METHOD - Register Block and Block Item

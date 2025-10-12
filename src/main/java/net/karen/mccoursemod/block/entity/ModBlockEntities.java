@@ -21,9 +21,9 @@ public class ModBlockEntities {
            BLOCK_ENTITIES.register("growth_chamber_be",
            () -> new BlockEntityType<>(GrowthChamberBlockEntity::new, ModBlocks.GROWTH_CHAMBER.get()));
 
-//    public static final Supplier<BlockEntityType<GemEmpoweringStationBlockEntity>> GEM_EMPOWERING_STATION_BE =
-//           BLOCK_ENTITIES.register("gem_empowering_station_be",
-//           () -> new BlockEntityType<>(GemEmpoweringStationBlockEntity::new, ModBlocks.GEM_EMPOWERING_STATION.get()));
+    public static final Supplier<BlockEntityType<GemEmpoweringStationBlockEntity>> GEM_EMPOWERING_STATION_BE =
+           BLOCK_ENTITIES.register("gem_empowering_station_be",
+           () -> new BlockEntityType<>(GemEmpoweringStationBlockEntity::new, ModBlocks.GEM_EMPOWERING_STATION.get()));
 
     public static final Supplier<BlockEntityType<KaupenFurnaceBlockEntity>> KAUPEN_FURNACE_BLOCK_ENTITY =
            BLOCK_ENTITIES.register("kaupen_furnace_block_entity",

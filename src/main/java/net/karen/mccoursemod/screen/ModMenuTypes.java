@@ -28,8 +28,8 @@ public class ModMenuTypes {
     public static final DeferredHolder<MenuType<?>, MenuType<CraftingPlusMenu>> CRAFTING_PLUS_MENU =
            registerMenuType("crafting_plus_menu", CraftingPlusMenu::new);
 
-//    public static final DeferredHolder<MenuType<?>, MenuType<GemEmpoweringStationMenu>> GEM_EMPOWERING_MENU =
-//           registerMenuType("gem_empowering_menu", GemEmpoweringStationMenu::new);
+    public static final DeferredHolder<MenuType<?>, MenuType<GemEmpoweringStationMenu>> GEM_EMPOWERING_STATION_MENU =
+           registerMenuType("gem_empowering_menu", GemEmpoweringStationMenu::new);
 
     // CUSTOM METHOD - Registry all custom menus
     private static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>>

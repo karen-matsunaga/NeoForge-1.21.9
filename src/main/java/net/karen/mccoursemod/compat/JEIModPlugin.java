@@ -6,10 +6,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.*;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.recipe.CraftingPlusRecipe;
-import net.karen.mccoursemod.recipe.GrowthChamberRecipe;
-import net.karen.mccoursemod.recipe.KaupenFurnaceRecipe;
-import net.karen.mccoursemod.recipe.ModRecipes;
+import net.karen.mccoursemod.recipe.*;
 import net.karen.mccoursemod.screen.ModMenuTypes;
 import net.karen.mccoursemod.screen.custom.*;
 import net.minecraft.resources.ResourceLocation;
@@ -33,6 +30,7 @@ public class JEIModPlugin implements IModPlugin {
         registration.addRecipeCategories(new GrowthChamberRecipeCategory(guiHelper));
         registration.addRecipeCategories(new KaupenFurnaceRecipeCategory(guiHelper));
         registration.addRecipeCategories(new CraftingPlusRecipeCategory(guiHelper));
+        registration.addRecipeCategories(new GemEmpoweringStationRecipeCategory(guiHelper));
     }
 
     @Override
@@ -76,6 +74,17 @@ public class JEIModPlugin implements IModPlugin {
                                                                                                               List.of()),
                                                                server.registryAccess()).getItem()), true)));
                            }
+                  });
+
+            // GEM EMPOWERING STATION TYPE
+            server.getRecipeManager().recipeMap().byType(ModRecipes.GEM_EMPOWERING_STATION_TYPE.get())
+                  .forEach(holder -> {
+                           GemEmpoweringStationRecipe recipe = holder.value();
+                           registration.addRecipes(GemEmpoweringStationRecipeCategory.GEM_EMPOWERING_TYPE,
+                                                   List.of(new GemEmpoweringStationRecipe(recipe.inputItems(),
+                                                                                          recipe.output(),
+                                                                                          recipe.craftTime(),
+                                                                                          recipe.energyAmount())));
                   });
         }
     }

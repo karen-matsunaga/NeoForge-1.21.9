@@ -291,8 +291,8 @@ public class ModBlocks {
                          new GrowthChamberBlock(properties.requiresCorrectToolForDrops()
                                                           .strength(4.0F, 4.0F)));
 
-//    public static final DeferredBlock<Block> GEM_EMPOWERING_STATION =
-//           registerBlock("gem_empowering_station", GemEmpoweringStationBlock::new);
+    public static final DeferredBlock<Block> GEM_EMPOWERING_STATION =
+           registerBlock("gem_empowering_station", GemEmpoweringStationBlock::new);
 
     public static final DeferredBlock<Block> KAUPEN_FURNACE =
            registerBlock("kaupen_furnace", properties ->

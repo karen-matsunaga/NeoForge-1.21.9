@@ -220,7 +220,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         // CUSTOM block entity
         this.dropSelf(ModBlocks.PEDESTAL.get());
         this.dropSelf(ModBlocks.GROWTH_CHAMBER.get());
-//        this.dropSelf(ModBlocks.GEM_EMPOWERING_STATION.get());
+        this.dropSelf(ModBlocks.GEM_EMPOWERING_STATION.get());
 
         // CUSTOM glass block
         this.dropSelf(ModBlocks.FORCED_STAINED_GLASS.get());

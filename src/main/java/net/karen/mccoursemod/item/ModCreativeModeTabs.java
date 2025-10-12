@@ -299,7 +299,7 @@ public class ModCreativeModeTabs {
                  // ** CUSTOM Block entity **
                  output.accept(ModBlocks.PEDESTAL);
                  output.accept(ModBlocks.GROWTH_CHAMBER);
-//                 output.accept(ModBlocks.GEM_EMPOWERING_STATION);
+                 output.accept(ModBlocks.GEM_EMPOWERING_STATION);
                  // ** CUSTOM Glass blocks **
                  output.accept(ModBlocks.FORCED_STAINED_GLASS);
                  output.accept(ModBlocks.FORCED_STAINED_GLASS_PANE);

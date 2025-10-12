@@ -2,6 +2,7 @@ package net.karen.mccoursemod;
 
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.block.entity.ModBlockEntities;
+import net.karen.mccoursemod.block.entity.renderer.GemEmpoweringStationBlockEntityRenderer;
 import net.karen.mccoursemod.block.entity.renderer.PedestalBlockEntityRenderer;
 import net.karen.mccoursemod.component.custom.AlternateTexture;
 import net.karen.mccoursemod.entity.ModEntities;
@@ -214,6 +215,8 @@ public class ModClientEvents {
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         // ** CUSTOM Block entity renderers **
         event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL_BE.get(), PedestalBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.GEM_EMPOWERING_STATION_BE.get(),
+                                          GemEmpoweringStationBlockEntityRenderer::new);
         // ** CUSTOM Sign and Hanging Sing renderers **
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
@@ -226,7 +229,7 @@ public class ModClientEvents {
         event.register(ModMenuTypes.GROWTH_CHAMBER_MENU.get(), GrowthChamberScreen::new);
         event.register(ModMenuTypes.KAUPEN_FURNACE_MENU.get(), KaupenFurnaceScreen::new);
         event.register(ModMenuTypes.CRAFTING_PLUS_MENU.get(), CraftingPlusScreen::new);
-//        event.register(ModMenuTypes.GEM_EMPOWERING_MENU.get(), GemEmpoweringStationScreen::new);
+        event.register(ModMenuTypes.GEM_EMPOWERING_STATION_MENU.get(), GemEmpoweringStationScreen::new);
     }
 
     // CUSTOM EVENT - Registry all custom fluid types

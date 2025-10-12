@@ -1,4 +1,4 @@
-// 1.21.10	2025-10-08T13:19:53.0543291	Mccourse Mod Models
+// 1.21.10	2025-10-12T17:44:43.2433893	Mccourse Mod Models
 f7a9ed05e4c0a1202e8bcf365202ba7cb2be62ac assets/mccoursemod/blockstates/alexandrite_block.json
 0cafbe7ae27ac97223742c164d1ec7781a244c03 assets/mccoursemod/blockstates/alexandrite_button.json
 20c64ac30962cfc1d73c994801bea26d04829f07 assets/mccoursemod/blockstates/alexandrite_door.json
@@ -52,6 +52,7 @@ ebc02ad166f2157627512e410d86241898c09adc assets/mccoursemod/blockstates/end_ston
 402c3c60b17d802bf1d22fb88b1005f427104060 assets/mccoursemod/blockstates/fermented_spider_eye_block.json
 f618d71b45625acaa18f8c0cee1727785106cc62 assets/mccoursemod/blockstates/forced_stained_glass.json
 349177d8585c489907af3ac2415e39a74b86b900 assets/mccoursemod/blockstates/forced_stained_glass_pane.json
+8f21bbc613d8ce6c5627520010cdf2e9d8536f2d assets/mccoursemod/blockstates/gem_empowering_station.json
 d8dbf9ee5426d834c61d532fff32bb128bf208e0 assets/mccoursemod/blockstates/goji_berry_bush.json
 7db58dbb93c91a15b89635114604e514b65301be assets/mccoursemod/blockstates/gray_ender_pearl_block.json
 9b92fc34fe1b689e1d69a7e4d1296cdac44e0ae5 assets/mccoursemod/blockstates/green_ender_pearl_block.json
@@ -207,6 +208,7 @@ f3f00561d436294e6c205d6df3c671141ebae232 assets/mccoursemod/items/fermented_spid
 f3eebc082c2c88ea97bea7a98d4deeceeb66d2c8 assets/mccoursemod/items/forced_stained_glass_pane.json
 d16de6e4e1ec5722e7da7f542236800827c8ae85 assets/mccoursemod/items/frostfire_ice.json
 46e6f51ea093628ec2e3cf939bd206b36308bda9 assets/mccoursemod/items/gecko_spawn_egg.json
+7a8e978a23730d06caa8807769ab0254b7af1bf4 assets/mccoursemod/items/gem_empowering_station.json
 1ee0e54c23940eb7b0a3fb3ea575da512485541d assets/mccoursemod/items/goji_berries.json
 0ccc48b9d2d90a8516cef8c0cc5d3e6384b0ce1d assets/mccoursemod/items/gold_hammer.json
 78942a5a3993a4ad7101294cf63d1cfc9b142875 assets/mccoursemod/items/gold_paxel.json

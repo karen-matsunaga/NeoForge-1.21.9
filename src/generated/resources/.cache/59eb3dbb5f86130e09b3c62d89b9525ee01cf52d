@@ -1,4 +1,4 @@
-// 1.21.10	2025-10-07T12:39:30.6310925	Loot Tables
+// 1.21.10	2025-10-12T17:44:43.2383172	Loot Tables
 cdb697b4f47740809ecdb90e81e8e5d2f56cfc86 data/mccoursemod/loot_table/blocks/alexandrite_block.json
 291a785f3fc73335884718fec6c7d2db06eb0048 data/mccoursemod/loot_table/blocks/alexandrite_button.json
 d0ad4d5e3aeabf77ec2d12530e2bc9b7e6bef80e data/mccoursemod/loot_table/blocks/alexandrite_door.json
@@ -51,6 +51,7 @@ b1a817c332cbc221278940f2a5044019d976b658 data/mccoursemod/loot_table/blocks/end_
 d79a36258d46758b4b8930909bfc8ecb0997d569 data/mccoursemod/loot_table/blocks/fermented_spider_eye_block.json
 4ec062a256e96e5f1980fce0daed41e22322ca09 data/mccoursemod/loot_table/blocks/forced_stained_glass.json
 8ec26c448d76369b699fac22147f4c6a0e6bf574 data/mccoursemod/loot_table/blocks/forced_stained_glass_pane.json
+3028af5bc273fe3d000d43809db442bdd2acc6d4 data/mccoursemod/loot_table/blocks/gem_empowering_station.json
 e5c81ae611ce4baa03350fca9be57894c05936ab data/mccoursemod/loot_table/blocks/goji_berry_bush.json
 7ed508d50f1f33e08f6bfd55a62c0c75aa9d90ae data/mccoursemod/loot_table/blocks/gray_ender_pearl_block.json
 1d42384377fd3fa6218e36e08e0df22e0ddf33e8 data/mccoursemod/loot_table/blocks/green_ender_pearl_block.json

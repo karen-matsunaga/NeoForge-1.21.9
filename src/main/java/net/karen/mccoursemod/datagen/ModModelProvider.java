@@ -196,7 +196,7 @@ public class ModModelProvider extends ModelProvider {
 
         // ** CUSTOM block entity **
         createPedestalTexture(blockModels, itemModels, ModBlocks.PEDESTAL.get());
-//        createPedestalTexture(blockModels, itemModels, ModBlocks.GEM_EMPOWERING_STATION.get());
+        createPedestalTexture(blockModels, itemModels, ModBlocks.GEM_EMPOWERING_STATION.get());
 
         // ** CUSTOM crafting block entity **
         blockModels.createTrivialCube(ModBlocks.GROWTH_CHAMBER.get());
@@ -882,7 +882,7 @@ public class ModModelProvider extends ModelProvider {
         return ModBlocks.BLOCKS.getEntries()
                                .stream().filter(x ->
                                                 !(x.get() == ModBlocks.PEDESTAL.get()) &&
-//                                                !(x.get() == ModBlocks.GEM_EMPOWERING_STATION.get()) &&
+                                                !(x.get() == ModBlocks.GEM_EMPOWERING_STATION.get()) &&
                                                 !(x.get() == ModBlocks.CHAIR.get()));
     }
 
@@ -892,7 +892,7 @@ public class ModModelProvider extends ModelProvider {
         return ModItems.ITEMS.getEntries()
                              .stream().filter(x ->
                                               x.get() != ModBlocks.PEDESTAL.asItem() &&
-//                                              x.get() != ModBlocks.GEM_EMPOWERING_STATION.asItem() &&
+                                              x.get() != ModBlocks.GEM_EMPOWERING_STATION.asItem() &&
                                               x.get() != ModBlocks.CHAIR.asItem() &&
                                               !(x.get() == ModItems.TOMAHAWK.get()) &&
                                               !(x.get() == ModItems.ALEXANDRITE_SHIELD.get()) &&

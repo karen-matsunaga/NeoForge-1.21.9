@@ -1,0 +1,23 @@
+{
+  "type": "mccoursemod:crafting_plus",
+  "category": "misc",
+  "group": "crafting_plus",
+  "key": {
+    "A": "minecraft:furnace",
+    "B": "mccoursemod:alexandrite",
+    "C": "minecraft:book"
+  },
+  "pattern": [
+    "AAAAAAA",
+    "ABBBBBA",
+    "ABBBBBA",
+    "ABBCBBA",
+    "ABBBBBA",
+    "ABBBBBA",
+    "AAAAAAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mccoursemod:gem_empowering_station"
+  }
+}
