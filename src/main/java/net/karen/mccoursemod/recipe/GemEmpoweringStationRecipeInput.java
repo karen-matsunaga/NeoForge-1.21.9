@@ -1,16 +1,14 @@
 package net.karen.mccoursemod.recipe;
 
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeInput;
 import org.jetbrains.annotations.NotNull;
+import java.util.List;
 
-public record GemEmpoweringStationRecipeInput(NonNullList<Ingredient> inputItems, ItemStack output,
-                                              int craftTime, int energyAmount) implements RecipeInput {
+public record GemEmpoweringStationRecipeInput(List<ItemStack> inputItems) implements RecipeInput {
     @Override
-    public @NotNull ItemStack getItem(int i) { return new ItemStack(inputItems.getFirst().getValues().get(0)); }
+    public @NotNull ItemStack getItem(int i) { return inputItems.get(i); }
 
     @Override
-    public int size() { return 3; }
+    public int size() { return 2; }
 }

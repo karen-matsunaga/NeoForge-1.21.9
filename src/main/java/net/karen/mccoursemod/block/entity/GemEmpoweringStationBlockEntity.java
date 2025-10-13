@@ -8,7 +8,6 @@ import net.karen.mccoursemod.screen.custom.GemEmpoweringStationMenu;
 import net.karen.mccoursemod.util.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
@@ -25,7 +24,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -38,6 +36,7 @@ import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Optional;
 
 public class GemEmpoweringStationBlockEntity extends BlockEntity implements MenuProvider {
@@ -218,10 +217,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         Optional<RecipeHolder<GemEmpoweringStationRecipe>> recipe = getCurrentRecipe();
         if (getLevel() != null && recipe.isPresent()) {
             GemEmpoweringStationRecipe recipes = recipe.get().value();
-            ItemStack resultItem = recipes.assemble(new GemEmpoweringStationRecipeInput(recipes.getInputItems(),
-                                                                                        recipes.output(),
-                                                                                        maxProgress, energyAmount),
-                                                    getLevel().registryAccess());
+            ItemStack resultItem = recipes.output();
             try (Transaction tx = Transaction.openRoot()) {
                 this.itemHandler.extract(INPUT_SLOT, ItemResource.of(recipes.getInputItems().getFirst().getValues().get(0)),
                                          1, tx); // Input slot
@@ -244,10 +240,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         GemEmpoweringStationRecipe recipes = recipe.get().value();
         maxProgress = recipes.getCraftTime();
         energyAmount = recipes.getEnergyAmount();
-        ItemStack resultItem = recipes.assemble(new GemEmpoweringStationRecipeInput(recipes.getInputItems(),
-                                                                                    recipes.output(),
-                                                                                    maxProgress, energyAmount),
-                                                                                    getLevel().registryAccess());
+        ItemStack resultItem = recipes.output();
         return canInsertAmountIntoOutputSlot(resultItem.getCount()) &&
                canInsertItemIntoOutputSlot(resultItem.getItem()) && hasEnoughEnergyToCraft();
     }
@@ -260,22 +253,16 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     private Optional<RecipeHolder<GemEmpoweringStationRecipe>> getCurrentRecipe() {
         SimpleContainer inventory = new SimpleContainer(this.itemHandler.size());
         for (int i = 0; i < this.itemHandler.size(); i++) {
-            inventory.setItem(i, itemHandler(i).toStack());
+            inventory.setItem(i, itemHandler(i).toStack(itemHandler.getAmountAsInt(i)));
         }
         Level level = this.level;
         assert level != null;
         MinecraftServer mcServer = level.getServer();
         assert mcServer != null;
-        ItemStack stack0 = itemHandler(0).toStack(itemHandler.getAmountAsInt(0));
-        ItemStack stack1 = itemHandler(1).toStack(itemHandler.getAmountAsInt(1));
-        ItemStack stack2 = itemHandler(2).toStack(itemHandler.getAmountAsInt(2));
-        if (stack0.isEmpty() || stack1.isEmpty()) {
-            return Optional.empty(); // Avoid creating invalid Ingredient
-        }
-        NonNullList<Ingredient> ingredients = NonNullList.of(Ingredient.of(stack0.getItem()), Ingredient.of(stack1.getItem()));
         return mcServer.getRecipeManager()
                        .getRecipeFor(ModRecipes.GEM_EMPOWERING_STATION_TYPE.get(),
-                                     new GemEmpoweringStationRecipeInput(ingredients, stack2, maxProgress, energyAmount),
+                                     new GemEmpoweringStationRecipeInput(List.of(inventory.getItem(0),
+                                                                                 inventory.getItem(1))),
                                      level);
     }
 

@@ -5,7 +5,6 @@ import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
-import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceKey;
@@ -16,16 +15,17 @@ import net.minecraft.world.item.crafting.Recipe;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GemEmpoweringRecipeBuilder implements RecipeBuilder {
+    private final List<Ingredient> ingredient;
     private final ItemStack result;
-    private final NonNullList<Ingredient> ingredient;
     private final int craftTime;
     private final int energyAmount;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
-    public GemEmpoweringRecipeBuilder(NonNullList<Ingredient> ingredient, ItemStack result,
+    public GemEmpoweringRecipeBuilder(List<Ingredient> ingredient, ItemStack result,
                                       int craftTime, int energyAmount) {
         this.ingredient = ingredient;
         this.result = result;
@@ -49,7 +49,7 @@ public class GemEmpoweringRecipeBuilder implements RecipeBuilder {
     @Override
     public void save(@NotNull RecipeOutput recipeOutput, @NotNull ResourceKey<Recipe<?>> resourceKey) {
         Advancement.Builder advancement =
-                recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(resourceKey))
+            recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(resourceKey))
                         .rewards(AdvancementRewards.Builder.recipe(resourceKey))
                         .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);

@@ -2,7 +2,9 @@
   "type": "mccoursemod:gem_empowering_station",
   "craftTime": 40,
   "energyAmount": 150,
-  "ingredient": [],
+  "ingredient": [
+    "minecraft:coal"
+  ],
   "output": {
     "count": 7,
     "id": "minecraft:diamond"

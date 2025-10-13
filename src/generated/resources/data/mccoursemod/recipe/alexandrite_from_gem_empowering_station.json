@@ -2,7 +2,9 @@
   "type": "mccoursemod:gem_empowering_station",
   "craftTime": 160,
   "energyAmount": 50,
-  "ingredient": [],
+  "ingredient": [
+    "mccoursemod:raw_alexandrite"
+  ],
   "output": {
     "count": 3,
     "id": "mccoursemod:alexandrite"

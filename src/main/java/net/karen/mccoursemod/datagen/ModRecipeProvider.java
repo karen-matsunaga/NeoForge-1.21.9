@@ -10,7 +10,6 @@ import net.karen.mccoursemod.recipe.KaupenFurnaceRecipeBuilder;
 import net.karen.mccoursemod.util.ModTags;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -347,18 +346,16 @@ public class ModRecipeProvider extends RecipeProvider {
                                 Items.BOOK));
 
         // ** Gem Empowering Station custom recipes **
-        gemEmpoweringStation(Ingredient.of(ModItems.RAW_ALEXANDRITE.get()), ModItems.ALEXANDRITE.get(), 3, 160, 50);
-        gemEmpoweringStation(Ingredient.of(Items.COAL), Items.DIAMOND, 7, 40, 150);
-        gemEmpoweringStation(Ingredient.of(Items.COBBLESTONE), Items.OBSIDIAN, 1, 100, 200);
+        gemEmpoweringStation(ModItems.RAW_ALEXANDRITE.get(), ModItems.ALEXANDRITE.get(), 3, 160, 50);
+        gemEmpoweringStation(Items.COAL, Items.DIAMOND, 7, 40, 150);
+        gemEmpoweringStation(Items.COBBLESTONE, Items.OBSIDIAN, 1, 100, 200);
     }
 
     // ** CUSTOM METHOD - Gem Empowering Station custom recipes **
-    protected void gemEmpoweringStation(Ingredient ingredient, ItemLike result, int count,
-                                               int craftTime, int energyAmount) {
-        new GemEmpoweringRecipeBuilder(NonNullList.of(ingredient),
-                                       new ItemStack(result, count), craftTime, energyAmount)
-                                      .unlockedBy(getHasName(ingredient.getValues().get(0).value()),
-                                                  has(ingredient.getValues().get(0).value()))
+    protected void gemEmpoweringStation(ItemLike ingredient, ItemLike result, int count,
+                                        int craftTime, int energyAmount) {
+        new GemEmpoweringRecipeBuilder(List.of(Ingredient.of(ingredient)), new ItemStack(result, count), craftTime, energyAmount)
+                                      .unlockedBy(getHasName(ingredient), has(ingredient))
                                       .save(this.output, MccourseMod.MOD_ID + ":" +
                                             getItemName(result) + "_from_gem_empowering_station");
     }

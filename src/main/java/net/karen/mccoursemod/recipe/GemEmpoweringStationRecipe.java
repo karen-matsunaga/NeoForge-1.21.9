@@ -4,7 +4,6 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -12,9 +11,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import java.util.function.Function;
 
-public record GemEmpoweringStationRecipe(NonNullList<Ingredient> inputItems,
+public record GemEmpoweringStationRecipe(List<Ingredient> inputItems,
                                          ItemStack output, int craftTime, int energyAmount)
        implements Recipe<GemEmpoweringStationRecipeInput> {
 
@@ -40,7 +40,7 @@ public record GemEmpoweringStationRecipe(NonNullList<Ingredient> inputItems,
         return ModRecipes.GEM_EMPOWERING_STATION_TYPE.get();
     }
 
-    public NonNullList<Ingredient> getInputItems() { return this.inputItems; }
+    public List<Ingredient> getInputItems() { return this.inputItems; }
 
     public int getCraftTime() { return craftTime; } // Craft Time
 
@@ -61,8 +61,8 @@ public record GemEmpoweringStationRecipe(NonNullList<Ingredient> inputItems,
 
         public static final MapCodec<GemEmpoweringStationRecipe> CODEC =
                RecordCodecBuilder.mapCodec(inst -> inst.group(
-                                           NonNullList.codecOf(Ingredient.CODEC).fieldOf("ingredient")
-                                                      .forGetter(GemEmpoweringStationRecipe::inputItems),
+                                           Ingredient.CODEC.listOf().fieldOf("ingredient")
+                                                     .forGetter(GemEmpoweringStationRecipe::inputItems),
                                            ItemStack.CODEC.fieldOf("output")
                                                     .forGetter(GemEmpoweringStationRecipe::output),
                                            Codec.INT.fieldOf("craftTime")
@@ -72,14 +72,14 @@ public record GemEmpoweringStationRecipe(NonNullList<Ingredient> inputItems,
                                  .apply(inst, GemEmpoweringStationRecipe::new));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, GemEmpoweringStationRecipe> STREAM_CODEC =
-                StreamCodec.composite(Ingredient.CONTENTS_STREAM_CODEC
-                                                .apply(ByteBufCodecs.list())
-                                                .map(NonNullList::copyOf, Function.identity()),
-                                      GemEmpoweringStationRecipe::inputItems,
-                                      ItemStack.STREAM_CODEC, GemEmpoweringStationRecipe::output,
-                                      ByteBufCodecs.VAR_INT, GemEmpoweringStationRecipe::craftTime,
-                                      ByteBufCodecs.VAR_INT, GemEmpoweringStationRecipe::energyAmount,
-                                      GemEmpoweringStationRecipe::new);
+               StreamCodec.composite(Ingredient.CONTENTS_STREAM_CODEC
+                                               .apply(ByteBufCodecs.list())
+                                               .map(List::copyOf, Function.identity()),
+                                     GemEmpoweringStationRecipe::inputItems,
+                                     ItemStack.STREAM_CODEC, GemEmpoweringStationRecipe::output,
+                                     ByteBufCodecs.VAR_INT, GemEmpoweringStationRecipe::craftTime,
+                                     ByteBufCodecs.VAR_INT, GemEmpoweringStationRecipe::energyAmount,
+                                     GemEmpoweringStationRecipe::new);
 
         @Override
         public @NotNull MapCodec<GemEmpoweringStationRecipe> codec() {
