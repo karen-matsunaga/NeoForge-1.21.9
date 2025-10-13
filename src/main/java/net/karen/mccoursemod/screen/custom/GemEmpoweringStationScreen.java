@@ -5,7 +5,6 @@ import net.karen.mccoursemod.util.EnergyDisplayTooltipArea;
 import net.karen.mccoursemod.util.MouseUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -24,7 +23,7 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         super(menu, inventory, title);
     }
 
-    // Titles to show on custom block entity GUI
+    // DEFAULT METHOD - Titles to show on custom block entity GUI
     @Override
     protected void init() {
         super.init();
@@ -40,11 +39,11 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         renderEnergyAreaTooltip(guiGraphics, mouseX, mouseY, x, y);
     }
 
-    private void renderEnergyAreaTooltip(GuiGraphics guiGraphics, int pMouseX, int pMouseY,
+    private void renderEnergyAreaTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY,
                                          int x, int y) {
-        if (isMouseAboveArea(pMouseX, pMouseY, x, y, 156, 11, 8, 64)) {
-            guiGraphics.renderTooltip(this.font, energyInfoArea.getClientTooltip(),
-                                      pMouseX - x, pMouseY - y, DefaultTooltipPositioner.INSTANCE, TEXTURE);
+        if (isMouseAboveArea(mouseX, mouseY, x, y, 156, 11, 8, 64)) {
+            guiGraphics.setTooltipForNextFrame(this.font, energyInfoArea.getTooltip(),
+                                               mouseX - x, mouseY - y);
         }
     }
 
@@ -56,15 +55,12 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
 
     // Render GUI texture
     @Override
-    protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, imageWidth, imageHeight,
                          256, 256);
-
         renderProgressArrow(guiGraphics, x, y);
-
         energyInfoArea.render(guiGraphics);
     }
 
@@ -83,8 +79,8 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
-    private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y,
+    private boolean isMouseAboveArea(int mouseX, int mouseY, int x, int y,
                                      int offsetX, int offsetY, int width, int height) {
-        return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, width, height);
+        return MouseUtil.isMouseOver(mouseX, mouseY, x + offsetX, y + offsetY, width, height);
     }
 }

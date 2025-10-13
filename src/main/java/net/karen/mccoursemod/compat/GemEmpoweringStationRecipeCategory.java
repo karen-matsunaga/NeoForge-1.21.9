@@ -1,12 +1,16 @@
 package net.karen.mccoursemod.compat;
 
+import com.mojang.serialization.Codec;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
+import mezz.jei.api.helpers.ICodecHelper;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
 import net.karen.mccoursemod.MccourseMod;
@@ -22,9 +26,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
+import org.jetbrains.annotations.Nullable;
 
-public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEmpoweringStationRecipe> {
+public class GemEmpoweringStationRecipeCategory
+       implements IRecipeCategory<GemEmpoweringStationRecipe> {
+
     public static final ResourceLocation UID =
            ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "gem_empowering_station");
 
@@ -40,8 +46,8 @@ public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEm
     public GemEmpoweringStationRecipeCategory(IGuiHelper helper) {
         this.background = helper.drawableBuilder(TEXTURE, 0, 0, 176, 83).build(); // Background
         this.icon = helper.createDrawableItemLike(ModBlocks.GEM_EMPOWERING_STATION.get()); // Icon
-        this.arrow = helper.createAnimatedDrawable(helper.createDrawable(TEXTURE, 176, 0, 10, 30), 200,
-                                                   IDrawableAnimated.StartDirection.TOP, false);
+        this.arrow = helper.createAnimatedDrawable(helper.createDrawable(TEXTURE, 176, 0, 10, 30),
+                                                   200, IDrawableAnimated.StartDirection.TOP, false);
     }
 
     @Override
@@ -72,6 +78,13 @@ public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEm
         builder.addOutputSlot(80, 59).add(recipe.output().getItem()).setOutputSlotBackground();
     }
 
+    @Override
+    public void createRecipeExtras(IRecipeExtrasBuilder builder, @NotNull GemEmpoweringStationRecipe recipe,
+                                   @NotNull IFocusGroup focuses) {
+        builder.addDrawable(arrow, 85, 30); // Draw animated arrow
+        IRecipeCategory.super.createRecipeExtras(builder, recipe, focuses);
+    }
+
     // Energy Renderer on screen
     @Override
     public void draw(@NotNull GemEmpoweringStationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
@@ -84,7 +97,6 @@ public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEm
             guiGraphics.drawString(fontRenderer, info, 120, 45, 0xFF808080, false);
         }
         energyTooltip(energyStorage(recipe)).render(guiGraphics); // Draws the power bar
-        arrow.draw(guiGraphics, 85, 30); // Draw animated arrow
     }
 
     // Energy Renderer on screen
@@ -93,8 +105,7 @@ public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEm
                            @NotNull IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         int x = 156, y = 11, width = 8, height = 64;
         if (mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height) {
-            List<Component> energyList = energyTooltip(energyStorage(recipe)).getTooltips();
-            for (Component component : energyList) { tooltip.add(component); }
+            tooltip.add(energyTooltip(energyStorage(recipe)).getTooltip());
         }
     }
 
@@ -108,5 +119,17 @@ public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEm
 
     private EnergyDisplayTooltipArea energyTooltip(ModEnergyStorage stored) {
         return new EnergyDisplayTooltipArea(156, 11, stored);
+    }
+
+
+    @Override
+    public @Nullable ResourceLocation getRegistryName(@NotNull GemEmpoweringStationRecipe recipe) {
+        return getRecipeType().getUid();
+    }
+
+    @Override
+    public @NotNull Codec<GemEmpoweringStationRecipe> getCodec(@NotNull ICodecHelper codecHelper,
+                                                               @NotNull IRecipeManager recipeManager) {
+        return GemEmpoweringStationRecipe.Serializer.CODEC.codec();
     }
 }

@@ -22,7 +22,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
@@ -41,15 +40,11 @@ import java.util.Optional;
 
 public class GemEmpoweringStationBlockEntity extends BlockEntity implements MenuProvider {
     // Custom block entity GUI
-    private final ItemStacksResourceHandler itemHandler = new ItemStacksResourceHandler(4) {
+    private final ItemStacksResourceHandler itemHandler = new ItemStacksResourceHandler(3) {
         @Override
         protected void onContentsChanged(int index, @NotNull ItemStack previousContents) {
             setChanged();
-            if (level != null) {
-                if (!level.isClientSide()) {
-                    level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-                }
-            }
+            hasLevel(level);
         }
 
         @Override
@@ -89,10 +84,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
             @Override
             public void onEnergyChanged() {
                 setChanged();
-                Level level = getLevel();
-                if (level != null) {
-                    level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-                }
+                hasLevel(level);
             }
         };
     }
@@ -112,8 +104,8 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         super(ModBlockEntities.GEM_EMPOWERING_STATION_BE.get(), pos, state);
         this.data = new ContainerData() {
             @Override
-            public int get(int pIndex) {
-                return switch (pIndex) {
+            public int get(int index) {
+                return switch (index) {
                     case 0 -> GemEmpoweringStationBlockEntity.this.progress;
                     case 1 -> GemEmpoweringStationBlockEntity.this.maxProgress;
                     default -> 0;
@@ -121,10 +113,10 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
             }
 
             @Override
-            public void set(int pIndex, int pValue) {
-                switch (pIndex) {
-                    case 0 -> GemEmpoweringStationBlockEntity.this.progress = pValue;
-                    case 1 -> GemEmpoweringStationBlockEntity.this.maxProgress = pValue;
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> GemEmpoweringStationBlockEntity.this.progress = value;
+                    case 1 -> GemEmpoweringStationBlockEntity.this.maxProgress = value;
                 }
             }
 
@@ -140,7 +132,9 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     // Drops all items on inventory
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.size());
-        for (int i = 0; i < itemHandler.size(); i++) { inventory.setItem(i, itemHandler(i).toStack()); }
+        for (int i = 0; i < itemHandler.size(); i++) {
+            inventory.setItem(i, itemHandler(i).toStack(itemHandler.getAmountAsInt(i)));
+        }
         if (this.level != null) { Containers.dropContents(this.level, this.worldPosition, inventory); }
     }
 
@@ -150,20 +144,25 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int containerId,
-                                                      @NotNull Inventory inventory,
-                                                      @NotNull Player player) {
+                                                      @NotNull Inventory inventory, @NotNull Player player) {
         return new GemEmpoweringStationMenu(containerId, inventory, this, this.data);
+    }
+
+    @Override
+    public void preRemoveSideEffects(@NotNull BlockPos pos, @NotNull BlockState state) {
+        drops();
+        super.preRemoveSideEffects(pos, state);
     }
 
     // Save all items of inventory
     @Override
     protected void saveAdditional(@NotNull ValueOutput output) {
+        super.saveAdditional(output);
         itemHandler.serialize(output);
         output.putInt("gem_empowering_station.progress", progress);
         output.putInt("gem_empowering_station.max_progress", maxProgress);
         output.putInt("gem_empowering_station.energy_amount", energyAmount);
         output.putInt("energy", ENERGY_STORAGE.getAmountAsInt());
-        super.saveAdditional(output);
     }
 
     @Override
@@ -179,7 +178,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     // Custom block entity class to work on Server side
     public void tick(Level level, BlockPos pos, BlockState state) {
         fillUpOnEnergy(); // This is a "placeholder" for getting energy through wires or similar
-        if (isOutputSlotEmptyOrReceivable() && hasRecipe()) {
+        if (hasRecipe()) {
             increaseCraftingProcess();
             extractEnergy();
             setChanged(level, pos, state);
@@ -221,9 +220,9 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
             try (Transaction tx = Transaction.openRoot()) {
                 this.itemHandler.extract(INPUT_SLOT, ItemResource.of(recipes.getInputItems().getFirst().getValues().get(0)),
                                          1, tx); // Input slot
-                this.itemHandler.set(OUTPUT_SLOT, ItemResource.of(resultItem.getItem()),
-                                     itemHandler(OUTPUT_SLOT).toStack().getCount() + resultItem.getCount()); // Output slot
                 tx.commit();
+                this.itemHandler.set(OUTPUT_SLOT, ItemResource.of(resultItem.getItem()),
+                                     itemHandler.getAmountAsInt(OUTPUT_SLOT) + resultItem.getCount()); // Output slot
             }
         }
     }
@@ -242,7 +241,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         energyAmount = recipes.getEnergyAmount();
         ItemStack resultItem = recipes.output();
         return canInsertAmountIntoOutputSlot(resultItem.getCount()) &&
-               canInsertItemIntoOutputSlot(resultItem.getItem()) && hasEnoughEnergyToCraft();
+               canInsertItemIntoOutputSlot(resultItem) && hasEnoughEnergyToCraft();
     }
 
     private boolean hasEnoughEnergyToCraft() {
@@ -266,17 +265,15 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
                                      level);
     }
 
-    private boolean canInsertItemIntoOutputSlot(Item item) {
-        return itemHandler(OUTPUT_SLOT).isEmpty() || itemHandler(OUTPUT_SLOT).is(item);
+    private boolean canInsertItemIntoOutputSlot(ItemStack item) {
+        return itemHandler(OUTPUT_SLOT).isEmpty() || itemHandler(OUTPUT_SLOT).getItem() == item.getItem();
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return itemHandler(OUTPUT_SLOT).getMaxStackSize() >= itemHandler(OUTPUT_SLOT).toStack().getCount() + count;
-    }
-
-    private boolean isOutputSlotEmptyOrReceivable() {
-        return itemHandler(OUTPUT_SLOT).isEmpty() ||
-               itemHandler(OUTPUT_SLOT).toStack().getCount() < itemHandler(OUTPUT_SLOT).getMaxStackSize();
+        int maxCount = itemHandler.getResource(OUTPUT_SLOT).isEmpty()
+                       ? 64 : itemHandler.getResource(OUTPUT_SLOT).getMaxStackSize();
+        int currentCount = itemHandler.getResource(OUTPUT_SLOT).toStack().getCount();
+        return maxCount >= currentCount + count;
     }
 
     // Save and restore on disk the energy storage
@@ -293,5 +290,14 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     @Override
     public void onDataPacket(@NotNull Connection net, @NotNull ValueInput valueInput) {
         super.onDataPacket(net, valueInput);
+    }
+
+    // CUSTOM METHOD - Level
+    private void hasLevel(Level level) {
+        if (level != null) {
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
     }
 }
