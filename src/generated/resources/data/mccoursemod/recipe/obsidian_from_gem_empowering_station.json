@@ -1,0 +1,10 @@
+{
+  "type": "mccoursemod:gem_empowering_station",
+  "craftTime": 100,
+  "energyAmount": 200,
+  "ingredient": [],
+  "output": {
+    "count": 1,
+    "id": "minecraft:obsidian"
+  }
+}

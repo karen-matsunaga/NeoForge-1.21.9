@@ -23,9 +23,8 @@ public abstract class ModEnergyStorage extends SimpleEnergyHandler {
         return receiveEnergy;
     }
 
-    public int setEnergy(int energy) {
+    public void setEnergy(int energy) {
         this.energy = energy;
-        return energy;
     }
 
     public abstract void onEnergyChanged();

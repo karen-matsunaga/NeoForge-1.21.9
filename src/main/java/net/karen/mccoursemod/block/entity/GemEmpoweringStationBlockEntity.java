@@ -248,8 +248,8 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
                                                                                     recipes.output(),
                                                                                     maxProgress, energyAmount),
                                                                                     getLevel().registryAccess());
-        return canInsertAmountIntoOutputSlot(resultItem.getCount())
-                && canInsertItemIntoOutputSlot(resultItem.getItem()) && hasEnoughEnergyToCraft();
+        return canInsertAmountIntoOutputSlot(resultItem.getCount()) &&
+               canInsertItemIntoOutputSlot(resultItem.getItem()) && hasEnoughEnergyToCraft();
     }
 
     private boolean hasEnoughEnergyToCraft() {
@@ -266,14 +266,16 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         assert level != null;
         MinecraftServer mcServer = level.getServer();
         assert mcServer != null;
+        ItemStack stack0 = itemHandler(0).toStack(itemHandler.getAmountAsInt(0));
+        ItemStack stack1 = itemHandler(1).toStack(itemHandler.getAmountAsInt(1));
+        ItemStack stack2 = itemHandler(2).toStack(itemHandler.getAmountAsInt(2));
+        if (stack0.isEmpty() || stack1.isEmpty()) {
+            return Optional.empty(); // Avoid creating invalid Ingredient
+        }
+        NonNullList<Ingredient> ingredients = NonNullList.of(Ingredient.of(stack0.getItem()), Ingredient.of(stack1.getItem()));
         return mcServer.getRecipeManager()
                        .getRecipeFor(ModRecipes.GEM_EMPOWERING_STATION_TYPE.get(),
-                                     new GemEmpoweringStationRecipeInput(
-                                     NonNullList.of(Ingredient.of(
-                                                    itemHandler(0).toStack(itemHandler.getAmountAsInt(0)).getItem(),
-                                                    itemHandler(1).toStack(itemHandler.getAmountAsInt(1)).getItem())),
-                                                    itemHandler(2).toStack(itemHandler.getAmountAsInt(2)),
-                                     maxProgress, energyAmount),
+                                     new GemEmpoweringStationRecipeInput(ingredients, stack2, maxProgress, energyAmount),
                                      level);
     }
 

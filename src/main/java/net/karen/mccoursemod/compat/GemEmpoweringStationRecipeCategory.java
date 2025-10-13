@@ -26,7 +26,7 @@ import java.util.List;
 
 public class GemEmpoweringStationRecipeCategory implements IRecipeCategory<GemEmpoweringStationRecipe> {
     public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "gem_empowering");
+           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "gem_empowering_station");
 
     public static final ResourceLocation TEXTURE =
            ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "textures/gui/gem_empowering_station_gui.png");

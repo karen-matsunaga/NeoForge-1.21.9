@@ -2,7 +2,6 @@ package net.karen.mccoursemod.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.karen.mccoursemod.block.entity.GemEmpoweringStationBlockEntity;
-import net.karen.mccoursemod.block.entity.GrowthChamberBlockEntity;
 import net.karen.mccoursemod.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -87,8 +86,9 @@ public class GemEmpoweringStationBlock extends BaseEntityBlock {
                                                    @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
-            if (entity instanceof GrowthChamberBlockEntity growthChamberBlockEntity) {
-                player.openMenu(new SimpleMenuProvider(growthChamberBlockEntity, Component.literal("Growth Chamber")), pos);
+            if (entity instanceof GemEmpoweringStationBlockEntity gemEmpoweringStationBlockEntity) {
+                player.openMenu(new SimpleMenuProvider(gemEmpoweringStationBlockEntity,
+                                Component.literal("Gem Empowering Station")), pos);
             }
             else { throw new IllegalStateException("Our Container provider is missing!"); }
         }
@@ -105,7 +105,7 @@ public class GemEmpoweringStationBlock extends BaseEntityBlock {
                                                                             @NotNull BlockEntityType<T> blockEntityType) {
         if (level.isClientSide()) { return null; } // Client side
         return createTickerHelper(blockEntityType, ModBlockEntities.GEM_EMPOWERING_STATION_BE.get(),
-                                  (pLevel1, pos, state1, blockEntity) ->
-                                  blockEntity.tick(pLevel1, pos, state1)); // Server side
+                                  (level1, pos, state1, blockEntity) ->
+                                  blockEntity.tick(level1, pos, state1)); // Server side
     }
 }
