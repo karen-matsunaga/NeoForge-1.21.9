@@ -1,8 +1,9 @@
-package net.karen.mccoursemod.block.entity.render;
+package net.karen.mccoursemod.block.entity.renderstate;
 
 import net.karen.mccoursemod.block.entity.PedestalBlockEntity;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -11,4 +12,6 @@ public class PedestalBlockEntityRenderState extends BlockEntityRenderState {
     public final ItemStackRenderState item = new ItemStackRenderState();
     public ItemStack itemStack;
     public Level level;
+    public float rotation;
+    public BlockPos pedestalBEBlockPos;
 }

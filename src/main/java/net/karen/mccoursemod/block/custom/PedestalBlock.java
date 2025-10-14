@@ -69,7 +69,7 @@ public class PedestalBlock extends BaseEntityBlock {
                 player.openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pos);
                 return InteractionResult.SUCCESS;
             }
-            ItemStack itemStack = pedestalBlockEntity.getItem();
+            ItemStack itemStack = pedestalBlockEntity.getRenderStack();
             ItemStacksResourceHandler slot = pedestalBlockEntity.inventory;
             try (Transaction tx = Transaction.openRoot()) {
                 if (itemStack.isEmpty() && !stack.isEmpty() &&

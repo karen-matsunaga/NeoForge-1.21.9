@@ -45,8 +45,8 @@ public class PedestalBlockEntity extends BlockEntity implements MenuProvider {
         return this.inventory;
     }
 
-    // CUSTOM METHOD - Item Stack on OUTPUT SLOT
-    public ItemStack getItem() {
+    // CUSTOM METHOD - Render Item Stack on INPUT or OUTPUT slots
+    public ItemStack getRenderStack() {
         ItemStack itemStack = getInventory().getResource(0).toStack();
         if (!itemStack.isEmpty()) { return itemStack; }
         return ItemStack.EMPTY;

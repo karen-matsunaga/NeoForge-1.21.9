@@ -3,7 +3,7 @@ package net.karen.mccoursemod.block.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.karen.mccoursemod.block.entity.PedestalBlockEntity;
-import net.karen.mccoursemod.block.entity.render.PedestalBlockEntityRenderState;
+import net.karen.mccoursemod.block.entity.renderstate.PedestalBlockEntityRenderState;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -33,8 +33,15 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
                                    @Nullable ModelFeatureRenderer.CrumblingOverlay crumblingOverlay) {
         BlockEntityRenderer.super.extractRenderState(entity, state, partialTick, vec3, crumblingOverlay);
         state.pedestalBlockEntity = entity;
-        state.level = entity.getLevel();
-        state.itemStack = entity.getItem();
+        state.itemStack = state.pedestalBlockEntity.getRenderStack();
+        state.level = state.pedestalBlockEntity.getLevel();
+        state.pedestalBEBlockPos = state.pedestalBlockEntity.getBlockPos();
+        state.rotation = state.pedestalBlockEntity.getRenderingRotation();
+        if (state.level != null) { // Render item
+            state.lightCoords = getLightLevel(state.level, state.pedestalBEBlockPos);
+            this.itemModelResolver.updateForTopItem(state.item, state.itemStack, ItemDisplayContext.FIXED,
+                                                    state.level, null, 1);
+        }
     }
 
     @Override
@@ -46,17 +53,12 @@ public class PedestalBlockEntityRenderer implements BlockEntityRenderer<Pedestal
         poseStack.pushPose();
         poseStack.translate(0.5F, 1.15F, 0.5F);
         poseStack.scale(0.5F, 0.5F, 0.5F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(state.pedestalBlockEntity.getRenderingRotation()));
-        if (state.level != null) { // Render item
-            state.lightCoords = getLightLevel(state.level, state.pedestalBlockEntity.getBlockPos());
-            this.itemModelResolver.updateForTopItem(state.item, state.itemStack,
-                                                    ItemDisplayContext.FIXED, state.level, null, 1);
-        }
+        poseStack.mulPose(Axis.YP.rotationDegrees(state.rotation));
         state.item.submit(poseStack, submitNodeCollector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         poseStack.popPose();
     }
 
-    // CUSTOM METHOD - ITEM light
+    // CUSTOM METHOD - Render ITEM light
     private int getLightLevel(Level world, BlockPos pos) {
         int blockLight = world.getBrightness(LightLayer.BLOCK, pos);
         int skyLight = world.getBrightness(LightLayer.SKY, pos);
