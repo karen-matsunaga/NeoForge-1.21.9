@@ -227,7 +227,10 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         }
     }
 
-    private void resetProgress() { this.progress = 0; }
+    private void resetProgress() {
+        progress = 0;
+        maxProgress = 78;
+    }
 
     private boolean hasProgressFinished() { return this.progress >= this.maxProgress; }
 

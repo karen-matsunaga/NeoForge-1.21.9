@@ -102,6 +102,10 @@ public class JEIModPlugin implements IModPlugin {
         // CRAFTING PLUS
         registration.addRecipeClickArea(CraftingPlusScreen.class, 140, 18, 18, 18,
                                         CraftingPlusRecipeCategory.CRAFTING_PLUS_TYPE);
+
+        // GEM EMPOWERING STATION
+        registration.addRecipeClickArea(GemEmpoweringStationScreen.class, 60, 30, 20, 30,
+                                        GemEmpoweringStationRecipeCategory.GEM_EMPOWERING_TYPE);
     }
 
     @Override
@@ -117,6 +121,10 @@ public class JEIModPlugin implements IModPlugin {
         // CRAFTING PLUS
         registration.addCraftingStation(CraftingPlusRecipeCategory.CRAFTING_PLUS_TYPE,
                                         ModBlocks.CRAFTING_PLUS.get());
+
+        // GEM EMPOWERING STATION
+        registration.addCraftingStation(GemEmpoweringStationRecipeCategory.GEM_EMPOWERING_TYPE,
+                                        ModBlocks.GEM_EMPOWERING_STATION.get());
     }
 
     @Override

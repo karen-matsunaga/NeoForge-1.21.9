@@ -6,7 +6,6 @@ import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
-import mezz.jei.api.gui.widgets.IRecipeExtrasBuilder;
 import mezz.jei.api.helpers.ICodecHelper;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
@@ -20,7 +19,6 @@ import net.karen.mccoursemod.recipe.GemEmpoweringStationRecipe;
 import net.karen.mccoursemod.util.EnergyDisplayTooltipArea;
 import net.karen.mccoursemod.util.ModEnergyStorage;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -35,19 +33,20 @@ public class GemEmpoweringStationRecipeCategory
            ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "gem_empowering_station");
 
     public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "textures/gui/gem_empowering_station_gui.png");
+           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
+                                                 "textures/gui/gem_empowering_station/gem_empowering_station_gui.png");
 
     public static final IRecipeType<GemEmpoweringStationRecipe> GEM_EMPOWERING_TYPE =
            IRecipeType.create(UID, GemEmpoweringStationRecipe.class);
 
+    private final IGuiHelper helper;
     private final IDrawable background, icon;
-    private final IDrawableAnimated arrow;
+    private IDrawableAnimated arrow;
 
     public GemEmpoweringStationRecipeCategory(IGuiHelper helper) {
         this.background = helper.drawableBuilder(TEXTURE, 0, 0, 176, 83).build(); // Background
         this.icon = helper.createDrawableItemLike(ModBlocks.GEM_EMPOWERING_STATION.get()); // Icon
-        this.arrow = helper.createAnimatedDrawable(helper.createDrawable(TEXTURE, 176, 0, 10, 30),
-                                                   200, IDrawableAnimated.StartDirection.TOP, false);
+        this.helper = helper;
     }
 
     @Override
@@ -57,13 +56,13 @@ public class GemEmpoweringStationRecipeCategory
     public @NotNull Component getTitle() { return Component.literal("Gem Infusing Station"); } // Title appears on screen
 
     @Override
-    public IDrawable getIcon() { return this.icon; } // Box slot appears on screen
+    public IDrawable getIcon() { return icon; } // Box slot appears on screen
 
     @Override
-    public int getHeight() { return background.getHeight(); }
+    public int getHeight() { return background.getHeight(); } // Background height
 
     @Override
-    public int getWidth() { return background.getWidth(); }
+    public int getWidth() { return background.getWidth(); } // Background width
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, GemEmpoweringStationRecipe recipe,
@@ -75,31 +74,28 @@ public class GemEmpoweringStationRecipeCategory
         builder.addInputSlot(134, 59).add(new ItemStack(ModItems.KOHLRABI.get())).setStandardSlotBackground();
 
         // Recipe OUTPUT slot on screen
-        builder.addOutputSlot(80, 59).add(recipe.output().getItem()).setOutputSlotBackground();
+        builder.addOutputSlot(80, 59).add(recipe.output().getItem()).setStandardSlotBackground();
+
+        // Animated arrow -> craft item
+        this.arrow = helper.createAnimatedDrawable(helper.createDrawable(TEXTURE, 176, 0, 10, 30),
+                                                   recipe.getCraftTime(), IDrawableAnimated.StartDirection.TOP, false);
     }
 
-    @Override
-    public void createRecipeExtras(IRecipeExtrasBuilder builder, @NotNull GemEmpoweringStationRecipe recipe,
-                                   @NotNull IFocusGroup focuses) {
-        builder.addDrawable(arrow, 85, 30); // Draw animated arrow
-        IRecipeCategory.super.createRecipeExtras(builder, recipe, focuses);
-    }
-
-    // Energy Renderer on screen
+    // DEFAULT METHOD - Animated arrow, Energy tooltip renderer and time craft on screen
     @Override
     public void draw(@NotNull GemEmpoweringStationRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView,
                      @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
-        Minecraft minecraft = Minecraft.getInstance();
-        Font fontRenderer = minecraft.font;
+        background.draw(guiGraphics);
         float seconds = recipe.getCraftTime(); // Craft Time
         if (seconds > 0) {
             Component info = Component.translatable("gui.jei.category.smelting.time.seconds", seconds);
-            guiGraphics.drawString(fontRenderer, info, 120, 45, 0xFF808080, false);
+            guiGraphics.drawString(Minecraft.getInstance().font, info, 120, 45, 0xFF808080, false);
         }
         energyTooltip(energyStorage(recipe)).render(guiGraphics); // Draws the power bar
+        this.arrow.draw(guiGraphics, 85, 30); // Draw animated arrow
     }
 
-    // Energy Renderer on screen
+    // DEFAULT METHOD - Energy tooltip Renderer on screen
     @Override
     public void getTooltip(@NotNull ITooltipBuilder tooltip, @NotNull GemEmpoweringStationRecipe recipe,
                            @NotNull IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
@@ -109,6 +105,7 @@ public class GemEmpoweringStationRecipeCategory
         }
     }
 
+    // CUSTOM METHOD - Energy amount
     private ModEnergyStorage energyStorage(GemEmpoweringStationRecipe recipe) {
         ModEnergyStorage energy = new ModEnergyStorage(64000, 200) {
             @Override public void onEnergyChanged() {}
@@ -117,10 +114,10 @@ public class GemEmpoweringStationRecipeCategory
         return energy;
     }
 
+    // CUSTOM METHOD - Energy tooltip
     private EnergyDisplayTooltipArea energyTooltip(ModEnergyStorage stored) {
         return new EnergyDisplayTooltipArea(156, 11, stored);
     }
-
 
     @Override
     public @Nullable ResourceLocation getRegistryName(@NotNull GemEmpoweringStationRecipe recipe) {
