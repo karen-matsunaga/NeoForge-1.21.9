@@ -764,17 +764,20 @@ public class ModBlocks {
     // ** CUSTOM METHOD - Registry all custom BLOCK ITEMS **
     private static <T extends Block> void registerBlockItem(String name,
                                                             DeferredBlock<T> block, int lore, int customName) {
-        String blockId = block.getRegisteredName().replace("mccoursemod:", "");
+        String registerBlock = block.getRegisteredName();
+        // LORE
+        String blockLore = registerBlock.replace(":", ".");
+        List<Component> loreComponent = List.of(componentTranslatableIntColor("tooltip." + blockLore, lore));
+        // CUSTOM NAME
+        String blockId = registerBlock.replace("mccoursemod:", "");
         String names = itemLines(splitWord(blockId));
         ModItems.ITEMS.registerItem(name, properties ->
                                     new BlockItem(block.get(),
                                                   properties.useBlockDescriptionPrefix()
                                                             // LORE
                                                             .component(DataComponents.LORE,
-                                                                       new ItemLore(
-                                                                       List.of(Component.nullToEmpty("")),
-                                                                       List.of(componentLiteralIntColor("Teste",
-                                                                                                        lore))))
+                                                                       new ItemLore(List.of(Component.nullToEmpty("")),
+                                                                                    loreComponent))
                                                             // CUSTOM NAME
                                                             .component(DataComponents.CUSTOM_NAME,
                                                                        componentTranslatableIntColor(names, customName))));

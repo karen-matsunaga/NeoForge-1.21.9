@@ -1,6 +1,5 @@
 package net.karen.mccoursemod.mixin;
 
-import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.component.ModDataComponentTypes;
 import net.karen.mccoursemod.component.custom.FoundBlock;
 import net.karen.mccoursemod.enchantment.ModEnchantments;
@@ -37,11 +36,9 @@ import static net.karen.mccoursemod.util.ChatUtils.*;
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
     @Shadow public abstract String toString();
-
     @Shadow public abstract <T extends TooltipProvider>
                             void addToTooltip(DataComponentType<T> component, Item.TooltipContext context,
-                                              TooltipDisplay display, Consumer<Component> consumer,
-                                              TooltipFlag flag);
+                                              TooltipDisplay display, Consumer<Component> consumer, TooltipFlag flag);
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"), cancellable = true)
     private void getTooltipLines(Item.TooltipContext context, Player player,
@@ -50,18 +47,6 @@ public abstract class ItemStackMixin {
         List<Component> tooltip = new ArrayList<>(cir.getReturnValue()); // Old tooltip
         Level level = Minecraft.getInstance().level;
         Item item = stack.getItem();
-        // ** CUSTOM BLOCKS **
-        // Item checked is MAGIC block + Added more information about MAGIC block
-        if (stack.is(ModBlocks.MAGIC.get().asItem())) {
-            Component original = tooltip.getFirst(), // Original tooltip line 0
-                       colored = original.copy().withStyle(style -> style.withColor(0x00ff00));
-            tooltip.set(0, colored); // Change only the name (first line of the tooltip) -> Color not appears on screen
-            tooltip.add(standardTranslatable("tooltip.mccoursemod.magic_block"));
-        }
-        // Item checked is SOUND block + Added more information about SOUND block
-        if (stack.is(ModBlocks.SOUND.get().asItem())) {
-            tooltip.add(standardTranslatable("tooltip.mccoursemod.sound"));
-        }
         // ** CUSTOM ITEMS **
         // Added more information about GROWTH item
         if (stack.is(ModItems.GROWTH.get().asItem())) {

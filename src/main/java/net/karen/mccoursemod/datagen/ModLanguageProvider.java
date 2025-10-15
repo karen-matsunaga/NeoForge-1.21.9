@@ -10,7 +10,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import java.util.function.Supplier;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
@@ -617,8 +619,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("enchantment.minecraft.wind_burst.desc",
             "When applied on mace the player into the air seven blocks per level after performing a smash attack.");
 
-        // ** CUSTOM TOOLTIP **
-        add("tooltip.mccoursemod.magic_block", "This Block is quite §9MAGICAL§r");
+        // ** CUSTOM ITEM TOOLTIP **
         add("tooltip.mccoursemod.auto_smelt.tooltip",
             "When applied on pickaxe transform all items that can be roasted on furnace.");
         add("tooltip.mccoursemod.more_ores.tooltip",
@@ -629,7 +630,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add("tooltip.mccoursemod.kohlrabi", "Tastes really great!");
         add("tooltip.mccoursemod.metal_detector.tooltip.shift", "§eRight Click on Blocks to find Valuables!");
         add("tooltip.mccoursemod.metal_detector.tooltip", "Press §eSHIFT§r for more Information");
-        add("tooltip.mccoursemod.sound", "Plays nice sounds when walking or right-clicking.");
         add("tooltip.mccoursemod.coffee", "Wake up and have a chance to achieve night vision effect.");
         add("tooltip.mccoursemod.growth", "Makes a baby animal an adult animal!");
         add("tooltip.mccoursemod.tomahawk", "Thunder when attacked entities!");
@@ -745,10 +745,130 @@ public class ModLanguageProvider extends LanguageProvider {
         add("mccoursemod.configuration.logDirtBlock", "Log Dirt Block");
         add("mccoursemod.configuration.magicNumberIntroduction", "Magic Number Text");
         add("mccoursemod.configuration.magicNumber", "Magic Number");
+
+        // ** CUSTOM BLOCK DESCRIPTIONS **
+        blockDescription(ModBlocks.BISMUTH_BLOCK, "Nine BISMUTH items compacted on block.");
+        blockDescription(ModBlocks.BISMUTH_ORE, "Found on Overworld dimension.");
+        blockDescription(ModBlocks.BISMUTH_DEEPSLATE_ORE, "Found on Overworld dimension.");
+        blockDescription(ModBlocks.BISMUTH_NETHER_ORE, "Found on Nether dimension.");
+        blockDescription(ModBlocks.BISMUTH_END_ORE, "Found on End dimension.");
+
+        blockDescription(ModBlocks.ALEXANDRITE_BLOCK, "Nine ALEXANDRITE items compacted on block.");
+        blockDescription(ModBlocks.RAW_ALEXANDRITE_BLOCK, "Nine RAW ALEXANDRITE items compacted on block.");
+        blockDescription(ModBlocks.ALEXANDRITE_ORE, "Found on Overworld dimension.");
+        blockDescription(ModBlocks.DEEPSLATE_ALEXANDRITE_ORE, "Found on Overworld dimension.");
+        blockDescription(ModBlocks.NETHER_ALEXANDRITE_ORE, "Found on Nether dimension.");
+        blockDescription(ModBlocks.END_STONE_ALEXANDRITE_ORE, "Found on End dimension.");
+
+        blockDescription(ModBlocks.PINK_BLOCK, "Nine PINK items compacted on block.");
+        blockDescription(ModBlocks.PINK_ORE, "Found on Overworld dimension.");
+        blockDescription(ModBlocks.DEEPSLATE_PINK_ORE, "Found on Overworld dimension.");
+        blockDescription(ModBlocks.NETHER_PINK_ORE, "Found on Nether dimension.");
+        blockDescription(ModBlocks.END_STONE_PINK_ORE, "Found on End dimension.");
+
+        blockDescription(ModBlocks.MAGIC, "This Block is quite §9MAGICAL§r.");
+        blockDescription(ModBlocks.ENCHANT, "Combine armors, tools, etc. with enchanted book max 255 enchantment level.");
+        blockDescription(ModBlocks.DISENCHANT_INDIVIDUAL,
+                         "Remove armors, tools, etc. enchanted books and transform each enchantment " +
+                         "on individual enchanted book.");
+        blockDescription(ModBlocks.DISENCHANT_GROUPED,
+                         "Remove armors, tools, etc. enchanted books and transform all enchantments " +
+                         "an enchanted book.");
+
+        blockDescription(ModBlocks.MCCOURSEMOD_ELEVATOR, "Special block that Up and Down x blocks placed.");
+        blockDescription(ModBlocks.MCCOURSEMOD_GENERATOR, "Special block that generate all blocks.");
+
+        blockDescription(ModBlocks.CRAFTING_PLUS, "Improved Crafting Table 7x7 size.");
+
+        blockDescription(ModBlocks.BISMUTH_STAIRS, "Decorate stair block.");
+        blockDescription(ModBlocks.BISMUTH_SLAB, "Decorate slab block.");
+        blockDescription(ModBlocks.BISMUTH_PRESSURE_PLATE, "Decorate pressure plate block.");
+        blockDescription(ModBlocks.BISMUTH_BUTTON, "Decorate button block.");
+        blockDescription(ModBlocks.BISMUTH_FENCE, "Decorate fence block.");
+        blockDescription(ModBlocks.BISMUTH_FENCE_GATE, "Decorate fence gate block.");
+        blockDescription(ModBlocks.BISMUTH_WALL, "Decorate wall block.");
+        blockDescription(ModBlocks.BISMUTH_DOOR, "Decorate door block.");
+        blockDescription(ModBlocks.BISMUTH_TRAPDOOR, "Decorate trapdoor block.");
+
+        blockDescription(ModBlocks.ALEXANDRITE_STAIRS, "Decorate stair block.");
+        blockDescription(ModBlocks.ALEXANDRITE_SLABS, "Decorate slab block.");
+        blockDescription(ModBlocks.ALEXANDRITE_PREASSURE_PLATE, "Decorate pressure plate block.");
+        blockDescription(ModBlocks.ALEXANDRITE_BUTTON, "Decorate button block.");
+        blockDescription(ModBlocks.ALEXANDRITE_FENCE, "Decorate fence block.");
+        blockDescription(ModBlocks.ALEXANDRITE_FENCE_GATE, "Decorate fence gate block.");
+        blockDescription(ModBlocks.ALEXANDRITE_WALL, "Decorate wall block.");
+        blockDescription(ModBlocks.ALEXANDRITE_DOOR, "Decorate door block.");
+        blockDescription(ModBlocks.ALEXANDRITE_TRAPDOOR, "Decorate trapdoor block.");
+
+        blockDescription(ModBlocks.BISMUTH_LAMP, "Decorate lamp block.");
+        blockDescription(ModBlocks.ALEXANDRITE_LAMP, "Decorate lamp block.");
+
+        blockDescription(ModBlocks.BLOODWOOD_LOG, "Decorate log block.");
+        blockDescription(ModBlocks.BLOODWOOD_WOOD, "Decorate wood block.");
+        blockDescription(ModBlocks.STRIPPED_BLOODWOOD_LOG, "Decorate stripped log block.");
+        blockDescription(ModBlocks.STRIPPED_BLOODWOOD_WOOD, "Decorate stripped wood block.");
+        blockDescription(ModBlocks.BLOODWOOD_PLANKS, "Decorate planks block.");
+        blockDescription(ModBlocks.BLOODWOOD_LEAVES, "Decorate leaves block.");
+        blockDescription(ModBlocks.BLOODWOOD_SAPLING, "Decorate sapling block.");
+
+        blockDescription(ModBlocks.WALNUT_LOG, "Decorate log block.");
+        blockDescription(ModBlocks.WALNUT_WOOD, "Decorate wood block.");
+        blockDescription(ModBlocks.STRIPPED_WALNUT_LOG, "Decorate stripped log block.");
+        blockDescription(ModBlocks.STRIPPED_WALNUT_WOOD, "Decorate stripped wood block.");
+        blockDescription(ModBlocks.WALNUT_PLANKS, "Decorate planks block.");
+        blockDescription(ModBlocks.WALNUT_LEAVES, "Decorate leaves block.");
+        blockDescription(ModBlocks.WALNUT_SAPLING, "Decorate sapling block.");
+
+        blockDescription(ModBlocks.CHAIR, "Decorate sittable block.");
+        blockDescription(ModBlocks.PEDESTAL, "Show anywhere items on pedestal.");
+        blockDescription(ModBlocks.GROWTH_CHAMBER, "Extract your item into other item.");
+        blockDescription(ModBlocks.GEM_EMPOWERING_STATION, "Transform your item into other item using energy.");
+        blockDescription(ModBlocks.KAUPEN_FURNACE, "Improved Furnace with exclusive used fuels.");
+
+        blockDescription(ModBlocks.FORCED_STAINED_GLASS, "Decorate stained glass block.");
+        blockDescription(ModBlocks.FORCED_STAINED_GLASS_PANE, "Decorate stained glass pane block.");
+
+        blockDescription(ModBlocks.SOUND, "Plays nice sounds when walking or right-clicking.");
+
+        enderBlockDescription(List.of(ModBlocks.ENDER_PEARL_BLOCK, ModBlocks.GREEN_ENDER_PEARL_BLOCK,
+                                      ModBlocks.LIME_GREEN_ENDER_PEARL_BLOCK, ModBlocks.BLACK_ENDER_PEARL_BLOCK,
+                                      ModBlocks.MAGENTA_ENDER_PEARL_BLOCK, ModBlocks.PURPLE_ENDER_PEARL_BLOCK,
+                                      ModBlocks.ORANGE_ENDER_PEARL_BLOCK, ModBlocks.PINK_ENDER_PEARL_BLOCK,
+                                      ModBlocks.CYAN_ENDER_PEARL_BLOCK, ModBlocks.BROWN_ENDER_PEARL_BLOCK,
+                                      ModBlocks.GRAY_ENDER_PEARL_BLOCK, ModBlocks.RED_ENDER_PEARL_BLOCK,
+                                      ModBlocks.YELLOW_ENDER_PEARL_BLOCK, ModBlocks.BLUE_ENDER_PEARL_BLOCK,
+                                      ModBlocks.WHITE_ENDER_PEARL_BLOCK));
+
+        blockDescription(ModBlocks.NETHER_STAR_BLOCK, "Nine NETHER STAR items compacted on block.");
+        blockDescription(ModBlocks.GUNPOWDER_BLOCK, "Nine GUNPOWDER items compacted on block.");
+        blockDescription(ModBlocks.ROTTEN_FLESH_BLOCK, "Nine ROTTEN FLESH items compacted on block.");
+        blockDescription(ModBlocks.BLAZE_ROD_BLOCK, "Nine BLAZE ROD items compacted on block.");
+        blockDescription(ModBlocks.PHANTOM_MEMBRANE_BLOCK, "Nine PHANTOM MEMBRANE items compacted on block.");
+        blockDescription(ModBlocks.STRING_BLOCK, "Nine STRING items compacted on block.");
+        blockDescription(ModBlocks.SPIDER_EYE_BLOCK, "Nine SPIDER EYE items compacted on block.");
+        blockDescription(ModBlocks.FERMENTED_SPIDER_EYE_BLOCK, "Nine FERMENTED SPIDER EYE items compacted on block.");
+        blockDescription(ModBlocks.SUGAR_BLOCK, "Nine SUGAR items compacted on block.");
+        blockDescription(ModBlocks.SUGAR_CANE_BLOCK, "Nine SUGAR CANE items compacted on block.");
+
+        blockDescription(ModBlocks.RUBY_BLOCK, "Ruby oxidizable UNAFFECTED block.");
+        blockDescription(ModBlocks.RUBY_BLOCK_1, "Ruby oxidizable EXPOSED block.");
+        blockDescription(ModBlocks.RUBY_BLOCK_2, "Ruby oxidizable WEATHERED block.");
+        blockDescription(ModBlocks.RUBY_BLOCK_3, "Ruby oxidizable DEGRADED block.");
+
+        blockDescription(ModBlocks.WAXED_RUBY_BLOCK, "Waxed Ruby oxidizable UNAFFECTED block.");
+        blockDescription(ModBlocks.WAXED_RUBY_BLOCK_1, "Waxed Ruby oxidizable EXPOSED block.");
+        blockDescription(ModBlocks.WAXED_RUBY_BLOCK_2, "Waxed Ruby oxidizable WEATHERED block.");
+        blockDescription(ModBlocks.WAXED_RUBY_BLOCK_3, "Waxed Ruby oxidizable DEGRADED block.");
+
+        blockDescription(ModBlocks.SNAPDRAGON, "Decorate Snapdragon flower block.");
+        blockDescription(ModBlocks.POTTED_SNAPDRAGON, "Decorate Snapdragon on potted block.");
+
+        blockDescription(ModBlocks.COLORED_LEAVES, "Decorate Snapdragon on potted block.");
+        blockDescription(ModBlocks.KAUPEN_PORTAL, "Portal block that changed to KAUPENDIM dimension.");
     }
 
     // CUSTOM METHOD - Register Block and Block Item
-    public void blockLang(Supplier<? extends Block> block, String color) {
+    private void blockLang(Supplier<? extends Block> block, String color) {
         String blockId = block.get().getDescriptionId().replace("block.mccoursemod.", "");
         // Sound -> One word
         String firstLetter = blockId.substring(0, 1).toUpperCase();
@@ -767,15 +887,15 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     // CUSTOM METHOD - Vanilla enchantment levels
-    public void vanillaEnchantment() {
+    private void vanillaEnchantment() {
         for (int i = 1; i < 256; i++) {
             add("enchantment.level." + i, String.valueOf(i));
         }
     }
 
     // CUSTOM METHOD - Ores Upgrade Smithing Template
-    public void oresUpgradeSmithingTemplate(Supplier<? extends Item> item,
-                                            String ore, boolean isIngot) {
+    private void oresUpgradeSmithingTemplate(Supplier<? extends Item> item,
+                                             String ore, boolean isIngot) {
         String firstLetter = ore.substring(0, 1).toUpperCase();
         String letters = ore.substring(1).toLowerCase();
         String oreName = firstLetter + letters;
@@ -790,7 +910,7 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     // CUSTOM METHOD - Ores Armor Trim Smithing Upgrade
-    public void oresArmorTrimSmithingTemplate(Supplier<? extends Item> item, String ore) {
+    private void oresArmorTrimSmithingTemplate(Supplier<? extends Item> item, String ore) {
         String firstLetter = ore.substring(0, 1).toUpperCase();
         String letters = ore.substring(1).toLowerCase();
         String oreName = firstLetter + letters;
@@ -802,6 +922,17 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.mccoursemod.smithing_template.applies_to", "Applies to:");
         add("item.mccoursemod.smithing_template.ingredients", "Ingredients:");
         add("item.mccoursemod.smithing_template", "Mccourse Mod Smithing Template");
+    }
+
+    // CUSTOM METHOD - Block description
+    private <T extends Block> void blockDescription(DeferredBlock<T> block, String text) {
+        add("tooltip." + block.getRegisteredName().replace(":", "."), text);
+    }
+
+    private <T extends Block> void enderBlockDescription(List<DeferredBlock<T>> block) {
+        for (DeferredBlock<T> id : block) {
+            blockDescription(id, "Decorate ender block.");
+        }
     }
 
     @Override
