@@ -1,8 +1,10 @@
 package net.karen.mccoursemod.util;
 
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.transfer.energy.EnergyHandler;
+import java.util.List;
 
 /* BluSunrize - Copyright (c) 2021 - This code is licensed under "Blu's License of Common Sense"
    https://github.com/BluSunrize/ImmersiveEngineering/blob/1.19.2/LICENSE - Slightly Modified Version by: Kaupenjoe */
@@ -24,6 +26,10 @@ public class EnergyDisplayTooltipArea {
 
     public Component getTooltip() {
         return Component.literal(energy.getAmountAsInt() + " / " + energy.getCapacityAsInt() + " FE");
+    }
+
+    public List<ClientTooltipComponent> getClientTooltip() {
+        return List.of(ClientTooltipComponent.create(getTooltip().getVisualOrderText()));
     }
 
     public void render(GuiGraphics guiGraphics) {

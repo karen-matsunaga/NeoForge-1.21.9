@@ -5,6 +5,7 @@ import net.karen.mccoursemod.util.EnergyDisplayTooltipArea;
 import net.karen.mccoursemod.util.MouseUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -42,8 +43,8 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
     private void renderEnergyAreaTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY,
                                          int x, int y) {
         if (isMouseAboveArea(mouseX, mouseY, x, y, 156, 11, 8, 64)) {
-            guiGraphics.setTooltipForNextFrame(this.font, energyInfoArea.getTooltip(),
-                                               mouseX - x, mouseY - y);
+            guiGraphics.renderTooltip(this.font, energyInfoArea.getClientTooltip(), mouseX - x, mouseY - y,
+                                      DefaultTooltipPositioner.INSTANCE, null);
         }
     }
 
