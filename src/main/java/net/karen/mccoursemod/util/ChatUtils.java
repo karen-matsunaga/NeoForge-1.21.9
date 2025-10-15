@@ -37,6 +37,75 @@ public class ChatUtils {
     public static final int[] COLORS = { 0xff5555, 0xffaa00, 0xffff55, 0x55ff55,
                                          0x55ffff, 0x5555ff, 0xff55ff };
 
+    // ORES colors
+    public static int bismuthColor = ARGB.color(232, 84, 128);
+    public static int alexandriteColor = ARGB.color(48, 213, 200);
+    public static int pinkColor = ARGB.color(244, 51, 193);
+
+    public static int magicColor = ARGB.color(155, 39, 85);
+
+    public static int enchantColor = ARGB.color(45, 172, 62);
+    public static int disenchantIndColor = ARGB.color(155, 45, 172);
+    public static int disenchantGroColor = ARGB.color(47, 178, 181);
+
+    public static int elevatorColor = ARGB.color(255, 255, 0);
+    public static int generatorColor = ARGB.color(229, 117, 188);
+
+    public static int craftingColor = ARGB.color(64, 174, 60);
+
+    public static int bloodColor = ARGB.color(146, 28, 56);
+    public static int walnutColor = ARGB.color(210, 174, 99);
+
+    public static int chairColor = ARGB.color(242, 162, 76);
+
+    public static int pedestalColor = ARGB.color(138, 140, 142);
+    public static int growthChamberColor = ARGB.color(63, 62, 66);
+    public static int gemEmpoweringStationColor = ARGB.color(180, 212, 225);
+    public static int kaupenFurnaceColor = ARGB.color(78, 145, 255);
+
+    public static int forcedGlassColor = ARGB.color(163, 155, 245, 55);
+    public static int soundColor = ARGB.color(107, 213, 214);
+
+    public static int enderColor = ARGB.color(16, 94, 81);
+    public static int greenEnderColor = ARGB.color(44, 205, 83);
+    public static int limeEnderColor = ARGB.color(115, 254, 37);
+    public static int blackEnderColor = ARGB.color(44, 44, 44);
+    public static int magentaEnderColor = ARGB.color(254, 37, 242);
+    public static int purpleEnderColor = ARGB.color(142, 44, 205);
+    public static int orangeEnderColor = ARGB.color(254, 96, 37);
+    public static int pinkEnderColor = ARGB.color(244, 140, 224);
+    public static int cyanEnderColor = ARGB.color(52, 133, 153);
+    public static int brownEnderColor = ARGB.color(139, 64, 35);
+    public static int grayEnderColor = ARGB.color(113, 113, 113);
+    public static int redEnderColor = ARGB.color(205, 44, 59);
+    public static int yellowEnderColor = ARGB.color(195, 205, 44);
+    public static int blueEnderColor = ARGB.color(44, 131, 205);
+    public static int whiteEnderColor = ARGB.color(229, 229, 229);
+
+    public static int netherColor = ARGB.color(253, 255, 168);
+    public static int gunpowderColor = ARGB.color(138, 138, 138);
+    public static int rottenColor = ARGB.color(180, 68, 32);
+    public static int blazeColor = ARGB.color(255, 193, 0);
+    public static int phantomColor = ARGB.color(220, 217, 192);
+    public static int stringColor = ARGB.color(219, 219, 219);
+    public static int spiderColor = ARGB.color(123, 13, 39);
+    public static int fermentedColor = ARGB.color(193, 67, 84);
+    public static int sugarColor = ARGB.color(213, 213, 223);
+    public static int sugarCaneColor = ARGB.color(124, 204, 53);
+
+    public static int rubyColor = ARGB.color(199, 49, 49);
+    public static int ruby1Color = ARGB.color(149, 26, 35);
+    public static int ruby2Color = ARGB.color(159, 30, 31);
+    public static int ruby3Color = ARGB.color(221, 131, 50);
+
+    public static int snapdragonColor = ARGB.color(166, 94, 225);
+
+    public static int coloredLoreColor = ARGB.color(50, 193, 133);
+    public static int coloredCustomNameColor = ARGB.color(50, 193, 164);
+
+    public static int kaupenPortalLoreColor = ARGB.color(101, 158, 205);
+    public static int kaupenPortalCustomNameColor = ARGB.color(61, 138, 201);
+
     // Glowing Blocks X-RAY block bounding boxes
     public static final Map<TagKey<Block>, Integer> renderColors =
            Map.ofEntries(Map.entry(Tags.Blocks.ORES_COAL, color(169, 169,169)),
