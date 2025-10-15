@@ -10,11 +10,15 @@ import net.karen.mccoursemod.worldgen.tree.ModTreeGrowers;
 import net.karen.mccoursemod.util.ModWoodTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.util.ARGB;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.TreeGrower;
@@ -29,8 +33,10 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ModBlocks {
     // Registry all custom BLOCKS
@@ -644,8 +650,22 @@ public class ModBlocks {
     // ** CUSTOM METHOD - Registry all custom BLOCK ITEMS **
     private static <T extends Block> void registerBlockItem(String name,
                                                             DeferredBlock<T> block) {
+        String blockId = block.getRegisteredName().replace("mccoursemod:", "");
+        String names = itemLines(splitWord(blockId));
         ModItems.ITEMS.registerItem(name, properties ->
-                                    new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
+                                    new BlockItem(block.get(),
+                                                  properties.useBlockDescriptionPrefix()
+                                                            // LORE
+                                                            .component(DataComponents.LORE,
+                                                                       new ItemLore(
+                                                                       List.of(Component.nullToEmpty("")),
+                                                                       List.of(componentLiteralIntColor("Teste",
+                                                                               ARGB.color(225, 75, 228)))))
+                                                            // CUSTOM NAME
+                                                            .component(DataComponents.CUSTOM_NAME,
+                                                                       componentTranslatableIntColor(names,
+                                                                       ARGB.color(125, 218, 88)))
+                                    ));
     }
 
     // ** CUSTOM METHOD - Registry all custom BLOCKS on EVENT **

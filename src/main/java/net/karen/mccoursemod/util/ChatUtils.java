@@ -83,7 +83,7 @@ public class ChatUtils {
 
     // CUSTOM METHOD - COMPONENT TRANSLATABLE with int color
     public static Component componentTranslatableIntColor(String message, int color) {
-        return Component.translatable(message).withStyle(Style.EMPTY).withColor(color);
+        return Component.translatable(message).withStyle(Style.EMPTY.withItalic(false)).withColor(color);
     }
 
     // CUSTOM METHOD - COMPONENT LITERAL with one color
