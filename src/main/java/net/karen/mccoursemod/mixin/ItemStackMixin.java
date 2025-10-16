@@ -51,8 +51,7 @@ public abstract class ItemStackMixin {
         // TORCH BALL item
         if (stack.is(ModItems.TORCH_BALL.get().asItem())) {
             if (item instanceof TorchBallItem torchBall) {
-                tooltip.add(componentLiteral("§6 [" + torchBall.getItemName() + "]§r" +
-                                             " when hit added torch!", yellow));
+                tooltip.add(componentLiteral(torchBall.torchBallDescription(), yellow));
             }
         }
         // DATA TABLET item
@@ -69,7 +68,8 @@ public abstract class ItemStackMixin {
         // ELYTRA PLUS item
         if (stack.is(ModItems.DIAMOND_ELYTRA.get().asItem())) {
             if (item instanceof ElytraPlusItem elytraPlus) {
-                tooltipLineLiteralRGB(tooltip, COLORS, stack, elytraPlus.elytraItemName());
+                tooltipLineLiteralRGB(tooltip, COLORS, stack, elytraPlus.elytraItemName().getFirst());
+                tooltipLineLiteralRGBColors(tooltip, COLORS, elytraPlus.elytraItemName().get(1));
             }
         }
         // COMPACTOR item
@@ -83,16 +83,15 @@ public abstract class ItemStackMixin {
         if (stack.is(ModItems.CHISEL.get().asItem())) {
             if (item instanceof ChiselItem chisel) {
                 boolean isShift = Minecraft.getInstance().hasShiftDown();
-                tooltip.add(componentTranslatableIntColor(chisel.chiselShiftDescription(),
-                                                          isShift ? blueBedrockColor : redBedrockColor));
+                int color = isShift ? blueBedrockColor : redBedrockColor;
+                tooltip.add(componentTranslatableIntColor(chisel.chiselShiftDescription(), color));
                 tooltip.add(componentLiteralIntColor(chisel.chiselItemDescription(stack), chiselLoreColor));
             }
         }
         // LEVEL CHARGER GENERIC items
         if (stack.is(ModTags.Items.LEVEL_CHARGER_ITEMS)) {
             if (item instanceof LevelChargerItem generic) {
-                tooltip.add(componentLiteral(generic.levelChargerItemDescription(),
-                                             generic.getAmount() == 1 ? green : red));
+                tooltip.add(componentLiteral(generic.levelChargerItemDescription(), generic.getAmount() == 1 ? green : red));
             }
         }
         // MCCOURSE MOD BOTTLE item
@@ -103,17 +102,10 @@ public abstract class ItemStackMixin {
                                           tooltip.add(componentLiteral(message, color)));
             }
         }
-        // MCCOURSE MOD FISHING ROD item
-        if (stack.is(ModItems.MCCOURSE_MOD_FISHING_ROD)) {
-            tooltip.add(componentLiteral("More faster than vanilla Fishing Rod.", darkGray));
-        }
         // MINER bow item
         if (stack.is(ModItems.MINER_BOW)) {
             if (item instanceof MinerBowItem minerBow) {
-                int radius = minerBow.getRadius();
-                int value = radius * 2 + 1;
-                int depth = minerBow.getDepth();
-                tooltipLineLiteralRGB(tooltip, COLORS, stack, " Blocks: " + value + " x " + value + " x " + depth);
+                tooltipLineLiteralRGBColors(tooltip, COLORS, minerBow.minerBowDescription());
             }
         }
         // LUCK items

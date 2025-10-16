@@ -248,7 +248,7 @@ public class ChatUtils {
                         .withStyle(Style.EMPTY.withColor(color).withBold(curseFalse).withItalic(curseTrue));
     }
 
-    // CUSTOM METHOD - Tooltip Line Literal with RGB colors
+    // CUSTOM METHOD - Tooltip Line Literal with RGB colors -> WITH Item name
     public static void tooltipLineLiteralRGB(List<Component> tooltip,
                                              int[] COLORS, ItemStack stack, String message) {
         int shift = (int) (System.currentTimeMillis() / 200L % COLORS.length); // Calculates color shift based on time
@@ -258,6 +258,19 @@ public class ChatUtils {
         for (int i = 0; i < on.length(); i++) {
             int colorIndex = (i - shift + COLORS.length) % COLORS.length; // Adjust to move colors from left to right
             minerText.append(Component.literal(String.valueOf(on.charAt(i)))
+                     .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(COLORS[colorIndex]))));
+        }
+        tooltip.add(minerText);
+    }
+
+    // CUSTOM METHOD - Tooltip Line Literal with RGB colors -> WITHOUT Item name
+    public static void tooltipLineLiteralRGBColors(List<Component> tooltip,
+                                                   int[] COLORS, String message) {
+        int shift = (int) (System.currentTimeMillis() / 200L % COLORS.length); // Calculates color shift based on time
+        MutableComponent minerText = Component.literal(""); // Animated text for "Miner Bow" with RGB wave effect
+        for (int i = 0; i < message.length(); i++) {
+            int colorIndex = (i - shift + COLORS.length) % COLORS.length; // Adjust to move colors from left to right
+            minerText.append(Component.literal(String.valueOf(message.charAt(i)))
                      .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(COLORS[colorIndex]))));
         }
         tooltip.add(minerText);

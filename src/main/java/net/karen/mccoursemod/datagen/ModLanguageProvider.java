@@ -910,7 +910,7 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.MINER_BOW, "Bow.");
         itemDescription(ModItems.ALEXANDRITE_BOW, "Bow.");
 
-        itemDescription(ModItems.MCCOURSE_MOD_FISHING_ROD, "Fishing Rod.");
+        itemDescription(ModItems.MCCOURSE_MOD_FISHING_ROD, "More faster than vanilla Fishing Rod.");
 
         itemDescription(ModItems.ALEXANDRITE_SHIELD, "Shield.");
 

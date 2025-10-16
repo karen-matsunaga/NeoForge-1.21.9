@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import java.util.List;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ElytraPlusItem extends Item {
@@ -44,12 +45,12 @@ public class ElytraPlusItem extends Item {
     }
 
     // CUSTOM METHOD - Elytra Plus item name
-    public String elytraItemName() {
+    public List<String> elytraItemName() {
         String effectHolder = this.effectHolder.getRegisteredName().replace("minecraft:", "");
         String upperLetter = effectHolder.substring(0, 1).toUpperCase();
         String lowerLetters = effectHolder.substring(1);
         String effectName = upperLetter + lowerLetters;
         int effectLevel = effectAmplifier + 1;
-        return " with more durability and receive an effect! Effect: " + effectName + " " + effectLevel;
+        return List.of(" with more durability and receive an effect!", "Effect: " + effectName + " " + effectLevel);
     }
 }

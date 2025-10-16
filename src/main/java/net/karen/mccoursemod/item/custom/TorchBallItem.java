@@ -48,4 +48,9 @@ public class TorchBallItem extends Item {
     public @NotNull Component getName(@NotNull ItemStack stack) {
         return componentTranslatable(this.descriptionId, ChatUtils.gold);
     }
+
+    // CUSTOM METHOD - Torch Ball description
+    public String torchBallDescription() {
+        return "§6[" + this.getItemName() + "]§r when hit added torch!";
+    }
 }

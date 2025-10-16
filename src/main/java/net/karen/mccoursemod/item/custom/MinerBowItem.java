@@ -40,4 +40,11 @@ public class MinerBowItem extends BowItem {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) { return ChatUtils.rgbItemName(stack); }
+
+    // CUSTOM METHOD - MINER BOW description
+    public String minerBowDescription() {
+        int radius = getRadius() * 2 + 1;
+        int depth = getDepth();
+        return "Break blocks: " + radius + " x " + radius + " x " + depth;
+    }
 }
