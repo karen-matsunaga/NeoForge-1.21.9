@@ -4,6 +4,7 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.fluid.ModFluids;
 import net.karen.mccoursemod.item.ModItems;
+import net.karen.mccoursemod.item.custom.FuelItem;
 import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
 import net.minecraft.data.PackOutput;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Supplier;
@@ -619,21 +621,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add("enchantment.minecraft.wind_burst.desc",
             "When applied on mace the player into the air seven blocks per level after performing a smash attack.");
 
-        // ** CUSTOM ITEM TOOLTIP **
-        add("tooltip.mccoursemod.auto_smelt.tooltip",
-            "When applied on pickaxe transform all items that can be roasted on furnace.");
-        add("tooltip.mccoursemod.more_ores.tooltip",
-            "When applied on pickaxe if a stone block is break has a percentage to receive ores.");
-        add("tooltip.mccoursemod.chisel.shift_down", "This Item can chisel Blocks into Bricks");
-        add("tooltip.mccoursemod.chisel", "Press §eSHIFT§r for more information");
-        add("tooltip.mccoursemod.radish", "Tastes really great!");
-        add("tooltip.mccoursemod.kohlrabi", "Tastes really great!");
-        add("tooltip.mccoursemod.metal_detector.tooltip.shift", "§eRight Click on Blocks to find Valuables!");
-        add("tooltip.mccoursemod.metal_detector.tooltip", "Press §eSHIFT§r for more Information");
-        add("tooltip.mccoursemod.coffee", "Wake up and have a chance to achieve night vision effect.");
-        add("tooltip.mccoursemod.growth", "Makes a baby animal an adult animal!");
-        add("tooltip.mccoursemod.tomahawk", "Thunder when attacked entities!");
-
         // ** CUSTOM player display screen messages **
         add("item.mccoursemod.metal_detector.no_valuable_values", "§4No Valuables Found!");
 
@@ -865,6 +852,174 @@ public class ModLanguageProvider extends LanguageProvider {
 
         blockDescription(ModBlocks.COLORED_LEAVES, "Decorate Snapdragon on potted block.");
         blockDescription(ModBlocks.KAUPEN_PORTAL, "Portal block that changed to KAUPENDIM dimension.");
+
+        // ** CUSTOM ITEM DESCRIPTIONS **
+        itemDescription(ModItems.BISMUTH, "Found on Overworld, Nether, End and Kaupendim dimensions!");
+        itemDescription(ModItems.RAW_BISMUTH, "Found on Overworld, Nether, End and Kaupendim dimensions!");
+        itemDescription(ModItems.ALEXANDRITE, "Found on Overworld, Nether, End and Kaupendim dimensions!");
+        itemDescription(ModItems.RAW_ALEXANDRITE, "Found on Overworld, Nether, End and Kaupendim dimensions!");
+        itemDescription(ModItems.PINK, "Found on Overworld, Nether, End and Kaupendim dimensions!");
+
+        itemDescription(ModItems.CHISEL, "Press §eSHIFT§r for more information.");
+        add("tooltip.mccoursemod.chisel.shift_down", "This Item can chisel Blocks into Bricks");
+
+        itemDescription(ModItems.RESTORE, "Restore wrong crafting table recipe!");
+        itemDescription(ModItems.FARMER, "Improved Bone Meal grow tree, crops etc.");
+        itemDescription(ModItems.CATTAIL, "Transform oxidizable blocks on waxed blocks.");
+
+        itemDescription(ModItems.RADISH, "Tastes really great!");
+        itemDescription(ModItems.KOHLRABI, "Tastes really great!");
+        itemDescription(ModItems.COFFEE, "Wake up and have a chance to achieve night vision effect.");
+
+        fuelDescription(List.of(ModItems.FROSTFIRE_ICE, ModItems.STARLIGHT_ASHES, ModItems.PEAT_BRICK));
+
+        itemDescription(ModItems.BISMUTH_HELMET, "Armor.");
+        itemDescription(ModItems.BISMUTH_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.BISMUTH_LEGGINGS, "Armor.");
+        itemDescription(ModItems.BISMUTH_BOOTS, "Armor.");
+
+        itemDescription(ModItems.ALEXANDRITE_HELMET, "Armor.");
+        itemDescription(ModItems.ALEXANDRITE_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.ALEXANDRITE_LEGGINGS, "Armor.");
+        itemDescription(ModItems.ALEXANDRITE_BOOTS, "Armor.");
+
+        itemDescription(ModItems.PINK_HELMET, "Armor.");
+        itemDescription(ModItems.PINK_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.PINK_LEGGINGS, "Armor.");
+        itemDescription(ModItems.PINK_BOOTS, "Armor.");
+
+        itemDescription(ModItems.ULTRA_COPPER_HELMET, "Armor.");
+        itemDescription(ModItems.ULTRA_COPPER_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.ULTRA_COPPER_LEGGINGS, "Armor.");
+        itemDescription(ModItems.ULTRA_COPPER_BOOTS, "Armor.");
+
+        itemDescription(ModItems.LAPIS_LAZULI_HELMET, "Armor.");
+        itemDescription(ModItems.LAPIS_LAZULI_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.LAPIS_LAZULI_LEGGINGS, "Armor.");
+        itemDescription(ModItems.LAPIS_LAZULI_BOOTS, "Armor.");
+
+        itemDescription(ModItems.REDSTONE_HELMET, "Armor.");
+        itemDescription(ModItems.REDSTONE_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.REDSTONE_LEGGINGS, "Armor.");
+        itemDescription(ModItems.REDSTONE_BOOTS, "Armor.");
+
+        itemDescription(ModItems.BISMUTH_HORSE_ARMOR, "Horse armor.");
+        itemDescription(ModItems.ALEXANDRITE_HORSE_ARMOR, "Horse armor.");
+
+        itemDescription(ModItems.KAUPEN_BOW, "Bow.");
+        itemDescription(ModItems.MINER_BOW, "Bow.");
+        itemDescription(ModItems.ALEXANDRITE_BOW, "Bow.");
+
+        itemDescription(ModItems.MCCOURSE_MOD_FISHING_ROD, "Fishing Rod.");
+
+        itemDescription(ModItems.ALEXANDRITE_SHIELD, "Shield.");
+
+        itemDescription(ModItems.BISMUTH_PAXEL, "Paxel.");
+        itemDescription(ModItems.ALEXANDRITE_PAXEL, "Paxel.");
+        itemDescription(ModItems.PINK_PAXEL, "Paxel.");
+        itemDescription(ModItems.COPPER_PAXEL, "Paxel.");
+        itemDescription(ModItems.DIAMOND_PAXEL, "Paxel.");
+        itemDescription(ModItems.GOLD_PAXEL, "Paxel.");
+        itemDescription(ModItems.IRON_PAXEL, "Paxel.");
+        itemDescription(ModItems.STONE_PAXEL, "Paxel.");
+        itemDescription(ModItems.WOODEN_PAXEL, "Paxel.");
+        itemDescription(ModItems.NETHERITE_PAXEL, "Paxel.");
+        itemDescription(ModItems.LAPIS_LAZULI_PAXEL, "Paxel.");
+        itemDescription(ModItems.REDSTONE_PAXEL, "Paxel.");
+
+        itemDescription(ModItems.BISMUTH_HAMMER, "Hammer.");
+        itemDescription(ModItems.ALEXANDRITE_HAMMER, "Hammer.");
+        itemDescription(ModItems.PINK_HAMMER, "Hammer.");
+        itemDescription(ModItems.COPPER_HAMMER, "Hammer.");
+        itemDescription(ModItems.DIAMOND_HAMMER, "Hammer.");
+        itemDescription(ModItems.GOLD_HAMMER, "Hammer.");
+        itemDescription(ModItems.IRON_HAMMER, "Hammer.");
+        itemDescription(ModItems.STONE_HAMMER, "Hammer.");
+        itemDescription(ModItems.WOODEN_HAMMER, "Hammer.");
+        itemDescription(ModItems.NETHERITE_HAMMER, "Hammer.");
+        itemDescription(ModItems.LAPIS_LAZULI_HAMMER, "Hammer.");
+        itemDescription(ModItems.REDSTONE_HAMMER, "Hammer.");
+
+        itemDescription(ModItems.BISMUTH_SHOVEL, "Shovel.");
+        itemDescription(ModItems.ALEXANDRITE_SHOVEL, "Shovel.");
+        itemDescription(ModItems.PINK_SHOVEL, "Shovel.");
+        itemDescription(ModItems.ULTRA_COPPER_SHOVEL, "Shovel.");
+        itemDescription(ModItems.LAPIS_LAZULI_SHOVEL, "Shovel.");
+        itemDescription(ModItems.REDSTONE_SHOVEL, "Shovel.");
+
+        itemDescription(ModItems.BISMUTH_AXE, "Axe.");
+        itemDescription(ModItems.ALEXANDRITE_AXE, "Axe.");
+        itemDescription(ModItems.PINK_AXE, "Axe.");
+        itemDescription(ModItems.ULTRA_COPPER_AXE, "Axe.");
+        itemDescription(ModItems.LAPIS_LAZULI_AXE, "Axe.");
+        itemDescription(ModItems.REDSTONE_AXE, "Axe.");
+
+        itemDescription(ModItems.BISMUTH_HOE, "Hoe.");
+        itemDescription(ModItems.ALEXANDRITE_HOE, "Hoe.");
+        itemDescription(ModItems.PINK_HOE, "Hoe.");
+        itemDescription(ModItems.ULTRA_COPPER_HOE, "Hoe.");
+        itemDescription(ModItems.LAPIS_LAZULI_HOE, "Hoe.");
+        itemDescription(ModItems.REDSTONE_HOE, "Hoe.");
+
+        itemDescription(ModItems.BISMUTH_PICKAXE, "Pickaxe.");
+        itemDescription(ModItems.ALEXANDRITE_PICKAXE, "Pickaxe.");
+        itemDescription(ModItems.PINK_PICKAXE, "Pickaxe.");
+        itemDescription(ModItems.ULTRA_COPPER_PICKAXE, "Pickaxe.");
+        itemDescription(ModItems.LAPIS_LAZULI_PICKAXE, "Pickaxe.");
+        itemDescription(ModItems.REDSTONE_PICKAXE, "Pickaxe.");
+
+        itemDescription(ModItems.BISMUTH_SWORD, "Sword.");
+        itemDescription(ModItems.ALEXANDRITE_SWORD, "Sword.");
+        itemDescription(ModItems.PINK_SWORD, "Sword.");
+        itemDescription(ModItems.ULTRA_COPPER_SWORD, "Sword.");
+        itemDescription(ModItems.LAPIS_LAZULI_SWORD, "Sword.");
+        itemDescription(ModItems.REDSTONE_SWORD, "Sword.");
+
+        itemDescription(ModItems.DIAMOND_ELYTRA, "Elytra.");
+        itemDescription(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Armor Trim Smithing Template.");
+        itemDescription(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "Upgrade Smithing Template.");
+
+        add("tooltip.mccoursemod.auto_smelt.tooltip",
+            "When applied on pickaxe transform all items that can be roasted on furnace.");
+        add("tooltip.mccoursemod.more_ores.tooltip",
+            "When applied on pickaxe if a stone block is break has a percentage to receive ores.");
+
+        itemDescription(ModItems.BAR_BRAWL_MUSIC_DISC, "Jukebox music disc sound.");
+
+        itemDescription(ModItems.GECKO_SPAWN_EGG, "Spawn Gecko entity.");
+        itemDescription(ModItems.RHINO_SPAWN_EGG, "Spawn Rhino entity.");
+
+        itemDescription(ModItems.TOMAHAWK, "Thunder when attacked entities!");
+        itemDescription(ModItems.DICE_ITEM, "Spawn dice blocks!");
+        itemDescription(ModItems.RADIATION_STAFF, "Spawn special particle!");
+
+        itemDescription(ModItems.LEVEL_CHARGER_GENERIC_PLUS, "Increase all enchantment levels!");
+        itemDescription(ModItems.LEVEL_CHARGER_GENERIC_MINUS, "Decrease all enchantment levels!");
+        itemDescription(ModItems.LEVEL_CHARGER_SPECIF_PLUS_FORTUNE, "Increase Fortune enchantment level!");
+        itemDescription(ModItems.LEVEL_CHARGER_SPECIF_MINUS_FORTUNE, "Decrease Fortune enchantment level!");
+
+        itemDescription(ModItems.ULTRA_COMPACTOR, "Compact automatic all ores blocks!");
+        itemDescription(ModItems.PINK_ULTRA_COMPACTOR, "Compact manually all ores blocks!");
+
+        itemDescription(ModItems.MCCOURSE_MOD_BOTTLE, "Restore or store your orb experience!");
+
+        itemDescription(ModItems.METAL_DETECTOR, "Press §eSHIFT§r for more Information.");
+        add("tooltip.mccoursemod.metal_detector.tooltip.shift", "§eRight Click on Blocks to find Valuables!");
+
+        itemDescription(ModItems.DATA_TABLET,
+                        "Store ore block founded on Overworld, Nether, End and Kaupendim dimensions!");
+
+        itemDescription(ModItems.GROWTH, "Makes a baby animal an adult animal!");
+
+        itemDescription(ModItems.WALNUT_SIGN, "Decorate sign block.");
+        itemDescription(ModItems.WALNUT_HANGING_SIGN, "Decorate hanging sign block.");
+
+        itemDescription(ModItems.TORCH_BALL, "Spawn TORCH blocks.");
+        itemDescription(ModItems.BOUNCY_BALLS, "Teleport same as Ender Pearl without cooldown.");
+        itemDescription(ModItems.BOUNCY_BALLS_PARTICLES, "Particle used on Bouncy Balls item.");
+
+        itemDescription(ModItems.WALNUT_BOAT, "Travel with special boat block item.");
+        itemDescription(ModItems.WALNUT_CHEST_BOAT, "Travel with special chest boat block item.");
     }
 
     // CUSTOM METHOD - Register Block and Block Item
@@ -932,6 +1087,20 @@ public class ModLanguageProvider extends LanguageProvider {
     private <T extends Block> void enderBlockDescription(List<DeferredBlock<T>> block) {
         for (DeferredBlock<T> id : block) {
             blockDescription(id, "Decorate ender block.");
+        }
+    }
+
+    // CUSTOM METHOD - Item description
+    private <I extends Item> void itemDescription(DeferredItem<I> item, String text) {
+        add("tooltip." + item.getRegisteredName().replace(":", "."), text);
+    }
+
+    private <I extends Item> void fuelDescription(List<DeferredItem<I>> items) {
+        for (DeferredItem<I> item : items) {
+            if (item.get() instanceof FuelItem fuelItem) {
+                add("tooltip." + item.getRegisteredName().replace(":", "."),
+                    "§6Burn: §r" + fuelItem.getBurnTime());
+            }
         }
     }
 

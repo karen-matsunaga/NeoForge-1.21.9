@@ -71,21 +71,21 @@ public class OresSmithingTemplateItem extends SmithingTemplateItem {
     }
 
     // CUSTOM METHOD - Ores Upgrade Smithing Template item description
-    public static Component lines(String text, int red, int green, int blue) {
+    public static Component lines(String text, int lore) {
         return Component.translatable(Util.makeDescriptionId("item",
                                                              ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
                                                                                                    text)))
-                        .withStyle(Style.EMPTY.withColor(ARGB.color(red, green, blue)));
+                        .withStyle(Style.EMPTY.withColor(lore));
     }
 
     // CUSTOM METHOD - Ores Smithing Template item description
     public void appendHoverText(@NotNull ItemStack stack,
                                 Item.@NotNull TooltipContext context, @NotNull TooltipDisplay tooltipDisplay,
                                 Consumer<Component> tooltipAdder, @NotNull TooltipFlag flag) {
-        tooltipAdder.accept(lines("smithing_template", 125, 218, 88));
-        tooltipAdder.accept(lines("smithing_template.applies_to", 93, 226, 231).copy()
+        tooltipAdder.accept(lines("smithing_template", ARGB.color(125, 218, 88)));
+        tooltipAdder.accept(lines("smithing_template.applies_to", ARGB.color(93, 226, 231)).copy()
                     .append(CommonComponents.space().append(this.appliesTo)));
-        tooltipAdder.accept(lines("smithing_template.ingredients", 233, 93, 210).copy()
+        tooltipAdder.accept(lines("smithing_template.ingredients", ARGB.color(233, 93, 210)).copy()
                     .append(CommonComponents.space().append(this.ingredients)));
     }
 }

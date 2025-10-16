@@ -33,6 +33,11 @@ public class ChatUtils {
                                  black = ChatFormatting.BLACK, white = ChatFormatting.WHITE,
                                  bold = ChatFormatting.BOLD, italic = ChatFormatting.ITALIC;
 
+    public static int greenColor = ARGB.color(85, 255, 85);
+    public static int darkGreenColor = ARGB.color(0, 170, 0);
+    public static int whiteColor = ARGB.color(255, 255, 255);
+    public static int redColor = ARGB.color(255, 85, 85);
+
     // RGB colors
     public static final int[] COLORS = { 0xff5555, 0xffaa00, 0xffff55, 0x55ff55,
                                          0x55ffff, 0x5555ff, 0xff55ff };
@@ -105,6 +110,46 @@ public class ChatUtils {
 
     public static int kaupenPortalLoreColor = ARGB.color(101, 158, 205);
     public static int kaupenPortalCustomNameColor = ARGB.color(61, 138, 201);
+
+    public static int chiselLoreColor = ARGB.color(241, 131, 8);
+    public static int restoreLoreColor = ARGB.color(149, 240, 244);
+    public static int farmerLoreColor = ARGB.color(55, 60, 155);
+    public static int cattailLoreColor = ARGB.color(116, 90, 51);
+
+    public static int elytraLoreColor = ARGB.color(20, 255, 196);
+    public static int kaupenTrimLoreColor = ARGB.color(131, 195, 223);
+    public static int copperUpgradeSmithingLoreColor = ARGB.color(156, 69, 41);
+
+    public static int fishingRodLoreColor = ARGB.color(170, 0, 170);
+
+    public static int copperLoreColor = ARGB.color(156, 69, 41);
+    public static int lapisLoreColor = ARGB.color(39, 63, 178);
+    public static int redstoneLoreColor = ARGB.color(218, 48, 75);
+    public static int diamondLoreColor = ARGB.color(39, 178, 154);
+    public static int goldLoreColor = ARGB.color(255, 255, 35);
+    public static int ironLoreColor = ARGB.color(130, 130, 130);
+    public static int stoneLoreColor = ARGB.color(99, 99, 99);
+    public static int woodenLoreColor = ARGB.color(136, 102, 38);
+    public static int netheriteLoreColor = ARGB.color(74, 41, 64);
+
+    public static int barBrawlLoreColor = ARGB.color(99, 155, 255);
+
+    public static int growthLoreColor = ARGB.color(224, 140, 56);
+
+    public static int geckoLoreColor = ARGB.color(97, 255, 150);
+    public static int rhinoLoreColor = ARGB.color(122, 135, 135);
+
+    public static int luckGeneralLoreColor = ARGB.color(76, 165, 228);
+    public static int luckPickaxeLoreColor = ARGB.color(93, 220, 242);
+    public static int luckWeaponLoreColor = ARGB.color(242, 93, 110);
+
+    public static int torchBallLoreColor = ARGB.color(255, 222, 89);
+    public static int bouncyBallsLoreColor = ARGB.color(241, 150, 255);
+    public static int dataTabletLoreColor = ARGB.color(132, 126, 135);
+    public static int tomahawkLoreColor = ARGB.color(106, 112, 118);
+    public static int radiationStaffLoreColor = ARGB.color(118, 193, 66);
+    public static int diceLoreColor = ARGB.color(234, 229, 222);
+    public static int mccourseModBottleLoreColor = ARGB.color(89, 204, 148);
 
     // Glowing Blocks X-RAY block bounding boxes
     public static final Map<TagKey<Block>, Integer> renderColors =
