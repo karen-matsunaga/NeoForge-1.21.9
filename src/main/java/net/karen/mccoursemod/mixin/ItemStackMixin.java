@@ -48,20 +48,12 @@ public abstract class ItemStackMixin {
         Level level = Minecraft.getInstance().level;
         Item item = stack.getItem();
         // ** CUSTOM ITEMS **
-        // Added more information about GROWTH item
-        if (stack.is(ModItems.GROWTH.get().asItem())) {
-            tooltip.add(componentTranslatable("tooltip.mccoursemod.growth", aqua));
-        }
         // TORCH BALL item
         if (stack.is(ModItems.TORCH_BALL.get().asItem())) {
             if (item instanceof TorchBallItem torchBall) {
                 tooltip.add(componentLiteral("§6 [" + torchBall.getItemName() + "]§r" +
                                              " when hit added torch!", yellow));
             }
-        }
-        // TOMAHAWK item
-        if (stack.is(ModItems.TOMAHAWK.get().asItem())) {
-            tooltip.add(componentTranslatable("tooltip.mccoursemod.tomahawk", yellow));
         }
         // DATA TABLET item
         if (stack.is(ModItems.DATA_TABLET.get().asItem())) {
@@ -83,17 +75,17 @@ public abstract class ItemStackMixin {
         // COMPACTOR item
         if (stack.is(ModTags.Items.COMPACTOR_ITEMS)) {
             if (item instanceof CompactorItem compactor) {
-                compactor.compactorItemName()
-                         .forEach((message, color) ->
-                                  tooltip.add(componentLiteral(message, color)));
+                compactor.compactorItemName().forEach((message, color) ->
+                                                      tooltip.add(componentLiteral(message, color)));
             }
         }
         // CHISEL item
         if (stack.is(ModItems.CHISEL.get().asItem())) {
             if (item instanceof ChiselItem chisel) {
                 boolean isShift = Minecraft.getInstance().hasShiftDown();
-                tooltip.add(componentTranslatable(chisel.chiselShiftDescription(), isShift ? blue : red));
-                tooltip.add(componentLiteral(chisel.chiselItemDescription(stack), gray));
+                tooltip.add(componentTranslatableIntColor(chisel.chiselShiftDescription(),
+                                                          isShift ? blueBedrockColor : redBedrockColor));
+                tooltip.add(componentLiteralIntColor(chisel.chiselItemDescription(stack), chiselLoreColor));
             }
         }
         // LEVEL CHARGER GENERIC items

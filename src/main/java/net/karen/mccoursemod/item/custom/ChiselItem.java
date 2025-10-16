@@ -84,7 +84,7 @@ public class ChiselItem extends Item {
 
     // CUSTOM METHOD - CHISEL shift description
     public String chiselShiftDescription() {
-        if (Minecraft.getInstance().hasShiftDown()) { return "tooltip.mccoursemod.chisel.shift_down"; }
+        if (Minecraft.getInstance().hasShiftDown()) { return "tooltip.mccoursemod.chisel.shift"; }
         else { return "tooltip.mccoursemod.chisel"; }
     }
 

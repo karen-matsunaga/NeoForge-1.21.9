@@ -3,7 +3,6 @@ package net.karen.mccoursemod.component.custom;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.network.chat.Component;
@@ -15,62 +14,37 @@ import net.minecraft.world.item.component.TooltipProvider;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.function.Consumer;
-import static net.karen.mccoursemod.util.ChatUtils.*;
+import static net.karen.mccoursemod.util.ChatUtils.componentTranslatableIntColor;
 
-public record ShiftTooltip(List<String> texts,
-                           List<ChatFormatting> colors, boolean isTrans) implements TooltipProvider {
+public record ShiftTooltip(List<String> texts, List<Integer> colors) implements TooltipProvider {
     // CODEC
     public static final Codec<ShiftTooltip> CODEC =
            RecordCodecBuilder.create(instance ->
-                                     instance.group(Codec.STRING.listOf().fieldOf("texts")
-                                                                         .forGetter(ShiftTooltip::texts),
-                                                    ChatFormatting.CODEC.listOf().fieldOf("colors")
-                                                                        .forGetter(ShiftTooltip::colors),
-                                                    Codec.BOOL.fieldOf("isTrans")
-                                                              .forGetter(ShiftTooltip::isTrans))
+                                     instance.group(Codec.STRING.listOf().fieldOf("texts").forGetter(ShiftTooltip::texts),
+                                                    Codec.INT.listOf().fieldOf("colors").forGetter(ShiftTooltip::colors))
                                              .apply(instance, ShiftTooltip::new));
 
     // STREAM CODEC
     public static final StreamCodec<ByteBuf, ShiftTooltip> STREAM_CODEC =
            StreamCodec.composite(ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), ShiftTooltip::texts,
-                                 ByteBufCodecs.fromCodec(ChatFormatting.CODEC)
-                                              .apply(ByteBufCodecs.list()), ShiftTooltip::colors,
-                                 ByteBufCodecs.BOOL, ShiftTooltip::isTrans,
+                                 ByteBufCodecs.INT.apply(ByteBufCodecs.list()), ShiftTooltip::colors,
                                  ShiftTooltip::new);
 
     // DEFAULT METHOD - Adds TEXTS any line
     @Override
-    public List<String> texts() {
-        return texts;
-    }
+    public List<String> texts() { return texts; }
 
     // DEFAULT METHOD - Adds COLORS any line
     @Override
-    public List<ChatFormatting> colors() {
-        return colors;
-    }
-
-    // DEFAULT METHOD - (True) COMPONENT TRANSLATABLE or (False) COMPONENT LITERAL
-    @Override
-    public boolean isTrans() {
-        return isTrans;
-    }
+    public List<Integer> colors() { return colors; }
 
     // DEFAULT METHOD - Adds TOOLTIP at the beginning
     @Override
     public void addToTooltip(Item.@NotNull TooltipContext context, @NotNull Consumer<Component> consumer,
                              @NotNull TooltipFlag flag, @NotNull DataComponentGetter dataComp) {
-        if (isTrans) {
-                if (Minecraft.getInstance().hasShiftDown() && !texts().isEmpty() && texts().size() > 1) {
-                consumer.accept(componentTranslatable(texts().getFirst(), colors().getFirst()));
-            }
-            else { consumer.accept(componentTranslatable(texts().get(1), colors().get(1))); }
+        if (Minecraft.getInstance().hasShiftDown() && !texts().isEmpty() && texts().size() > 1) {
+            consumer.accept(componentTranslatableIntColor(texts().getFirst(), colors().getFirst()));
         }
-        else {
-            if (Minecraft.getInstance().hasShiftDown() && !texts().isEmpty() && texts().size() > 1) {
-                consumer.accept(componentLiteral(texts().getFirst(), colors().getFirst()));
-            }
-            else { consumer.accept(componentLiteral(texts().get(1), colors().get(1))); }
-        }
+        else { consumer.accept(componentTranslatableIntColor(texts().get(1), colors().get(1))); }
     }
 }

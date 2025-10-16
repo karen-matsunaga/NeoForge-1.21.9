@@ -5,6 +5,7 @@ import net.karen.mccoursemod.item.ModItems;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -57,6 +58,7 @@ public class TomahawkProjectileEntity extends AbstractArrow {
         if (!level.isClientSide() && level instanceof ServerLevel serverLevel) {
             entity.hurtServer(serverLevel, this.damageSources().thrown(this, this.getOwner()), 4);
             level.broadcastEntityEvent(this, (byte) 3);
+            EntityType.LIGHTNING_BOLT.spawn(serverLevel, entity.getOnPos(), EntitySpawnReason.TRIGGERED);
             this.discard();
         }
     }

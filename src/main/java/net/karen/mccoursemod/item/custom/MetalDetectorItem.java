@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import java.util.Map;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
@@ -148,4 +149,12 @@ public class MetalDetectorItem extends Item {
     public @NotNull Component getName(@NotNull ItemStack stack) {
         return ChatUtils.componentTranslatable(this.getDescriptionId(), gray);
     }
+
+    // CUSTOM METHOD - SHIFT lore
+    public static List<String> shiftLore() {
+        return List.of("tooltip.mccoursemod.metal_detector.shift", "tooltip.mccoursemod.metal_detector");
+    }
+
+    // CUSTOM METHOD - SHIFT lore color
+    public static List<Integer> shiftLoreColor() { return List.of(redBedrockColor, metalDetectorLoreColor); }
 }

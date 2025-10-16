@@ -2,14 +2,13 @@ package net.karen.mccoursemod.item;
 
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.component.custom.ShiftTooltip;
 import net.karen.mccoursemod.component.ModDataComponentTypes;
+import net.karen.mccoursemod.component.custom.ShiftTooltip;
 import net.karen.mccoursemod.datagen.ModEquipmentAssetProvider;
 import net.karen.mccoursemod.entity.ModEntities;
 import net.karen.mccoursemod.item.custom.*;
 import net.karen.mccoursemod.sound.ModSounds;
 import net.karen.mccoursemod.trim.ModTrimMaterials;
-import net.karen.mccoursemod.util.ChatUtils;
 import net.karen.mccoursemod.util.ModTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -19,7 +18,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.util.ARGB;
 import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -71,7 +69,7 @@ public class ModItems {
 
     // ** CUSTOM advanced items **
     public static final DeferredItem<Item> CHISEL =
-           customItem("chisel", ChiselItem::new, new Item.Properties().durability(32), chiselLoreColor);
+           ITEMS.registerItem("chisel", ChiselItem::new, new Item.Properties().durability(32));
 
     public static final DeferredItem<Item> RESTORE =
            customItem("restore", RestoreItem::new, new Item.Properties().fireResistant(), restoreLoreColor);
@@ -263,63 +261,51 @@ public class ModItems {
     // ** CUSTOM Hammer tools **
     public static final DeferredItem<Item> BISMUTH_HAMMER =
            hammerItem("bismuth_hammer", ModToolMaterials.BISMUTH, 7F, -3.5F,
-                      ModTags.Items.BISMUTH_TOOL_MATERIALS, 2, ARGB.color(255, 232, 84, 128),
-                      bismuthColor);
+                      ModTags.Items.BISMUTH_TOOL_MATERIALS, 2, bismuthColor, bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_HAMMER =
            hammerItem("alexandrite_hammer", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                      ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, 2, ARGB.color(255, 48, 213, 200),
-                      alexandriteColor);
+                      ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, 2, alexandriteColor, alexandriteColor);
 
     public static final DeferredItem<Item> PINK_HAMMER =
            hammerItem("pink_hammer", ModToolMaterials.PINK, 2.0F, 2.0F,
-                      ModTags.Items.PINK_TOOL_MATERIALS, 3, ARGB.color(255, 244, 51, 193),
-                      pinkColor);
+                      ModTags.Items.PINK_TOOL_MATERIALS, 3, pinkColor, pinkColor);
 
     public static final DeferredItem<Item> COPPER_HAMMER =
            hammerItem("copper_hammer", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                      ModTags.Items.COPPER_TOOL_MATERIALS, 2, ARGB.color(255, 156, 69, 41),
-                      copperLoreColor);
+                      ModTags.Items.COPPER_TOOL_MATERIALS, 2, copperLoreColor, copperLoreColor);
 
     public static final DeferredItem<Item> DIAMOND_HAMMER =
            hammerItem("diamond_hammer", ToolMaterial.DIAMOND, 2.0F, 4.5F,
-                      ItemTags.DIAMOND_TOOL_MATERIALS, 3, ARGB.color(255, 39, 178, 154),
-                      diamondLoreColor);
+                      ItemTags.DIAMOND_TOOL_MATERIALS, 3, diamondLoreColor, diamondLoreColor);
 
     public static final DeferredItem<Item> GOLD_HAMMER =
            hammerItem("gold_hammer", ToolMaterial.GOLD, 2.0F, 4.0F,
-                      ItemTags.GOLD_TOOL_MATERIALS, 2, ARGB.color(255, 255, 255, 35),
-                      goldLoreColor);
+                      ItemTags.GOLD_TOOL_MATERIALS, 2, goldLoreColor, goldLoreColor);
 
     public static final DeferredItem<Item> IRON_HAMMER =
            hammerItem("iron_hammer", ToolMaterial.IRON, 2.0F, 3.0F,
-                      ItemTags.IRON_TOOL_MATERIALS, 2, ARGB.color(255, 130, 130, 130),
-                      ironLoreColor);
+                      ItemTags.IRON_TOOL_MATERIALS, 2, ironLoreColor, ironLoreColor);
 
     public static final DeferredItem<Item> STONE_HAMMER =
            hammerItem("stone_hammer", ToolMaterial.STONE, 2.0F, 1.5F,
-                      ItemTags.STONE_TOOL_MATERIALS, 1, ARGB.color(255, 99, 99, 99),
-                      stoneLoreColor);
+                      ItemTags.STONE_TOOL_MATERIALS, 1, stoneLoreColor, stoneLoreColor);
 
     public static final DeferredItem<Item> WOODEN_HAMMER =
            hammerItem("wooden_hammer", ToolMaterial.WOOD, 2.0F, 1.0F,
-                      ItemTags.WOODEN_TOOL_MATERIALS, 1, ARGB.color(255, 136, 102, 38),
-                      woodenLoreColor);
+                      ItemTags.WOODEN_TOOL_MATERIALS, 1, woodenLoreColor, woodenLoreColor);
 
     public static final DeferredItem<Item> NETHERITE_HAMMER =
            hammerItem("netherite_hammer", ToolMaterial.NETHERITE, 2.0F, 5.0F,
-                      ItemTags.NETHERITE_TOOL_MATERIALS, 5, ARGB.color(255, 74, 41, 64),
-                      netheriteLoreColor);
+                      ItemTags.NETHERITE_TOOL_MATERIALS, 5, netheriteLoreColor, netheriteLoreColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_HAMMER =
            hammerItem("lapis_lazuli_hammer", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                      ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, 4, ARGB.color(255, 39, 63, 178),
-                      lapisLoreColor);
+                      ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, 4, lapisLoreColor, lapisLoreColor);
 
     public static final DeferredItem<Item> REDSTONE_HAMMER =
            hammerItem("redstone_hammer", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                      ModTags.Items.REDSTONE_TOOL_MATERIALS, 4, ARGB.color(255, 218, 48, 75),
-                      redstoneLoreColor);
+                      ModTags.Items.REDSTONE_TOOL_MATERIALS, 4, redstoneLoreColor, redstoneLoreColor);
 
     // ** CUSTOM Shovel tools **
     public static final DeferredItem<Item> BISMUTH_SHOVEL =
@@ -548,15 +534,10 @@ public class ModItems {
     // METAL DETECTOR item
     public static final DeferredItem<Item> METAL_DETECTOR =
            ITEMS.registerItem("metal_detector", properties ->
-                              new MetalDetectorItem(properties.fireResistant()
-                                                              .stacksTo(1)
+                              new MetalDetectorItem(properties.fireResistant().stacksTo(1)
                                                               .component(ModDataComponentTypes.SHIFT_TOOLTIP,
-                                                                         new ShiftTooltip(
-                                                                         List.of(
-                                                                         "tooltip.mccoursemod.metal_detector.tooltip.shift",
-                                                                         "tooltip.mccoursemod.metal_detector"),
-                                                                         List.of(ChatUtils.yellow, ChatUtils.white),
-                                                                         true)),
+                                                                         new ShiftTooltip(MetalDetectorItem.shiftLore(),
+                                                                                          MetalDetectorItem.shiftLoreColor())),
                                                     ModTags.Blocks.METAL_DETECTOR_VALUABLES));
 
     // DATA TABLET item
@@ -876,15 +857,14 @@ public class ModItems {
     private static <I extends Item> DeferredItem<I> customItem(String name,
                                                                Function<Properties, ? extends I> item,
                                                                Item.Properties props, int lore) {
-        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip." + item, lore));
+        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.mccoursemod." + name, lore));
         return ITEMS.registerItem(name, item, props.component(DataComponents.LORE, new ItemLore(itemLore)));
     }
 
     // CUSTOM METHOD - (CUSTOM classes) Registry all custom ITEMS
     public static <I extends Item> DeferredItem<I> editItem(String name,
-                                                            Function<Item.Properties, ? extends I> item,
-                                                            int lore) {
-        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip." + item, lore));
+                                                            Function<Item.Properties, ? extends I> item, int lore) {
+        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.mccoursemod." + name, lore));
         return ITEMS.registerItem(name, item, new Item.Properties().component(DataComponents.LORE, new ItemLore(itemLore)));
     }
 

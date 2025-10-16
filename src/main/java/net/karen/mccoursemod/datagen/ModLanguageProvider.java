@@ -860,8 +860,8 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.RAW_ALEXANDRITE, "Found on Overworld, Nether, End and Kaupendim dimensions!");
         itemDescription(ModItems.PINK, "Found on Overworld, Nether, End and Kaupendim dimensions!");
 
-        itemDescription(ModItems.CHISEL, "Press §eSHIFT§r for more information.");
-        add("tooltip.mccoursemod.chisel.shift_down", "This Item can chisel Blocks into Bricks");
+        shiftDescription(ModItems.CHISEL, "Press §eSHIFT§r for more information.",
+                         "This Item can chisel Blocks into Bricks");
 
         itemDescription(ModItems.RESTORE, "Restore wrong crafting table recipe!");
         itemDescription(ModItems.FARMER, "Improved Bone Meal grow tree, crops etc.");
@@ -1003,8 +1003,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
         itemDescription(ModItems.MCCOURSE_MOD_BOTTLE, "Restore or store your orb experience!");
 
-        itemDescription(ModItems.METAL_DETECTOR, "Press §eSHIFT§r for more Information.");
-        add("tooltip.mccoursemod.metal_detector.tooltip.shift", "§eRight Click on Blocks to find Valuables!");
+        shiftDescription(ModItems.METAL_DETECTOR, "Press §eSHIFT§r for more Information.",
+                         "§eRight Click on Blocks to find Valuables!");
 
         itemDescription(ModItems.DATA_TABLET,
                         "Store ore block founded on Overworld, Nether, End and Kaupendim dimensions!");
@@ -1020,6 +1020,10 @@ public class ModLanguageProvider extends LanguageProvider {
 
         itemDescription(ModItems.WALNUT_BOAT, "Travel with special boat block item.");
         itemDescription(ModItems.WALNUT_CHEST_BOAT, "Travel with special chest boat block item.");
+
+        itemDescription(ModItems.LUCK_GENERAL, "Gain random general enchantments.");
+        itemDescription(ModItems.LUCK_PICKAXE, "Gain random pickaxe enchantments.");
+        itemDescription(ModItems.LUCK_WEAPON, "Gain random sword enchantments.");
     }
 
     // CUSTOM METHOD - Register Block and Block Item
@@ -1099,9 +1103,15 @@ public class ModLanguageProvider extends LanguageProvider {
         for (DeferredItem<I> item : items) {
             if (item.get() instanceof FuelItem fuelItem) {
                 add("tooltip." + item.getRegisteredName().replace(":", "."),
-                    "§6Burn: §r" + fuelItem.getBurnTime());
+                    "§6Burn: §r§e" + fuelItem.getBurnTime());
             }
         }
+    }
+
+    private <I extends Item> void shiftDescription(DeferredItem<I> item,
+                                                   String text, String shiftText) {
+        add("tooltip." + item.getRegisteredName().replace(":", "."), text);
+        add("tooltip." + item.getRegisteredName().replace(":", ".") + ".shift", shiftText);
     }
 
     @Override

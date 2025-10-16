@@ -38,6 +38,9 @@ public class ChatUtils {
     public static int whiteColor = ARGB.color(255, 255, 255);
     public static int redColor = ARGB.color(255, 85, 85);
 
+    public static int blueBedrockColor = ARGB.color(33, 73, 123);
+    public static int redBedrockColor = ARGB.color(151, 22, 7);
+
     // RGB colors
     public static final int[] COLORS = { 0xff5555, 0xffaa00, 0xffff55, 0x55ff55,
                                          0x55ffff, 0x5555ff, 0xff55ff };
@@ -150,6 +153,8 @@ public class ChatUtils {
     public static int radiationStaffLoreColor = ARGB.color(118, 193, 66);
     public static int diceLoreColor = ARGB.color(234, 229, 222);
     public static int mccourseModBottleLoreColor = ARGB.color(89, 204, 148);
+
+    public static int metalDetectorLoreColor = ARGB.color(68, 68, 68);
 
     // Glowing Blocks X-RAY block bounding boxes
     public static final Map<TagKey<Block>, Integer> renderColors =

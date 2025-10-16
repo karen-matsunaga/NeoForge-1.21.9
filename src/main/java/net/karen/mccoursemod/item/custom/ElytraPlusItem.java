@@ -50,6 +50,6 @@ public class ElytraPlusItem extends Item {
         String lowerLetters = effectHolder.substring(1);
         String effectName = upperLetter + lowerLetters;
         int effectLevel = effectAmplifier + 1;
-        return " with more durability and receive an effect! \nEffect: " + effectName + " " + effectLevel;
+        return " with more durability and receive an effect! Effect: " + effectName + " " + effectLevel;
     }
 }
