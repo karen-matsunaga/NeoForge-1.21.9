@@ -42,6 +42,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import static net.karen.mccoursemod.item.custom.OresSmithingTemplateItem.*;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
@@ -55,30 +56,30 @@ public class ModItems {
     public static final DeferredItem<Item> BISMUTH = trimMaterialItem("bismuth", ModTrimMaterials.BISMUTH, bismuthColor);
 
     public static final DeferredItem<Item> RAW_BISMUTH =
-           customItem("raw_bismuth", Item::new, new Item.Properties(), bismuthColor);
+           customItem("raw_bismuth", Item::new, props -> props, bismuthColor);
 
     // ALEXANDRITE
     public static final DeferredItem<Item> ALEXANDRITE =
            trimMaterialItem("alexandrite", ModTrimMaterials.ALEXANDRITE, alexandriteColor);
 
     public static final DeferredItem<Item> RAW_ALEXANDRITE =
-           customItem("raw_alexandrite", Item::new, new Item.Properties(), alexandriteColor);
+           customItem("raw_alexandrite", Item::new, props -> props, alexandriteColor);
 
     // PINK
     public static final DeferredItem<Item> PINK = trimMaterialItem("pink", ModTrimMaterials.PINK, pinkColor);
 
     // ** CUSTOM advanced items **
     public static final DeferredItem<Item> CHISEL =
-           ITEMS.registerItem("chisel", ChiselItem::new, new Item.Properties().durability(32));
+           editItem("chisel", props -> new ChiselItem(props.durability(32)), chiselLoreColor);
 
     public static final DeferredItem<Item> RESTORE =
-           customItem("restore", RestoreItem::new, new Item.Properties().fireResistant(), restoreLoreColor);
+           customItem("restore", RestoreItem::new, Properties::fireResistant, restoreLoreColor);
 
     public static final DeferredItem<Item> FARMER =
-           customItem("farmer", FarmerItem::new, new Item.Properties().fireResistant(), farmerLoreColor);
+           customItem("farmer", FarmerItem::new, Properties::fireResistant, farmerLoreColor);
 
     public static final DeferredItem<Item> CATTAIL =
-           customItem("cattail", ModWaxingItem::new, new Item.Properties(), cattailLoreColor);
+           customItem("cattail", ModWaxingItem::new, Properties::fireResistant, cattailLoreColor);
 
     // ** CUSTOM Foods **
     public static final DeferredItem<Item> RADISH =
@@ -487,15 +488,15 @@ public class ModItems {
 
     // ** CUSTOM Throwable Projectiles **
     public static final DeferredItem<Item> TOMAHAWK =
-           customItem("tomahawk", TomahawkItem::new, new Properties().stacksTo(16), tomahawkLoreColor);
+           customItem("tomahawk", TomahawkItem::new, props -> props.stacksTo(16), tomahawkLoreColor);
 
     public static final DeferredItem<Item> DICE_ITEM =
-           customItem("dice_item", DiceItem::new, new Item.Properties(), diceLoreColor);
+           customItem("dice_item", DiceItem::new, props -> props, diceLoreColor);
 
     // ** CUSTOM Animated Textures **
     public static final DeferredItem<Item> RADIATION_STAFF =
            customItem("radiation_staff", RadiationStaffItem::new,
-                      new Item.Properties().stacksTo(1).durability(1024), radiationStaffLoreColor);
+                      props -> props.stacksTo(1).durability(1024), radiationStaffLoreColor);
 
     // ** CUSTOM Advanced Items **
     // Level Charger items
@@ -533,54 +534,66 @@ public class ModItems {
 
     // METAL DETECTOR item
     public static final DeferredItem<Item> METAL_DETECTOR =
-           ITEMS.registerItem("metal_detector", properties ->
-                              new MetalDetectorItem(properties.fireResistant().stacksTo(1)
-                                                              .component(ModDataComponentTypes.SHIFT_TOOLTIP,
-                                                                         new ShiftTooltip(MetalDetectorItem.shiftLore(),
-                                                                                          MetalDetectorItem.shiftLoreColor())),
-                                                    ModTags.Blocks.METAL_DETECTOR_VALUABLES));
+           editItem("metal_detector", properties ->
+                    new MetalDetectorItem(properties.fireResistant().stacksTo(1)
+                                                    .component(ModDataComponentTypes.SHIFT_TOOLTIP,
+                                                               new ShiftTooltip(MetalDetectorItem.shiftLore(),
+                                                                                MetalDetectorItem.shiftLoreColor())),
+                                          ModTags.Blocks.METAL_DETECTOR_VALUABLES), metalDetectorColor);
 
     // DATA TABLET item
     public static final DeferredItem<Item> DATA_TABLET =
-           customItem("data_tablet", DataTabletItem::new, new Item.Properties().stacksTo(1), dataTabletLoreColor);
+           customItem("data_tablet", DataTabletItem::new, props ->  props.stacksTo(1),
+                      dataTabletLoreColor);
 
     // GROWTH item
     public static final DeferredItem<Item> GROWTH =
            customItem("growth", GrowthItem::new,
-                      new Item.Properties().stacksTo(64).fireResistant(), growthLoreColor);
+                      props -> props.stacksTo(64).fireResistant(), growthLoreColor);
 
     // ** CUSTOM sign and Hanging sign **
     public static final DeferredItem<Item> WALNUT_SIGN =
            editItem("walnut_sign", properties ->
                     new SignItem(ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get(),
-                                 properties.stacksTo(16)), walnutColor);
+                                 properties.stacksTo(16)) {
+                        @Override
+                        public @NotNull Component getName(@NotNull ItemStack stack) {
+                            return componentTranslatableIntColor(this.getDescriptionId(), walnutColor);
+                        }
+                    }, walnutColor);
 
     public static final DeferredItem<Item> WALNUT_HANGING_SIGN =
            editItem("walnut_hanging_sign", properties ->
-                    new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
-                                        properties.stacksTo(16)), walnutColor);
+                    new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(),
+                                        ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
+                                        properties.stacksTo(16)) {
+                        @Override
+                        public @NotNull Component getName(@NotNull ItemStack stack) {
+                            return componentTranslatableIntColor(this.getDescriptionId(), walnutColor);
+                        }
+                    }, walnutColor);
 
     // TORCH BALL item
     public static final DeferredItem<Item> TORCH_BALL =
            customItem("torch_ball", TorchBallItem::new,
-                      new Item.Properties().fireResistant().stacksTo(1), torchBallLoreColor);
+                      props -> props.fireResistant().stacksTo(1), torchBallLoreColor);
 
     public static final DeferredItem<Item> BOUNCY_BALLS =
            customItem("bouncy_balls", BouncyBallsItem::new,
-                      new Item.Properties().fireResistant().stacksTo(1), bouncyBallsLoreColor);
+                      props -> props.fireResistant().stacksTo(1), bouncyBallsLoreColor);
 
     public static final DeferredItem<Item> BOUNCY_BALLS_PARTICLES =
            customItem("bouncy_balls_particles", Item::new,
-                      new Item.Properties().stacksTo(64).fireResistant(), bouncyBallsLoreColor);
+                      props -> props.stacksTo(64).fireResistant(), bouncyBallsLoreColor);
 
     // ** CUSTOM boats **
     public static final DeferredItem<Item> WALNUT_BOAT =
            editItem("walnut_boat", properties ->
-                    new ModBoatItem(ModEntities.MOD_BOAT.get(), properties.stacksTo(1)), walnutColor);
+                    new ModBoatItem(ModEntities.MOD_BOAT.get(), properties.stacksTo(1), walnutColor), walnutColor);
 
     public static final DeferredItem<Item> WALNUT_CHEST_BOAT =
            editItem("walnut_chest_boat", properties ->
-                    new ModBoatItem(ModEntities.MOD_CHEST_BOAT.get(), properties.stacksTo(1)), walnutColor);
+                    new ModBoatItem(ModEntities.MOD_CHEST_BOAT.get(), properties.stacksTo(1), walnutColor), walnutColor);
 
     // ** Luck items **
     public static final DeferredItem<Item> LUCK_GENERAL =
@@ -622,19 +635,20 @@ public class ModItems {
                                               float saturation, Holder<MobEffect> effect,
                                               int duration, float chance, int color) {
         return customItem(name, Item::new,
-                          new Item.Properties().food(new FoodProperties.Builder()
-                                                                       .nutrition(nutrition)
-                                                                       .saturationModifier(saturation).build(),
-                                                     Consumables.defaultFood()
-                                                                .onConsume(new ApplyStatusEffectsConsumeEffect(
-                                                                           new MobEffectInstance(effect, duration),
-                                                                           chance)).build()), color);
+                          props -> props.food(new FoodProperties.Builder()
+                                                                          .nutrition(nutrition)
+                                                                          .saturationModifier(saturation).build(),
+                                                       Consumables.defaultFood()
+                                                                  .onConsume(new ApplyStatusEffectsConsumeEffect(
+                                                                             new MobEffectInstance(effect, duration),
+                                                                                                   chance)).build()),
+                          color);
     }
 
     // ** CUSTOM METHOD - Trim Material **
     public static DeferredItem<Item> trimMaterialItem(String name,
                                                       ResourceKey<TrimMaterial> trim, int lore) {
-        return customItem(name, Item::new, new Item.Properties().trimMaterial(trim), lore);
+        return customItem(name, Item::new, props -> props.trimMaterial(trim), lore);
     }
 
     // ** CUSTOM METHOD - Paxel tool **
@@ -856,16 +870,18 @@ public class ModItems {
     // CUSTOM METHOD - (ITEM class) Registry all custom ITEMS
     private static <I extends Item> DeferredItem<I> customItem(String name,
                                                                Function<Properties, ? extends I> item,
-                                                               Item.Properties props, int lore) {
-        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.mccoursemod." + name, lore));
-        return ITEMS.registerItem(name, item, props.component(DataComponents.LORE, new ItemLore(itemLore)));
+                                                               UnaryOperator<Properties> properties,
+                                                               int lore) {
+        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.item.mccoursemod." + name, lore));
+        return ITEMS.registerItem(name, item,
+                                  props -> properties.apply(props.component(DataComponents.LORE, new ItemLore(itemLore))));
     }
 
     // CUSTOM METHOD - (CUSTOM classes) Registry all custom ITEMS
     public static <I extends Item> DeferredItem<I> editItem(String name,
                                                             Function<Item.Properties, ? extends I> item, int lore) {
-        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.mccoursemod." + name, lore));
-        return ITEMS.registerItem(name, item, new Item.Properties().component(DataComponents.LORE, new ItemLore(itemLore)));
+        List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.item.mccoursemod." + name, lore));
+        return ITEMS.registerItem(name, item, props -> props.component(DataComponents.LORE, new ItemLore(itemLore)));
     }
 
     // CUSTOM METHOD - Registry all items on event bus

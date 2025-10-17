@@ -767,7 +767,7 @@ public class ModBlocks {
         String registerBlock = block.getRegisteredName();
         // LORE
         String blockLore = registerBlock.replace(":", ".");
-        List<Component> loreComponent = List.of(componentTranslatableIntColor("tooltip." + blockLore, lore));
+        List<Component> loreComponent = List.of(componentTranslatableIntColor("tooltip.block." + blockLore, lore));
         // CUSTOM NAME
         String blockId = registerBlock.replace("mccoursemod:", "");
         String names = itemLines(splitWord(blockId));

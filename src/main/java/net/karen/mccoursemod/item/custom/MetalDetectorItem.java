@@ -152,9 +152,9 @@ public class MetalDetectorItem extends Item {
 
     // CUSTOM METHOD - SHIFT lore
     public static List<String> shiftLore() {
-        return List.of("tooltip.mccoursemod.metal_detector.shift", "tooltip.mccoursemod.metal_detector");
+        return List.of("tooltip.item.mccoursemod.metal_detector.shift", "tooltip.item.mccoursemod.metal_detector");
     }
 
     // CUSTOM METHOD - SHIFT lore color
-    public static List<Integer> shiftLoreColor() { return List.of(redBedrockColor, metalDetectorLoreColor); }
+    public static List<Integer> shiftLoreColor() { return List.of(metalDetectorColor, metalDetectorLoreColor); }
 }

@@ -18,6 +18,7 @@
     "ItemEnchantmentsMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
+    "PotionContentsMixin",
     "SculkShriekerBlockEntityMixin",
     "ServerPlayerMixin",
     "ShieldDecorationRecipeMixin",

@@ -2,19 +2,26 @@ package net.karen.mccoursemod.datagen;
 
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
+import net.karen.mccoursemod.effect.ModEffects;
 import net.karen.mccoursemod.fluid.ModFluids;
 import net.karen.mccoursemod.item.ModItems;
 import net.karen.mccoursemod.item.custom.FuelItem;
+import net.karen.mccoursemod.item.custom.HammerItem;
 import net.karen.mccoursemod.worldgen.biome.ModBiomes;
 import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
+import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
@@ -914,31 +921,19 @@ public class ModLanguageProvider extends LanguageProvider {
 
         itemDescription(ModItems.ALEXANDRITE_SHIELD, "Shield.");
 
-        itemDescription(ModItems.BISMUTH_PAXEL, "Paxel.");
-        itemDescription(ModItems.ALEXANDRITE_PAXEL, "Paxel.");
-        itemDescription(ModItems.PINK_PAXEL, "Paxel.");
-        itemDescription(ModItems.COPPER_PAXEL, "Paxel.");
-        itemDescription(ModItems.DIAMOND_PAXEL, "Paxel.");
-        itemDescription(ModItems.GOLD_PAXEL, "Paxel.");
-        itemDescription(ModItems.IRON_PAXEL, "Paxel.");
-        itemDescription(ModItems.STONE_PAXEL, "Paxel.");
-        itemDescription(ModItems.WOODEN_PAXEL, "Paxel.");
-        itemDescription(ModItems.NETHERITE_PAXEL, "Paxel.");
-        itemDescription(ModItems.LAPIS_LAZULI_PAXEL, "Paxel.");
-        itemDescription(ModItems.REDSTONE_PAXEL, "Paxel.");
+        paxelDescription(List.of(ModItems.BISMUTH_PAXEL, ModItems.ALEXANDRITE_PAXEL,
+                                 ModItems.PINK_PAXEL, ModItems.COPPER_PAXEL,
+                                 ModItems.DIAMOND_PAXEL, ModItems.GOLD_PAXEL,
+                                 ModItems.IRON_PAXEL, ModItems.STONE_PAXEL,
+                                 ModItems.WOODEN_PAXEL, ModItems.NETHERITE_PAXEL,
+                                 ModItems.LAPIS_LAZULI_PAXEL, ModItems.REDSTONE_PAXEL));
 
-        itemDescription(ModItems.BISMUTH_HAMMER, "Hammer.");
-        itemDescription(ModItems.ALEXANDRITE_HAMMER, "Hammer.");
-        itemDescription(ModItems.PINK_HAMMER, "Hammer.");
-        itemDescription(ModItems.COPPER_HAMMER, "Hammer.");
-        itemDescription(ModItems.DIAMOND_HAMMER, "Hammer.");
-        itemDescription(ModItems.GOLD_HAMMER, "Hammer.");
-        itemDescription(ModItems.IRON_HAMMER, "Hammer.");
-        itemDescription(ModItems.STONE_HAMMER, "Hammer.");
-        itemDescription(ModItems.WOODEN_HAMMER, "Hammer.");
-        itemDescription(ModItems.NETHERITE_HAMMER, "Hammer.");
-        itemDescription(ModItems.LAPIS_LAZULI_HAMMER, "Hammer.");
-        itemDescription(ModItems.REDSTONE_HAMMER, "Hammer.");
+        hammerDescription(List.of(ModItems.BISMUTH_HAMMER, ModItems.ALEXANDRITE_HAMMER,
+                                  ModItems.PINK_HAMMER, ModItems.COPPER_HAMMER,
+                                  ModItems.DIAMOND_HAMMER, ModItems.GOLD_HAMMER,
+                                  ModItems.IRON_HAMMER, ModItems.STONE_HAMMER,
+                                  ModItems.WOODEN_HAMMER, ModItems.NETHERITE_HAMMER,
+                                  ModItems.LAPIS_LAZULI_HAMMER, ModItems.REDSTONE_HAMMER));
 
         itemDescription(ModItems.BISMUTH_SHOVEL, "Shovel.");
         itemDescription(ModItems.ALEXANDRITE_SHOVEL, "Shovel.");
@@ -1024,6 +1019,38 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.LUCK_GENERAL, "Gain random general enchantments.");
         itemDescription(ModItems.LUCK_PICKAXE, "Gain random pickaxe enchantments.");
         itemDescription(ModItems.LUCK_WEAPON, "Gain random sword enchantments.");
+
+        Map<Holder<MobEffect>, String> effects = new HashMap<>();
+        effects.put(ModEffects.SLIMEY_EFFECT, "Climbing on blocks, but speed decrease 20 percent.");
+        effects.put(ModEffects.FLY_EFFECT, "Player fly press twice SPACE clicks.");
+        effects.put(ModEffects.NOTHING_EFFECT, "Never Warden spawns and Enderman angry when looking on eyes.");
+        effects.put(MobEffects.HASTE, "Increase mining speed.");
+        effects.put(MobEffects.GLOWING, "Look \"hit box\" of mob entities.");
+        effects.put(MobEffects.DOLPHINS_GRACE, "Increase swing speed.");
+        effects.put(MobEffects.JUMP_BOOST, "Increase jump height when pressed SPACE.");
+        effects.put(MobEffects.NIGHT_VISION, "Player illumination anywhere location.");
+        effects.put(MobEffects.STRENGTH, "Increase attack damage.");
+        effects.put(MobEffects.SPEED, "Increase walk speed.");
+        effects.put(MobEffects.SATURATION, "Saturation decreases more slowly.");
+        effects.put(MobEffects.FIRE_RESISTANCE, "Increase fire resistance damage.");
+        effects.put(MobEffects.RESISTANCE, "Increase resistance damage.");
+        effects.put(MobEffects.REGENERATION, "Restore health points for some time.");
+        effects.put(MobEffects.INSTANT_HEALTH, "Restore X health points.");
+        effects.put(MobEffects.WITHER, "As Poison effect, but Player's hearth is black.");
+        effects.put(MobEffects.WATER_BREATHING, "Increase breathing time on water.");
+        effects.put(MobEffects.WEAKNESS, "Decrease attack damage.");
+        effects.put(MobEffects.WEAVING, "Appears COBWEB particle after death and reduces cobweb walk speed.");
+        effects.put(MobEffects.CONDUIT_POWER, "Grants Water Breathing, Night Vision and Haste effects.");
+        effects.put(MobEffects.WIND_CHARGED, "Appears WIND CHARGED particle after death and explode all entities.");
+        effects.put(MobEffects.SLOW_FALLING, "");
+        effects.put(MobEffects.UNLUCK, "");
+        effects.put(MobEffects.LUCK, "");
+        effects.put(MobEffects.LEVITATION, "");
+        effects.put(MobEffects.TRIAL_OMEN, "");
+        effects.put(MobEffects.RAID_OMEN, "");
+        effects.put(MobEffects.INFESTED, "");
+        effects.put(MobEffects.HUNGER, "");
+        potionDescription(effects);
     }
 
     // CUSTOM METHOD - Register Block and Block Item
@@ -1085,7 +1112,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
     // CUSTOM METHOD - Block description
     private <T extends Block> void blockDescription(DeferredBlock<T> block, String text) {
-        add("tooltip." + block.getRegisteredName().replace(":", "."), text);
+        add("tooltip.block." + block.getRegisteredName().replace(":", "."), text);
     }
 
     private <T extends Block> void enderBlockDescription(List<DeferredBlock<T>> block) {
@@ -1096,22 +1123,42 @@ public class ModLanguageProvider extends LanguageProvider {
 
     // CUSTOM METHOD - Item description
     private <I extends Item> void itemDescription(DeferredItem<I> item, String text) {
-        add("tooltip." + item.getRegisteredName().replace(":", "."), text);
+        add("tooltip.item." + item.getRegisteredName().replace(":", "."), text);
     }
 
     private <I extends Item> void fuelDescription(List<DeferredItem<I>> items) {
         for (DeferredItem<I> item : items) {
             if (item.get() instanceof FuelItem fuelItem) {
-                add("tooltip." + item.getRegisteredName().replace(":", "."),
-                    "§6Burn: §r§e" + fuelItem.getBurnTime());
+                itemDescription(item, "§6Burn: §r§e" + fuelItem.getBurnTime());
             }
         }
     }
 
     private <I extends Item> void shiftDescription(DeferredItem<I> item,
                                                    String text, String shiftText) {
-        add("tooltip." + item.getRegisteredName().replace(":", "."), text);
-        add("tooltip." + item.getRegisteredName().replace(":", ".") + ".shift", shiftText);
+        itemDescription(item, text);
+        add("tooltip.item." + item.getRegisteredName().replace(":", ".") + ".shift", shiftText);
+    }
+
+    private <I extends Item> void hammerDescription(List<DeferredItem<I>> items) {
+        for (DeferredItem<I> item : items) {
+            if (item.get() instanceof HammerItem hammerItem) {
+                int radius = hammerItem.getRadius() * 2 + 1;
+                itemDescription(item, "§6Hammer breaks: §r" + radius + "§fx§r" + radius + " §6radius area.§r");
+            }
+        }
+    }
+
+    private <I extends Item> void paxelDescription(List<DeferredItem<I>> items) {
+        for (DeferredItem<I> item : items) {
+            itemDescription(item, "Break blocks as Axe, Pickaxe or Shovel.");
+        }
+    }
+
+    private void potionDescription(Map<Holder<MobEffect>, String> effects) {
+        for (Map.Entry<Holder<MobEffect>, String> effect : effects.entrySet()) {
+            add("tooltip.effect." + effect.getKey().getRegisteredName().replace(":", "."), effect.getValue());
+        }
     }
 
     @Override

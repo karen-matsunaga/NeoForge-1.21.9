@@ -3,8 +3,6 @@ package net.karen.mccoursemod.component;
 import com.mojang.serialization.Codec;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.component.custom.FoundBlock;
-import net.karen.mccoursemod.component.custom.HammerTooltip;
-import net.karen.mccoursemod.component.custom.ItemTooltip;
 import net.karen.mccoursemod.component.custom.ShiftTooltip;
 import net.karen.mccoursemod.enchantment.custom.AutoSmeltEnchantmentEffect;
 import net.karen.mccoursemod.enchantment.custom.MoreOresEnchantmentEffect;
@@ -44,16 +42,6 @@ public class ModDataComponentTypes {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<ShiftTooltip>> SHIFT_TOOLTIP =
            register("shift_tooltip", builder ->
                     builder.persistent(ShiftTooltip.CODEC).networkSynchronized(ShiftTooltip.STREAM_CODEC));
-
-    // Item tooltip data component
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<ItemTooltip>> ITEM_TOOLTIP =
-           register("item_tooltip", builder ->
-                    builder.persistent(ItemTooltip.CODEC).networkSynchronized(ItemTooltip.STREAM_CODEC));
-
-    // Hammer tooltip data component
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<HammerTooltip>> HAMMER_TOOLTIP =
-           register("hammer_tooltip", builder ->
-                    builder.persistent(HammerTooltip.CODEC).networkSynchronized(HammerTooltip.STREAM_CODEC));
 
     // Mccourse Mod Bottle data component
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> STORED_LEVELS =

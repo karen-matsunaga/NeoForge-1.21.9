@@ -1,5 +1,6 @@
 package net.karen.mccoursemod.item.custom;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -21,14 +22,17 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
+import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ModBoatItem extends Item {
     private final EntityType<? extends AbstractBoat> entityType;
+    private final int color;
 
     public ModBoatItem(EntityType<? extends AbstractBoat> entityType,
-                       Item.Properties properties) {
+                       Item.Properties properties, int color) {
         super(properties);
         this.entityType = entityType;
+        this.color = color;
     }
 
     public @NotNull InteractionResult use(@NotNull Level level,
@@ -82,5 +86,10 @@ public class ModBoatItem extends Item {
             }
         }
         return abstractboat;
+    }
+
+    @Override
+    public @NotNull Component getName(@NotNull ItemStack stack) {
+        return componentTranslatableIntColor(this.getDescriptionId(), this.color);
     }
 }

@@ -155,6 +155,7 @@ public class ChatUtils {
     public static int mccourseModBottleLoreColor = ARGB.color(89, 204, 148);
 
     public static int metalDetectorLoreColor = ARGB.color(68, 68, 68);
+    public static int metalDetectorColor = ARGB.color(154, 92, 198);
 
     // Glowing Blocks X-RAY block bounding boxes
     public static final Map<TagKey<Block>, Integer> renderColors =
