@@ -1021,35 +1021,51 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.LUCK_WEAPON, "Gain random sword enchantments.");
 
         Map<Holder<MobEffect>, String> effects = new HashMap<>();
-        effects.put(ModEffects.SLIMEY_EFFECT, "Climbing on blocks, but speed decrease 20 percent.");
+        // MCCOURSE MOD effects
         effects.put(ModEffects.FLY_EFFECT, "Player fly press twice SPACE clicks.");
         effects.put(ModEffects.NOTHING_EFFECT, "Never Warden spawns and Enderman angry when looking on eyes.");
-        effects.put(MobEffects.HASTE, "Increase mining speed.");
-        effects.put(MobEffects.GLOWING, "Look \"hit box\" of mob entities.");
-        effects.put(MobEffects.DOLPHINS_GRACE, "Increase swing speed.");
-        effects.put(MobEffects.JUMP_BOOST, "Increase jump height when pressed SPACE.");
-        effects.put(MobEffects.NIGHT_VISION, "Player illumination anywhere location.");
-        effects.put(MobEffects.STRENGTH, "Increase attack damage.");
-        effects.put(MobEffects.SPEED, "Increase walk speed.");
-        effects.put(MobEffects.SATURATION, "Saturation decreases more slowly.");
-        effects.put(MobEffects.FIRE_RESISTANCE, "Increase fire resistance damage.");
-        effects.put(MobEffects.RESISTANCE, "Increase resistance damage.");
-        effects.put(MobEffects.REGENERATION, "Restore health points for some time.");
-        effects.put(MobEffects.INSTANT_HEALTH, "Restore X health points.");
-        effects.put(MobEffects.WITHER, "As Poison effect, but Player's hearth is black.");
-        effects.put(MobEffects.WATER_BREATHING, "Increase breathing time on water.");
-        effects.put(MobEffects.WEAKNESS, "Decrease attack damage.");
-        effects.put(MobEffects.WEAVING, "Appears COBWEB particle after death and reduces cobweb walk speed.");
+        effects.put(ModEffects.SLIMEY_EFFECT, "Climbing on blocks, but speed decreases 20 percent.");
+
+        // VANILLA effects
+        effects.put(MobEffects.ABSORPTION, "Extra hearts on health bar.");
+        effects.put(MobEffects.BAD_OMEN, "Transform on Raid Omen when Player is a village or Trial Omen if near a non-ominous trial spawner.");
+        effects.put(MobEffects.BLINDNESS, "Prevent sprinting and critical hits also impairs a Player's vision.");
         effects.put(MobEffects.CONDUIT_POWER, "Grants Water Breathing, Night Vision and Haste effects.");
-        effects.put(MobEffects.WIND_CHARGED, "Appears WIND CHARGED particle after death and explode all entities.");
-        effects.put(MobEffects.SLOW_FALLING, "");
-        effects.put(MobEffects.UNLUCK, "");
-        effects.put(MobEffects.LUCK, "");
-        effects.put(MobEffects.LEVITATION, "");
-        effects.put(MobEffects.TRIAL_OMEN, "");
-        effects.put(MobEffects.RAID_OMEN, "");
-        effects.put(MobEffects.INFESTED, "");
-        effects.put(MobEffects.HUNGER, "");
+        effects.put(MobEffects.DARKNESS, "Distorted vision when sculk shrieker activated or detection range of a Warden.");
+        effects.put(MobEffects.DOLPHINS_GRACE, "Increases swing speed.");
+        effects.put(MobEffects.FIRE_RESISTANCE, "Increases fire resistance damage.");
+        effects.put(MobEffects.GLOWING, "Look \"hit box\" of mob entity positions through blocks.");
+        effects.put(MobEffects.HASTE, "Increases 20 percent of attack speed.");
+        effects.put(MobEffects.HEALTH_BOOST, "Increases maximum health points.");
+        effects.put(MobEffects.HERO_OF_THE_VILLAGE, "Player exclusive effect when defeating a Raid, discount when trading and gifts.");
+        effects.put(MobEffects.HUNGER, "Player hunger points decreases more rapidly.");
+        effects.put(MobEffects.INFESTED, "Entity received attack damage spawn Silverfish.");
+        effects.put(MobEffects.INSTANT_DAMAGE, "Lose three multiply 2 square effect level health points.");
+        effects.put(MobEffects.INSTANT_HEALTH, "Restore two health points.");
+        effects.put(MobEffects.INVISIBILITY, "Decreases mob normal detection range.");
+        effects.put(MobEffects.JUMP_BOOST, "Increases jump height when pressed SPACE.");
+        effects.put(MobEffects.LEVITATION, "Uncontrollably float upward by Shulker entity.");
+        effects.put(MobEffects.LUCK, "Increases receiving better loot tables.");
+        effects.put(MobEffects.MINING_FATIGUE, "Decreases 0.3 square effect level mining efficiency and 10 percent of attack speed.");
+        effects.put(MobEffects.NAUSEA, "Player distortion as Nether Portal effect.");
+        effects.put(MobEffects.NIGHT_VISION, "Player illumination anywhere location in darkness or underwater.");
+        effects.put(MobEffects.OOZING, "Appears two medium Slime after death entities.");
+        effects.put(MobEffects.POISON, "Similar as Wither effect, but Player's health is showing, more rapidly and not kill.");
+        effects.put(MobEffects.RAID_OMEN, "Start a Raid.");
+        effects.put(MobEffects.REGENERATION, "Restore health points for some time.");
+        effects.put(MobEffects.RESISTANCE, "Increases resistance damage.");
+        effects.put(MobEffects.SATURATION, "Decreases the need to eating and prevent death by hunger.");
+        effects.put(MobEffects.SLOW_FALLING, "Player gravity is more slowly and avoid fall damage, but prevents critical hits and smash attacks.");
+        effects.put(MobEffects.SLOWNESS, "Decreases 15 percent of walking speed.");
+        effects.put(MobEffects.SPEED, "Increases 20 percent of walking speed.");
+        effects.put(MobEffects.STRENGTH, "Increases 3+ attack damage.");
+        effects.put(MobEffects.TRIAL_OMEN, "Transform trial spawners to ominous trial spawners.");
+        effects.put(MobEffects.UNLUCK, "Decreases getting better loot tables.");
+        effects.put(MobEffects.WATER_BREATHING, "Increases breathing time on water.");
+        effects.put(MobEffects.WEAKNESS, "Decreases attack damage.");
+        effects.put(MobEffects.WEAVING, "Appears COBWEB upon death and reduces cobweb walk speed.");
+        effects.put(MobEffects.WIND_CHARGED, "Release a burst of wind upon death.");
+        effects.put(MobEffects.WITHER, "As Poison effect, but Player's health is black, more slowly and can kill.");
         potionDescription(effects);
     }
 
