@@ -8,6 +8,7 @@ import net.karen.mccoursemod.util.ChatUtils;
 import net.karen.mccoursemod.util.InventoryUtil;
 import net.karen.mccoursemod.util.ModTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,7 +26,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
 import java.util.Map;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
@@ -150,11 +150,9 @@ public class MetalDetectorItem extends Item {
         return ChatUtils.componentTranslatable(this.getDescriptionId(), gray);
     }
 
-    // CUSTOM METHOD - SHIFT lore
-    public static List<String> shiftLore() {
-        return List.of("tooltip.item.mccoursemod.metal_detector.shift", "tooltip.item.mccoursemod.metal_detector");
+    // CUSTOM METHOD - METAL DETECTOR shift description
+    public String metalDetectorShiftDescription() {
+        if (Minecraft.getInstance().hasShiftDown()) { return "tooltip.item.mccoursemod.metal_detector.shift"; }
+        else { return "tooltip.item.mccoursemod.metal_detector"; }
     }
-
-    // CUSTOM METHOD - SHIFT lore color
-    public static List<Integer> shiftLoreColor() { return List.of(metalDetectorColor, metalDetectorLoreColor); }
 }

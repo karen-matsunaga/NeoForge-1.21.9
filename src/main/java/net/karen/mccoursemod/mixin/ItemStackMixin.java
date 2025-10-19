@@ -9,7 +9,6 @@ import net.karen.mccoursemod.util.ModTags;
 import net.karen.mccoursemod.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.ARGB;
@@ -18,8 +17,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.item.component.TooltipProvider;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,15 +27,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 @Mixin(ItemStack.class)
 public abstract class ItemStackMixin {
     @Shadow public abstract String toString();
-    @Shadow public abstract <T extends TooltipProvider>
-                            void addToTooltip(DataComponentType<T> component, Item.TooltipContext context,
-                                              TooltipDisplay display, Consumer<Component> consumer, TooltipFlag flag);
 
     @Inject(method = "getTooltipLines", at = @At("RETURN"), cancellable = true)
     private void getTooltipLines(Item.TooltipContext context, Player player,
@@ -86,6 +79,14 @@ public abstract class ItemStackMixin {
                 int color = isShift ? blueBedrockColor : redBedrockColor;
                 tooltip.add(componentTranslatableIntColor(chisel.chiselShiftDescription(), color));
                 tooltip.add(componentLiteralIntColor(chisel.chiselItemDescription(stack), chiselLoreColor));
+            }
+        }
+        // METAL DETECTOR item
+        if (stack.is(ModItems.METAL_DETECTOR.get().asItem())) {
+            if (item instanceof MetalDetectorItem metalDetector) {
+                boolean isShift = Minecraft.getInstance().hasShiftDown();
+                int color = isShift ? yellowEnderColor : metalDetectorColor;
+                tooltip.add(componentTranslatableIntColor(metalDetector.metalDetectorShiftDescription(), color));
             }
         }
         // LEVEL CHARGER GENERIC items
@@ -145,14 +146,6 @@ public abstract class ItemStackMixin {
             }
         }
         cir.setReturnValue(tooltip); // New tooltip
-    }
-
-    // DEFAULT METHOD - Added custom tooltip
-    @Inject(method="addDetailsToTooltip", at = @At("HEAD"))
-    private void addDetailsToTooltip$mccoursemod(Item.TooltipContext context, TooltipDisplay display,
-                                                 Player player, TooltipFlag flag,
-                                                 Consumer<Component> consumer, CallbackInfo ci) {
-       this.addToTooltip(ModDataComponentTypes.SHIFT_TOOLTIP.get(), context, display, consumer, flag);
     }
 
     // DEFAULT METHOD - LAPIS LAZULI consumption is blocked

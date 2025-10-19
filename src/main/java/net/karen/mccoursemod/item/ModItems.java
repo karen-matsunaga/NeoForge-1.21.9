@@ -2,8 +2,6 @@ package net.karen.mccoursemod.item;
 
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.component.ModDataComponentTypes;
-import net.karen.mccoursemod.component.custom.ShiftTooltip;
 import net.karen.mccoursemod.datagen.ModEquipmentAssetProvider;
 import net.karen.mccoursemod.entity.ModEntities;
 import net.karen.mccoursemod.item.custom.*;
@@ -534,12 +532,9 @@ public class ModItems {
 
     // METAL DETECTOR item
     public static final DeferredItem<Item> METAL_DETECTOR =
-           editItem("metal_detector", properties ->
-                    new MetalDetectorItem(properties.fireResistant().stacksTo(1)
-                                                    .component(ModDataComponentTypes.SHIFT_TOOLTIP,
-                                                               new ShiftTooltip(MetalDetectorItem.shiftLore(),
-                                                                                MetalDetectorItem.shiftLoreColor())),
-                                          ModTags.Blocks.METAL_DETECTOR_VALUABLES), metalDetectorColor);
+           ITEMS.registerItem("metal_detector", properties ->
+                              new MetalDetectorItem(properties.fireResistant().stacksTo(1),
+                                                    ModTags.Blocks.METAL_DETECTOR_VALUABLES));
 
     // DATA TABLET item
     public static final DeferredItem<Item> DATA_TABLET =
@@ -566,8 +561,8 @@ public class ModItems {
                                         properties.stacksTo(16)
                                                   .component(DataComponents.CUSTOM_NAME,
                                                              componentTranslatableIntColor(
-                                                             "item.mccoursemod.walnut_hanging_sign",
-                                                             walnutColor))), walnutColor);
+                                                             "item.mccoursemod.walnut_hanging_sign", walnutColor))),
+                                                             walnutColor);
 
     // TORCH BALL item
     public static final DeferredItem<Item> TORCH_BALL =
@@ -863,7 +858,7 @@ public class ModItems {
                                                      properties.rarity(Rarity.UNCOMMON)), lore);
     }
 
-    // CUSTOM METHOD - (ITEM class) Registry all custom ITEMS
+    // CUSTOM METHOD - (CUSTOM classes) Registry all custom ITEMS
     private static <I extends Item> DeferredItem<I> customItem(String name,
                                                                Function<Properties, ? extends I> item,
                                                                UnaryOperator<Properties> properties,

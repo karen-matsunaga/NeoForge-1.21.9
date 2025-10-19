@@ -3,7 +3,6 @@ package net.karen.mccoursemod.component;
 import com.mojang.serialization.Codec;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.component.custom.FoundBlock;
-import net.karen.mccoursemod.component.custom.ShiftTooltip;
 import net.karen.mccoursemod.enchantment.custom.AutoSmeltEnchantmentEffect;
 import net.karen.mccoursemod.enchantment.custom.MoreOresEnchantmentEffect;
 import net.karen.mccoursemod.enchantment.custom.RainbowEnchantmentEffect;
@@ -37,11 +36,6 @@ public class ModDataComponentTypes {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> UNLOCK =
            register("unlock", builder ->
                     builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));
-
-    // Shift tooltip data component
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<ShiftTooltip>> SHIFT_TOOLTIP =
-           register("shift_tooltip", builder ->
-                    builder.persistent(ShiftTooltip.CODEC).networkSynchronized(ShiftTooltip.STREAM_CODEC));
 
     // Mccourse Mod Bottle data component
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> STORED_LEVELS =
