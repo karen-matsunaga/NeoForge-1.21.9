@@ -555,23 +555,19 @@ public class ModItems {
     public static final DeferredItem<Item> WALNUT_SIGN =
            editItem("walnut_sign", properties ->
                     new SignItem(ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get(),
-                                 properties.stacksTo(16)) {
-                        @Override
-                        public @NotNull Component getName(@NotNull ItemStack stack) {
-                            return componentTranslatableIntColor(this.getDescriptionId(), walnutColor);
-                        }
-                    }, walnutColor);
+                                 properties.stacksTo(16)
+                                           .component(DataComponents.CUSTOM_NAME,
+                                                      componentTranslatableIntColor("item.mccoursemod.walnut_sign",
+                                                                                    walnutColor))), walnutColor);
 
     public static final DeferredItem<Item> WALNUT_HANGING_SIGN =
            editItem("walnut_hanging_sign", properties ->
-                    new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(),
-                                        ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
-                                        properties.stacksTo(16)) {
-                        @Override
-                        public @NotNull Component getName(@NotNull ItemStack stack) {
-                            return componentTranslatableIntColor(this.getDescriptionId(), walnutColor);
-                        }
-                    }, walnutColor);
+                    new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
+                                        properties.stacksTo(16)
+                                                  .component(DataComponents.CUSTOM_NAME,
+                                                             componentTranslatableIntColor(
+                                                             "item.mccoursemod.walnut_hanging_sign",
+                                                             walnutColor))), walnutColor);
 
     // TORCH BALL item
     public static final DeferredItem<Item> TORCH_BALL =

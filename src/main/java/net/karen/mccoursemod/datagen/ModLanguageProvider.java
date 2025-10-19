@@ -364,10 +364,10 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.COLORED_LEAVES, "§2");
 
         // ** CUSTOM Sign and Hanging sign **
-        blockLang(ModBlocks.WALNUT_SIGN, "§e");
-        blockLang(ModBlocks.WALNUT_HANGING_SIGN, "§e");
-        blockLang(ModBlocks.WALNUT_WALL_SIGN, "§e");
-        blockLang(ModBlocks.WALNUT_WALL_HANGING_SIGN, "§e");
+        blockLang(ModBlocks.WALNUT_SIGN, "");
+        blockLang(ModBlocks.WALNUT_HANGING_SIGN, "");
+        blockLang(ModBlocks.WALNUT_WALL_SIGN, "");
+        blockLang(ModBlocks.WALNUT_WALL_HANGING_SIGN, "");
 
         // ** CUSTOM sittable block model **
         blockLang(ModBlocks.CHAIR, "§e");
