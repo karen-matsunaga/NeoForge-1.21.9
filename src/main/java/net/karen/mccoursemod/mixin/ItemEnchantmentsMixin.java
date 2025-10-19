@@ -1,6 +1,7 @@
 package net.karen.mccoursemod.mixin;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import net.karen.mccoursemod.util.ChatUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
@@ -66,6 +67,7 @@ public abstract class ItemEnchantmentsMixin {
                             if (i > 0) {
                                 consumer.accept(Enchantment.getFullname(holder, i));
                                 consumer.accept(description(I18n.get(descriptionKey), colors, List.of(false, isCurse)));
+                                consumer.accept(ChatUtils.atlas());
                             }
                         }
                     }

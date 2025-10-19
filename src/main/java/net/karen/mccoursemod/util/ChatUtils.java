@@ -5,7 +5,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.*;
+import net.minecraft.network.chat.contents.objects.AtlasSprite;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.ARGB;
@@ -486,5 +488,12 @@ public class ChatUtils {
                      .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(COLORS[colorIndex]))));
         }
         return minerText;
+    }
+
+    // CUSTOM METHOD - ATLAS SPRITE
+    public static MutableComponent atlas() {
+        ResourceLocation icon = ResourceLocation.withDefaultNamespace("item/diamond_helmet");
+        MutableComponent font = Component.object(new AtlasSprite(AtlasSprite.DEFAULT_ATLAS, icon));
+        return font.withColor(ARGB.color(222, 177, 45));
     }
 }
