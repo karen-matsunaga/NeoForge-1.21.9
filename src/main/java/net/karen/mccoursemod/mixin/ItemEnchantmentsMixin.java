@@ -3,7 +3,6 @@ package net.karen.mccoursemod.mixin;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.karen.mccoursemod.util.ChatUtils;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -50,7 +49,7 @@ public abstract class ItemEnchantmentsMixin {
               getTagOrEmpty(holderLookupProvider, Registries.ENCHANTMENT, EnchantmentTags.TOOLTIP_ORDER);
         if (holderset != null) {
             Object2IntOpenHashMap<Holder<Enchantment>> enchantments = this.enchantments;
-            Level mcLevel = Minecraft.getInstance().level;
+            Level mcLevel = context.level();
             if (mcLevel != null) {
                 Registry<Enchantment> enchantmentRegistry =
                         mcLevel.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);

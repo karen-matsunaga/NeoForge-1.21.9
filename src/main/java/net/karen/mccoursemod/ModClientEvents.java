@@ -118,6 +118,7 @@ public class ModClientEvents {
     public static void registerTooltip(RegisterClientTooltipComponentFactoriesEvent event) {
         event.register(ImageTooltipComponent.class, Function.identity());
         event.register(MultiImageTooltipComponent.class, Function.identity());
+        event.register(ModClientTooltipComponent.class, Function.identity());
     }
 
     // CUSTOM EVENT - Register all custom network (CLIENT -> SERVER)
