@@ -150,5 +150,11 @@ public class JEIModPlugin implements IModPlugin {
                                               ModMenuTypes.GROWTH_CHAMBER_MENU.get(),
                                               GrowthChamberRecipeCategory.GROWTH_CHAMBER_RECIPE_TYPE,
                                               36, 2, 0, 36);
+
+        // GEM EMPOWERING STATION - Menu Class, Menu Type and Recipe Type
+        registration.addRecipeTransferHandler(GemEmpoweringStationMenu.class,
+                                              ModMenuTypes.GEM_EMPOWERING_STATION_MENU.get(),
+                                              GemEmpoweringStationRecipeCategory.GEM_EMPOWERING_TYPE,
+                                              36, 2, 0, 36);
     }
 }

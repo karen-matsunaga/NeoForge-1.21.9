@@ -39,9 +39,8 @@ public class GemEmpoweringStationMenu extends AbstractContainerMenu {
         // Create a box slot to each item on custom block entity menu depends on the image inserted
         ItemStacksResourceHandler item = blockEntity.getItemHandler();
         this.addSlot(new ResourceHandlerSlot(item, item::set, 0, 80, 11)); // INPUT slot
-        this.addSlot(new ResourceHandlerSlot(item, item::set, 1, 26, 59)); // FLUID slot
-        this.addSlot(new ResourceHandlerSlot(item, item::set, 2, 134, 59)); // ENERGY FE slot
-        this.addSlot(new ResourceHandlerSlot(item, item::set, 3, 80, 59) {
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 1, 134, 59)); // ENERGY FE slot
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 2, 80, 59) {
             @Override public boolean mayPlace(@NotNull ItemStack stack) { return false; }
         }); // OUTPUT slot
 
@@ -73,7 +72,7 @@ public class GemEmpoweringStationMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
 
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
