@@ -1,7 +1,7 @@
 package net.karen.mccoursemod.screen.custom;
 
 import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.util.EnergyDisplayTooltipArea;
+import net.karen.mccoursemod.screen.renderer.EnergyDisplayTooltipArea;
 import net.karen.mccoursemod.util.MouseUtil;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -40,6 +40,7 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         renderEnergyAreaTooltip(guiGraphics, mouseX, mouseY, x, y);
     }
 
+    // CUSTOM METHOD - Energy tooltip
     private void renderEnergyAreaTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY,
                                          int x, int y) {
         if (isMouseAboveArea(mouseX, mouseY, x, y, 156, 11, 8, 64)) {
@@ -48,13 +49,14 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         }
     }
 
+    // CUSTOM METHOD - Energy amount
     private void assignEnergyInfoArea() {
         energyInfoArea = new EnergyDisplayTooltipArea(((width - imageWidth) / 2) + 156,
                                                       ((height - imageHeight) / 2) + 11,
                                                       menu.blockEntity.getEnergyStorage());
     }
 
-    // Render GUI texture
+    // DEFAULT METHOD - Render GUI texture
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int x = (width - imageWidth) / 2;
@@ -65,7 +67,7 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         energyInfoArea.render(guiGraphics);
     }
 
-    // Render progress arrow when item transform on other
+    // CUSTOM METHOD - Render progress arrow when item transform on other
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if (menu.isCrafting()) {
             guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x + 85, y + 30, 176, 0, 8,
@@ -80,6 +82,7 @@ public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpow
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
+    // CUSTOM METHOD - Energy mouse area
     private boolean isMouseAboveArea(int mouseX, int mouseY, int x, int y,
                                      int offsetX, int offsetY, int width, int height) {
         return MouseUtil.isMouseOver(mouseX, mouseY, x + offsetX, y + offsetY, width, height);

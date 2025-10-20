@@ -39,8 +39,11 @@ public class GemEmpoweringStationMenu extends AbstractContainerMenu {
         // Create a box slot to each item on custom block entity menu depends on the image inserted
         ItemStacksResourceHandler item = blockEntity.getItemHandler();
         this.addSlot(new ResourceHandlerSlot(item, item::set, 0, 80, 11)); // INPUT slot
-        this.addSlot(new ResourceHandlerSlot(item, item::set, 1, 134, 59)); // ENERGY FE slot
-        this.addSlot(new ResourceHandlerSlot(item, item::set, 2, 80, 59)); // OUTPUT slot
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 1, 26, 59)); // FLUID slot
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 2, 134, 59)); // ENERGY FE slot
+        this.addSlot(new ResourceHandlerSlot(item, item::set, 3, 80, 59) {
+            @Override public boolean mayPlace(@NotNull ItemStack stack) { return false; }
+        }); // OUTPUT slot
 
         // Return all items on inventory
         addDataSlots(data);
@@ -69,34 +72,38 @@ public class GemEmpoweringStationMenu extends AbstractContainerMenu {
     private static final int VANILLA_SLOT_COUNT = HOTBAR_SLOT_COUNT + PLAYER_INVENTORY_SLOT_COUNT;
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
-
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 4;  // must be the number of slots you have!
+
     @Override
-    public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
-        Slot sourceSlot = slots.get(pIndex);
+    public @NotNull ItemStack quickMoveStack(@NotNull Player player, int index) {
+        Slot sourceSlot = slots.get(index);
         if (!sourceSlot.hasItem()) { return ItemStack.EMPTY; } // EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
         // Check if the slot clicked is one of the vanilla container slots
-        if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+        if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
             // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) { return ItemStack.EMPTY; } // EMPTY_ITEM
+            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX,
+                TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT, false)) {
+                return ItemStack.EMPTY;
+            } // EMPTY_ITEM
         }
-        else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
+        else if (index < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
             // This is a TE slot so merge the stack into the players inventory
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX,
-                    VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) { return ItemStack.EMPTY; }
+                VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
+                return ItemStack.EMPTY;
+            }
         }
         else {
-            System.out.println("Invalid slotIndex:" + pIndex);
+            System.out.println("Invalid slotIndex:" + index);
             return ItemStack.EMPTY;
         }
         // If stack size == 0 (the entire stack was moved) set slot contents to null
         if (sourceStack.getCount() == 0) { sourceSlot.set(ItemStack.EMPTY); }
         else { sourceSlot.setChanged(); }
-        sourceSlot.onTake(playerIn, sourceStack);
+        sourceSlot.onTake(player, sourceStack);
         return copyOfSourceStack;
     }
 

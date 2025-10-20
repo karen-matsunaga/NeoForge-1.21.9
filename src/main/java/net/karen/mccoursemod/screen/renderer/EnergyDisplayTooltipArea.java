@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.util;
+package net.karen.mccoursemod.screen.renderer;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;

@@ -16,7 +16,7 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.item.ModItems;
 import net.karen.mccoursemod.recipe.GemEmpoweringStationRecipe;
-import net.karen.mccoursemod.util.EnergyDisplayTooltipArea;
+import net.karen.mccoursemod.screen.renderer.EnergyDisplayTooltipArea;
 import net.karen.mccoursemod.util.ModEnergyStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

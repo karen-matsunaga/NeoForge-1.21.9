@@ -18,15 +18,15 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GemEmpoweringRecipeBuilder implements RecipeBuilder {
+public class GemEmpoweringStationRecipeBuilder implements RecipeBuilder {
     private final List<Ingredient> ingredient;
     private final ItemStack result;
     private final int craftTime;
     private final int energyAmount;
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
-    public GemEmpoweringRecipeBuilder(List<Ingredient> ingredient, ItemStack result,
-                                      int craftTime, int energyAmount) {
+    public GemEmpoweringStationRecipeBuilder(List<Ingredient> ingredient, ItemStack result,
+                                             int craftTime, int energyAmount) {
         this.ingredient = ingredient;
         this.result = result;
         this.craftTime = craftTime;
@@ -49,9 +49,9 @@ public class GemEmpoweringRecipeBuilder implements RecipeBuilder {
     @Override
     public void save(@NotNull RecipeOutput recipeOutput, @NotNull ResourceKey<Recipe<?>> resourceKey) {
         Advancement.Builder advancement =
-            recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(resourceKey))
-                        .rewards(AdvancementRewards.Builder.recipe(resourceKey))
-                        .requirements(AdvancementRequirements.Strategy.OR);
+                    recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(resourceKey))
+                                              .rewards(AdvancementRewards.Builder.recipe(resourceKey))
+                                              .requirements(AdvancementRequirements.Strategy.OR);
         this.criteria.forEach(advancement::addCriterion);
         GemEmpoweringStationRecipe recipe =
            new GemEmpoweringStationRecipe(this.ingredient, this.result, this.craftTime, this.energyAmount);

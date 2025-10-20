@@ -4,7 +4,7 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.item.ModItems;
 import net.karen.mccoursemod.recipe.CraftingPlusRecipeBuilder;
-import net.karen.mccoursemod.recipe.GemEmpoweringRecipeBuilder;
+import net.karen.mccoursemod.recipe.GemEmpoweringStationRecipeBuilder;
 import net.karen.mccoursemod.recipe.GrowthChamberRecipeBuilder;
 import net.karen.mccoursemod.recipe.KaupenFurnaceRecipeBuilder;
 import net.karen.mccoursemod.util.ModTags;
@@ -354,10 +354,11 @@ public class ModRecipeProvider extends RecipeProvider {
     // ** CUSTOM METHOD - Gem Empowering Station custom recipes **
     protected void gemEmpoweringStation(ItemLike ingredient, ItemLike result, int count,
                                         int craftTime, int energyAmount) {
-        new GemEmpoweringRecipeBuilder(List.of(Ingredient.of(ingredient)), new ItemStack(result, count), craftTime, energyAmount)
-                                      .unlockedBy(getHasName(ingredient), has(ingredient))
-                                      .save(this.output, MccourseMod.MOD_ID + ":" +
-                                            getItemName(result) + "_from_gem_empowering_station");
+        new GemEmpoweringStationRecipeBuilder(List.of(Ingredient.of(ingredient)), new ItemStack(result, count),
+                                              craftTime, energyAmount)
+                                             .unlockedBy(getHasName(ingredient), has(ingredient))
+                                             .save(this.output, MccourseMod.MOD_ID + ":" +
+                                                   getItemName(result) + "_from_gem_empowering_station");
     }
 
     // ** CUSTOM METHOD - CRAFTING PLUS custom recipes **

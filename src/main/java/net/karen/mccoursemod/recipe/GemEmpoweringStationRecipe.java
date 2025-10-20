@@ -47,18 +47,13 @@ public record GemEmpoweringStationRecipe(List<Ingredient> inputItems,
     public int getEnergyAmount() { return energyAmount; } // Energy Amount
 
     @Override
-    public @NotNull PlacementInfo placementInfo() {
-        return PlacementInfo.create(inputItems);
-    }
+    public @NotNull PlacementInfo placementInfo() { return PlacementInfo.create(inputItems); }
 
     @Override
-    public @NotNull RecipeBookCategory recipeBookCategory() {
-        return RecipeBookCategories.CRAFTING_MISC;
-    }
+    public @NotNull RecipeBookCategory recipeBookCategory() { return RecipeBookCategories.CRAFTING_MISC; }
 
     // Create JSON custom recipe files
     public static class Serializer implements RecipeSerializer<GemEmpoweringStationRecipe> {
-
         public static final MapCodec<GemEmpoweringStationRecipe> CODEC =
                RecordCodecBuilder.mapCodec(inst -> inst.group(
                                            Ingredient.CODEC.listOf().fieldOf("ingredient")
@@ -82,9 +77,7 @@ public record GemEmpoweringStationRecipe(List<Ingredient> inputItems,
                                      GemEmpoweringStationRecipe::new);
 
         @Override
-        public @NotNull MapCodec<GemEmpoweringStationRecipe> codec() {
-            return CODEC;
-        }
+        public @NotNull MapCodec<GemEmpoweringStationRecipe> codec() { return CODEC; }
 
         @Override
         public @NotNull StreamCodec<RegistryFriendlyByteBuf, GemEmpoweringStationRecipe> streamCodec() {
