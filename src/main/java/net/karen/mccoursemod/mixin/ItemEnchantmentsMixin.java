@@ -67,7 +67,7 @@ public abstract class ItemEnchantmentsMixin {
                             if (i > 0) {
                                 consumer.accept(Enchantment.getFullname(holder, i));
                                 consumer.accept(description(I18n.get(descriptionKey), colors, List.of(false, isCurse)));
-                                consumer.accept(ChatUtils.atlas());
+                                consumer.accept(ChatUtils.atlas().append(" Helmet"));
                             }
                         }
                     }
