@@ -3,10 +3,10 @@ package net.karen.mccoursemod.mixin;
 import net.karen.mccoursemod.util.ChatUtils;
 import net.karen.mccoursemod.util.MultiImageTooltipComponent;
 import net.minecraft.client.Minecraft;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,12 +30,10 @@ public class ItemMixin {
             Level level = mc.level;
             if (level != null) {
                 HolderLookup.RegistryLookup<Enchantment> ench = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-                List<Holder.Reference<Enchantment>> enchantments = ench.listElements().toList();
-                List<Holder.Reference<Enchantment>> a = enchantments.stream().toList();
-                for (Holder.Reference<Enchantment> referenceEnchantment : a) {
-                     Holder<Enchantment> enchantmentHolder = referenceEnchantment.getDelegate();
-                     MultiImageTooltipComponent icon = ChatUtils.enchantmentIcon(enchantmentHolder);
-                     cir.setReturnValue(Optional.of(icon));
+                List<TagKey<Enchantment>> tagKeys = ench.listTagIds().toList();
+                for (TagKey<Enchantment> tagKey : tagKeys) {
+                    MultiImageTooltipComponent icon = ChatUtils.enchantmentIcon(tagKey);
+                    cir.setReturnValue(Optional.of(icon));
                 }
             }
         }

@@ -506,72 +506,60 @@ public class ChatUtils {
     }
 
     // CUSTOM METHOD - ENCHANTMENT ICON
-    public static MultiImageTooltipComponent enchantmentIcon(Holder<Enchantment> holder) {
+    public static MultiImageTooltipComponent enchantmentIcon(TagKey<Enchantment> holder) {
         // ENCHANTMENT ICONS
-        Map<List<TagKey<Enchantment>>, MultiImageTooltipComponent> enchantmentIcons = new HashMap<>();
+        Map<TagKey<Enchantment>, List<ItemStack>> enchantmentIcons = new HashMap<>();
+        ItemStack curse = new ItemStack(Items.FIRE_CHARGE);
+        ItemStack helmet = new ItemStack(Items.DIAMOND_HELMET);
+        ItemStack chestplate = new ItemStack(Items.DIAMOND_CHESTPLATE);
+        ItemStack leggings = new ItemStack(Items.DIAMOND_LEGGINGS);
+        ItemStack boots = new ItemStack(Items.DIAMOND_BOOTS);
+        ItemStack mace = new ItemStack(Items.MACE);
+        ItemStack fishingRod = new ItemStack(Items.FISHING_ROD);
+        ItemStack sword = new ItemStack(Items.DIAMOND_SWORD);
+        ItemStack axe = new ItemStack(Items.DIAMOND_AXE);
+        ItemStack pickaxe = new ItemStack(Items.DIAMOND_PICKAXE);
+        ItemStack shovel = new ItemStack(Items.DIAMOND_SHOVEL);
+        ItemStack hoe = new ItemStack(Items.DIAMOND_HOE);
+        ItemStack trident = new ItemStack(Items.TRIDENT);
+        ItemStack bow = new ItemStack(Items.BOW);
+        ItemStack crossbow = new ItemStack(Items.CROSSBOW);
+        ItemStack shield = new ItemStack(Items.SHIELD);
+        ItemStack hammer = ModItems.DIAMOND_HAMMER.toStack();
+        ItemStack paxel = ModItems.DIAMOND_PAXEL.toStack();
         // CURSE
-        enchantmentIcons.put(List.of(EnchantmentTags.CURSE),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.FIRE_CHARGE))));
+        enchantmentIcons.put(EnchantmentTags.CURSE, List.of(curse));
         // ARMOR
-        enchantmentIcons.put(List.of(EnchantmentTags.ARMOR_EXCLUSIVE),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_CHESTPLATE))));
+        enchantmentIcons.put(EnchantmentTags.ARMOR_EXCLUSIVE, List.of(chestplate));
         // HELMET, CHESTPLATE, LEGGINGS and BOOTS ARMORS
-        enchantmentIcons.put(List.of(ModTags.Enchantments.HELMET_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_HELMET))));
-        enchantmentIcons.put(List.of(ModTags.Enchantments.CHESTPLATE_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_CHESTPLATE))));
-        enchantmentIcons.put(List.of(ModTags.Enchantments.LEGGINGS_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_LEGGINGS))));
-        enchantmentIcons.put(List.of(ModTags.Enchantments.BOOTS_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_BOOTS))));
+        enchantmentIcons.put(ModTags.Enchantments.HELMET_ENCHANTMENTS, List.of(helmet));
+        enchantmentIcons.put(ModTags.Enchantments.CHESTPLATE_ENCHANTMENTS, List.of(chestplate));
+        enchantmentIcons.put(ModTags.Enchantments.LEGGINGS_ENCHANTMENTS, List.of(leggings));
+        enchantmentIcons.put(ModTags.Enchantments.BOOTS_ENCHANTMENTS, List.of(boots));
         // MACE
-        enchantmentIcons.put(List.of(ModTags.Enchantments.MACE_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.MACE))));
+        enchantmentIcons.put(ModTags.Enchantments.MACE_ENCHANTMENTS, List.of(mace));
         // FISHING ROD
-        enchantmentIcons.put(List.of(ModTags.Enchantments.FISHING_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.FISHING_ROD))));
+        enchantmentIcons.put(ModTags.Enchantments.FISHING_ENCHANTMENTS, List.of(fishingRod));
         // PICKAXE + AXE + SHOVEL
-        enchantmentIcons.put(List.of(ModTags.Enchantments.MINING_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_PICKAXE),
-                                                                new ItemStack(Items.DIAMOND_AXE),
-                                                                new ItemStack(Items.DIAMOND_SHOVEL))));
-
+        enchantmentIcons.put(ModTags.Enchantments.MINING_ENCHANTMENTS,
+                             List.of(pickaxe, axe, shovel));
         // DURABILITY
-        enchantmentIcons.put(List.of(ModTags.Enchantments.DURABILITY_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_AXE),
-                                                                new ItemStack(Items.FISHING_ROD),
-                                                                new ItemStack(Items.DIAMOND_HELMET),
-                                                                new ItemStack(Items.DIAMOND_CHESTPLATE),
-                                                                new ItemStack(Items.DIAMOND_LEGGINGS),
-                                                                new ItemStack(Items.DIAMOND_BOOTS),
-                                                                new ItemStack(Items.DIAMOND_SWORD),
-                                                                new ItemStack(Items.DIAMOND_SHOVEL),
-                                                                new ItemStack(Items.DIAMOND_PICKAXE),
-                                                                new ItemStack(Items.DIAMOND_HOE),
-                                                                new ItemStack(Items.MACE),
-                                                                new ItemStack(Items.BOW),
-                                                                new ItemStack(Items.CROSSBOW),
-                                                                new ItemStack(Items.TRIDENT),
-                                                                new ItemStack(Items.SHIELD),
-                                                                ModItems.DIAMOND_HAMMER.toStack(),
-                                                                ModItems.DIAMOND_PAXEL.toStack())));
-
+        enchantmentIcons.put(ModTags.Enchantments.DURABILITY_ENCHANTMENTS,
+                             List.of(helmet, chestplate, leggings, boots,
+                                     sword, axe, pickaxe, shovel, hoe, hammer, paxel,
+                                     fishingRod, mace, trident, shield, bow, crossbow));
         // TRIDENT
-        enchantmentIcons.put(List.of(ModTags.Enchantments.TRIDENT_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.TRIDENT))));
+        enchantmentIcons.put(ModTags.Enchantments.TRIDENT_ENCHANTMENTS, List.of(trident));
         // SWORD
-        enchantmentIcons.put(List.of(ModTags.Enchantments.SWORD_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.DIAMOND_SWORD))));
+        enchantmentIcons.put(ModTags.Enchantments.SWORD_ENCHANTMENTS, List.of(sword));
         // BOW
-        enchantmentIcons.put(List.of(ModTags.Enchantments.BOW_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.BOW))));
+        enchantmentIcons.put(ModTags.Enchantments.BOW_ENCHANTMENTS, List.of(bow));
         // CROSSBOW
-        enchantmentIcons.put(List.of(ModTags.Enchantments.CROSSBOW_ENCHANTMENTS),
-                             multiImageTooltipComponent(List.of(new ItemStack(Items.CROSSBOW))));
-
-        for (Map.Entry<List<TagKey<Enchantment>>, MultiImageTooltipComponent> value : enchantmentIcons.entrySet()) {
-            for (TagKey<Enchantment> tag : value.getKey()) {
-                if (holder.is(tag)) { return value.getValue(); }
+        enchantmentIcons.put(ModTags.Enchantments.CROSSBOW_ENCHANTMENTS, List.of(crossbow));
+        // DISPLAY ICONS
+        for (Map.Entry<TagKey<Enchantment>, List<ItemStack>> value : enchantmentIcons.entrySet()) {
+            if (holder.location() == value.getKey().location()) {
+                return multiImageTooltipComponent(value.getValue());
             }
         }
         return multiImageTooltipComponent(List.of(new ItemStack(Blocks.AIR)));
