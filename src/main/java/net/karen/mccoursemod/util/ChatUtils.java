@@ -506,7 +506,7 @@ public class ChatUtils {
     }
 
     // CUSTOM METHOD - ENCHANTMENT ICON
-    public static MultiImageTooltipComponent enchantmentIcon(TagKey<Enchantment> holder) {
+    public static MultiImageTooltipComponent enchantmentIcon(Holder<Enchantment> holder) {
         // ENCHANTMENT ICONS
         Map<TagKey<Enchantment>, List<ItemStack>> enchantmentIcons = new HashMap<>();
         ItemStack curse = new ItemStack(Items.FIRE_CHARGE);
@@ -558,9 +558,7 @@ public class ChatUtils {
         enchantmentIcons.put(ModTags.Enchantments.CROSSBOW_ENCHANTMENTS, List.of(crossbow));
         // DISPLAY ICONS
         for (Map.Entry<TagKey<Enchantment>, List<ItemStack>> value : enchantmentIcons.entrySet()) {
-            if (holder.location() == value.getKey().location()) {
-                return multiImageTooltipComponent(value.getValue());
-            }
+            if (holder.is(value.getKey())) { return multiImageTooltipComponent(value.getValue()); }
         }
         return multiImageTooltipComponent(List.of(new ItemStack(Blocks.AIR)));
     }
