@@ -11,7 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -32,10 +32,9 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvider {
-    public final ItemStacksResourceHandler itemHandler =
-           new ItemStacksResourceHandler(2) {
-        @Override protected void onContentsChanged(int index,
-                                                   @NotNull ItemStack previousContents) {
+    public final ItemStacksResourceHandler itemHandler = new ItemStacksResourceHandler(2) {
+        @Override
+        protected void onContentsChanged(int index, @NotNull ItemStack previousContents) {
             setChanged();
             if (level != null && !level.isClientSide()) {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
@@ -48,14 +47,9 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     private int progress = 0;
     private int maxProgress = 72;
 
-    // CUSTOM METHOD - Input SLOT
-    public static int getInputSlot() {
-        return INPUT_SLOT;
-    }
-
-    // CUSTOM METHOD - Output SLOT
-    public static int getOutputSlot() {
-        return OUTPUT_SLOT;
+    // CUSTOM METHOD - Input + Output INDEX SLOTS
+    public ItemResource indexSlot(int index) {
+        return this.itemHandler.getResource(index);
     }
 
     // CUSTOM METHOD - Input + Output SLOTS
@@ -102,7 +96,7 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.size());
         for (int i = 0; i < itemHandler.size(); i++) {
-            inventory.setItem(i, itemHandler.getResource(i).toStack(itemHandler.getAmountAsInt(i)));
+            inventory.setItem(i, indexSlot(i).toStack(itemHandler.getAmountAsInt(i)));
         }
         if (this.level != null) { Containers.dropContents(this.level, this.worldPosition, inventory); }
     }
@@ -147,10 +141,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         if (recipe.isPresent()) {
             ItemStack output = recipe.get().value().output();
             Transaction tx = Transaction.open(null);
-            itemHandler.extract(itemHandler.getResource(getInputSlot()), 1, tx);
+            itemHandler.extract(indexSlot(INPUT_SLOT), 1, tx);
             tx.commit();
-            itemHandler.set(getOutputSlot(), ItemResource.of(output.getItem()),
-                            itemHandler.getAmountAsInt(getOutputSlot()) + output.getCount());
+            itemHandler.set(OUTPUT_SLOT, ItemResource.of(output.getItem()),
+                            itemHandler.getAmountAsInt(OUTPUT_SLOT) + output.getCount());
         }
     }
 
@@ -173,24 +167,24 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     }
 
     private Optional<RecipeHolder<GrowthChamberRecipe>> getCurrentRecipe() {
-        assert this.level != null;
-        return ((ServerLevel) this.level).recipeAccess()
-                                         .getRecipeFor(ModRecipes.GROWTH_CHAMBER_TYPE.get(),
-                                                       new GrowthChamberRecipeInput(itemHandler.getResource(getInputSlot())
-                                                                                               .toStack()),
-                                                                                    level);
+        Level level = getLevel();
+        assert level != null;
+        MinecraftServer serverLevel = level.getServer();
+        assert serverLevel != null;
+        return serverLevel.getRecipeManager().getRecipeFor(ModRecipes.GROWTH_CHAMBER_TYPE.get(),
+                                                           new GrowthChamberRecipeInput(indexSlot(INPUT_SLOT).toStack()), level);
     }
 
     // CUSTOM METHOD - Output slots
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return itemHandler.getResource(getOutputSlot()).isEmpty() ||
-               itemHandler.getResource(getOutputSlot()).getItem() == output.getItem();
+        ItemResource outputSlot = indexSlot(OUTPUT_SLOT);
+        return outputSlot.isEmpty() || outputSlot.getItem() == output.getItem();
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = itemHandler.getResource(getOutputSlot()).isEmpty()
-                       ? 64 : itemHandler.getResource(getOutputSlot()).getMaxStackSize();
-        int currentCount = itemHandler.getResource(getOutputSlot()).toStack().getCount();
+        ItemResource outputSlot = indexSlot(OUTPUT_SLOT);
+        int maxCount = outputSlot.isEmpty() ? 64 : outputSlot.getMaxStackSize();
+        int currentCount = outputSlot.toStack().getCount();
         return maxCount >= currentCount + count;
     }
 
