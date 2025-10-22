@@ -135,12 +135,13 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         for (int i = 0; i < itemHandler.size(); i++) {
             inventory.setItem(i, itemHandler(i).toStack(itemHandler.getAmountAsInt(i)));
         }
-        if (this.level != null) { Containers.dropContents(this.level, this.worldPosition, inventory); }
+        Level level = this.level;
+        if (level != null) { Containers.dropContents(level, this.worldPosition, inventory); }
     }
 
     // Name that to show in screen
     @Override
-    public @NotNull Component getDisplayName() { return Component.literal("Gem Empowering Station"); }
+    public @NotNull Component getDisplayName() { return Component.translatable("block.mccoursemod.gem_empowering_station"); }
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int containerId,
@@ -178,7 +179,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     // Custom block entity class to work on Server side
     public void tick(Level level, BlockPos pos, BlockState state) {
         fillUpOnEnergy(); // This is a "placeholder" for getting energy through wires or similar
-        if (hasRecipe()) {
+        if (hasRecipe() && isOutputSlotEmptyOrReceivable()) {
             increaseCraftingProcess();
             extractEnergy();
             setChanged(level, pos, state);
@@ -234,6 +235,11 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
 
     private void increaseCraftingProcess() { this.progress++; }
 
+    private boolean isOutputSlotEmptyOrReceivable() {
+        ItemResource outputSlot = itemHandler(OUTPUT_SLOT);
+        return outputSlot.isEmpty() || outputSlot.toStack().getCount() < outputSlot.getMaxStackSize();
+    }
+
     private boolean hasRecipe() {
         Optional<RecipeHolder<GemEmpoweringStationRecipe>> recipe = getCurrentRecipe();
         if (recipe.isEmpty() || getLevel() == null) { return false; }
@@ -261,13 +267,13 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         assert mcServer != null;
         return mcServer.getRecipeManager()
                        .getRecipeFor(ModRecipes.GEM_EMPOWERING_STATION_TYPE.get(),
-                                     new GemEmpoweringStationRecipeInput(List.of(inventory.getItem(0),
-                                                                                 inventory.getItem(1))),
+                                     new GemEmpoweringStationRecipeInput(List.of(inventory.getItem(INPUT_SLOT),
+                                                                                 inventory.getItem(ENERGY_ITEM_SLOT))),
                                      level);
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack item) {
-        return itemHandler(OUTPUT_SLOT).isEmpty() || itemHandler(OUTPUT_SLOT).getItem() == item.getItem();
+    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+        return itemHandler(OUTPUT_SLOT).isEmpty() || itemHandler(OUTPUT_SLOT).getItem() == output.getItem();
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {

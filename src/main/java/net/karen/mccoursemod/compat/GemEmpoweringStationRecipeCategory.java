@@ -74,7 +74,8 @@ public class GemEmpoweringStationRecipeCategory
         builder.addInputSlot(134, 59).add(new ItemStack(ModItems.KOHLRABI.get())).setStandardSlotBackground();
 
         // Recipe OUTPUT slot on screen
-        builder.addOutputSlot(80, 59).add(recipe.output().getItem()).setStandardSlotBackground();
+        ItemStack output = recipe.output();
+        builder.addOutputSlot(80, 59).add(output.copyWithCount(output.getCount())).setStandardSlotBackground();
 
         // Animated arrow -> craft item
         this.arrow = helper.createAnimatedDrawable(helper.createDrawable(TEXTURE, 176, 0, 10, 30),
