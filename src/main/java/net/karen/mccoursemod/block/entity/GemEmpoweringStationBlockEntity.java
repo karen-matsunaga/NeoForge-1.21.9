@@ -58,11 +58,6 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         }
     };
 
-    // CUSTOM METHOD - Item slot index
-    public ItemResource itemHandler(int index) {
-        return this.itemHandler.getResource(index);
-    }
-
     // Constants are the items inserted on custom block entity
     private static final int INPUT_SLOT = 0;
     private static final int ENERGY_ITEM_SLOT = 1;
@@ -73,10 +68,10 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     private int progress = 0;
     private int maxProgress = 78;
 
-    // Added DEFAULT values
+    // Added DEFAULT energy values
     private int energyAmount = 0;
 
-    // Progress bar when an item transform on custom energy storage - CLIENT and SERVER is synchronized
+    // Progress bar when an item transform on custom ENERGY storage - CLIENT and SERVER is synchronized
     private final ModEnergyStorage ENERGY_STORAGE = createEnergyStorage();
 
     private ModEnergyStorage createEnergyStorage() {
@@ -87,6 +82,11 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
                 hasLevel(level);
             }
         };
+    }
+
+    // CUSTOM METHOD - Item slot index
+    public ItemResource itemHandler(int index) {
+        return this.itemHandler.getResource(index);
     }
 
     public ItemStack getRenderStack() {
@@ -207,9 +207,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     }
 
     private boolean hasEnergyItemInSlot() {
-        return !itemHandler(GemEmpoweringStationBlockEntity.ENERGY_ITEM_SLOT).isEmpty() &&
-                itemHandler(GemEmpoweringStationBlockEntity.ENERGY_ITEM_SLOT).getItem() ==
-                ModItems.KOHLRABI.get();
+        return !itemHandler(ENERGY_ITEM_SLOT).isEmpty() && itemHandler(ENERGY_ITEM_SLOT).getItem() == ModItems.KOHLRABI.get();
     }
 
     private void craftItem() {
@@ -273,9 +271,9 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = itemHandler.getResource(OUTPUT_SLOT).isEmpty()
-                       ? 64 : itemHandler.getResource(OUTPUT_SLOT).getMaxStackSize();
-        int currentCount = itemHandler.getResource(OUTPUT_SLOT).toStack().getCount();
+        ItemResource outputSlot = itemHandler.getResource(OUTPUT_SLOT);
+        int maxCount = outputSlot.isEmpty() ? 64 : outputSlot.getMaxStackSize();
+        int currentCount = outputSlot.toStack().getCount();
         return maxCount >= currentCount + count;
     }
 
