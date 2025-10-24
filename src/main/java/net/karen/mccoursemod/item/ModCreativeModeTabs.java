@@ -103,6 +103,11 @@ public class ModCreativeModeTabs {
                  output.accept(ModItems.REDSTONE_CHESTPLATE);
                  output.accept(ModItems.REDSTONE_LEGGINGS);
                  output.accept(ModItems.REDSTONE_BOOTS);
+                 // EMERALD
+                 output.accept(ModItems.EMERALD_HELMET);
+                 output.accept(ModItems.EMERALD_CHESTPLATE);
+                 output.accept(ModItems.EMERALD_LEGGINGS);
+                 output.accept(ModItems.EMERALD_BOOTS);
                  // PAXEL
                  output.accept(ModItems.PINK_PAXEL);
                  output.accept(ModItems.COPPER_PAXEL);
@@ -114,6 +119,7 @@ public class ModCreativeModeTabs {
                  output.accept(ModItems.NETHERITE_PAXEL);
                  output.accept(ModItems.LAPIS_LAZULI_PAXEL);
                  output.accept(ModItems.REDSTONE_PAXEL);
+                 output.accept(ModItems.EMERALD_PAXEL);
                  // HAMMER
                  output.accept(ModItems.PINK_HAMMER);
                  output.accept(ModItems.COPPER_HAMMER);
@@ -125,33 +131,40 @@ public class ModCreativeModeTabs {
                  output.accept(ModItems.NETHERITE_HAMMER);
                  output.accept(ModItems.LAPIS_LAZULI_HAMMER);
                  output.accept(ModItems.REDSTONE_HAMMER);
+                 output.accept(ModItems.EMERALD_HAMMER);
                  // SHOVEL
                  output.accept(ModItems.PINK_SHOVEL);
                  output.accept(ModItems.ULTRA_COPPER_SHOVEL);
                  output.accept(ModItems.LAPIS_LAZULI_SHOVEL);
                  output.accept(ModItems.REDSTONE_SHOVEL);
+                 output.accept(ModItems.EMERALD_SHOVEL);
                  // AXE
                  output.accept(ModItems.PINK_AXE);
                  output.accept(ModItems.ULTRA_COPPER_AXE);
                  output.accept(ModItems.LAPIS_LAZULI_AXE);
                  output.accept(ModItems.REDSTONE_AXE);
+                 output.accept(ModItems.EMERALD_AXE);
                  // HOE
                  output.accept(ModItems.PINK_HOE);
                  output.accept(ModItems.ULTRA_COPPER_HOE);
                  output.accept(ModItems.LAPIS_LAZULI_HOE);
                  output.accept(ModItems.REDSTONE_HOE);
+                 output.accept(ModItems.EMERALD_HOE);
                  // PICKAXE
                  output.accept(ModItems.PINK_PICKAXE);
                  output.accept(ModItems.ULTRA_COPPER_PICKAXE);
                  output.accept(ModItems.LAPIS_LAZULI_PICKAXE);
                  output.accept(ModItems.REDSTONE_PICKAXE);
+                 output.accept(ModItems.EMERALD_PICKAXE);
                  // SWORD
                  output.accept(ModItems.PINK_SWORD);
                  output.accept(ModItems.ULTRA_COPPER_SWORD);
                  output.accept(ModItems.LAPIS_LAZULI_SWORD);
                  output.accept(ModItems.REDSTONE_SWORD);
+                 output.accept(ModItems.EMERALD_SWORD);
                  // ** CUSTOM elytra **
                  output.accept(ModItems.DIAMOND_ELYTRA);
+                 output.accept(ModItems.EMERALD_ELYTRA);
                  // ** CUSTOM horse armor **
                  // BISMUTH
                  output.accept(ModItems.BISMUTH_HORSE_ARMOR);

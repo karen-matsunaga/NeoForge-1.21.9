@@ -6,6 +6,7 @@
     "mccoursemod:ultra_copper_pickaxe",
     "mccoursemod:lapis_lazuli_pickaxe",
     "mccoursemod:redstone_pickaxe",
+    "mccoursemod:emerald_pickaxe",
     "mccoursemod:bismuth_hammer",
     "mccoursemod:alexandrite_hammer",
     "mccoursemod:pink_hammer",
@@ -18,6 +19,7 @@
     "mccoursemod:netherite_hammer",
     "mccoursemod:lapis_lazuli_hammer",
     "mccoursemod:redstone_hammer",
+    "mccoursemod:emerald_hammer",
     "mccoursemod:bismuth_paxel",
     "mccoursemod:alexandrite_paxel",
     "mccoursemod:pink_paxel",
@@ -30,6 +32,7 @@
     "mccoursemod:netherite_paxel",
     "mccoursemod:lapis_lazuli_paxel",
     "mccoursemod:redstone_paxel",
+    "mccoursemod:emerald_paxel",
     "mccoursemod:miner_bow"
   ]
 }

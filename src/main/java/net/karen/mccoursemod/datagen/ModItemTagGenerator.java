@@ -75,13 +75,20 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                                  ModItems.ALEXANDRITE_HOE.get(), ModItems.ALEXANDRITE_HAMMER.get(),
                                                  ModItems.ALEXANDRITE_PAXEL.get(), ModItems.ALEXANDRITE_BOW.get());
 
+        // EMERALD
+        tag(ModTags.Items.EMERALD_TOOLS).add(ModItems.EMERALD_SWORD.get(), ModItems.EMERALD_PICKAXE.get(),
+                                             ModItems.EMERALD_SHOVEL.get(), ModItems.EMERALD_AXE.get(),
+                                             ModItems.EMERALD_HOE.get(), ModItems.EMERALD_HAMMER.get(),
+                                             ModItems.EMERALD_PAXEL.get());
+
         // CUSTOM Axe
         tag(ItemTags.AXES).add(ModItems.BISMUTH_AXE.get(),
                                ModItems.ALEXANDRITE_AXE.get(),
                                ModItems.PINK_AXE.get(),
                                ModItems.ULTRA_COPPER_AXE.get(),
                                ModItems.LAPIS_LAZULI_AXE.get(),
-                               ModItems.REDSTONE_AXE.get());
+                               ModItems.REDSTONE_AXE.get(),
+                               ModItems.EMERALD_AXE.get());
 
         // CUSTOM Pickaxe
         tag(ItemTags.PICKAXES).add(ModItems.BISMUTH_PICKAXE.get(),
@@ -90,6 +97,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                    ModItems.ULTRA_COPPER_PICKAXE.get(),
                                    ModItems.LAPIS_LAZULI_PICKAXE.get(),
                                    ModItems.REDSTONE_PICKAXE.get(),
+                                   ModItems.EMERALD_PICKAXE.get(),
+                                   // HAMMER
                                    ModItems.BISMUTH_HAMMER.get(),
                                    ModItems.ALEXANDRITE_HAMMER.get(),
                                    ModItems.PINK_HAMMER.get(),
@@ -102,6 +111,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                    ModItems.NETHERITE_HAMMER.get(),
                                    ModItems.LAPIS_LAZULI_HAMMER.get(),
                                    ModItems.REDSTONE_HAMMER.get(),
+                                   ModItems.EMERALD_HAMMER.get(),
+                                   // PAXEL
                                    ModItems.BISMUTH_PAXEL.get(),
                                    ModItems.ALEXANDRITE_PAXEL.get(),
                                    ModItems.PINK_PAXEL.get(),
@@ -114,6 +125,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                    ModItems.NETHERITE_PAXEL.get(),
                                    ModItems.LAPIS_LAZULI_PAXEL.get(),
                                    ModItems.REDSTONE_PAXEL.get(),
+                                   ModItems.EMERALD_PAXEL.get(),
+                                   // BOW
                                    ModItems.MINER_BOW.get());
 
         // CUSTOM Sword
@@ -122,7 +135,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                  ModItems.PINK_SWORD.get(),
                                  ModItems.ULTRA_COPPER_SWORD.get(),
                                  ModItems.LAPIS_LAZULI_SWORD.get(),
-                                 ModItems.REDSTONE_SWORD.get());
+                                 ModItems.REDSTONE_SWORD.get(),
+                                 ModItems.EMERALD_SWORD.get());
 
         // CUSTOM Shovel
         tag(ItemTags.SHOVELS).add(ModItems.BISMUTH_SHOVEL.get(),
@@ -130,7 +144,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                   ModItems.PINK_SHOVEL.get(),
                                   ModItems.ULTRA_COPPER_SHOVEL.get(),
                                   ModItems.LAPIS_LAZULI_SHOVEL.get(),
-                                  ModItems.REDSTONE_SHOVEL.get());
+                                  ModItems.REDSTONE_SHOVEL.get(),
+                                  ModItems.EMERALD_SHOVEL.get());
 
         // CUSTOM Hoe
         tag(ItemTags.HOES).add(ModItems.BISMUTH_HOE.get(),
@@ -138,20 +153,26 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                ModItems.PINK_HOE.get(),
                                ModItems.ULTRA_COPPER_HOE.get(),
                                ModItems.LAPIS_LAZULI_HOE.get(),
-                               ModItems.REDSTONE_HOE.get());
+                               ModItems.REDSTONE_HOE.get(),
+                               ModItems.EMERALD_HOE.get());
 
         // CUSTOM Bow
         tag(ModTags.Items.BOW_TOOLS).add(ModItems.KAUPEN_BOW.get(), ModItems.ALEXANDRITE_BOW.get(), ModItems.MINER_BOW.get());
+
         tag(ItemTags.SKELETON_PREFERRED_WEAPONS).addTag(ModTags.Items.BOW_TOOLS);
+
         tag(ItemTags.WITHER_SKELETON_DISLIKED_WEAPONS).addTag(ModTags.Items.BOW_TOOLS);
+
         tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(ModTags.Items.BOW_TOOLS)
+                                            .addTag(ModTags.Items.MCCOURSE_ELYTRA)
                                             .add(ModItems.ALEXANDRITE_SHIELD.get(),
-                                                 ModItems.DIAMOND_ELYTRA.get(),
                                                  ModItems.MCCOURSE_MOD_FISHING_ROD.get());
+
         tag(ItemTags.BOW_ENCHANTABLE).addTag(ModTags.Items.BOW_TOOLS);
 
         // CUSTOM Elytra
-        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModItems.DIAMOND_ELYTRA.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).addTag(ModTags.Items.MCCOURSE_ELYTRA);
+        tag(ModTags.Items.MCCOURSE_ELYTRA).add(ModItems.DIAMOND_ELYTRA.get(), ModItems.EMERALD_ELYTRA.get());
 
         // CUSTOM Shield
         this.tag(Tags.Items.TOOLS_SHIELD).add(ModItems.ALEXANDRITE_SHIELD.get());
@@ -168,6 +189,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ModTags.Items.COPPER_TOOL_MATERIALS).add(Items.COPPER_BLOCK);
         tag(ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS).add(Items.LAPIS_LAZULI);
         tag(ModTags.Items.REDSTONE_TOOL_MATERIALS).add(Items.REDSTONE);
+        tag(ModTags.Items.EMERALD_TOOL_MATERIALS).add(Items.EMERALD);
         // ARMOR MATERIALS
         tag(ModTags.Items.REPAIRS_BISMUTH_ARMOR).add(ModItems.BISMUTH.get());
         tag(ModTags.Items.REPAIRS_ALEXANDRITE_ARMOR).add(ModItems.ALEXANDRITE.get());
@@ -175,6 +197,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ModTags.Items.REPAIRS_COPPER_ARMOR).add(Items.COPPER_BLOCK);
         tag(ModTags.Items.REPAIRS_LAPIS_LAZULI_ARMOR).add(Items.LAPIS_LAZULI);
         tag(ModTags.Items.REPAIRS_REDSTONE_ARMOR).add(Items.REDSTONE);
+        tag(ModTags.Items.REPAIRS_EMERALD_ARMOR).add(Items.EMERALD);
 
         // CUSTOM Armors -> Trimmable armor + Enchanted Armor
         tag(ModTags.Items.BISMUTH_ARMOR).add(ModItems.BISMUTH_HELMET.get(), ModItems.BISMUTH_CHESTPLATE.get(),
@@ -195,6 +218,9 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ModTags.Items.REDSTONE_ARMOR).add(ModItems.REDSTONE_HELMET.get(), ModItems.REDSTONE_CHESTPLATE.get(),
                                               ModItems.REDSTONE_LEGGINGS.get(), ModItems.REDSTONE_BOOTS.get());
 
+        tag(ModTags.Items.EMERALD_ARMOR).add(ModItems.EMERALD_HELMET.get(), ModItems.EMERALD_CHESTPLATE.get(),
+                                             ModItems.EMERALD_LEGGINGS.get(), ModItems.EMERALD_BOOTS.get());
+
         // CUSTOM TRIM MATERIALS
         tag(ItemTags.TRIM_MATERIALS).add(ModItems.BISMUTH.get(),
                                          ModItems.ALEXANDRITE.get(),
@@ -206,7 +232,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                      ModItems.PINK_BOOTS.get(),
                                      ModItems.ULTRA_COPPER_BOOTS.get(),
                                      ModItems.LAPIS_LAZULI_BOOTS.get(),
-                                     ModItems.REDSTONE_BOOTS.get());
+                                     ModItems.REDSTONE_BOOTS.get(),
+                                     ModItems.EMERALD_BOOTS.get());
 
         // CUSTOM Leggings
         tag(ItemTags.LEG_ARMOR).add(ModItems.BISMUTH_LEGGINGS.get(),
@@ -214,7 +241,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                     ModItems.PINK_LEGGINGS.get(),
                                     ModItems.ULTRA_COPPER_LEGGINGS.get(),
                                     ModItems.LAPIS_LAZULI_LEGGINGS.get(),
-                                    ModItems.REDSTONE_LEGGINGS.get());
+                                    ModItems.REDSTONE_LEGGINGS.get(),
+                                    ModItems.EMERALD_LEGGINGS.get());
 
         // CUSTOM Chestplate
         tag(ItemTags.CHEST_ARMOR).add(ModItems.BISMUTH_CHESTPLATE.get(),
@@ -222,7 +250,9 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                       ModItems.PINK_CHESTPLATE.get(),
                                       ModItems.ULTRA_COPPER_CHESTPLATE.get(),
                                       ModItems.LAPIS_LAZULI_CHESTPLATE.get(),
-                                      ModItems.REDSTONE_CHESTPLATE.get());
+                                      ModItems.REDSTONE_CHESTPLATE.get(),
+                                      ModItems.EMERALD_ELYTRA.get(),
+                                      ModItems.EMERALD_CHESTPLATE.get());
 
         // CUSTOM Helmet
         tag(ItemTags.HEAD_ARMOR).add(ModItems.BISMUTH_HELMET.get(),
@@ -230,7 +260,8 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                      ModItems.PINK_HELMET.get(),
                                      ModItems.ULTRA_COPPER_HELMET.get(),
                                      ModItems.LAPIS_LAZULI_HELMET.get(),
-                                     ModItems.REDSTONE_HELMET.get());
+                                     ModItems.REDSTONE_HELMET.get(),
+                                     ModItems.EMERALD_HELMET.get());
 
         // ** CUSTOM Advanced items **
         // Level Charger item tags

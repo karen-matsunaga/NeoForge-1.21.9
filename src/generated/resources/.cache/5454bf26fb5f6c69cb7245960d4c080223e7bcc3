@@ -1,4 +1,4 @@
-// 1.21.10	2025-10-19T01:22:27.8323893	Mccourse Mod Item Tags
+// 1.21.10	2025-10-24T14:07:02.476083	Mccourse Mod Item Tags
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets.json
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets/entity_water.json
 ca1d1a0f75cf3cb42d62b7b6770f7c29c97e549c data/c/tags/item/buckets/water.json
@@ -19,6 +19,9 @@ e3240995426e8b46bf8cf1d62d20f00f50e6be74 data/mccoursemod/tags/item/bismuth_tool
 8fc8431b2b479ba31487118e6ad2857095824630 data/mccoursemod/tags/item/compactor_items.json
 59619fbf5c237afcdc0ae2b2a65663d856b5c0b7 data/mccoursemod/tags/item/copper_armor.json
 43a45a1abbda26eb85071635bb20e4db6d13fdab data/mccoursemod/tags/item/copper_tool_materials.json
+91e7adb7df1a66a7cf1c34644f02520940422879 data/mccoursemod/tags/item/emerald_armor.json
+1f56102b8b20d933fdf3c1fbaa5aef21276e2389 data/mccoursemod/tags/item/emerald_tools.json
+8c4f379d97e2cd8c7f9297bf4fab7e60083ecb0d data/mccoursemod/tags/item/emerald_tool_materials.json
 9f117baa16a9f576daf317dabbc707d980ef0d7c data/mccoursemod/tags/item/helmet_fly.json
 a1801fb48088e0b13ff96e868cf4ddff58f63594 data/mccoursemod/tags/item/lapis_lazuli_armor.json
 056929b7ab3fd6b71312bcc7bae8661d4f4a5df0 data/mccoursemod/tags/item/lapis_lazuli_tool_materials.json
@@ -30,6 +33,7 @@ a1801fb48088e0b13ff96e868cf4ddff58f63594 data/mccoursemod/tags/item/lapis_lazuli
 e1296da21ce7727ca34c6b4ca53792959f1c4ce3 data/mccoursemod/tags/item/level_charger_specif.json
 a2ff31f862304f412ef9533d838959a91ba114bc data/mccoursemod/tags/item/luck_items.json
 e3240995426e8b46bf8cf1d62d20f00f50e6be74 data/mccoursemod/tags/item/magic_block.json
+768925c9e05a9906d6b91ce5ea30377a37f7a0f8 data/mccoursemod/tags/item/mccourse_elytra.json
 5340d93704cf8f41ac0bcd7f16c9c87c400cc4a1 data/mccoursemod/tags/item/mccourse_items.json
 fd4ba36105b3973764412e8710f1a946175f3718 data/mccoursemod/tags/item/mccourse_ores_items.json
 14f2f0d7fa0b19b565d7a9c81210b119d89bc447 data/mccoursemod/tags/item/ore_block_items.json
@@ -43,6 +47,7 @@ b69801be3566a43aed4fd30f97751579532cdbc7 data/mccoursemod/tags/item/pink_ultra_c
 17ea5cec12a112e44e075ea33b36af4a6cc4527a data/mccoursemod/tags/item/repairs_alexandrite_armor.json
 e3240995426e8b46bf8cf1d62d20f00f50e6be74 data/mccoursemod/tags/item/repairs_bismuth_armor.json
 43a45a1abbda26eb85071635bb20e4db6d13fdab data/mccoursemod/tags/item/repairs_copper_armor.json
+8c4f379d97e2cd8c7f9297bf4fab7e60083ecb0d data/mccoursemod/tags/item/repairs_emerald_armor.json
 056929b7ab3fd6b71312bcc7bae8661d4f4a5df0 data/mccoursemod/tags/item/repairs_lapis_lazuli_armor.json
 204eeee6677118a4984bd1e17ff2bdfd176a3b66 data/mccoursemod/tags/item/repairs_pink_armor.json
 5db69586b6c50b2befacf44de1aedc4a5af092fe data/mccoursemod/tags/item/repairs_redstone_armor.json
@@ -50,27 +55,27 @@ e3240995426e8b46bf8cf1d62d20f00f50e6be74 data/mccoursemod/tags/item/repairs_bism
 2fdbd2b6ab32e20c3a31fb2a55581d4c364be123 data/mccoursemod/tags/item/ultra_compactor_items.json
 1dd942f7a578100b857661b20a19c22aee5dae48 data/mccoursemod/tags/item/ultra_compactor_result.json
 774205992e78cc4b0cce335e5a396e3a2426ecab data/mccoursemod/tags/item/walnut_logs.json
-6cf45da874fc8749014e8d8fed70b9db4ad46f99 data/minecraft/tags/item/axes.json
+684beaad21a83e625e4184a8306bb882036942af data/minecraft/tags/item/axes.json
 d3450747fa065931cf4ea3f9bf415f885c981dfc data/minecraft/tags/item/beacon_payment_items.json
 7b931db4f1395bf4662244ddcca54886f9544a10 data/minecraft/tags/item/bee_food.json
-4bc22d62953352573e66e6f78eab4ae4365a3c09 data/minecraft/tags/item/chest_armor.json
+cdff70f877b372b2b1cdd4dcacd7e84887fc432d data/minecraft/tags/item/chest_armor.json
 641d6e9ec6e02fb870479de7da76c7020aa5ee61 data/minecraft/tags/item/enchantable/bow.json
-b16636ae44638b7b33ba4fd20fbfaec0a168d6aa data/minecraft/tags/item/enchantable/durability.json
-d8fc688e10164d96802c427816aa052fd193a01c data/minecraft/tags/item/enchantable/equippable.json
+de68d5c317dda91bcf9e46b791a65a5ccfd94b84 data/minecraft/tags/item/enchantable/durability.json
+3913d238e52bd8461f5a12995886a3d29707d6e7 data/minecraft/tags/item/enchantable/equippable.json
 9c282bdcff9fd68b31446b59ab15bd12039d5eb2 data/minecraft/tags/item/enchantable/fishing.json
 7b931db4f1395bf4662244ddcca54886f9544a10 data/minecraft/tags/item/flowers.json
-38036eeba5fa674c6ba7b75628738fe2e874b18c data/minecraft/tags/item/foot_armor.json
-1c557fc88fbeba27071789a83785b96d389dc24a data/minecraft/tags/item/head_armor.json
-b3d221a7e1a3cbed358287804ceb8f55ab438b80 data/minecraft/tags/item/hoes.json
+f0d264dfc321d0dc20e787736b89469fb1cccb2c data/minecraft/tags/item/foot_armor.json
+9a598f7d3ba73229251fd17ef306fe78d875598d data/minecraft/tags/item/head_armor.json
+c2df27602e027ce7097224244e012bf179329ad0 data/minecraft/tags/item/hoes.json
 7a5dd8815002431512c87ae04041ff84e1a05cd2 data/minecraft/tags/item/leaves.json
-dca90549aafc1dbab5eff03beca59571b2340a42 data/minecraft/tags/item/leg_armor.json
+a7621ab657c80d97d2b6d37355b02ae2af71fa39 data/minecraft/tags/item/leg_armor.json
 4b057e3e5e6f7b9026d5871433fccbb5eb4dfe1a data/minecraft/tags/item/logs_that_burn.json
-403d243e17b9cc8b02ef2ac054f098950c4c10cf data/minecraft/tags/item/pickaxes.json
+b154641fa1231783266d1292831343096e8b29f5 data/minecraft/tags/item/pickaxes.json
 2cb28474625576092652fd1b578b683666883b3a data/minecraft/tags/item/planks.json
 d8700cb59c359611790eaf34c5351f0bfe3e081e data/minecraft/tags/item/saplings.json
-7213ba754f591f4f8818f57c3f8e1719328cad3d data/minecraft/tags/item/shovels.json
+dc3971d94b9ba3fa1c015bc4cf688254e8a95911 data/minecraft/tags/item/shovels.json
 641d6e9ec6e02fb870479de7da76c7020aa5ee61 data/minecraft/tags/item/skeleton_preferred_weapons.json
 7b931db4f1395bf4662244ddcca54886f9544a10 data/minecraft/tags/item/small_flowers.json
-fc3fc56988770c98894e6e3731afac8ba98f9226 data/minecraft/tags/item/swords.json
+955ee12a2500f967683c8eb9c04d9e79b23a1409 data/minecraft/tags/item/swords.json
 6d293387f3262b8aeb04e2d80777c0b69c807e6e data/minecraft/tags/item/trim_materials.json
 641d6e9ec6e02fb870479de7da76c7020aa5ee61 data/minecraft/tags/item/wither_skeleton_disliked_weapons.json

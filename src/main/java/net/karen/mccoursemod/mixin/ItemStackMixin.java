@@ -59,7 +59,7 @@ public abstract class ItemStackMixin {
             }
         }
         // ELYTRA PLUS item
-        if (stack.is(ModItems.DIAMOND_ELYTRA.get().asItem())) {
+        if (stack.is(ModTags.Items.MCCOURSE_ELYTRA)) {
             if (item instanceof ElytraPlusItem elytraPlus) {
                 tooltipLineLiteralRGB(tooltip, COLORS, stack, elytraPlus.elytraItemName().getFirst());
                 tooltipLineLiteralRGBColors(tooltip, COLORS, elytraPlus.elytraItemName().get(1));

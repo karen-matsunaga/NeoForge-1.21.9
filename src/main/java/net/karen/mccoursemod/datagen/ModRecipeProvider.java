@@ -128,6 +128,10 @@ public class ModRecipeProvider extends RecipeProvider {
                               ModItems.REDSTONE_SHOVEL.get(), ModItems.REDSTONE_AXE.get(),
                               ModItems.REDSTONE_HOE.get(), Items.REDSTONE));
 
+        this.allTools(List.of(ModItems.EMERALD_SWORD.get(), ModItems.EMERALD_PICKAXE.get(),
+                              ModItems.EMERALD_SHOVEL.get(), ModItems.EMERALD_AXE.get(),
+                              ModItems.EMERALD_HOE.get(), Items.EMERALD));
+
         this.copperSmithing(Items.COPPER_SWORD, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_SWORD.get());
         this.copperSmithing(Items.COPPER_PICKAXE, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_PICKAXE.get());
         this.copperSmithing(Items.COPPER_SHOVEL, RecipeCategory.TOOLS, ModItems.ULTRA_COPPER_SHOVEL.get());
@@ -209,6 +213,10 @@ public class ModRecipeProvider extends RecipeProvider {
         this.fullArmor(List.of(ModItems.REDSTONE_HELMET.get(), ModItems.REDSTONE_CHESTPLATE.get(),
                                ModItems.REDSTONE_LEGGINGS.get(), ModItems.REDSTONE_BOOTS.get(),
                                Items.REDSTONE));
+
+        this.fullArmor(List.of(ModItems.EMERALD_HELMET.get(), ModItems.EMERALD_CHESTPLATE.get(),
+                               ModItems.EMERALD_LEGGINGS.get(), ModItems.EMERALD_BOOTS.get(),
+                               Items.EMERALD));
 
         this.copperSmithing(Items.COPPER_HELMET, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_HELMET.get());
         this.copperSmithing(Items.COPPER_CHESTPLATE, RecipeCategory.COMBAT, ModItems.ULTRA_COPPER_CHESTPLATE.get());

@@ -87,6 +87,14 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.ALEXANDRITE_AXE, "Alexandrite Axe");
         addItem(ModItems.ALEXANDRITE_HOE, "Alexandrite Hoe");
         addItem(ModItems.ALEXANDRITE_BOW, "Alexandrite Bow");
+        // EMERALD
+        addItem(ModItems.EMERALD_HAMMER, "Emerald Hammer");
+        addItem(ModItems.EMERALD_PAXEL, "Emerald Paxel");
+        addItem(ModItems.EMERALD_SWORD, "Emerald Sword");
+        addItem(ModItems.EMERALD_PICKAXE, "Emerald Pickaxe");
+        addItem(ModItems.EMERALD_SHOVEL, "Emerald Shovel");
+        addItem(ModItems.EMERALD_AXE, "Emerald Axe");
+        addItem(ModItems.EMERALD_HOE, "Emerald Hoe");
 
         // ** CUSTOM Armors **
         // BISMUTH
@@ -119,6 +127,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.REDSTONE_CHESTPLATE, "Redstone Chestplate");
         addItem(ModItems.REDSTONE_LEGGINGS, "Redstone Leggings");
         addItem(ModItems.REDSTONE_BOOTS, "Redstone Boots");
+        // EMERALD
+        addItem(ModItems.EMERALD_HELMET, "Emerald Helmet");
+        addItem(ModItems.EMERALD_CHESTPLATE, "Emerald Chestplate");
+        addItem(ModItems.EMERALD_LEGGINGS, "Emerald Leggings");
+        addItem(ModItems.EMERALD_BOOTS, "Emerald Boots");
 
         // ** CUSTOM Paxel **
         addItem(ModItems.PINK_PAXEL, "Pink Paxel");
@@ -910,6 +923,11 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.REDSTONE_LEGGINGS, "Armor.");
         itemDescription(ModItems.REDSTONE_BOOTS, "Armor.");
 
+        itemDescription(ModItems.EMERALD_HELMET, "Armor.");
+        itemDescription(ModItems.EMERALD_CHESTPLATE, "Armor.");
+        itemDescription(ModItems.EMERALD_LEGGINGS, "Armor.");
+        itemDescription(ModItems.EMERALD_BOOTS, "Armor.");
+
         itemDescription(ModItems.BISMUTH_HORSE_ARMOR, "Horse armor.");
         itemDescription(ModItems.ALEXANDRITE_HORSE_ARMOR, "Horse armor.");
 
@@ -926,14 +944,16 @@ public class ModLanguageProvider extends LanguageProvider {
                                  ModItems.DIAMOND_PAXEL, ModItems.GOLD_PAXEL,
                                  ModItems.IRON_PAXEL, ModItems.STONE_PAXEL,
                                  ModItems.WOODEN_PAXEL, ModItems.NETHERITE_PAXEL,
-                                 ModItems.LAPIS_LAZULI_PAXEL, ModItems.REDSTONE_PAXEL));
+                                 ModItems.LAPIS_LAZULI_PAXEL, ModItems.REDSTONE_PAXEL,
+                                 ModItems.EMERALD_PAXEL));
 
         hammerDescription(List.of(ModItems.BISMUTH_HAMMER, ModItems.ALEXANDRITE_HAMMER,
                                   ModItems.PINK_HAMMER, ModItems.COPPER_HAMMER,
                                   ModItems.DIAMOND_HAMMER, ModItems.GOLD_HAMMER,
                                   ModItems.IRON_HAMMER, ModItems.STONE_HAMMER,
                                   ModItems.WOODEN_HAMMER, ModItems.NETHERITE_HAMMER,
-                                  ModItems.LAPIS_LAZULI_HAMMER, ModItems.REDSTONE_HAMMER));
+                                  ModItems.LAPIS_LAZULI_HAMMER, ModItems.REDSTONE_HAMMER,
+                                  ModItems.EMERALD_HAMMER));
 
         itemDescription(ModItems.BISMUTH_SHOVEL, "Shovel.");
         itemDescription(ModItems.ALEXANDRITE_SHOVEL, "Shovel.");
@@ -941,6 +961,7 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.ULTRA_COPPER_SHOVEL, "Shovel.");
         itemDescription(ModItems.LAPIS_LAZULI_SHOVEL, "Shovel.");
         itemDescription(ModItems.REDSTONE_SHOVEL, "Shovel.");
+        itemDescription(ModItems.EMERALD_SHOVEL, "Shovel.");
 
         itemDescription(ModItems.BISMUTH_AXE, "Axe.");
         itemDescription(ModItems.ALEXANDRITE_AXE, "Axe.");
@@ -948,6 +969,7 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.ULTRA_COPPER_AXE, "Axe.");
         itemDescription(ModItems.LAPIS_LAZULI_AXE, "Axe.");
         itemDescription(ModItems.REDSTONE_AXE, "Axe.");
+        itemDescription(ModItems.EMERALD_AXE, "Axe.");
 
         itemDescription(ModItems.BISMUTH_HOE, "Hoe.");
         itemDescription(ModItems.ALEXANDRITE_HOE, "Hoe.");
@@ -955,6 +977,7 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.ULTRA_COPPER_HOE, "Hoe.");
         itemDescription(ModItems.LAPIS_LAZULI_HOE, "Hoe.");
         itemDescription(ModItems.REDSTONE_HOE, "Hoe.");
+        itemDescription(ModItems.EMERALD_HOE, "Hoe.");
 
         itemDescription(ModItems.BISMUTH_PICKAXE, "Pickaxe.");
         itemDescription(ModItems.ALEXANDRITE_PICKAXE, "Pickaxe.");
@@ -962,6 +985,7 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.ULTRA_COPPER_PICKAXE, "Pickaxe.");
         itemDescription(ModItems.LAPIS_LAZULI_PICKAXE, "Pickaxe.");
         itemDescription(ModItems.REDSTONE_PICKAXE, "Pickaxe.");
+        itemDescription(ModItems.EMERALD_PICKAXE, "Pickaxe.");
 
         itemDescription(ModItems.BISMUTH_SWORD, "Sword.");
         itemDescription(ModItems.ALEXANDRITE_SWORD, "Sword.");
@@ -969,8 +993,10 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.ULTRA_COPPER_SWORD, "Sword.");
         itemDescription(ModItems.LAPIS_LAZULI_SWORD, "Sword.");
         itemDescription(ModItems.REDSTONE_SWORD, "Sword.");
+        itemDescription(ModItems.EMERALD_SWORD, "Sword.");
 
         itemDescription(ModItems.DIAMOND_ELYTRA, "Elytra.");
+        itemDescription(ModItems.EMERALD_ELYTRA, "Elytra.");
         itemDescription(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Armor Trim Smithing Template.");
         itemDescription(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "Upgrade Smithing Template.");
 

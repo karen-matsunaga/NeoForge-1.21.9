@@ -33,6 +33,7 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_LAPIS_LAZULI_TOOL =
                createTag("needs_lapis_lazuli_tool");
         public static final TagKey<Block> NEEDS_REDSTONE_TOOL = createTag("needs_redstone_tool");
+        public static final TagKey<Block> NEEDS_EMERALD_TOOL = createTag("needs_emerald_tool");
 
         // TOOL MATERIALS -> Blocks not break
         public static final TagKey<Block> INCORRECT_FOR_BISMUTH_TOOL = createTag("incorrect_for_bismuth_tool");
@@ -44,6 +45,7 @@ public class ModTags {
                createTag("incorrect_for_lapis_lazuli_tool");
         public static final TagKey<Block> INCORRECT_FOR_REDSTONE_TOOL =
                createTag("incorrect_for_redstone_tool");
+        public static final TagKey<Block> INCORRECT_FOR_EMERALD_TOOL = createTag("incorrect_for_emerald_tool");
 
         // Created More Ores's drops - More Ores I, II, III, IV, V, VI and Max Level
         public static final TagKey<Block> MORE_ORES_ONE_DROPS = createTag("more_ores_one_drops");
@@ -159,6 +161,7 @@ public class ModTags {
         // TOOL MATERIALS items - TOOLS
         public static final TagKey<Item> BISMUTH_TOOLS = createTag("bismuth_tools");
         public static final TagKey<Item> ALEXANDRITE_TOOLS = createTag("alexandrite_tools");
+        public static final TagKey<Item> EMERALD_TOOLS = createTag("emerald_tools");
 
         // ARMOR MATERIALS items - ARMORS
         public static final TagKey<Item> BISMUTH_ARMOR = createTag("bismuth_armor");
@@ -167,6 +170,7 @@ public class ModTags {
         public static final TagKey<Item> COPPER_ARMOR = createTag("copper_armor");
         public static final TagKey<Item> LAPIS_LAZULI_ARMOR = createTag("lapis_lazuli_armor");
         public static final TagKey<Item> REDSTONE_ARMOR = createTag("redstone_armor");
+        public static final TagKey<Item> EMERALD_ARMOR = createTag("emerald_armor");
 
         // TOOL MATERIALS items - REPAIR TOOL ingredients
         public static final TagKey<Item> BISMUTH_TOOL_MATERIALS = createTag("bismuth_tool_materials");
@@ -177,6 +181,7 @@ public class ModTags {
         public static final TagKey<Item> LAPIS_LAZULI_TOOL_MATERIALS =
                createTag("lapis_lazuli_tool_materials");
         public static final TagKey<Item> REDSTONE_TOOL_MATERIALS = createTag("redstone_tool_materials");
+        public static final TagKey<Item> EMERALD_TOOL_MATERIALS = createTag("emerald_tool_materials");
 
         // ARMOR MATERIALS items - REPAIR ARMOR ingredients
         public static final TagKey<Item> REPAIRS_BISMUTH_ARMOR = createTag("repairs_bismuth_armor");
@@ -186,6 +191,7 @@ public class ModTags {
         public static final TagKey<Item> REPAIRS_LAPIS_LAZULI_ARMOR =
                createTag("repairs_lapis_lazuli_armor");
         public static final TagKey<Item> REPAIRS_REDSTONE_ARMOR = createTag("repairs_redstone_armor");
+        public static final TagKey<Item> REPAIRS_EMERALD_ARMOR = createTag("repairs_emerald_armor");
 
         // ** CUSTOM log **
         public static final TagKey<Item> BLOODWOOD_LOGS = createTag("bloodwood_logs");
@@ -210,6 +216,9 @@ public class ModTags {
 
         // Restore item
         public static final TagKey<Item> RESTORE_BLACKLIST_ITEMS = createTag("restore_blacklist_items");
+
+        // Elytra
+        public static final TagKey<Item> MCCOURSE_ELYTRA = createTag("mccourse_elytra");
 
         // CUSTOM METHOD - Registry all custom item tags
         private static TagKey<Item> createTag(String name) {
