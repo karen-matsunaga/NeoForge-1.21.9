@@ -125,6 +125,7 @@ public class ChatUtils {
     public static int cattailLoreColor = ARGB.color(116, 90, 51);
 
     public static int elytraLoreColor = ARGB.color(20, 255, 196);
+    public static int emeraldElytraLoreColor = ARGB.color(17, 160, 54);
     public static int kaupenTrimLoreColor = ARGB.color(131, 195, 223);
     public static int copperUpgradeSmithingLoreColor = ARGB.color(156, 69, 41);
 

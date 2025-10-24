@@ -320,6 +320,14 @@ public class ModModelProvider extends ModelProvider {
         itemModels.generateFlatItem(ModItems.ALEXANDRITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.ALEXANDRITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(ModItems.ALEXANDRITE_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        // EMERALD
+        itemModels.generateFlatItem(ModItems.EMERALD_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.EMERALD_PAXEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.EMERALD_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.EMERALD_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.EMERALD_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.EMERALD_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(ModItems.EMERALD_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
         // ** CUSTOM bow **
         // BISMUTH
@@ -419,6 +427,11 @@ public class ModModelProvider extends ModelProvider {
                         List.of(ModItems.REDSTONE_HELMET.get(), ModItems.REDSTONE_CHESTPLATE.get(),
                                 ModItems.REDSTONE_LEGGINGS.get(), ModItems.REDSTONE_BOOTS.get()));
 
+        // EMERALD
+        createArmorTrim(itemModels, ModEquipmentAssetProvider.EMERALD,
+                        List.of(ModItems.EMERALD_HELMET.get(), ModItems.EMERALD_CHESTPLATE.get(),
+                                ModItems.EMERALD_LEGGINGS.get(), ModItems.EMERALD_BOOTS.get()));
+
         // ** VANILLA ARMORS **
         createArmorTrim(itemModels, EquipmentAssets.CHAINMAIL,
                         List.of(Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE,
@@ -484,6 +497,7 @@ public class ModModelProvider extends ModelProvider {
 
         // ** CUSTOM Elytra **
         itemModels.generateElytra(ModItems.DIAMOND_ELYTRA.get());
+        itemModels.generateElytra(ModItems.EMERALD_ELYTRA.get());
 
         // ** CUSTOM Fluid **
         itemModels.generateFlatItem(ModFluids.SOAP_WATER_BUCKET.get(), ModelTemplates.FLAT_ITEM);

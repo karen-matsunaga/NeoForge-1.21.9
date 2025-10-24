@@ -26,13 +26,18 @@ public class ModEquipmentAssetProvider extends EquipmentAssetProvider {
     }
 
     // List of EQUIPMENT ASSET
+    // ARMOR
     public static final ResourceKey<EquipmentAsset> BISMUTH = createId("bismuth");
     public static final ResourceKey<EquipmentAsset> ALEXANDRITE = createId("alexandrite");
     public static final ResourceKey<EquipmentAsset> PINK = createId("pink");
     public static final ResourceKey<EquipmentAsset> COPPER = createId("copper");
     public static final ResourceKey<EquipmentAsset> LAPIS_LAZULI = createId("lapis_lazuli");
     public static final ResourceKey<EquipmentAsset> REDSTONE = createId("redstone");
+    public static final ResourceKey<EquipmentAsset> EMERALD = createId("emerald");
+
+    // ELYTRA
     public static final ResourceKey<EquipmentAsset> DIAMOND_ELYTRA = createId("diamond_elytra");
+    public static final ResourceKey<EquipmentAsset> EMERALD_ELYTRA = createId("emerald_elytra");
 
     // CUSTOM METHOD - Register all custom equipment assets -> Resource Key
     private static ResourceKey<EquipmentAsset> createId(String name) {
@@ -49,7 +54,9 @@ public class ModEquipmentAssetProvider extends EquipmentAssetProvider {
         registerAssetWithLayers(consumer, COPPER, "copper");
         registerAssetWithLayers(consumer, LAPIS_LAZULI, "lapis_lazuli");
         registerAssetWithLayers(consumer, REDSTONE, "redstone");
+        registerAssetWithLayers(consumer, EMERALD, "emerald");
         registerElytraAssetWithLayers(consumer, DIAMOND_ELYTRA, "diamond_elytra");
+        registerElytraAssetWithLayers(consumer, EMERALD_ELYTRA, "emerald_elytra");
     }
 
     // CUSTOM METHOD - Register all custom Horse EQUIPMENT ASSETS
@@ -65,7 +72,7 @@ public class ModEquipmentAssetProvider extends EquipmentAssetProvider {
 
     // CUSTOM METHOD - Register all custom elytra EQUIPMENT ASSETS
     private static void registerElytraAssetWithLayers(BiConsumer<ResourceKey<EquipmentAsset>,
-                                                      EquipmentClientInfo> consumer,
+                                                                 EquipmentClientInfo> consumer,
                                                       ResourceKey<EquipmentAsset> asset, String name) {
         consumer.accept(asset, EquipmentClientInfo.builder()
                 .addLayers(EquipmentClientInfo.LayerType.WINGS,

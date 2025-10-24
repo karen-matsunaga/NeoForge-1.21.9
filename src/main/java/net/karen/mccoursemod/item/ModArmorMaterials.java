@@ -52,6 +52,12 @@ public class ModArmorMaterials {
                          7.0F, 0.9F, ModTags.Items.REPAIRS_LAPIS_LAZULI_ARMOR,
                          ModEquipmentAssetProvider.LAPIS_LAZULI);
 
+    // EMERALD
+    public static final ArmorMaterial EMERALD_ARMOR_MATERIAL =
+           armorMaterial(1, 10, SoundEvents.ARMOR_EQUIP_ELYTRA,
+                         1.0F, 0.1F, ModTags.Items.REPAIRS_EMERALD_ARMOR,
+                         ModEquipmentAssetProvider.EMERALD);
+
     // CUSTOM METHOD - Armor Type Defense
     private static Map<ArmorType, Integer> makeArmorTypeDefense() {
         return Maps.newEnumMap(Map.of(ArmorType.BOOTS, 5, ArmorType.LEGGINGS, 7,

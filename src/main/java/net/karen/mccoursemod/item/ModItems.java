@@ -53,15 +53,13 @@ public class ModItems {
     // BISMUTH
     public static final DeferredItem<Item> BISMUTH = trimMaterialItem("bismuth", ModTrimMaterials.BISMUTH, bismuthColor);
 
-    public static final DeferredItem<Item> RAW_BISMUTH =
-           customItem("raw_bismuth", Item::new, props -> props, bismuthColor);
+    public static final DeferredItem<Item> RAW_BISMUTH = rawItem("raw_bismuth", bismuthColor);
 
     // ALEXANDRITE
     public static final DeferredItem<Item> ALEXANDRITE =
            trimMaterialItem("alexandrite", ModTrimMaterials.ALEXANDRITE, alexandriteColor);
 
-    public static final DeferredItem<Item> RAW_ALEXANDRITE =
-           customItem("raw_alexandrite", Item::new, props -> props, alexandriteColor);
+    public static final DeferredItem<Item> RAW_ALEXANDRITE = rawItem("raw_alexandrite", alexandriteColor);
 
     // PINK
     public static final DeferredItem<Item> PINK = trimMaterialItem("pink", ModTrimMaterials.PINK, pinkColor);
@@ -175,6 +173,19 @@ public class ModItems {
     public static final DeferredItem<Item> REDSTONE_BOOTS =
            bootsArmor("redstone_boots", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneLoreColor);
 
+    // EMERALD
+    public static final DeferredItem<Item> EMERALD_HELMET =
+           helmetArmor("emerald_helmet", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+
+    public static final DeferredItem<Item> EMERALD_CHESTPLATE =
+           chestplateArmor("emerald_chestplate", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+
+    public static final DeferredItem<Item> EMERALD_LEGGINGS =
+           leggingsArmor("emerald_leggings", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+
+    public static final DeferredItem<Item> EMERALD_BOOTS =
+           bootsArmor("emerald_boots", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+
     // ** CUSTOM Horse armor **
     public static final DeferredItem<Item> BISMUTH_HORSE_ARMOR =
            horseArmorItem("bismuth_horse_armor", ModArmorMaterials.BISMUTH_ARMOR_MATERIAL, bismuthColor);
@@ -257,6 +268,10 @@ public class ModItems {
            paxelItem("redstone_paxel", ModToolMaterials.REDSTONE, 1.0F, 4.5F,
                      ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
 
+    public static final DeferredItem<Item> EMERALD_PAXEL =
+           paxelItem("emerald_paxel", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                     ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+
     // ** CUSTOM Hammer tools **
     public static final DeferredItem<Item> BISMUTH_HAMMER =
            hammerItem("bismuth_hammer", ModToolMaterials.BISMUTH, 7F, -3.5F,
@@ -306,6 +321,10 @@ public class ModItems {
            hammerItem("redstone_hammer", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
                       ModTags.Items.REDSTONE_TOOL_MATERIALS, 4, redstoneLoreColor, redstoneLoreColor);
 
+    public static final DeferredItem<Item> EMERALD_HAMMER =
+           hammerItem("emerald_hammer", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                      ModTags.Items.EMERALD_TOOL_MATERIALS, 4, emeraldElytraLoreColor, emeraldElytraLoreColor);
+
     // ** CUSTOM Shovel tools **
     public static final DeferredItem<Item> BISMUTH_SHOVEL =
            shovelItem("bismuth_shovel", ModToolMaterials.BISMUTH, 1.5F, -3.0F,
@@ -330,6 +349,10 @@ public class ModItems {
     public static final DeferredItem<Item> REDSTONE_SHOVEL =
            shovelItem("redstone_shovel", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
                       ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+
+    public static final DeferredItem<Item> EMERALD_SHOVEL =
+           shovelItem("emerald_shovel", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                      ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
 
     // ** CUSTOM Axe tools **
     public static final DeferredItem<Item> BISMUTH_AXE =
@@ -356,6 +379,10 @@ public class ModItems {
            axeItem("redstone_axe", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
                    ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
 
+    public static final DeferredItem<Item> EMERALD_AXE =
+           axeItem("emerald_axe", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                   ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+
     // ** CUSTOM hoe **
     public static final DeferredItem<Item> BISMUTH_HOE =
            hoeItem("bismuth_hoe", ModToolMaterials.BISMUTH, 0.0F, -3.0F,
@@ -380,6 +407,10 @@ public class ModItems {
     public static final DeferredItem<Item> REDSTONE_HOE =
            hoeItem("redstone_hoe", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
                    ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+
+    public static final DeferredItem<Item> EMERALD_HOE =
+           hoeItem("emerald_hoe", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                   ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
 
     // ** CUSTOM pickaxe **
     public static final DeferredItem<Item> BISMUTH_PICKAXE =
@@ -406,6 +437,10 @@ public class ModItems {
            pickaxeItem("redstone_pickaxe", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
                        ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
 
+    public static final DeferredItem<Item> EMERALD_PICKAXE =
+           pickaxeItem("emerald_pickaxe", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                       ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+
     // ** CUSTOM sword **
     public static final DeferredItem<Item> BISMUTH_SWORD =
            swordItem("bismuth_sword", ModToolMaterials.BISMUTH, 5.0F, -2.4F,
@@ -431,10 +466,18 @@ public class ModItems {
            swordItem("redstone_sword", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
                      ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
 
+    public static final DeferredItem<Item> EMERALD_SWORD =
+           swordItem("emerald_sword", ModToolMaterials.EMERALD, 1.0F, 1.0F,
+                     ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+
     // ** CUSTOM Elytra armor **
     public static final DeferredItem<Item> DIAMOND_ELYTRA =
            elytraArmor("diamond_elytra", 10000, ModEquipmentAssetProvider.DIAMOND_ELYTRA,
                        ItemTags.DIAMOND_TOOL_MATERIALS, MobEffects.REGENERATION, 4, elytraLoreColor);
+
+    public static final DeferredItem<Item> EMERALD_ELYTRA =
+           elytraArmor("emerald_elytra", 8000, ModEquipmentAssetProvider.EMERALD_ELYTRA,
+                       ModTags.Items.EMERALD_TOOL_MATERIALS, MobEffects.LUCK, 2, emeraldElytraLoreColor);
 
     // ** CUSTOM Armor Trim Smithing Template **
     public static final DeferredItem<Item> KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE =
@@ -598,6 +641,11 @@ public class ModItems {
     public static final DeferredItem<Item> LUCK_WEAPON =
            luckItem("luck_weapon", 1, 1, 6, 2,
                     ModTags.Enchantments.SWORD_ENCHANTMENTS, luckWeaponLoreColor, "weapon");
+
+    // ** CUSTOM METHOD - Raw ore items **
+    public static DeferredItem<Item> rawItem(String name, int color) {
+        return customItem(name, Item::new, props -> props, color);
+    }
 
     // ** CUSTOM METHOD - Luck items **
     public static DeferredItem<Item> luckItem(String name, int bookAmount,

@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "mccoursemod:emerald"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "mccoursemod:emerald"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mccoursemod:emerald"
+      }
+    ]
+  }
+}

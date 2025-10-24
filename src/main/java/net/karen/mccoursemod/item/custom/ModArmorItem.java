@@ -39,6 +39,8 @@ public class ModArmorItem extends Item {
             .put(ModArmorMaterials.REDSTONE_ARMOR_MATERIAL,
                  List.of(new MobEffectInstance(MobEffects.NIGHT_VISION, 200, 1, true, true),
                          new MobEffectInstance(MobEffects.GLOWING, 200, 1, true, true)))
+            .put(ModArmorMaterials.EMERALD_ARMOR_MATERIAL,
+                 List.of(new MobEffectInstance(MobEffects.LUCK, 200, 2, true, true)))
             .build();
 
     public ModArmorItem(Properties properties, int textColor) {

@@ -38,6 +38,11 @@ public class ModToolMaterials {
            toolMaterial(ModTags.Blocks.INCORRECT_FOR_REDSTONE_TOOL, 400, 7.0F,
                         1.0F, 30, ModTags.Items.REDSTONE_TOOL_MATERIALS);
 
+    // EMERALD
+    public static final ToolMaterial EMERALD =
+           toolMaterial(ModTags.Blocks.INCORRECT_FOR_EMERALD_TOOL, 250, 10.0F,
+                        0.5F, 10, ModTags.Items.EMERALD_TOOL_MATERIALS);
+
     // CUSTOM METHOD - Register MOD tiers
     public static ToolMaterial toolMaterial(TagKey<Block> block, int uses, float speed,
                                             float attack, int enchant, TagKey<Item> repair) {
