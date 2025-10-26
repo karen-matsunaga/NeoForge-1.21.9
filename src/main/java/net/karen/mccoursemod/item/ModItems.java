@@ -863,7 +863,8 @@ public class ModItems {
     // ** CUSTOM METHOD - Shield tool **
     public static DeferredItem<Item> shieldItem(String name, TagKey<Item> repair, int color) {
         return editItem(name, properties ->
-                        new ShieldItem(properties.component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
+                        new ShieldItem(properties.component(DataComponents.BANNER_PATTERNS,
+                                                            BannerPatternLayers.EMPTY)
                                                  .repairable(repair).equippableUnswappable(EquipmentSlot.OFFHAND)
                                                  .component(DataComponents.BLOCKS_ATTACKS,
                                                             new BlocksAttacks(0.25F, 1.0F,
@@ -876,7 +877,18 @@ public class ModItems {
                                                             Optional.of(DamageTypeTags.BYPASSES_SHIELD),
                                                             Optional.of(SoundEvents.SHIELD_BLOCK),
                                                             Optional.of(SoundEvents.SHIELD_BREAK)))
-                                                 .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)), color);
+                                                 .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)) {
+                                       @Override
+                                       public @NotNull Component getName(@NotNull ItemStack stack) {
+                                           DyeColor dyecolor = stack.get(DataComponents.BASE_COLOR);
+                                           Component component;
+                                           if (dyecolor != null) {
+                                               component = Component.translatable(this.descriptionId + "." + dyecolor.getName());
+                                           }
+                                           else { component = componentTranslatableIntColor(this.getDescriptionId(), color); }
+                                           return component;
+                                       }},
+                                       color);
     }
 
     // ** CUSTOM METHOD - Ores Smithing Upgrade Template **
