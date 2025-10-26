@@ -50,8 +50,7 @@ public class ShieldSpecialModelRenderer implements SpecialModelRenderer<DataComp
                        @NotNull PoseStack poseStack, @NotNull SubmitNodeCollector submitNodeCollector,
                        int i, int i1, boolean b, int i2) {
         BannerPatternLayers bannerpatternlayers =
-              components != null ? components.getOrDefault(DataComponents.BANNER_PATTERNS,
-                                                           BannerPatternLayers.EMPTY)
+              components != null ? components.getOrDefault(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
                                  : BannerPatternLayers.EMPTY;
         DyeColor dyecolor = components != null ? components.get(DataComponents.BASE_COLOR) : null;
         boolean flag = !bannerpatternlayers.layers().isEmpty() || dyecolor != null;
@@ -90,7 +89,7 @@ public class ShieldSpecialModelRenderer implements SpecialModelRenderer<DataComp
         @Override
         public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext context) {
             return new ShieldSpecialModelRenderer(context.materials(),
-                                             new ShieldModel(context.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
+                                                  new ShieldModel(context.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
 
         public @NotNull MapCodec<ShieldSpecialModelRenderer.Unbaked> type() { return MAP_CODEC; }

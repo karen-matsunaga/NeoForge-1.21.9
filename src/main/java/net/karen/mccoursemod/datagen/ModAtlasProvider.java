@@ -33,18 +33,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ModAtlasProvider extends AtlasProvider {
-    private static final ResourceLocation TRIM_PALETTE_KEY =
-            ResourceLocation.withDefaultNamespace("trims/color_palettes/trim_palette");
+    private static final String path = "trims/color_palettes/";
 
-    private static final List<String> items = List.of("alexandrite", "bismuth",
-                                                      "pink");
+    private static final ResourceLocation TRIM_PALETTE_KEY =
+            ResourceLocation.withDefaultNamespace(path + "trim_palette");
+
+    private static final List<String> items = List.of("alexandrite", "bismuth", "pink");
 
     private static final Map<String, ResourceLocation> TRIM_PALETTE_VALUES =
-           extractAllMaterialAssets().collect(Collectors.toMap(MaterialAssetGroup.AssetInfo::suffix,
-           (info) -> items.contains(info.suffix())
-                              ? ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "trims/color_palettes/" +
-                                                                      info.suffix())
-                              : ResourceLocation.withDefaultNamespace("trims/color_palettes/" + info.suffix())));
+            extractAllMaterialAssets().collect(Collectors.toMap(MaterialAssetGroup.AssetInfo::suffix,
+                                               info -> items.contains(info.suffix())
+                                                                ? ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
+                                                                                                        path + info.suffix())
+                                                                : ResourceLocation.withDefaultNamespace(path + info.suffix())));
 
     private static final List<ResourceKey<TrimPattern>> VANILLA_PATTERNS =
             List.of(TrimPatterns.SENTRY, TrimPatterns.DUNE, TrimPatterns.COAST, TrimPatterns.WILD, TrimPatterns.WARD,
@@ -119,8 +120,7 @@ public class ModAtlasProvider extends AtlasProvider {
     }
 
     private CompletableFuture<?> storeAtlas(CachedOutput output,
-                                            ResourceLocation atlasId,
-                                            List<SpriteSource> sources) {
+                                            ResourceLocation atlasId, List<SpriteSource> sources) {
         return DataProvider.saveStable(output, SpriteSources.FILE_CODEC, sources, this.pathProvider.json(atlasId));
     }
 }
