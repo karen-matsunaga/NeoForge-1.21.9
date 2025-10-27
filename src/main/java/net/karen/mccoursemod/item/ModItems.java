@@ -218,7 +218,7 @@ public class ModItems {
 
     // ** CUSTOM Shield tools **
     public static final DeferredItem<Item> ALEXANDRITE_SHIELD =
-           shieldItem("alexandrite_shield", ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+           shieldItem("alexandrite_shield", ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, 600, alexandriteColor);
 
     // ** CUSTOM Paxel tools **
     public static final DeferredItem<Item> BISMUTH_PAXEL =
@@ -892,19 +892,18 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Shield tool **
-    public static DeferredItem<Item> shieldItem(String name, TagKey<Item> repair, int color) {
+    public static DeferredItem<Item> shieldItem(String name, TagKey<Item> repair,
+                                                int durability, int color) {
         return editItem(name, props ->
-                        new ShieldItem(props.component(DataComponents.BANNER_PATTERNS,
-                                                       BannerPatternLayers.EMPTY)
+                        new ShieldItem(props.durability(durability)
+                                            .component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)
                                             .repairable(repair).equippableUnswappable(EquipmentSlot.OFFHAND)
                                             .component(DataComponents.BLOCKS_ATTACKS,
                                                        new BlocksAttacks(0.25F, 1.0F,
                                                                          List.of(new BlocksAttacks.DamageReduction(
                                                                                  90.0F,
-                                                                                 Optional.empty(),
-                                                                                 0.0F, 1.0F)),
-                                                       new BlocksAttacks.ItemDamageFunction(3.0F,
-                                                                                            1.0F, 1.0F),
+                                                                                 Optional.empty(), 0.0F, 1.0F)),
+                                                       new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
                                                        Optional.of(DamageTypeTags.BYPASSES_SHIELD),
                                                        Optional.of(SoundEvents.SHIELD_BLOCK),
                                                        Optional.of(SoundEvents.SHIELD_BREAK)))
@@ -912,9 +911,11 @@ public class ModItems {
                                        @Override
                                        public @NotNull Component getName(@NotNull ItemStack stack) {
                                            DyeColor dyecolor = stack.get(DataComponents.BASE_COLOR);
+                                           String dyeName = this.descriptionId + ".";
                                            Component component;
                                            if (dyecolor != null) {
-                                               component = Component.translatable(this.descriptionId + "." + dyecolor.getName());
+                                               component = componentTranslatableIntColor(dyeName + dyecolor.getName(),
+                                                                                         dyecolor.getTextColor());
                                            }
                                            else { component = componentTranslatableIntColor(this.getDescriptionId(), color); }
                                            return component;
