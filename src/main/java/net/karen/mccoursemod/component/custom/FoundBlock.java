@@ -5,7 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.Level;
@@ -19,19 +22,25 @@ import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public record FoundBlock(BlockState block, BlockPos position,
                          ResourceKey<Level> dimension, ResourceKey<Biome> biome) {
+    // CODEC
     public static final Codec<FoundBlock> CODEC =
            RecordCodecBuilder.create(instance ->
-                                    // FOUND BLOCK
-                     instance.group(BlockState.CODEC.fieldOf("block").forGetter(FoundBlock::block),
-                                    // BLOCK POSITION
-                                    BlockPos.CODEC.fieldOf("position").forGetter(FoundBlock::position),
-                                    // DIMENSION
-                                    ResourceKey.codec(Registries.DIMENSION).fieldOf("dimension")
-                                                                           .forGetter(FoundBlock::dimension),
-                                    // BIOME
-                                    ResourceKey.codec(Registries.BIOME).fieldOf("biome")
-                                                                       .forGetter(FoundBlock::biome))
-                             .apply(instance, FoundBlock::new));
+                                    // FOUND BLOCK + BLOCK POSITION + DIMENSION + BIOME
+                                    instance.group(BlockState.CODEC.fieldOf("block").forGetter(FoundBlock::block),
+                                                   BlockPos.CODEC.fieldOf("position").forGetter(FoundBlock::position),
+                                                   ResourceKey.codec(Registries.DIMENSION).fieldOf("dimension")
+                                                                                          .forGetter(FoundBlock::dimension),
+                                                   ResourceKey.codec(Registries.BIOME).fieldOf("biome")
+                                                                                      .forGetter(FoundBlock::biome))
+                                            .apply(instance, FoundBlock::new));
+
+    // STREAM CODEC
+    public static final StreamCodec<RegistryFriendlyByteBuf, FoundBlock> STREAM_CODEC =
+           StreamCodec.composite(ByteBufCodecs.fromCodec(BlockState.CODEC), FoundBlock::block,
+                                 BlockPos.STREAM_CODEC, FoundBlock::position,
+                                 ByteBufCodecs.fromCodec(ResourceKey.codec(Registries.DIMENSION)), FoundBlock::dimension,
+                                 ByteBufCodecs.fromCodec(ResourceKey.codec(Registries.BIOME)), FoundBlock::biome,
+                                 FoundBlock::new);
 
     // CUSTOM METHOD - DATA TABLET found an ore + METAL DETECTOR ore block color
     public Component blockPosition() {

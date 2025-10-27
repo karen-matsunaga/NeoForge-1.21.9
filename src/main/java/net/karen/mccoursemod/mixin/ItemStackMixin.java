@@ -1,6 +1,7 @@
 package net.karen.mccoursemod.mixin;
 
 import net.karen.mccoursemod.component.ModDataComponentTypes;
+import net.karen.mccoursemod.component.custom.Coordinates;
 import net.karen.mccoursemod.component.custom.FoundBlock;
 import net.karen.mccoursemod.enchantment.ModEnchantments;
 import net.karen.mccoursemod.item.ModItems;
@@ -74,11 +75,14 @@ public abstract class ItemStackMixin {
         }
         // CHISEL item
         if (stack.is(ModItems.CHISEL.get().asItem())) {
+            Coordinates coordinates = stack.get(ModDataComponentTypes.COORDINATES);
             if (item instanceof ChiselItem chisel) {
                 boolean isShift = Minecraft.getInstance().hasShiftDown();
                 int color = isShift ? blueBedrockColor : redBedrockColor;
                 tooltip.add(componentTranslatableIntColor(chisel.chiselShiftDescription(), color));
-                tooltip.add(componentLiteralIntColor(chisel.chiselItemDescription(stack), chiselLoreColor));
+                if (coordinates != null) {
+                    tooltip.add(componentLiteralIntColor(coordinates.description(), chiselLoreColor));
+                }
             }
         }
         // METAL DETECTOR item

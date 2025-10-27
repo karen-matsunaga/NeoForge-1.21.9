@@ -2,6 +2,7 @@ package net.karen.mccoursemod.item.custom;
 
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.component.ModDataComponentTypes;
+import net.karen.mccoursemod.component.custom.Coordinates;
 import net.karen.mccoursemod.particle.ModParticles;
 import net.karen.mccoursemod.sound.ModSounds;
 import net.minecraft.client.Minecraft;
@@ -26,10 +27,8 @@ import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ChiselItem extends Item {
     private static final Map<Block, Block> CHISEL_MAP =
-            Map.of(Blocks.STONE, Blocks.STONE_BRICKS,
-                   Blocks.END_STONE, Blocks.END_STONE_BRICKS,
-                   Blocks.DEEPSLATE, Blocks.DEEPSLATE_BRICKS,
-                   Blocks.NETHERRACK, Blocks.NETHER_BRICKS,
+            Map.of(Blocks.STONE, Blocks.STONE_BRICKS, Blocks.END_STONE, Blocks.END_STONE_BRICKS,
+                   Blocks.DEEPSLATE, Blocks.DEEPSLATE_BRICKS, Blocks.NETHERRACK, Blocks.NETHER_BRICKS,
                    ModBlocks.RUBY_BLOCK.get(), ModBlocks.RUBY_BLOCK_1.get(),
                    ModBlocks.RUBY_BLOCK_2.get(), ModBlocks.RUBY_BLOCK_3.get(),
                    ModBlocks.WAXED_RUBY_BLOCK.get(),  ModBlocks.WAXED_RUBY_BLOCK_1.get(),
@@ -60,18 +59,15 @@ public class ChiselItem extends Item {
                 int z = clickedPos.getZ();
                 serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK,
                                                                   clickedBlock.defaultBlockState()),
-                                          x + 0.5, y + 1.0,
-                                          z + 0.5, 5,
+                                          x + 0.5, y + 1.0, z + 0.5, 5,
                                           0, 0, 0, 1);
                 serverLevel.sendParticles(ParticleTypes.DOLPHIN,
-                                          x + 0.5, y + 1.5,
-                                          z + 0.5, 5,
+                                          x + 0.5, y + 1.5, z + 0.5, 5,
                                           0, 0, 0, 3);
                 serverLevel.sendParticles(ModParticles.BISMUTH_PARTICLES.get(),
-                                          x + 0.5, y + 1.0,
-                                          z + 0.5, 5,
+                                          x + 0.5, y + 1.0, z + 0.5, 5,
                                           0, 0, 0, 3);
-                itemHand.set(ModDataComponentTypes.COORDINATES, clickedPos);
+                itemHand.set(ModDataComponentTypes.COORDINATES, new Coordinates(clickedPos));
             }
         }
         return InteractionResult.SUCCESS;
@@ -79,22 +75,12 @@ public class ChiselItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        return componentTranslatable(this.getDescriptionId(), gold);
+        return componentTranslatableIntColor(this.getDescriptionId(), chiselLoreColor);
     }
 
     // CUSTOM METHOD - CHISEL shift description
     public String chiselShiftDescription() {
         if (Minecraft.getInstance().hasShiftDown()) { return "tooltip.item.mccoursemod.chisel.shift"; }
         else { return "tooltip.item.mccoursemod.chisel"; }
-    }
-
-    // CUSTOM METHOD - CHISEL item description
-    public String chiselItemDescription(ItemStack stack) {
-        BlockPos COORDINATES = stack.get(ModDataComponentTypes.COORDINATES);
-        if (COORDINATES != null) {
-            return "Last Block changed at [X: " + COORDINATES.getX() +
-                    ", Y: " +  COORDINATES.getY() + ", Z: " + COORDINATES.getZ() + "]";
-        }
-        else { return ""; }
     }
 }
