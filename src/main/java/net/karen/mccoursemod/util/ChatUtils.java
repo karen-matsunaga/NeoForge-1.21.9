@@ -163,6 +163,15 @@ public class ChatUtils {
     public static int metalDetectorLoreColor = ARGB.color(68, 68, 68);
     public static int metalDetectorColor = ARGB.color(154, 92, 198);
 
+    public static int kohlrabiColor = ARGB.color(68, 161, 36);
+    public static int radishColor = ARGB.color(216, 15, 126);
+    public static int gojiColor = ARGB.color(253, 27, 3);
+    public static int coffeeColor = ARGB.color(137, 103, 71);
+
+    public static int frostfireIceColor = ARGB.color(124, 145, 252);
+    public static int starlightAshesColor = ARGB.color(254, 159, 0);
+    public static int peatBrickColor = ARGB.color(45, 47, 48);
+
     // Glowing Blocks X-RAY block bounding boxes
     public static final Map<TagKey<Block>, Integer> renderColors =
            Map.ofEntries(Map.entry(Tags.Blocks.ORES_COAL, color(169, 169,169)),

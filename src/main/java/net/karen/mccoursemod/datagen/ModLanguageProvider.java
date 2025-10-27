@@ -35,13 +35,13 @@ public class ModLanguageProvider extends LanguageProvider {
         // ** CUSTOM ITEMS **
         // ** CUSTOM ore items **
         // BISMUTH
-        addItem(ModItems.BISMUTH, "§6Bismuth");
-        addItem(ModItems.RAW_BISMUTH, "§6Raw Bismuth");
+        addItem(ModItems.BISMUTH, "Bismuth");
+        addItem(ModItems.RAW_BISMUTH, "Raw Bismuth");
         // ALEXANDRITE
-        addItem(ModItems.ALEXANDRITE, "§bAlexandrite");
-        addItem(ModItems.RAW_ALEXANDRITE, "§bRaw Alexandrite");
+        addItem(ModItems.ALEXANDRITE, "Alexandrite");
+        addItem(ModItems.RAW_ALEXANDRITE, "Raw Alexandrite");
         // PINK
-        addItem(ModItems.PINK, "§dPink");
+        addItem(ModItems.PINK, "Pink");
 
         // ** CUSTOM ADVANCED ITEMS **
         addItem(ModItems.GROWTH, "Growth");
@@ -891,6 +891,9 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.KOHLRABI, "Tastes really great!");
         itemDescription(ModItems.COFFEE, "Wake up and have a chance to achieve night vision effect.");
 
+        seedsDescription(List.of(ModItems.RADISH_SEEDS, ModItems.KOHLRABI_SEEDS,
+                                 ModItems.GOJI_BERRIES, ModItems.CATTAIL_SEEDS));
+
         fuelDescription(List.of(ModItems.FROSTFIRE_ICE, ModItems.STARLIGHT_ASHES, ModItems.PEAT_BRICK));
 
         itemDescription(ModItems.BISMUTH_HELMET, "Armor.");
@@ -1174,6 +1177,10 @@ public class ModLanguageProvider extends LanguageProvider {
                 itemDescription(item, "§6Burn: §r§e" + fuelItem.getBurnTime());
             }
         }
+    }
+
+    private <I extends Item> void seedsDescription(List<DeferredItem<I>> items) {
+        for (DeferredItem<I> item : items) { itemDescription(item, "Seeds."); }
     }
 
     private <I extends Item> void shiftDescription(DeferredItem<I> item,

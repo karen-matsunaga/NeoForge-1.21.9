@@ -45,10 +45,9 @@ import static net.karen.mccoursemod.item.custom.OresSmithingTemplateItem.*;
 import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ModItems {
-    // Registry all custom ITEMS
+    // ** CUSTOM items - Registry all custom ITEMS **
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MccourseMod.MOD_ID);
 
-    // ** CUSTOM items **
     // ** CUSTOM ore items **
     // BISMUTH
     public static final DeferredItem<Item> BISMUTH = trimMaterialItem("bismuth", ModTrimMaterials.BISMUTH, bismuthColor);
@@ -66,7 +65,7 @@ public class ModItems {
 
     // ** CUSTOM advanced items **
     public static final DeferredItem<Item> CHISEL =
-           editItem("chisel", props -> new ChiselItem(props.durability(32)), chiselLoreColor);
+           shiftItem("chisel", props -> new ChiselItem(props.durability(32)));
 
     public static final DeferredItem<Item> RESTORE =
            customItem("restore", RestoreItem::new, Properties::fireResistant, restoreLoreColor);
@@ -79,20 +78,22 @@ public class ModItems {
 
     // ** CUSTOM Foods **
     public static final DeferredItem<Item> RADISH =
-           foodItem("radish", 3, 0.25F, MobEffects.HEALTH_BOOST, 400, 0.35F, greenColor);
+           foodItem("radish", 3, 0.25F, MobEffects.HEALTH_BOOST, 400, 0.35F, radishColor);
 
     public static final DeferredItem<Item> KOHLRABI =
-           foodItem("kohlrabi", 3, 0.25F, MobEffects.SPEED, 200, 0.1F, darkGreenColor);
+           foodItem("kohlrabi", 3, 0.25F, MobEffects.SPEED, 200, 0.1F, kohlrabiColor);
 
     public static final DeferredItem<Item> COFFEE =
-           foodItem("coffee", 5, 0.1F, MobEffects.NIGHT_VISION, 600, 0.5F, whiteColor);
+           foodItem("coffee", 5, 0.1F, MobEffects.NIGHT_VISION, 600, 0.5F, coffeeColor);
 
     // ** CUSTOM fuels (Custom FURNACE) **
-    public static final DeferredItem<Item> FROSTFIRE_ICE = fuelItem("frostfire_ice", 800);
+    public static final DeferredItem<Item> FROSTFIRE_ICE =
+           fuelItem("frostfire_ice", 800, frostfireIceColor);
 
-    public static final DeferredItem<Item> STARLIGHT_ASHES = fuelItem("starlight_ashes", 1200);
+    public static final DeferredItem<Item> STARLIGHT_ASHES =
+           fuelItem("starlight_ashes", 1200, starlightAshesColor);
 
-    public static final DeferredItem<Item> PEAT_BRICK = fuelItem("peat_brick", 200);
+    public static final DeferredItem<Item> PEAT_BRICK = fuelItem("peat_brick", 200, peatBrickColor);
 
     // ** CUSTOM armors (Helmet, Chestplate, Leggings and Boots) **
     // BISMUTH
@@ -206,14 +207,14 @@ public class ModItems {
 
     // ** CUSTOM Fishing Rod tools **
     public static final DeferredItem<Item> MCCOURSE_MOD_FISHING_ROD =
-           editItem("mccourse_mod_fishing_rod", properties ->
-                    new FishingRodItem(properties.fireResistant().stacksTo(1)) {
-                         // DEFAULT METHOD - Appears on name item
-                         @Override
-                         public @NotNull Component getName(@NotNull ItemStack stack) {
-                             return componentTranslatableIntColor(this.getDescriptionId(), fishingRodLoreColor);
-                         }
-                    }, fishingRodLoreColor);
+           editItem("mccourse_mod_fishing_rod", props ->
+                    new FishingRodItem(props.fireResistant().stacksTo(1)) {
+                                       // DEFAULT METHOD - Appears on name item
+                                       @Override
+                                       public @NotNull Component getName(@NotNull ItemStack stack) {
+                                           return componentTranslatableIntColor(this.getDescriptionId(), fishingRodLoreColor);
+                                       }},
+                    fishingRodLoreColor);
 
     // ** CUSTOM Shield tools **
     public static final DeferredItem<Item> ALEXANDRITE_SHIELD =
@@ -481,51 +482,73 @@ public class ModItems {
 
     // ** CUSTOM Armor Trim Smithing Template **
     public static final DeferredItem<Item> KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE =
-           oresArmorTrimSmithingTemplate("kaupen_armor_trim_smithing_template", "kaupen",
-                                         kaupenTrimLoreColor);
+           oresArmorTrimSmithingTemplate("kaupen_armor_trim_smithing_template", "kaupen", kaupenTrimLoreColor);
 
     // ** CUSTOM Ores Smithing Upgrade Template **
     public static final DeferredItem<Item> COPPER_UPGRADE_SMITHING_TEMPLATE =
-           oresSmithingTemplate("copper_upgrade_smithing_template", "copper",
-                                copperUpgradeSmithingLoreColor);
+           oresSmithingTemplate("copper_upgrade_smithing_template", "copper", copperUpgradeSmithingLoreColor);
 
     // ** CUSTOM Music Disc **
     public static final DeferredItem<Item> BAR_BRAWL_MUSIC_DISC =
-           editItem("bar_brawl_music_disc", properties ->
-                    new Item(properties.jukeboxPlayable(ModSounds.BAR_BRAWL_KEY)
-                                       .stacksTo(1)), barBrawlLoreColor);
+           editItem("bar_brawl_music_disc", props ->
+                    new Item(props.jukeboxPlayable(ModSounds.BAR_BRAWL_KEY).stacksTo(1)) {
+                             @Override
+                             public @NotNull Component getName(@NotNull ItemStack stack) {
+                                 return componentTranslatableIntColor(this.getDescriptionId(), barBrawlLoreColor);
+                             }},
+                    barBrawlLoreColor);
 
     // ** CUSTOM Seeds **
     public static final DeferredItem<Item> RADISH_SEEDS =
-           ITEMS.registerItem("radish_seeds", properties ->
-                              new BlockItem(ModBlocks.RADISH_CROP.get(), properties));
+           editItem("radish_seeds", props ->
+                    new BlockItem(ModBlocks.RADISH_CROP.get(),
+                                  props.component(DataComponents.CUSTOM_NAME,
+                                                  componentTranslatableIntColor("item.mccoursemod.radish_seeds",
+                                                                                radishColor))), radishColor);
 
     public static final DeferredItem<Item> KOHLRABI_SEEDS =
-           ITEMS.registerItem("kohlrabi_seeds", properties ->
-                              new BlockItem(ModBlocks.KOHLRABI_CROP.get(), properties));
+           editItem("kohlrabi_seeds", props ->
+                    new BlockItem(ModBlocks.KOHLRABI_CROP.get(),
+                                  props.component(DataComponents.CUSTOM_NAME,
+                                                  componentTranslatableIntColor("item.mccoursemod.kohlrabi_seeds",
+                                                                                kohlrabiColor))), kohlrabiColor);
 
     public static final DeferredItem<Item> CATTAIL_SEEDS =
-           ITEMS.registerItem("cattail_seeds", properties ->
-                              new BlockItem(ModBlocks.CATTAIL_CROP.get(), properties));
+           editItem("cattail_seeds", props ->
+                    new BlockItem(ModBlocks.CATTAIL_CROP.get(),
+                                  props.component(DataComponents.CUSTOM_NAME,
+                                                  componentTranslatableIntColor("item.mccoursemod.cattail_seeds",
+                                                                                cattailLoreColor))), cattailLoreColor);
 
     // ** CUSTOM Bush Crop **
     public static final DeferredItem<Item> GOJI_BERRIES =
-           ITEMS.registerItem("goji_berries", properties ->
-                              new BlockItem(ModBlocks.GOJI_BERRY_BUSH.get(),
-                                            properties.food(new FoodProperties.Builder().nutrition(2)
-                                                                                        .saturationModifier(0.15F)
-                                                                                        .build())));
+           editItem("goji_berries", props ->
+                    new BlockItem(ModBlocks.GOJI_BERRY_BUSH.get(),
+                                  props.food(new FoodProperties.Builder().nutrition(2).saturationModifier(0.15F).build())
+                                       .component(DataComponents.CUSTOM_NAME,
+                                                  componentTranslatableIntColor("item.mccoursemod.goji_berries", gojiColor))),
+                    gojiColor);
 
     // ** CUSTOM Mob **
     // GECKO
     public static final DeferredItem<Item> GECKO_SPAWN_EGG =
-           editItem("gecko_spawn_egg", properties ->
-                    new SpawnEggItem(properties.spawnEgg(ModEntities.GECKO.get())), geckoLoreColor);
+           editItem("gecko_spawn_egg", props ->
+                    new SpawnEggItem(props.spawnEgg(ModEntities.GECKO.get())) {
+                                     @Override
+                                     public @NotNull Component getName(@NotNull ItemStack stack) {
+                                         return componentTranslatableIntColor(this.getDescriptionId(), geckoLoreColor);
+                                     }},
+                    geckoLoreColor);
 
     // RHINO
     public static final DeferredItem<Item> RHINO_SPAWN_EGG =
-           editItem("rhino_spawn_egg", properties ->
-                    new SpawnEggItem(properties.spawnEgg(ModEntities.RHINO.get())), rhinoLoreColor);
+           editItem("rhino_spawn_egg", props ->
+                    new SpawnEggItem(props.spawnEgg(ModEntities.RHINO.get())) {
+                                     @Override
+                                     public @NotNull Component getName(@NotNull ItemStack stack) {
+                                         return componentTranslatableIntColor(this.getDescriptionId(), rhinoLoreColor);
+                                     }},
+                    rhinoLoreColor);
 
     // ** CUSTOM Throwable Projectiles **
     public static final DeferredItem<Item> TOMAHAWK =
@@ -536,8 +559,8 @@ public class ModItems {
 
     // ** CUSTOM Animated Textures **
     public static final DeferredItem<Item> RADIATION_STAFF =
-           customItem("radiation_staff", RadiationStaffItem::new,
-                      props -> props.stacksTo(1).durability(1024), radiationStaffLoreColor);
+           customItem("radiation_staff", RadiationStaffItem::new, props ->
+                      props.stacksTo(1).durability(1024), radiationStaffLoreColor);
 
     // ** CUSTOM Advanced Items **
     // Level Charger items
@@ -556,56 +579,55 @@ public class ModItems {
     // ** CUSTOM Compactor items **
     // Ultra Compactor
     public static final DeferredItem<Item> ULTRA_COMPACTOR =
-           editItem("ultra_compactor", properties ->
-                    new CompactorItem(properties.stacksTo(1).fireResistant(), true,
+           editItem("ultra_compactor", props ->
+                    new CompactorItem(props.stacksTo(1).fireResistant(), true,
                                       ModTags.Items.ULTRA_COMPACTOR_ITEMS, ModTags.Items.ULTRA_COMPACTOR_RESULT), pinkColor);
 
     // Pink Ultra Compactor
     public static final DeferredItem<Item> PINK_ULTRA_COMPACTOR =
-           editItem("pink_ultra_compactor", properties ->
-                    new CompactorItem(properties.stacksTo(1).fireResistant(), false,
+           editItem("pink_ultra_compactor", props ->
+                    new CompactorItem(props.stacksTo(1).fireResistant(), false,
                                       ModTags.Items.PINK_ULTRA_COMPACTOR_ITEMS, ModTags.Items.PINK_ULTRA_COMPACTOR_RESULT),
                                       pinkColor);
 
     // Mccourse Mod Bottle item
     public static final DeferredItem<Item> MCCOURSE_MOD_BOTTLE =
-           editItem("mccourse_mod_bottle", properties ->
-                    new MccourseModBottleItem(properties.fireResistant().stacksTo(1), 100000, 1),
+           editItem("mccourse_mod_bottle", props ->
+                    new MccourseModBottleItem(props.fireResistant().stacksTo(1), 100000, 1),
                     mccourseModBottleLoreColor);
 
     // METAL DETECTOR item
     public static final DeferredItem<Item> METAL_DETECTOR =
-           ITEMS.registerItem("metal_detector", properties ->
-                              new MetalDetectorItem(properties.fireResistant().stacksTo(1),
-                                                    ModTags.Blocks.METAL_DETECTOR_VALUABLES));
+           shiftItem("metal_detector", props ->
+                     new MetalDetectorItem(props.fireResistant().stacksTo(1), ModTags.Blocks.METAL_DETECTOR_VALUABLES));
 
     // DATA TABLET item
     public static final DeferredItem<Item> DATA_TABLET =
-           customItem("data_tablet", DataTabletItem::new, props ->  props.stacksTo(1),
+           customItem("data_tablet", DataTabletItem::new, props -> props.stacksTo(1),
                       dataTabletLoreColor);
 
     // GROWTH item
     public static final DeferredItem<Item> GROWTH =
-           customItem("growth", GrowthItem::new,
-                      props -> props.stacksTo(64).fireResistant(), growthLoreColor);
+           customItem("growth", GrowthItem::new, props ->
+                      props.stacksTo(64).fireResistant(), growthLoreColor);
 
     // ** CUSTOM sign and Hanging sign **
     public static final DeferredItem<Item> WALNUT_SIGN =
-           editItem("walnut_sign", properties ->
+           editItem("walnut_sign", props ->
                     new SignItem(ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get(),
-                                 properties.stacksTo(16)
-                                           .component(DataComponents.CUSTOM_NAME,
-                                                      componentTranslatableIntColor("item.mccoursemod.walnut_sign",
-                                                                                    walnutColor))), walnutColor);
+                                 props.stacksTo(16)
+                                      .component(DataComponents.CUSTOM_NAME,
+                                                 componentTranslatableIntColor("item.mccoursemod.walnut_sign",
+                                                                               walnutColor))), walnutColor);
 
     public static final DeferredItem<Item> WALNUT_HANGING_SIGN =
-           editItem("walnut_hanging_sign", properties ->
+           editItem("walnut_hanging_sign", props ->
                     new HangingSignItem(ModBlocks.WALNUT_HANGING_SIGN.get(), ModBlocks.WALNUT_WALL_HANGING_SIGN.get(),
-                                        properties.stacksTo(16)
-                                                  .component(DataComponents.CUSTOM_NAME,
-                                                             componentTranslatableIntColor(
-                                                             "item.mccoursemod.walnut_hanging_sign", walnutColor))),
-                                                             walnutColor);
+                                        props.stacksTo(16)
+                                             .component(DataComponents.CUSTOM_NAME,
+                                                        componentTranslatableIntColor(
+                                                        "item.mccoursemod.walnut_hanging_sign", walnutColor))),
+                                                        walnutColor);
 
     // TORCH BALL item
     public static final DeferredItem<Item> TORCH_BALL =
@@ -617,17 +639,22 @@ public class ModItems {
                       props -> props.fireResistant().stacksTo(1), bouncyBallsLoreColor);
 
     public static final DeferredItem<Item> BOUNCY_BALLS_PARTICLES =
-           customItem("bouncy_balls_particles", Item::new,
-                      props -> props.stacksTo(64).fireResistant(), bouncyBallsLoreColor);
+           editItem("bouncy_balls_particles", props ->
+                    new Item(props.stacksTo(64).fireResistant()) {
+                             @Override
+                             public @NotNull Component getName(@NotNull ItemStack stack) {
+                                 return componentTranslatableIntColor(this.getDescriptionId(), bouncyBallsLoreColor);
+                             }},
+                    bouncyBallsLoreColor);
 
     // ** CUSTOM boats **
     public static final DeferredItem<Item> WALNUT_BOAT =
-           editItem("walnut_boat", properties ->
-                    new ModBoatItem(ModEntities.MOD_BOAT.get(), properties.stacksTo(1), walnutColor), walnutColor);
+           editItem("walnut_boat", props ->
+                    new ModBoatItem(ModEntities.MOD_BOAT.get(), props.stacksTo(1), walnutColor), walnutColor);
 
     public static final DeferredItem<Item> WALNUT_CHEST_BOAT =
-           editItem("walnut_chest_boat", properties ->
-                    new ModBoatItem(ModEntities.MOD_CHEST_BOAT.get(), properties.stacksTo(1), walnutColor), walnutColor);
+           editItem("walnut_chest_boat", props ->
+                    new ModBoatItem(ModEntities.MOD_CHEST_BOAT.get(), props.stacksTo(1), walnutColor), walnutColor);
 
     // ** Luck items **
     public static final DeferredItem<Item> LUCK_GENERAL =
@@ -644,50 +671,58 @@ public class ModItems {
 
     // ** CUSTOM METHOD - Raw ore items **
     public static DeferredItem<Item> rawItem(String name, int color) {
-        return customItem(name, Item::new, props -> props, color);
+        return editItem(name, props -> new Item(props.fireResistant()) {
+                        @Override
+                        public @NotNull Component getName(@NotNull ItemStack stack) {
+                            return componentTranslatableIntColor(this.getDescriptionId(), color);
+                        }},
+                        color);
     }
 
     // ** CUSTOM METHOD - Luck items **
     public static DeferredItem<Item> luckItem(String name, int bookAmount,
                                               int enchPerBook, int enchLevel, int enchType,
                                               TagKey<Enchantment> tag, int textColor, @Nullable String textMessage) {
-        return editItem(name, properties ->
-                        new LuckItem(properties.fireResistant(), bookAmount, enchPerBook,
-                                     enchLevel, enchType, tag, textColor, textMessage), textColor);
+        return editItem(name, props -> new LuckItem(props.fireResistant(), bookAmount, enchPerBook,
+                                                              enchLevel, enchType, tag, textColor, textMessage), textColor);
     }
 
     // ** CUSTOM METHOD - Level Charger items **
     public static DeferredItem<Item> levelChargerItem(String name, int amount,
-                                                      @Nullable ResourceKey<Enchantment> enchantment,
-                                                      int color) {
-        return editItem(name, properties ->
-                        new LevelChargerItem(properties.fireResistant(), amount, enchantment), color);
+                                                      @Nullable ResourceKey<Enchantment> enchantment, int color) {
+        return editItem(name, props -> new LevelChargerItem(props.fireResistant(), amount, enchantment), color);
     }
 
     // ** CUSTOM METHOD - Fuel **
-    public static DeferredItem<Item> fuelItem(String name, int burnTime) {
-        return editItem(name, properties -> new FuelItem(properties, burnTime), whiteColor);
+    public static DeferredItem<Item> fuelItem(String name, int burnTime, int color) {
+        return editItem(name, props -> new FuelItem(props, burnTime, color), color);
     }
 
     // ** CUSTOM METHOD - Food **
     public static DeferredItem<Item> foodItem(String name, int nutrition,
                                               float saturation, Holder<MobEffect> effect,
                                               int duration, float chance, int color) {
-        return customItem(name, Item::new,
-                          props -> props.food(new FoodProperties.Builder()
-                                                                          .nutrition(nutrition)
-                                                                          .saturationModifier(saturation).build(),
-                                                       Consumables.defaultFood()
-                                                                  .onConsume(new ApplyStatusEffectsConsumeEffect(
-                                                                             new MobEffectInstance(effect, duration),
-                                                                                                   chance)).build()),
-                          color);
+        return editItem(name, props ->
+                        new Item(props.food(new FoodProperties.Builder().nutrition(nutrition)
+                                                                        .saturationModifier(saturation).build(),
+                                            Consumables.defaultFood()
+                                                       .onConsume(new ApplyStatusEffectsConsumeEffect(
+                                                                  new MobEffectInstance(effect, duration),
+                                                                  chance)).build())) {
+                                 @Override public @NotNull Component getName(@NotNull ItemStack stack) {
+                                     return componentTranslatableIntColor(this.getDescriptionId(), color);
+                                 }},
+                        color);
     }
 
     // ** CUSTOM METHOD - Trim Material **
     public static DeferredItem<Item> trimMaterialItem(String name,
                                                       ResourceKey<TrimMaterial> trim, int lore) {
-        return customItem(name, Item::new, props -> props.trimMaterial(trim), lore);
+        return editItem(name, props -> new Item(props.trimMaterial(trim)) {
+                        @Override public @NotNull Component getName(@NotNull ItemStack stack) {
+                            return componentTranslatableIntColor(this.getDescriptionId(), lore);
+                        }},
+                        lore);
     }
 
     // ** CUSTOM METHOD - Paxel tool **
@@ -817,67 +852,63 @@ public class ModItems {
                                                  int durability, ResourceKey<EquipmentAsset> equipAsset,
                                                  TagKey<Item> repair, Holder<MobEffect> effectHolder,
                                                  int effectAmplifier, int color) {
-        return editItem(name, properties ->
+        return editItem(name, props ->
                         new ElytraPlusItem(effectHolder, effectAmplifier,
-                                           properties.fireResistant().durability(durability).rarity(Rarity.EPIC)
-                                                     .component(DataComponents.GLIDER, Unit.INSTANCE)
-                                                     .component(DataComponents.EQUIPPABLE,
-                                                                Equippable.builder(EquipmentSlot.CHEST)
-                                                                          .setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA)
-                                                                          .setAsset(equipAsset).setDamageOnHurt(false)
-                                                                          .build())
-                                                     .repairable(repair)), color);
+                                           props.fireResistant().durability(durability).rarity(Rarity.EPIC)
+                                                .component(DataComponents.GLIDER, Unit.INSTANCE)
+                                                .component(DataComponents.EQUIPPABLE,
+                                                           Equippable.builder(EquipmentSlot.CHEST)
+                                                                     .setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA)
+                                                                     .setAsset(equipAsset).setDamageOnHurt(false)
+                                                                     .build()).repairable(repair)), color);
     }
 
     // ** CUSTOM METHOD - Bow tool **
     public static DeferredItem<Item> bowItem(String name,
                                              TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new BowItem(properties.repairable(repair).stacksTo(1)) {
-                                         @Override
-                                         public @NotNull Component getName(@NotNull ItemStack stack) {
-                                             return componentTranslatableIntColor(this.getDescriptionId(), color);
-                                         }
-                                    }, color);
+        return editItem(name, props -> new BowItem(props.repairable(repair).stacksTo(1)) {
+                                    @Override
+                                    public @NotNull Component getName(@NotNull ItemStack stack) {
+                                        return componentTranslatableIntColor(this.getDescriptionId(), color);
+                                    }}, color);
     }
 
     // ** CUSTOM METHOD - Hammer Bow tool **
     public static DeferredItem<Item> hammerBowItem(String name, TagKey<Item> repair,
                                                    int radius, int depth, int color) {
-        return editItem(name, properties ->
-                        new MinerBowItem(properties.repairable(repair), radius, depth), color);
+        return editItem(name, props -> new MinerBowItem(props.repairable(repair), radius, depth), color);
     }
 
     // ** CUSTOM METHOD - Horse armor **
     public static DeferredItem<Item> horseArmorItem(String name,
                                                     ArmorMaterial armorMaterial, int color) {
-        return editItem(name, properties ->
-                        new Item(properties.stacksTo(1).horseArmor(armorMaterial)) {
-                                    @Override
-                                    public @NotNull Component getName(@NotNull ItemStack stack) {
-                                        return componentTranslatableIntColor(this.getDescriptionId(), color);
-                                    }
-                                }, color);
+        return editItem(name, props ->
+                        new Item(props.stacksTo(1).horseArmor(armorMaterial)) {
+                                 @Override
+                                 public @NotNull Component getName(@NotNull ItemStack stack) {
+                                     return componentTranslatableIntColor(this.getDescriptionId(), color);
+                                 }},
+                                 color);
     }
 
     // ** CUSTOM METHOD - Shield tool **
     public static DeferredItem<Item> shieldItem(String name, TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new ShieldItem(properties.component(DataComponents.BANNER_PATTERNS,
-                                                            BannerPatternLayers.EMPTY)
-                                                 .repairable(repair).equippableUnswappable(EquipmentSlot.OFFHAND)
-                                                 .component(DataComponents.BLOCKS_ATTACKS,
-                                                            new BlocksAttacks(0.25F, 1.0F,
-                                                                              List.of(new BlocksAttacks.DamageReduction(
-                                                                                      90.0F,
-                                                                                      Optional.empty(),
-                                                                                      0.0F, 1.0F)),
-                                                            new BlocksAttacks.ItemDamageFunction(3.0F,
-                                                                                                 1.0F, 1.0F),
-                                                            Optional.of(DamageTypeTags.BYPASSES_SHIELD),
-                                                            Optional.of(SoundEvents.SHIELD_BLOCK),
-                                                            Optional.of(SoundEvents.SHIELD_BREAK)))
-                                                 .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)) {
+        return editItem(name, props ->
+                        new ShieldItem(props.component(DataComponents.BANNER_PATTERNS,
+                                                       BannerPatternLayers.EMPTY)
+                                            .repairable(repair).equippableUnswappable(EquipmentSlot.OFFHAND)
+                                            .component(DataComponents.BLOCKS_ATTACKS,
+                                                       new BlocksAttacks(0.25F, 1.0F,
+                                                                         List.of(new BlocksAttacks.DamageReduction(
+                                                                                 90.0F,
+                                                                                 Optional.empty(),
+                                                                                 0.0F, 1.0F)),
+                                                       new BlocksAttacks.ItemDamageFunction(3.0F,
+                                                                                            1.0F, 1.0F),
+                                                       Optional.of(DamageTypeTags.BYPASSES_SHIELD),
+                                                       Optional.of(SoundEvents.SHIELD_BLOCK),
+                                                       Optional.of(SoundEvents.SHIELD_BREAK)))
+                                            .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK)) {
                                        @Override
                                        public @NotNull Component getName(@NotNull ItemStack stack) {
                                            DyeColor dyecolor = stack.get(DataComponents.BASE_COLOR);
@@ -895,37 +926,35 @@ public class ModItems {
     public static DeferredItem<Item> oresSmithingTemplate(String name, String ore,
                                                           int lore) {
         String smithingName = "smithing_template." + ore + "_upgrade.";
-        return editItem(name, properties ->
+        return editItem(name, props ->
                         new OresSmithingTemplateItem(lines(smithingName + "applies_to", lore),
                                                      lines(smithingName + "ingredients", lore),
                                                      lines(smithingName + "base_slot_description", lore),
                                                      lines(smithingName + "additions_slot_description", lore),
                                                      createOresUpgradeIconList(), createOresUpgradeMaterialList(),
-                                                     properties.fireResistant().rarity(Rarity.EPIC)), lore);
+                                                     props.fireResistant().rarity(Rarity.EPIC)), lore);
     }
 
     // ** CUSTOM METHOD - Ores Armor Trim Smithing Template **
     public static DeferredItem<Item> oresArmorTrimSmithingTemplate(String name, String ore,
                                                                    int lore) {
         String smithingName = "smithing_template." + ore + ".armor_trim.";
-        return editItem(name, properties ->
+        return editItem(name, props ->
                         new OresSmithingTemplateItem(lines(smithingName + "applies_to", lore),
                                                      lines(smithingName + "ingredients", lore),
                                                      lines(smithingName + "base_slot_description", lore),
                                                      lines(smithingName + "additions_slot_description", lore),
                                                      createOresTrimmableArmorIconList(),
-                                                     createOresTrimmableMaterialIconList(),
-                                                     properties.rarity(Rarity.UNCOMMON)), lore);
+                                                     createOresTrimmableMaterialIconList(), props.rarity(Rarity.UNCOMMON)), lore);
     }
 
     // CUSTOM METHOD - (CUSTOM classes) Registry all custom ITEMS
     private static <I extends Item> DeferredItem<I> customItem(String name,
                                                                Function<Properties, ? extends I> item,
-                                                               UnaryOperator<Properties> properties,
-                                                               int lore) {
+                                                               UnaryOperator<Properties> properties, int lore) {
         List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.item.mccoursemod." + name, lore));
-        return ITEMS.registerItem(name, item,
-                                  props -> properties.apply(props.component(DataComponents.LORE, new ItemLore(itemLore))));
+        return ITEMS.registerItem(name, item, props ->
+                                  properties.apply(props.component(DataComponents.LORE, new ItemLore(itemLore))));
     }
 
     // CUSTOM METHOD - (CUSTOM classes) Registry all custom ITEMS
@@ -933,6 +962,12 @@ public class ModItems {
                                                             Function<Item.Properties, ? extends I> item, int lore) {
         List<Component> itemLore = List.of(componentTranslatableIntColor("tooltip.item.mccoursemod." + name, lore));
         return ITEMS.registerItem(name, item, props -> props.component(DataComponents.LORE, new ItemLore(itemLore)));
+    }
+
+    // CUSTOM METHOD - (CUSTOM classes) Registry all custom ITEMS
+    public static <I extends Item> DeferredItem<I> shiftItem(String name,
+                                                             Function<Item.Properties, ? extends I> item) {
+        return ITEMS.registerItem(name, item, props -> props);
     }
 
     // CUSTOM METHOD - Registry all items on event bus

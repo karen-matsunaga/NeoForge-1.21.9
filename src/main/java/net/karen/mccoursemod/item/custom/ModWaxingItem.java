@@ -1,7 +1,9 @@
 package net.karen.mccoursemod.item.custom;
 
+import net.karen.mccoursemod.util.ChatUtils;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -14,6 +16,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.common.DataMapHooks;
 import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
+import static net.karen.mccoursemod.util.ChatUtils.cattailLoreColor;
 
 public class ModWaxingItem extends Item {
     public ModWaxingItem(Properties properties) {
@@ -44,5 +47,10 @@ public class ModWaxingItem extends Item {
     public static Optional<BlockState> getWaxed(BlockState state) {
         return Optional.ofNullable(DataMapHooks.getBlockWaxed(state.getBlock()))
                        .map((block) -> block.withPropertiesOf(state));
+    }
+
+    @Override
+    public @NotNull Component getName(@NotNull ItemStack stack) {
+        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), cattailLoreColor);
     }
 }

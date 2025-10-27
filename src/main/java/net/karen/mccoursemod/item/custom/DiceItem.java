@@ -2,6 +2,8 @@ package net.karen.mccoursemod.item.custom;
 
 import net.karen.mccoursemod.entity.custom.DiceProjectileEntity;
 import net.karen.mccoursemod.item.ModItems;
+import net.karen.mccoursemod.util.ChatUtils;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
@@ -31,5 +33,10 @@ public class DiceItem extends Item {
         player.awardStat(Stats.ITEM_USED.get(this));
         if (!player.getAbilities().instabuild) { itemstack.shrink(1); }
         return InteractionResult.SUCCESS_SERVER;
+    }
+
+    @Override
+    public @NotNull Component getName(@NotNull ItemStack stack) {
+        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), ChatUtils.diceLoreColor);
     }
 }

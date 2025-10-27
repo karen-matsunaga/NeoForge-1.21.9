@@ -22,8 +22,9 @@ public class ImageTooltipComponent implements ClientTooltipComponent, TooltipCom
 
     @Override
     public void renderText(@NotNull GuiGraphics graphics, @NotNull Font font, int x, int y) {
-        graphics.drawString(font, I18n.get("tooltip.mccoursemod.more_ores.tooltip"), x, y, 0xFFFFFF, true);
-        graphics.renderItemDecorations(font, item, x + 95, y - 4, text); // Render TEXT
+        graphics.drawString(font, I18n.get("tooltip.mccoursemod.more_ores.tooltip") + text,
+                            x + width + 4, y + (height / 2 - font.lineHeight / 2),
+                            ChatUtils.metalDetectorLoreColor, true);
     }
 
     @Override
@@ -38,5 +39,5 @@ public class ImageTooltipComponent implements ClientTooltipComponent, TooltipCom
     @Override public int getHeight(@NotNull Font font) { return height; }
 
     // Image width
-    @Override public int getWidth(@NotNull Font font) { return width; }
+    @Override public int getWidth(@NotNull Font font) { return width + 4 + font.width(text); }
 }

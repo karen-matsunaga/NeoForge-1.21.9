@@ -2,6 +2,8 @@ package net.karen.mccoursemod.item.custom;
 
 import net.karen.mccoursemod.entity.custom.MagicProjectileEntity;
 import net.karen.mccoursemod.sound.ModSounds;
+import net.karen.mccoursemod.util.ChatUtils;
+import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -10,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+import static net.karen.mccoursemod.util.ChatUtils.radiationStaffLoreColor;
 import static net.karen.mccoursemod.util.Utils.neutralSound;
 
 public class RadiationStaffItem extends Item {
@@ -32,5 +35,10 @@ public class RadiationStaffItem extends Item {
             itemstack.hurtAndBreak(1, player, player.getUsedItemHand());
         }
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public @NotNull Component getName(@NotNull ItemStack stack) {
+        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), radiationStaffLoreColor);
     }
 }
