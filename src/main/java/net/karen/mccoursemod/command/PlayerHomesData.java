@@ -18,20 +18,15 @@ public class PlayerHomesData extends SavedData {
 
     public static final Codec<PlayerHomesData> CODEC =
            Codec.unboundedMap(Codec.STRING.xmap(UUID::fromString, UUID::toString), CompoundTag.CODEC)
-                .xmap(PlayerHomesData::new, PlayerHomesData::getPlayerHomes);
+                                          .xmap(PlayerHomesData::new, PlayerHomesData::getPlayerHomes);
 
     private static final SavedDataType<PlayerHomesData> playerHomesData =
-            new SavedDataType<>("mccoursemod.pos",
-                                () -> new PlayerHomesData(Collections.emptyMap()),
+            new SavedDataType<>("mccoursemod.pos", () -> new PlayerHomesData(Collections.emptyMap()),
                                 CODEC, DataFixTypes.PLAYER);
 
-    public Map<UUID, CompoundTag> getPlayerHomes() {
-        return playerHomes;
-    }
+    public Map<UUID, CompoundTag> getPlayerHomes() { return playerHomes; }
 
-    public PlayerHomesData(Map<UUID, CompoundTag> homes) {
-        this.playerHomes.putAll(homes);
-    }
+    public PlayerHomesData(Map<UUID, CompoundTag> homes) { this.playerHomes.putAll(homes); }
 
     public static PlayerHomesData get(ServerLevel level) {
         return level.getDataStorage().computeIfAbsent(playerHomesData);
@@ -67,8 +62,4 @@ public class PlayerHomesData extends SavedData {
         }
         return false;
     }
-
-    // DEFAULT METHOD - SAVE all home positions on disk
-    @Override
-    public boolean isDirty() { return true; }
 }
