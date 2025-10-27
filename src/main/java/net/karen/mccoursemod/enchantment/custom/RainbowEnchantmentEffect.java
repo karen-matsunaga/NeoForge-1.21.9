@@ -22,10 +22,10 @@ public record RainbowEnchantmentEffect(Map<Block, TagKey<Block>> map) {
     // Rainbow Enchantment Effect -> CODEC
     public static final Codec<RainbowEnchantmentEffect> CODEC =
            RecordCodecBuilder.create(instance ->
-                     instance.group(Codec.unboundedMap(BuiltInRegistries.BLOCK.byNameCodec(),
-                                                       TagKey.codec(Registries.BLOCK)).fieldOf("map")
-                                         .forGetter(RainbowEnchantmentEffect::map))
-                             .apply(instance, RainbowEnchantmentEffect::new));
+                                     instance.group(Codec.unboundedMap(BuiltInRegistries.BLOCK.byNameCodec(),
+                                                                       TagKey.codec(Registries.BLOCK)).fieldOf("map")
+                                                         .forGetter(RainbowEnchantmentEffect::map))
+                                             .apply(instance, RainbowEnchantmentEffect::new));
 
     // Rainbow Enchantment Effect -> MAP STREAM CODEC
     public static final StreamCodec<RegistryFriendlyByteBuf, Map<Block, TagKey<Block>>> MAP_STREAM_CODEC =
@@ -37,9 +37,8 @@ public record RainbowEnchantmentEffect(Map<Block, TagKey<Block>> map) {
            MAP_STREAM_CODEC.map(RainbowEnchantmentEffect::new, RainbowEnchantmentEffect::map);
 
     // CUSTOM METHOD - RAINBOW Enchantment Effect EVENT
-    public static void rainbowEnch(ItemStack tool, BlockState state,
-                                   int hasFortune, List<ItemStack> finalDrops,
-                                   AtomicBoolean cancelVanillaDrop) {
+    public static void rainbowEnch(ItemStack tool, BlockState state, int hasFortune,
+                                   List<ItemStack> finalDrops, AtomicBoolean cancelVanillaDrop) {
         EnchantmentHelper.runIterationOnItem(tool, (holder, holderLvl) -> {
             RainbowEnchantmentEffect effects = // Get all values of Rainbow Enchantment Data Component
                    holder.value().effects().get(ModDataComponentTypes.RAINBOW_ENCHANTMENT_EFFECT.get());

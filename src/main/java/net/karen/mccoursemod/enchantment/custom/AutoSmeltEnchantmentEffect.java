@@ -27,9 +27,9 @@ public record AutoSmeltEnchantmentEffect(TagKey<Block> blockTag) {
     // CODEC
     public static final Codec<AutoSmeltEnchantmentEffect> CODEC =
            RecordCodecBuilder.create(instance ->
-                     instance.group(TagKey.codec(Registries.BLOCK).fieldOf("blockTag")
-                                                                  .forGetter(AutoSmeltEnchantmentEffect::blockTag))
-                             .apply(instance, AutoSmeltEnchantmentEffect::new));
+                                     instance.group(TagKey.codec(Registries.BLOCK).fieldOf("blockTag")
+                                                                                  .forGetter(AutoSmeltEnchantmentEffect::blockTag))
+                                             .apply(instance, AutoSmeltEnchantmentEffect::new));
 
     // STREAM CODEC
     public static final StreamCodec<RegistryFriendlyByteBuf, AutoSmeltEnchantmentEffect> STREAM_CODEC =

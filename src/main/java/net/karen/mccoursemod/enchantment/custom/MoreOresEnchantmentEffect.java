@@ -31,16 +31,16 @@ public record MoreOresEnchantmentEffect(List<TagKey<Block>> blockTagKey,
     // CODEC
     public static final Codec<MoreOresEnchantmentEffect> CODEC =
            RecordCodecBuilder.create(instance ->
-                                    // Block Tag Key
-                     instance.group(TagKey.codec(Registries.BLOCK).listOf().fieldOf("blockTagKey")
-                                          .forGetter(MoreOresEnchantmentEffect::blockTagKey),
-                                    // Block
-                                    RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("block")
-                                                  .forGetter(MoreOresEnchantmentEffect::block),
-                                    // Block Chance
-                                    Codec.list(Codec.FLOAT).fieldOf("chance")
-                                                           .forGetter(MoreOresEnchantmentEffect::chance))
-                             .apply(instance, MoreOresEnchantmentEffect::new));
+                                                    // Block Tag Key
+                                     instance.group(TagKey.codec(Registries.BLOCK).listOf().fieldOf("blockTagKey")
+                                                          .forGetter(MoreOresEnchantmentEffect::blockTagKey),
+                                                    // Block
+                                                    RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("block")
+                                                                  .forGetter(MoreOresEnchantmentEffect::block),
+                                                    // Block Chance
+                                                    Codec.list(Codec.FLOAT).fieldOf("chance")
+                                                                           .forGetter(MoreOresEnchantmentEffect::chance))
+                                             .apply(instance, MoreOresEnchantmentEffect::new));
 
     // STREAM CODEC
     public static final StreamCodec<RegistryFriendlyByteBuf, MoreOresEnchantmentEffect> STREAM_CODEC =
@@ -51,8 +51,7 @@ public record MoreOresEnchantmentEffect(List<TagKey<Block>> blockTagKey,
                                  MoreOresEnchantmentEffect::chance, MoreOresEnchantmentEffect::new);
 
     // CUSTOM METHOD - MORE ORES Enchantment Effect EVENT
-    public static void moreOresEnch(ItemStack tool,
-                                    BlockState state, ServerLevel serverLevel,
+    public static void moreOresEnch(ItemStack tool, BlockState state, ServerLevel serverLevel,
                                     List<ItemStack> finalDrops, AtomicBoolean cancelVanillaDrop, int hasFortune) {
         EnchantmentHelper.runIterationOnItem(tool, (holder, holderLvl) -> {
             MoreOresEnchantmentEffect effect =

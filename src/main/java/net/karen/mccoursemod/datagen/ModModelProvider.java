@@ -50,13 +50,10 @@ import static net.minecraft.client.data.models.ItemModelGenerators.*;
 import static net.minecraft.client.data.models.model.TextureMapping.getBlockTexture;
 
 public class ModModelProvider extends ModelProvider {
-    public ModModelProvider(PackOutput output) {
-        super(output, MccourseMod.MOD_ID);
-    }
+    public ModModelProvider(PackOutput output) { super(output, MccourseMod.MOD_ID); }
 
     @Override
-    protected void registerModels(@NotNull BlockModelGenerators blockModels,
-                                  @NotNull ItemModelGenerators itemModels) {
+    protected void registerModels(@NotNull BlockModelGenerators blockModels, @NotNull ItemModelGenerators itemModels) {
         // ** CUSTOM BLOCKS **
         // ** CUSTOM ores **
         // BISMUTH
@@ -131,8 +128,7 @@ public class ModModelProvider extends ModelProvider {
 
         // ** CUSTOM crop **
         // RADISH
-        createCropBlock(blockModels, ModBlocks.RADISH_CROP.get(),
-                        RadishCropBlock.AGE, 0, 1, 2, 3);
+        createCropBlock(blockModels, ModBlocks.RADISH_CROP.get(), RadishCropBlock.AGE, 0, 1, 2, 3);
 
         // KOHLRABI
         createCropBlock(blockModels, ModBlocks.KOHLRABI_CROP.get(),
@@ -144,8 +140,7 @@ public class ModModelProvider extends ModelProvider {
                         CattailCropBlock.AGE, 0, 1, 2, 3, 4, 5, 6, 7, 8);
 
         // ** CUSTOM bush crop **
-        createCropBlock(blockModels, ModBlocks.GOJI_BERRY_BUSH.get(),
-                        GojiBerryBushBlock.AGE,  0, 1, 2, 3);
+        createCropBlock(blockModels, ModBlocks.GOJI_BERRY_BUSH.get(), GojiBerryBushBlock.AGE,  0, 1, 2, 3);
 
         // ** CUSTOM log block **
         // BLOODWOOD
@@ -434,28 +429,22 @@ public class ModModelProvider extends ModelProvider {
 
         // ** VANILLA ARMORS **
         createArmorTrim(itemModels, EquipmentAssets.CHAINMAIL,
-                        List.of(Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE,
-                                Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS));
+                        List.of(Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS));
 
         createArmorTrim(itemModels, EquipmentAssets.DIAMOND,
-                        List.of(Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE,
-                                Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS));
+                        List.of(Items.DIAMOND_HELMET, Items.DIAMOND_CHESTPLATE, Items.DIAMOND_LEGGINGS, Items.DIAMOND_BOOTS));
 
         createArmorTrim(itemModels, EquipmentAssets.GOLD,
-                        List.of(Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE,
-                                Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS));
+                        List.of(Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS));
 
         createArmorTrim(itemModels, EquipmentAssets.IRON,
-                        List.of(Items.IRON_HELMET, Items.IRON_CHESTPLATE,
-                                Items.IRON_LEGGINGS, Items.IRON_BOOTS));
+                        List.of(Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS));
 
         createArmorTrim(itemModels, EquipmentAssets.LEATHER,
-                        List.of(Items.LEATHER_HELMET, Items.LEATHER_CHESTPLATE,
-                                Items.LEATHER_LEGGINGS, Items.LEATHER_BOOTS));
+                        List.of(Items.LEATHER_HELMET, Items.LEATHER_CHESTPLATE, Items.LEATHER_LEGGINGS, Items.LEATHER_BOOTS));
 
         createArmorTrim(itemModels, EquipmentAssets.NETHERITE,
-                        List.of(Items.NETHERITE_HELMET, Items.NETHERITE_CHESTPLATE,
-                                Items.NETHERITE_LEGGINGS, Items.NETHERITE_BOOTS));
+                        List.of(Items.NETHERITE_HELMET, Items.NETHERITE_CHESTPLATE, Items.NETHERITE_LEGGINGS, Items.NETHERITE_BOOTS));
 
         pieceArmorTrim(itemModels, Items.TURTLE_HELMET, EquipmentAssets.TURTLE_SCUTE, TRIM_PREFIX_HELMET, false);
 
@@ -510,8 +499,7 @@ public class ModModelProvider extends ModelProvider {
     // * CUSTOM BLOCKS *
     // CUSTOM METHOD - Flower and Pot Flower block textures
     protected static void flowerTexture(BlockModelGenerators blockModels,
-                                        Block flower, Block pottedFlower,
-                                        PlantType plantType) {
+                                        Block flower, Block pottedFlower, PlantType plantType) {
         // FLOWER
         // assets\mccoursemod\items + assets\mccoursemod\models\item
         blockModels.registerSimpleItemModel(flower.asItem(),
@@ -551,10 +539,10 @@ public class ModModelProvider extends ModelProvider {
     protected static void blockstateTexture(BlockModelGenerators blockModels, Block block) {
         blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
                    .with(createBooleanModelDispatch(BismuthLampBlock.CLICKED,
-                         // Bismuth Lamp On
+                         // Bismuth Lamp ON
                          plainVariant(blockModels.createSuffixedVariant(block, "_on",
-                                                           ModelTemplates.CUBE_ALL, TextureMapping::cube)),
-                         // Bismuth Lamp Off
+                                                                        ModelTemplates.CUBE_ALL, TextureMapping::cube)),
+                         // Bismuth Lamp OFF
                          plainVariant(TexturedModel.CUBE.create(block, blockModels.modelOutput)))));
     }
 
@@ -652,8 +640,7 @@ public class ModModelProvider extends ModelProvider {
 
     // CUSTOM METHOD - Crop block texture
     protected static void createCropBlock(BlockModelGenerators blockModels,
-                                          Block cropBlock, Property<Integer> ageProperty,
-                                          int... ageToVisualStageMapping) {
+                                          Block cropBlock, Property<Integer> ageProperty, int... ageToVisualStageMapping) {
         // assets\mccoursemod\items + assets\mccoursemod\blockstates
         blockModels.registerSimpleFlatItemModel(cropBlock.asItem());
         if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
@@ -740,8 +727,7 @@ public class ModModelProvider extends ModelProvider {
     }
 
     // CUSTOM METHOD - Dynamic projectiles
-    protected static void dynamicProjectile(BlockModelGenerators blockModels,
-                                            Block block) {
+    protected static void dynamicProjectile(BlockModelGenerators blockModels, Block block) {
 
         // Model names -> Example: dice_1, dice_2, dice_3, dice_4, dice_5, dice_6.
         String[] modelNames = {"_1", "_2", "_3", "_4", "_5", "_6"};
@@ -795,9 +781,9 @@ public class ModModelProvider extends ModelProvider {
         ItemModel.Unbaked bottleOff = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_off",
                                                                                                ModelTemplates.FLAT_ITEM));
         itemModels.itemModelOutput.accept(item, new ConditionalItemModel.Unbaked(
-            new AlternateTexture(ModDataComponentTypes.STORED_LEVELS.get()), // The property to check
-                                 bottleOn, // When the boolean is true
-                                 bottleOff)); // When the boolean is false
+                                          new AlternateTexture(ModDataComponentTypes.STORED_LEVELS.get()), // The property to check
+                                                               bottleOn, // When the boolean is true
+                                                               bottleOff)); // When the boolean is false
     }
 
     // CUSTOM METHOD - Boolean item textures
@@ -806,10 +792,11 @@ public class ModModelProvider extends ModelProvider {
         ItemModel.Unbaked offItem = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, ModelTemplates.FLAT_ITEM));
         ItemModel.Unbaked usedItem = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_used",
                                                                                               ModelTemplates.FLAT_ITEM));
-        itemModels.itemModelOutput
-                  .register(item, new ClientItem(
-                                  new ConditionalItemModel.Unbaked(new HasComponent(data, false), usedItem, offItem),
-                                  new ClientItem.Properties(false, false)));
+        itemModels.itemModelOutput.register(item, new ClientItem(new ConditionalItemModel.Unbaked(new HasComponent(data,
+                                                                                                                   false),
+                                                                                                  usedItem, offItem),
+                                                                 new ClientItem.Properties(false,
+                                                                                           false)));
     }
 
     // CUSTOM METHOD - Bow texture
@@ -846,8 +833,7 @@ public class ModModelProvider extends ModelProvider {
 
     // ARMOR TRIM MATERIAL MODELS
     public static void pieceArmorTrim(ItemModelGenerators itemModels, Item item,
-                                      ResourceKey<EquipmentAsset> equipmentAsset,
-                                      ResourceLocation modelId, boolean usesSecondLayer) {
+                                      ResourceKey<EquipmentAsset> equipmentAsset, ResourceLocation modelId, boolean usesSecondLayer) {
         ResourceLocation itemName = ModelLocationUtils.getModelLocation(item);
         ResourceLocation armorItem = TextureMapping.getItemTexture(item);
         ResourceLocation armorRender = TextureMapping.getItemTexture(item, "_overlay");
@@ -882,8 +868,7 @@ public class ModModelProvider extends ModelProvider {
     // CUSTOM METHOD - Shield model
     protected static void shieldTexture(ItemModelGenerators itemModels, Item item) {
         ItemModel.Unbaked shield =
-            ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(item),
-                                        new ShieldSpecialModelRenderer.Unbaked());
+            ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(item), new ShieldSpecialModelRenderer.Unbaked());
         ItemModel.Unbaked shieldBlocking =
             ItemModelUtils.specialModel(ModelLocationUtils.getModelLocation(item, "_blocking"),
                                         new ShieldSpecialModelRenderer.Unbaked());
@@ -893,28 +878,24 @@ public class ModModelProvider extends ModelProvider {
     // CUSTOM METHOD - Block models -> Ignore JSON files
     @Override
     protected @NotNull Stream<? extends Holder<Block>> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries()
-                               .stream().filter(x ->
-                                                !(x.get() == ModBlocks.PEDESTAL.get()) &&
-                                                !(x.get() == ModBlocks.GEM_EMPOWERING_STATION.get()) &&
-                                                !(x.get() == ModBlocks.CHAIR.get()));
+        return ModBlocks.BLOCKS.getEntries().stream().filter(x ->
+                                                             !(x.get() == ModBlocks.PEDESTAL.get()) &&
+                                                             !(x.get() == ModBlocks.GEM_EMPOWERING_STATION.get()) &&
+                                                             !(x.get() == ModBlocks.CHAIR.get()));
     }
 
     // CUSTOM METHOD - Item models -> Ignore JSON files
     @Override
     protected @NotNull Stream<? extends Holder<Item>> getKnownItems() {
-        return ModItems.ITEMS.getEntries()
-                             .stream().filter(x ->
-                                              x.get() != ModBlocks.PEDESTAL.asItem() &&
-                                              x.get() != ModBlocks.GEM_EMPOWERING_STATION.asItem() &&
-                                              x.get() != ModBlocks.CHAIR.asItem() &&
-                                              !(x.get() == ModItems.TOMAHAWK.get()) &&
-                                              !(x.get() == ModItems.ALEXANDRITE_SHIELD.get()) &&
-                                              !(x.get() == ModItems.DICE_ITEM.get()));
+        return ModItems.ITEMS.getEntries().stream().filter(x ->
+                                                           x.get() != ModBlocks.PEDESTAL.asItem() &&
+                                                           x.get() != ModBlocks.GEM_EMPOWERING_STATION.asItem() &&
+                                                           x.get() != ModBlocks.CHAIR.asItem() &&
+                                                           !(x.get() == ModItems.TOMAHAWK.get()) &&
+                                                           !(x.get() == ModItems.ALEXANDRITE_SHIELD.get()) &&
+                                                           !(x.get() == ModItems.DICE_ITEM.get()));
     }
 
     @Override
-    public @NotNull String getName() {
-        return "Mccourse Mod Models";
-    }
+    public @NotNull String getName() { return "Mccourse Mod Models"; }
 }

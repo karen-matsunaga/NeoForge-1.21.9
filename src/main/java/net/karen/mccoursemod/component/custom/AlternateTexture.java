@@ -15,11 +15,13 @@ import javax.annotation.Nullable;
 
 public record AlternateTexture(DataComponentType<?> dataComponentType)
               implements ConditionalItemModelProperty {
+    // MAP CODEC
     public static final MapCodec<AlternateTexture> MAP_CODEC =
-           RecordCodecBuilder.mapCodec((instance) ->
-                     instance.group(BuiltInRegistries.DATA_COMPONENT_TYPE.byNameCodec().fieldOf("dataComponentType")
-                                                                                       .forGetter(AlternateTexture::dataComponentType))
-                             .apply(instance, AlternateTexture::new));
+           RecordCodecBuilder.mapCodec(instance ->
+                                       instance.group(BuiltInRegistries.DATA_COMPONENT_TYPE
+                                                                       .byNameCodec().fieldOf("dataComponentType")
+                                                                       .forGetter(AlternateTexture::dataComponentType))
+                                               .apply(instance, AlternateTexture::new));
 
     public boolean get(@NotNull ItemStack stack, @Nullable ClientLevel level,
                        @Nullable LivingEntity entity, int i, @NotNull ItemDisplayContext itemDisplayContext) {
