@@ -172,6 +172,8 @@ public class ChatUtils {
     public static int starlightAshesColor = ARGB.color(254, 159, 0);
     public static int peatBrickColor = ARGB.color(45, 47, 48);
 
+    public static int soapWaterTintColor = 0xA1E038D0;
+
     // Glowing Blocks X-RAY block bounding boxes
     public static final Map<TagKey<Block>, Integer> renderColors =
            Map.ofEntries(Map.entry(Tags.Blocks.ORES_COAL, color(169, 169,169)),

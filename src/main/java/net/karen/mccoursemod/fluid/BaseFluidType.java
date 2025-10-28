@@ -34,30 +34,22 @@ public class BaseFluidType extends FluidType {
     public IClientFluidTypeExtensions getClientFluidTypeExtensions() {
         return new IClientFluidTypeExtensions() {
             @Override
-            public int getTintColor() {
-                return tintColor;
-            }
+            public int getTintColor() { return tintColor; }
 
             @Override
-            public @NotNull ResourceLocation getStillTexture() {
-                return stillTexture;
-            }
+            public @NotNull ResourceLocation getStillTexture() { return stillTexture; }
 
             @Override
-            public @NotNull ResourceLocation getFlowingTexture() {
-                return flowingTexture;
-            }
+            public @NotNull ResourceLocation getFlowingTexture() { return flowingTexture; }
 
             @Override
-            public @Nullable ResourceLocation getOverlayTexture() {
-                return overlayTexture;
-            }
+            public @Nullable ResourceLocation getOverlayTexture() { return overlayTexture; }
 
             @Override
             public @NotNull Vector4f modifyFogColor(@NotNull Camera camera, float partialTick,
                                                     @NotNull ClientLevel level, int renderDistance,
                                                     float darkenWorldAmount, @NotNull Vector4f fluidFogColor) {
-                return new Vector4f(fogColor.x, fogColor.y, fogColor.z, 1f);
+                return new Vector4f(fogColor.x, fogColor.y, fogColor.z, 1F);
             }
 
             @Override

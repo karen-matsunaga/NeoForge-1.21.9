@@ -753,17 +753,17 @@ public class ModBlocks {
     }
 
     // ** CUSTOM METHOD - Registry all custom BLOCKS **
-    private static <T extends Block> DeferredBlock<T> registerBlock(String name,
-                                                                    Function<BlockBehaviour.Properties, T> block,
-                                                                    int lore, int customName) {
+    public static <T extends Block> DeferredBlock<T> registerBlock(String name,
+                                                                   Function<BlockBehaviour.Properties, T> block,
+                                                                   int lore, int customName) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, block);
         registerBlockItem(name, toReturn, lore, customName);
         return toReturn;
     }
 
     // ** CUSTOM METHOD - Registry all custom BLOCK ITEMS **
-    private static <T extends Block> void registerBlockItem(String name,
-                                                            DeferredBlock<T> block, int lore, int customName) {
+    public static <T extends Block> void registerBlockItem(String name,
+                                                           DeferredBlock<T> block, int lore, int customName) {
         String registerBlock = block.getRegisteredName();
         // LORE
         String blockLore = registerBlock.replace(":", ".");

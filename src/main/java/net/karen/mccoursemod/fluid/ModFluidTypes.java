@@ -1,13 +1,16 @@
 package net.karen.mccoursemod.fluid;
 
 import net.karen.mccoursemod.MccourseMod;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 import java.util.function.Supplier;
+import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ModFluidTypes {
     public static final ResourceLocation WATER_STILL_RL = ResourceLocation.parse("block/water_still");
@@ -21,9 +24,14 @@ public class ModFluidTypes {
     // Registry all custom fluid colors types
     public static final Supplier<FluidType> SOAP_WATER_FLUID_TYPE =
            registerFluidType("soap_water_fluid",
-                             new BaseFluidType(WATER_STILL_RL, WATER_FLOWING_RL, WATER_OVERLAY_RL, 0xA1E038D0,
-                                               new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
-                                               FluidType.Properties.create().lightLevel(2).viscosity(5).density(15)));
+                             new BaseFluidType(WATER_STILL_RL, WATER_FLOWING_RL, WATER_OVERLAY_RL,
+                                               soapWaterTintColor, new Vector3f(224F / 255F, 56F / 255F, 208F / 255F),
+                                               FluidType.Properties.create().lightLevel(2).viscosity(5).density(15)) {
+                                               @Override
+                                               public @NotNull Component getDescription() {
+                                                   return componentTranslatableIntColor(this.getDescriptionId(), soapWaterTintColor);
+                                               }}
+                             );
 
     // CUSTOM METHOD - Register all custom fluid type
     private static Supplier<FluidType> registerFluidType(String name, FluidType fluidType) {

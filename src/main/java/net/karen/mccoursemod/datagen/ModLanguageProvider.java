@@ -391,7 +391,7 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.GEM_EMPOWERING_STATION, "§8");
 
         // ** CUSTOM Fluid block **
-        blockLang(ModFluids.SOAP_WATER_BLOCK, "§d");
+        blockLang(ModFluids.SOAP_WATER_BLOCK, "");
 
         // ** CUSTOM Ender Pearl blocks **
         blockLang(ModBlocks.ENDER_PEARL_BLOCK, "§3");
@@ -873,6 +873,8 @@ public class ModLanguageProvider extends LanguageProvider {
         blockDescription(ModBlocks.COLORED_LEAVES, "Decorate Snapdragon on potted block.");
         blockDescription(ModBlocks.KAUPEN_PORTAL, "Portal block that changed to KAUPENDIM dimension.");
 
+        blockDescription(ModFluids.SOAP_WATER_BLOCK, "Liquid fluid block.");
+
         // ** CUSTOM ITEM DESCRIPTIONS **
         itemDescription(ModItems.BISMUTH, "Found on Overworld, Nether, End and Kaupendim dimensions!");
         itemDescription(ModItems.RAW_BISMUTH, "Found on Overworld, Nether, End and Kaupendim dimensions!");
@@ -1048,6 +1050,8 @@ public class ModLanguageProvider extends LanguageProvider {
         itemDescription(ModItems.LUCK_GENERAL, "Gain random general enchantments.");
         itemDescription(ModItems.LUCK_PICKAXE, "Gain random pickaxe enchantments.");
         itemDescription(ModItems.LUCK_WEAPON, "Gain random sword enchantments.");
+
+        itemDescription(ModFluids.SOAP_WATER_BUCKET, "Bucket.");
 
         Map<Holder<MobEffect>, String> effects = new HashMap<>();
         // MCCOURSE MOD effects

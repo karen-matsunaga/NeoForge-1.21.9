@@ -4,23 +4,25 @@ import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
+import static net.karen.mccoursemod.util.ChatUtils.*;
 
 public class ModFluids {
     // Registry all custom fluids
@@ -39,24 +41,24 @@ public class ModFluids {
     // ** CUSTOM FLUID block **
     // Soap Water Block custom fluid
     public static final DeferredBlock<LiquidBlock> SOAP_WATER_BLOCK =
-           ModBlocks.BLOCKS.register("soap_water_block",
-           () -> new LiquidBlock(ModFluids.SOURCE_SOAP_WATER.get(), BlockBehaviour.Properties
-                                                                                  .ofFullCopy(Blocks.WATER)
-                                                                                  .noLootTable()
-                                                                                  .setId(ResourceKey.create(Registries.BLOCK,
-                                                                                         ResourceLocation.fromNamespaceAndPath(
-                                                                                         MccourseMod.MOD_ID,
-                                                                                         "soap_water_block")))));
+           ModBlocks.registerBlock("soap_water_block", props ->
+                                   new LiquidBlock(ModFluids.SOURCE_SOAP_WATER.get(),
+                                                   props.mapColor(MapColor.WATER).replaceable().noCollision()
+                                                        .strength(100.0F).pushReaction(PushReaction.DESTROY)
+                                                        .noLootTable().liquid().sound(SoundType.EMPTY)),
+                                   soapWaterTintColor, soapWaterTintColor);
 
     // ** CUSTOM bucket fluid **
     // Soap Water Bucket custom fluid
     public static final DeferredItem<Item> SOAP_WATER_BUCKET =
-           ModItems.ITEMS.registerItem("soap_water_bucket",
-           (properties) -> new BucketItem(ModFluids.SOURCE_SOAP_WATER.get(),
-                                                    properties.craftRemainder(Items.BUCKET).stacksTo(1)
-                                                              .setId(ResourceKey.create(Registries.ITEM,
-                                                                     ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                                     "soap_water_bucket")))));
+           ModItems.ITEMS.registerItem("soap_water_bucket", props ->
+                                       new BucketItem(ModFluids.SOURCE_SOAP_WATER.get(),
+                                                      props.craftRemainder(Items.BUCKET).stacksTo(1)) {
+                                           @Override
+                                           public @NotNull Component getName(@NotNull ItemStack stack) {
+                                               return componentTranslatableIntColor(this.descriptionId, soapWaterTintColor);
+                                           }
+                                       });
 
     // Registry all custom fluids when to inside on custom fluid
     public static final BaseFlowingFluid.Properties SOAP_WATER_FLUID_PROPERTIES =

@@ -1,4 +1,4 @@
-// 1.21.10	2025-10-24T14:07:02.476083	Mccourse Mod Models
+// 1.21.10	2025-10-28T10:24:46.8242173	Mccourse Mod Models
 f7a9ed05e4c0a1202e8bcf365202ba7cb2be62ac assets/mccoursemod/blockstates/alexandrite_block.json
 0cafbe7ae27ac97223742c164d1ec7781a244c03 assets/mccoursemod/blockstates/alexandrite_button.json
 20c64ac30962cfc1d73c994801bea26d04829f07 assets/mccoursemod/blockstates/alexandrite_door.json
@@ -317,6 +317,7 @@ bcfec3a2fee0e7a6d384db9c64086f35dfcb76c0 assets/mccoursemod/items/ruby_block_1.j
 86929c2a1aedd3d1910641dd6041791fa67dcc9b assets/mccoursemod/items/ruby_block_2.json
 f60d5716affd935c02ac8bc295196dc08ac4c764 assets/mccoursemod/items/ruby_block_3.json
 f4d4babda5a34dd0805a08ff9fac1597a2f57082 assets/mccoursemod/items/snapdragon.json
+49e8271eb59231000b851e09fca2a59bb2393f8e assets/mccoursemod/items/soap_water_block.json
 225dd4b4547d98d86e557c39d722cd5b1048cafa assets/mccoursemod/items/soap_water_bucket.json
 11d5f553544b8c7c66db7b5e63c247b703cae9cf assets/mccoursemod/items/sound.json
 e7ed4201f28d5e8cff5d9cd9f88032a9a72194a3 assets/mccoursemod/items/spider_eye_block.json
