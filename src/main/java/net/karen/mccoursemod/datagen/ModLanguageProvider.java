@@ -3,6 +3,7 @@ package net.karen.mccoursemod.datagen;
 import net.karen.mccoursemod.MccourseMod;
 import net.karen.mccoursemod.block.ModBlocks;
 import net.karen.mccoursemod.effect.ModEffects;
+import net.karen.mccoursemod.fluid.ModFluidTypes;
 import net.karen.mccoursemod.fluid.ModFluids;
 import net.karen.mccoursemod.item.ModItems;
 import net.karen.mccoursemod.item.custom.FuelItem;
@@ -188,8 +189,13 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.REDSTONE_SWORD, "Redstone Sword");
 
         // ** CUSTOM Elytra armor **
+        // DIAMOND
         addItem(ModItems.DIAMOND_ELYTRA, "Diamond Elytra");
         add("item.mccoursemod.diamond_elytra_broken", "Broken Diamond Elytra");
+
+        // EMERALD
+        addItem(ModItems.EMERALD_ELYTRA, "Emerald Elytra");
+        add("item.mccoursemod.emerald_elytra_broken", "Broken Emerald Elytra");
 
         // ** CUSTOM Horse armor **
         // BISMUTH
@@ -255,27 +261,11 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ModItems.MCCOURSE_MOD_FISHING_ROD, "Mccourse Mod Fishing Rod");
 
         // ** CUSTOM Shield **
-        addItem(ModItems.ALEXANDRITE_SHIELD, "Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.black", "Black Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.white", "White Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.blue", "Blue Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.brown", "Brown Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.cyan", "Cyan Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.gray", "Gray Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.green", "Green Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.light_blue", "Light Blue Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.light_gray", "Light Gray Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.lime", "Light Blue Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.magenta", "Magenta Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.orange", "Orange Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.pink", "Pink Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.purple", "Purple Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.red", "Red Alexandrite Shield");
-        add("item.mccoursemod.alexandrite_shield.yellow", "Yellow Alexandrite Shield");
+        shield(ModItems.ALEXANDRITE_SHIELD, "Alexandrite Shield");
 
         // ** CUSTOM Fluid **
         addItem(ModFluids.SOAP_WATER_BUCKET, "Soap Water Bucket");
-        add("fluid_type.mccoursemod.soap_water_fluid", "Soap Water Fluid");
+        add(ModFluidTypes.SOAP_WATER_FLUID_TYPE.get().getDescriptionId(), "Soap Water Fluid");
 
         // ** CUSTOM Boat **
         addItem(ModItems.WALNUT_BOAT, "Walnut Boat");
@@ -944,20 +934,16 @@ public class ModLanguageProvider extends LanguageProvider {
 
         itemDescription(ModItems.ALEXANDRITE_SHIELD, "Shield.");
 
-        paxelDescription(List.of(ModItems.BISMUTH_PAXEL, ModItems.ALEXANDRITE_PAXEL,
-                                 ModItems.PINK_PAXEL, ModItems.COPPER_PAXEL,
-                                 ModItems.DIAMOND_PAXEL, ModItems.GOLD_PAXEL,
-                                 ModItems.IRON_PAXEL, ModItems.STONE_PAXEL,
-                                 ModItems.WOODEN_PAXEL, ModItems.NETHERITE_PAXEL,
-                                 ModItems.LAPIS_LAZULI_PAXEL, ModItems.REDSTONE_PAXEL,
+        paxelDescription(List.of(ModItems.BISMUTH_PAXEL, ModItems.ALEXANDRITE_PAXEL, ModItems.PINK_PAXEL,
+                                 ModItems.COPPER_PAXEL, ModItems.DIAMOND_PAXEL, ModItems.GOLD_PAXEL,
+                                 ModItems.IRON_PAXEL, ModItems.STONE_PAXEL, ModItems.WOODEN_PAXEL,
+                                 ModItems.NETHERITE_PAXEL, ModItems.LAPIS_LAZULI_PAXEL, ModItems.REDSTONE_PAXEL,
                                  ModItems.EMERALD_PAXEL));
 
-        hammerDescription(List.of(ModItems.BISMUTH_HAMMER, ModItems.ALEXANDRITE_HAMMER,
-                                  ModItems.PINK_HAMMER, ModItems.COPPER_HAMMER,
-                                  ModItems.DIAMOND_HAMMER, ModItems.GOLD_HAMMER,
-                                  ModItems.IRON_HAMMER, ModItems.STONE_HAMMER,
-                                  ModItems.WOODEN_HAMMER, ModItems.NETHERITE_HAMMER,
-                                  ModItems.LAPIS_LAZULI_HAMMER, ModItems.REDSTONE_HAMMER,
+        hammerDescription(List.of(ModItems.BISMUTH_HAMMER, ModItems.ALEXANDRITE_HAMMER, ModItems.PINK_HAMMER,
+                                  ModItems.COPPER_HAMMER, ModItems.DIAMOND_HAMMER, ModItems.GOLD_HAMMER,
+                                  ModItems.IRON_HAMMER, ModItems.STONE_HAMMER, ModItems.WOODEN_HAMMER,
+                                  ModItems.NETHERITE_HAMMER, ModItems.LAPIS_LAZULI_HAMMER, ModItems.REDSTONE_HAMMER,
                                   ModItems.EMERALD_HAMMER));
 
         itemDescription(ModItems.BISMUTH_SHOVEL, "Shovel.");
@@ -1061,7 +1047,8 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // VANILLA effects
         effects.put(MobEffects.ABSORPTION, "Extra hearts on health bar.");
-        effects.put(MobEffects.BAD_OMEN, "Transform on Raid Omen when Player is a village or Trial Omen if near a non-ominous trial spawner.");
+        effects.put(MobEffects.BAD_OMEN, "Transform on Raid Omen when Player is a village or Trial Omen if near " +
+                                         "a non-ominous trial spawner.");
         effects.put(MobEffects.BLINDNESS, "Prevent sprinting and critical hits also impairs a Player's vision.");
         effects.put(MobEffects.CONDUIT_POWER, "Grants Water Breathing, Night Vision and Haste effects.");
         effects.put(MobEffects.DARKNESS, "Distorted vision when sculk shrieker activated or detection range of a Warden.");
@@ -1088,7 +1075,8 @@ public class ModLanguageProvider extends LanguageProvider {
         effects.put(MobEffects.REGENERATION, "Restore health points for some time.");
         effects.put(MobEffects.RESISTANCE, "Increases resistance damage.");
         effects.put(MobEffects.SATURATION, "Decreases the need to eating and prevent death by hunger.");
-        effects.put(MobEffects.SLOW_FALLING, "Player gravity is more slowly and avoid fall damage, but prevents critical hits and smash attacks.");
+        effects.put(MobEffects.SLOW_FALLING, "Player gravity is more slowly and avoid fall damage, " +
+                                             "but prevents critical hits and smash attacks.");
         effects.put(MobEffects.SLOWNESS, "Decreases 15 percent of walking speed.");
         effects.put(MobEffects.SPEED, "Increases 20 percent of walking speed.");
         effects.put(MobEffects.STRENGTH, "Increases 3+ attack damage.");
@@ -1106,9 +1094,7 @@ public class ModLanguageProvider extends LanguageProvider {
     private void blockLang(Supplier<? extends Block> block, String color) {
         String blockId = block.get().getDescriptionId().replace("block.mccoursemod.", "");
         // Sound -> One word
-        String firstLetter = blockId.substring(0, 1).toUpperCase();
-        String letters = blockId.substring(1).toLowerCase();
-        String blockName = firstLetter + letters;
+        String blockName = upperSpaceWord(blockId);
         String versionWithBlock = color + blockName + " Block";
         // Bismuth Block -> Two words
         String names = itemLines(splitWord(blockId));
@@ -1123,17 +1109,13 @@ public class ModLanguageProvider extends LanguageProvider {
 
     // CUSTOM METHOD - Vanilla enchantment levels
     private void vanillaEnchantment() {
-        for (int i = 1; i < 256; i++) {
-            add("enchantment.level." + i, String.valueOf(i));
-        }
+        for (int i = 1; i < 256; i++) { add("enchantment.level." + i, String.valueOf(i)); }
     }
 
     // CUSTOM METHOD - Ores Upgrade Smithing Template
     private void oresUpgradeSmithingTemplate(Supplier<? extends Item> item,
                                              String ore, boolean isIngot) {
-        String firstLetter = ore.substring(0, 1).toUpperCase();
-        String letters = ore.substring(1).toLowerCase();
-        String oreName = firstLetter + letters;
+        String oreName = upperSpaceWord(ore);
         String blockOrIngot = isIngot ? " Ingot" : " Block";
         String repairItem = oreName + blockOrIngot;
         addItem(item, oreName + " Upgrade Smithing Template");
@@ -1146,10 +1128,7 @@ public class ModLanguageProvider extends LanguageProvider {
 
     // CUSTOM METHOD - Ores Armor Trim Smithing Upgrade
     private void oresArmorTrimSmithingTemplate(Supplier<? extends Item> item, String ore) {
-        String firstLetter = ore.substring(0, 1).toUpperCase();
-        String letters = ore.substring(1).toLowerCase();
-        String oreName = firstLetter + letters;
-        addItem(item, oreName + " Armor Trim Smithing Template");
+        addItem(item, upperSpaceWord(ore) + " Armor Trim Smithing Template");
         add("item.mccoursemod.smithing_template." + ore + ".armor_trim.additions_slot_description", "Add ingot or crystal");
         add("item.mccoursemod.smithing_template." + ore + ".armor_trim.applies_to", "Armor");
         add("item.mccoursemod.smithing_template." + ore + ".armor_trim.base_slot_description", "Add a piece of armor");
@@ -1157,6 +1136,18 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item.mccoursemod.smithing_template.applies_to", "Applies to:");
         add("item.mccoursemod.smithing_template.ingredients", "Ingredients:");
         add("item.mccoursemod.smithing_template", "Mccourse Mod Smithing Template");
+    }
+
+    // CUSTOM METHOD - Shield
+    private <I extends Item> void shield(DeferredItem<I> shield, String name) {
+        addItem(shield, name);
+        List<String> colors = List.of("black", "white", "blue", "brown", "cyan", "gray",
+                                      "green", "light_blue", "light_gray", "lime", "magenta",
+                                      "orange", "pink", "purple", "red", "yellow");
+        for (String color : colors) {
+            String dyeColor = itemLines(splitWord(upperSpaceWord(color)));
+            add("item." + shield.getRegisteredName().replace(":", ".") + "." + color, dyeColor + " " + name);
+        }
     }
 
     // CUSTOM METHOD - Block description

@@ -306,9 +306,7 @@ public class ChatUtils {
         String[] words = input.split(" "); // Separated words
         StringJoiner capitalized = new StringJoiner(" "); // Spaced words
         for (String word : words) { // For each word
-            if (!word.isEmpty()) {
-                capitalized.add(word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase());
-            }
+            if (!word.isEmpty()) { capitalized.add(upperSpaceWord(word)); }
         }
         return capitalized.toString(); // Joined words with capitalize words
     }
@@ -316,6 +314,13 @@ public class ChatUtils {
     // CUSTOM METHOD - SPLIT STRING
     public static String splitWord(String word) {
         return word.replace("_", " ");
+    }
+
+    // CUSTOM METHOD - UPPER SPACE WORDS -> Ex: White Alexandrite Shield
+    public static String upperSpaceWord(String word) {
+        String firstLetter = word.substring(0, 1).toUpperCase();
+        String letters = word.substring(1).toLowerCase();
+        return firstLetter + letters;
     }
 
     // CUSTOM METHOD - Enchantment color
