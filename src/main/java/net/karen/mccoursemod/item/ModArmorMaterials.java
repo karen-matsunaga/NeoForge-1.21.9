@@ -54,14 +54,21 @@ public class ModArmorMaterials {
 
     // EMERALD
     public static final ArmorMaterial EMERALD_ARMOR_MATERIAL =
-           armorMaterial(1, 10, SoundEvents.ARMOR_EQUIP_ELYTRA,
-                         1.0F, 0.1F, ModTags.Items.REPAIRS_EMERALD_ARMOR,
-                         ModEquipmentAssetProvider.EMERALD);
+           armorMaterial(10, 2, 5, 6, 2, 5,
+                         10, SoundEvents.ARMOR_EQUIP_ELYTRA, 1.0F, 0.1F,
+                         ModTags.Items.REPAIRS_EMERALD_ARMOR, ModEquipmentAssetProvider.EMERALD);
 
     // CUSTOM METHOD - Armor Type Defense
     private static Map<ArmorType, Integer> makeArmorTypeDefense() {
         return Maps.newEnumMap(Map.of(ArmorType.BOOTS, 5, ArmorType.LEGGINGS, 7,
                                       ArmorType.CHESTPLATE, 9, ArmorType.HELMET, 5, ArmorType.BODY, 11));
+    }
+
+    // CUSTOM METHOD - Armor Type Defense -> ARMOR TYPE custom
+    private static Map<ArmorType, Integer> makeArmorTypeDefense(int boots, int leggings,
+                                                                int chestplate, int helmet, int body) {
+        return Maps.newEnumMap(Map.of(ArmorType.BOOTS, boots, ArmorType.LEGGINGS, leggings,
+                                      ArmorType.CHESTPLATE, chestplate, ArmorType.HELMET, helmet, ArmorType.BODY, body));
     }
 
     // CUSTOM METHOD - Register MOD armor materials
@@ -71,5 +78,16 @@ public class ModArmorMaterials {
                                                ResourceKey<EquipmentAsset> assetId) {
         return new ArmorMaterial(durability, makeArmorTypeDefense(), enchantment, armorSound,
                                  toughness, knockbackResistance, repairIngredient, assetId);
+
+    }
+
+    // CUSTOM METHOD - Register MOD armor materials -> ARMOR TYPE custom
+    private static ArmorMaterial armorMaterial(int durability, int boots, int leggings,
+                                               int chestplate, int helmet, int body,
+                                               int enchantment, Holder<SoundEvent> armorSound, float toughness,
+                                               float knockbackResistance, TagKey<Item> repairIngredient,
+                                               ResourceKey<EquipmentAsset> assetId) {
+        return new ArmorMaterial(durability, makeArmorTypeDefense(boots, leggings, chestplate, helmet, body),
+                                 enchantment, armorSound, toughness, knockbackResistance, repairIngredient, assetId);
     }
 }
