@@ -58,6 +58,6 @@ public interface GemDegradable
     }
 
     enum GemDegradationLevel {
-        UNAFFECTED, EXPOSED, WEATHERED, DEGRADED;
+        UNAFFECTED, EXPOSED, WEATHERED, DEGRADED
     }
 }
