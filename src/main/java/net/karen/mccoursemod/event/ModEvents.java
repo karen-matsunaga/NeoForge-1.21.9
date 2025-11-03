@@ -19,6 +19,7 @@ import net.karen.mccoursemod.network.*;
 import net.karen.mccoursemod.potion.ModPotions;
 import net.karen.mccoursemod.util.*;
 import net.karen.mccoursemod.villager.ModVillagers;
+import net.karen.mccoursemod.worldgen.dimension.ModDimensions;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -1003,9 +1004,11 @@ public class ModEvents {
                     ServerLevel over = server.getLevel(Level.OVERWORLD);
                     ServerLevel nether = server.getLevel(Level.NETHER);
                     ServerLevel end = server.getLevel(Level.END);
+                    ServerLevel kaupendim = server.getLevel(ModDimensions.KAUPENDIM_LEVEL_KEY);
                     if (over != null) { player.spawnAtLocation(over, safeCopy); }
                     if (nether != null) { player.spawnAtLocation(nether, safeCopy); }
                     if (end != null) { player.spawnAtLocation(end, safeCopy); }
+                    if (kaupendim != null) { player.spawnAtLocation(kaupendim, safeCopy); }
                 }
             }
         }
