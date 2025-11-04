@@ -25,25 +25,18 @@ import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.Set;
 
-public class ShieldSpecialModelRenderer implements SpecialModelRenderer<DataComponentMap> {
-    private final MaterialSet materials;
-    private final ShieldModel model;
+public record ShieldSpecialModelRenderer(MaterialSet materials, ShieldModel model)
+       implements SpecialModelRenderer<DataComponentMap> {
     public static final Material ALEXANDRITE_SHIELD_BASE =
            new Material(Sheets.SHIELD_SHEET,
-                        ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                              "entity/alexandrite_shield_base"));
+                        ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "entity/alexandrite_shield_base"));
     public static final Material ALEXANDRITE_SHIELD_BASE_NO_PATTERN =
            new Material(Sheets.SHIELD_SHEET,
-                        ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                              "entity/alexandrite_shield_base_nopattern"));
+                        ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "entity/alexandrite_shield_base_nopattern"));
 
-    public ShieldSpecialModelRenderer(MaterialSet materials, ShieldModel model) {
-        this.materials = materials;
-        this.model = model;
+    public @NotNull DataComponentMap extractArgument(ItemStack stack) {
+        return stack.immutableComponents();
     }
-
-    @Nullable
-    public DataComponentMap extractArgument(ItemStack stack) { return stack.immutableComponents(); }
 
     @Override
     public void submit(@Nullable DataComponentMap components, @NotNull ItemDisplayContext context,
@@ -83,15 +76,15 @@ public class ShieldSpecialModelRenderer implements SpecialModelRenderer<DataComp
     }
 
     public record Unbaked() implements SpecialModelRenderer.Unbaked {
-        public static final ShieldSpecialModelRenderer.Unbaked INSTANCE = new ShieldSpecialModelRenderer.Unbaked();
-        public static final MapCodec<ShieldSpecialModelRenderer.Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
+        public static final Unbaked INSTANCE = new Unbaked();
+        public static final MapCodec<Unbaked> MAP_CODEC = MapCodec.unit(INSTANCE);
 
         @Override
-        public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext context) {
+        public SpecialModelRenderer<?> bake(BakingContext context) {
             return new ShieldSpecialModelRenderer(context.materials(),
                                                   new ShieldModel(context.entityModelSet().bakeLayer(ModelLayers.SHIELD)));
         }
 
-        public @NotNull MapCodec<ShieldSpecialModelRenderer.Unbaked> type() { return MAP_CODEC; }
+        public @NotNull MapCodec<Unbaked> type() { return MAP_CODEC; }
     }
 }

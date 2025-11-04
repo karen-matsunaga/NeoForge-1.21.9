@@ -181,7 +181,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onGlowingBlocksChangeStage(PlayerTickEvent.Post event) {
         Player player = event.getEntity();
-        KeyMapping glowingBlocks = KeyBinding.GLOWING_BLOCKS_KEY.get();
+        KeyMapping glowingBlocks = ModKeyMapping.GLOWING_BLOCKS_KEY.get();
         if (glowingBlocks.isDown() && glowingBlocks.consumeClick()) {
             glowingBlocksEnabled = !glowingBlocksEnabled;
             glow(player, glowingBlocksEnabled, "Blocks: ON!", "Blocks: OFF!");
@@ -264,17 +264,17 @@ public class ModEvents {
         if (event.getType() == VillagerProfession.FARMER) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             // Trade level one
-            trades.get(1).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(1).add((_, _) -> new MerchantOffer(
                                new ItemCost(Items.EMERALD, 3),
                                new ItemStack(ModItems.GOJI_BERRIES.get(), 18),
                                6, 3, 0.05F));
             // Trade level one
-            trades.get(1).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(1).add((_, _) -> new MerchantOffer(
                                new ItemCost(Items.DIAMOND, 12),
                                new ItemStack(ModItems.RADISH.get(), 1),
                                6, 3, 0.05F));
             // Trade level two
-            trades.get(2).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(2).add((_, _) -> new MerchantOffer(
                                new ItemCost(Items.ENDER_PEARL, 1),
                                new ItemStack(ModItems.RADISH_SEEDS.get(), 1),
                                2, 8, 0.05F));
@@ -283,17 +283,17 @@ public class ModEvents {
         if (event.getType() == ModVillagers.KAUPENGER.getKey()) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             // Trade level one
-            trades.get(1).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(1).add((_, _) -> new MerchantOffer(
                                new ItemCost(Items.EMERALD, 2),
                                new ItemStack(ModItems.RAW_BISMUTH.get(), 18),
                                6, 3, 0.05F));
             // Trade level one
-            trades.get(1).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(1).add((_, _) -> new MerchantOffer(
                                new ItemCost(Items.DIAMOND, 16),
                                new ItemStack(ModItems.RADIATION_STAFF.get(), 1),
                                6, 3, 0.05F));
             // Trade level two
-            trades.get(2).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(2).add((_, _) -> new MerchantOffer(
                                new ItemCost(Items.ENDER_PEARL, 2),
                                new ItemStack(ModItems.BISMUTH_SWORD.get(), 1),
                                2, 8, 0.05F));
@@ -303,18 +303,18 @@ public class ModEvents {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             HolderLookup.RegistryLookup<Enchantment> ench = event.getRegistries().lookupOrThrow(Registries.ENCHANTMENT);
             // Trade level one
-            trades.get(1).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(1).add((_, _) -> new MerchantOffer(
                               new ItemCost(Items.EMERALD, 25),
                               new ItemStack(ModBlocks.SOUND.get().asItem(), 1),
                               2, 5, 0.06F));
             // Trade level one - Received Enchanted Book with UNLOCK 1
-            trades.get(1).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(1).add((_, _) -> new MerchantOffer(
                                new ItemCost(ModItems.BISMUTH, 64),
                                villagerEnchantedItem(Items.ENCHANTED_BOOK,
                                                      Map.of(ench.getOrThrow(ModEnchantments.UNLOCK), 1)),
                               20, 100, 0.08F));
             // Trade level two - Received Iron pickaxe with EFFICIENCY 4
-            trades.get(2).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(2).add((_, _) -> new MerchantOffer(
                               new ItemCost(ModItems.MCCOURSE_MOD_BOTTLE, 1)
                                           .withComponents(value ->
                                                           value.expect(ModDataComponentTypes.STORED_LEVELS.get(), 200)),
@@ -323,7 +323,7 @@ public class ModEvents {
                                                     Map.of(ench.getOrThrow(Enchantments.EFFICIENCY), 4)),
                               20, 100, 0.08F));
             // Trade level three - Received Enchanted Book with FORTUNE 4 + GLOWING MOBS 1
-            trades.get(3).add((entity, randomSource) -> new MerchantOffer(
+            trades.get(3).add((_, _) -> new MerchantOffer(
                               // Item Cost
                               new ItemCost(ModItems.MCCOURSE_MOD_BOTTLE.get(), 1)
                                           .withComponents(value ->
@@ -344,12 +344,12 @@ public class ModEvents {
         List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
         List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
         // Generic trades
-        genericTrades.add((entity, randomSource) -> new MerchantOffer(
+        genericTrades.add((_, _) -> new MerchantOffer(
                            new ItemCost(Items.EMERALD, 16),
                            new ItemStack(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE.get(), 1),
                            1, 10, 0.2F));
         // Rare trades
-        rareTrades.add((entity, randomSource) -> new MerchantOffer(
+        rareTrades.add((_, _) -> new MerchantOffer(
                         new ItemCost(Items.NETHERITE_INGOT, 1),
                         new ItemStack(ModItems.BAR_BRAWL_MUSIC_DISC.get(), 1),
                         1, 10, 0.2F));
@@ -522,7 +522,7 @@ public class ModEvents {
         HolderLookup.RegistryLookup<Enchantment> ench = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
         int xpBoost = Utils.hasEnchant(ench.getOrThrow(ModEnchantments.XP_BOOST).getDelegate(), player);
         if (!level.isClientSide() && xpBoost > 0) { // Block drop xp
-            BuiltInRegistries.BLOCK.forEach(block -> setPlayerXP(player, level, xpBoost)); // All blocks
+            BuiltInRegistries.BLOCK.forEach(_ -> setPlayerXP(player, level, xpBoost)); // All blocks
         }
     }
 
@@ -679,9 +679,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onNothingEffect(EnderManAngerEvent event) {
         Player player = event.getPlayer();
-        if (player.hasEffect(ModEffects.NOTHING_EFFECT)) {
-            event.setCanceled(true);
-        }
+        if (player.hasEffect(ModEffects.NOTHING_EFFECT)) { event.setCanceled(true); }
     }
 
     // CUSTOM EVENT - Mccourse Mod Elevator advanced block
@@ -715,7 +713,8 @@ public class ModEvents {
         // Player hasn't GLOWING MOBS is disabled
         if (!isEnchanted) { glowingState.remove(playerUUID); }
         boolean current = glowingState.getOrDefault(playerUUID, false); // GLOWING MOBS default stage is FALSE
-        if (KeyBinding.GLOWING_MOBS_KEY.get().consumeClick() && KeyBinding.GLOWING_MOBS_KEY.get().isDown()) { // Press [M] key input
+        KeyMapping glowingMobsKey = ModKeyMapping.GLOWING_MOBS_KEY.get();
+        if (glowingMobsKey.consumeClick() && glowingMobsKey.isDown()) { // Press [M] key input
             if (isEnchanted) { // Player has a HELMET inputted on slot and GLOWING MOBS enchantment level
                 boolean newState = !current; // Default stage is FALSE
                 glowingState.put(playerUUID, newState); // Adapted "newState" of "current" stage
@@ -806,16 +805,14 @@ public class ModEvents {
     @SubscribeEvent
     public static void onMccourseModBottleKeyInput(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
-        Player player = mc.player;
-        ClientLevel clientLevel = mc.level;
         boolean shift = mc.hasShiftDown();
-        if (player != null && clientLevel != null) {
-            if (KeyBinding.MCCOURSE_BOTTLE_STORED_KEY.get().consumeClick()) { // Pressed SHIFT + N
+        if (mc.player != null && mc.level != null) {
+            if (ModKeyMapping.MCCOURSE_BOTTLE_STORED_KEY.get().consumeClick()) { // Pressed SHIFT + N
                 ClientPacketDistributor.sendToServer(new MccourseModBottlePacketPayload(
                                                      MccourseModBottlePacketPayload.MccourseModBottleEnum.STORED,
                                                      shift ? 100 : 10));
             }
-            if (KeyBinding.MCCOURSE_BOTTLE_RESTORED_KEY.get().consumeClick()) { // Pressed SHIFT + B
+            if (ModKeyMapping.MCCOURSE_BOTTLE_RESTORED_KEY.get().consumeClick()) { // Pressed SHIFT + B
                 ClientPacketDistributor.sendToServer(new MccourseModBottlePacketPayload(
                                                      MccourseModBottlePacketPayload.MccourseModBottleEnum.RESTORED,
                                                      shift ? 100 : 10));
@@ -920,7 +917,7 @@ public class ModEvents {
     public static void activatedUnlockOnKeyPress(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
-        KeyMapping map = KeyBinding.UNLOCK_KEY.get();
+        KeyMapping map = ModKeyMapping.UNLOCK_KEY.get();
         if (player == null || !map.isDown() || !map.consumeClick()) { return; }
         if (mc.screen == null) {
             Inventory inv = player.getInventory();
@@ -941,7 +938,7 @@ public class ModEvents {
         Player player = mc.player;
         if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) { return; }
         if (player == null) { return; }
-        if (event.getKeyCode() != KeyBinding.UNLOCK_KEY.get().getKey().getValue()) { return; }
+        if (event.getKeyCode() != ModKeyMapping.UNLOCK_KEY.get().getKey().getValue()) { return; }
         Slot hovered = screen.getSlotUnderMouse();
         if (hovered == null || !hovered.hasItem()) { return; }
         ItemStack hoveredStack = hovered.getItem();

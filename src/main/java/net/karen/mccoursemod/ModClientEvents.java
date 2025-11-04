@@ -159,14 +159,14 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerKeyInput(RegisterKeyMappingsEvent event) {
         // KEY BINDING CATEGORIES
-        event.registerCategory(KeyBinding.KEY_CATEGORY_MCCOURSE);
+        event.registerCategory(ModKeyMapping.KEY_CATEGORY_MCCOURSE);
 
         // KEY BINDING KEYWORDS
-        event.register(KeyBinding.GLOWING_MOBS_KEY.get()); // Glowing Mobs custom enchantment
-        event.register(KeyBinding.GLOWING_BLOCKS_KEY.get()); // Glowing Blocks custom enchantment
-        event.register(KeyBinding.MCCOURSE_BOTTLE_STORED_KEY.get()); // Mccourse Bottle stored 10 levels
-        event.register(KeyBinding.MCCOURSE_BOTTLE_RESTORED_KEY.get()); // Mccourse Bottle restored 10 levels
-        event.register(KeyBinding.UNLOCK_KEY.get()); // Unlock custom enchantment
+        event.register(ModKeyMapping.GLOWING_MOBS_KEY.get()); // Glowing Mobs custom enchantment
+        event.register(ModKeyMapping.GLOWING_BLOCKS_KEY.get()); // Glowing Blocks custom enchantment
+        event.register(ModKeyMapping.MCCOURSE_BOTTLE_STORED_KEY.get()); // Mccourse Bottle stored 10 levels
+        event.register(ModKeyMapping.MCCOURSE_BOTTLE_RESTORED_KEY.get()); // Mccourse Bottle restored 10 levels
+        event.register(ModKeyMapping.UNLOCK_KEY.get()); // Unlock custom enchantment
     }
 
     // CUSTOM EVENT - Register all custom item model property conditionals
@@ -236,8 +236,8 @@ public class ModClientEvents {
     // CUSTOM EVENT - Registry all custom fluid types
     @SubscribeEvent
     public static void registerFluids(RegisterClientExtensionsEvent event) {
-        event.registerFluidType(((BaseFluidType) ModFluidTypes.SOAP_WATER_FLUID_TYPE.get())
-                                .getClientFluidTypeExtensions(), ModFluidTypes.SOAP_WATER_FLUID_TYPE.get());
+        event.registerFluidType(((BaseFluidType) ModFluidTypes.SOAP_WATER_FLUID_TYPE.get()).getClientFluidTypeExtensions(),
+                                ModFluidTypes.SOAP_WATER_FLUID_TYPE.get());
     }
 
     // CUSTOM EVENT - Registry all custom shield special model renderers
@@ -250,9 +250,9 @@ public class ModClientEvents {
     // CUSTOM EVENT - Register all custom colored blocks
     @SubscribeEvent
     public static void registerColoredBlocks(RegisterColorHandlersEvent.Block event) {
-        event.register((state, level, pos, tintIndex) ->
-                       (level != null && pos != null) ? BiomeColors.getAverageFoliageColor(level, pos)
-                                                      : FoliageColor.FOLIAGE_DEFAULT, ModBlocks.COLORED_LEAVES.get());
+        event.register((_, level, pos, _) ->
+                       level != null && pos != null ? BiomeColors.getAverageFoliageColor(level, pos)
+                                                    : FoliageColor.FOLIAGE_DEFAULT, ModBlocks.COLORED_LEAVES.get());
     }
 
     // CUSTOM EVENT - Register all custom RENDER PIPELINES

@@ -8,12 +8,11 @@ import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.lwjgl.glfw.GLFW;
 
-public class KeyBinding {
+public class ModKeyMapping {
     // Mccourse custom category
     public static final KeyMapping.Category KEY_CATEGORY_MCCOURSE =
            new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "main"));
 
-    //public static final String KEY_CATEGORY_MCCOURSE = "key.category.mccoursemod";
     public static final String KEY_GLOWING_BLOCKS = "key.mccoursemod_glowing_blocks"; // Glowing Blocks custom key input
     public static final String KEY_GLOWING_MOBS = "key.mccoursemod_glowing_mobs"; // Glowing Mobs custom key input
     // Mccourse Bottle custom key inputs
@@ -25,26 +24,21 @@ public class KeyBinding {
     // Register all custom key binding
     public static final Lazy<KeyMapping> GLOWING_BLOCKS_KEY =
            Lazy.of(() -> new KeyMapping(KEY_GLOWING_BLOCKS, KeyConflictContext.IN_GAME,
-                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G,
-                                        KEY_CATEGORY_MCCOURSE));
+                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, KEY_CATEGORY_MCCOURSE));
 
     public static final Lazy<KeyMapping> GLOWING_MOBS_KEY =
            Lazy.of(() -> new KeyMapping(KEY_GLOWING_MOBS, KeyConflictContext.IN_GAME,
-                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_M,
-                                        KEY_CATEGORY_MCCOURSE));
+                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_M, KEY_CATEGORY_MCCOURSE));
 
     public static final Lazy<KeyMapping> MCCOURSE_BOTTLE_STORED_KEY =
-           Lazy.of(() -> new KeyMapping(KEY_MCCOURSE_BOTTLE_STORED,
-                                        KeyConflictContext.IN_GAME, InputConstants.Type.KEYSYM,
-                                        GLFW.GLFW_KEY_N, KEY_CATEGORY_MCCOURSE));
+           Lazy.of(() -> new KeyMapping(KEY_MCCOURSE_BOTTLE_STORED, KeyConflictContext.IN_GAME,
+                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_N, KEY_CATEGORY_MCCOURSE));
 
     public static final Lazy<KeyMapping> MCCOURSE_BOTTLE_RESTORED_KEY =
-           Lazy.of(() -> new KeyMapping(KEY_MCCOURSE_BOTTLE_RESTORED,
-                                        KeyConflictContext.IN_GAME, InputConstants.Type.KEYSYM,
-                                        GLFW.GLFW_KEY_B, KEY_CATEGORY_MCCOURSE));
+           Lazy.of(() -> new KeyMapping(KEY_MCCOURSE_BOTTLE_RESTORED, KeyConflictContext.IN_GAME,
+                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_B, KEY_CATEGORY_MCCOURSE));
 
     public static final Lazy<KeyMapping> UNLOCK_KEY =
            Lazy.of(() -> new KeyMapping(KEY_UNLOCK, KeyConflictContext.UNIVERSAL,
-                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V,
-                                        KEY_CATEGORY_MCCOURSE));
+                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, KEY_CATEGORY_MCCOURSE));
 }
