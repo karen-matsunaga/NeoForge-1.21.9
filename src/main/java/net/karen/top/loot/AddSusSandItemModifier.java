@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.loot;
+package net.karen.top.loot;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -33,7 +33,7 @@ public class AddSusSandItemModifier extends LootModifier {
             if (!condition.test(context)) { return generatedLoot; }
         }
         // THIS IS WAY TOO HIGH. Suggest something like 0.11f ish
-        if (context.getRandom().nextFloat() < 0.20f) {
+        if (context.getRandom().nextFloat() < 0.20F) {
             generatedLoot.clear();
             generatedLoot.add(new ItemStack(this.item)); // Generate new suspicious sand item
         }

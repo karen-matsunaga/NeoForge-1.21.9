@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.loot;
+package net.karen.top.loot;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

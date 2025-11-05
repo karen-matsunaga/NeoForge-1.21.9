@@ -1,7 +1,7 @@
-package net.karen.mccoursemod.loot;
+package net.karen.top.loot;
 
 import com.mojang.serialization.MapCodec;
-import net.karen.mccoursemod.MccourseMod;
+import net.karen.top.Top;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class ModLootModifiers {
     public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIER_SERIALIZERS =
-           DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, MccourseMod.MOD_ID);
+           DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Top.MOD_ID);
 
     // Register all custom loot table modifiers
     // CUSTOM loot table Structures, Entities, Blocks, Items etc.
