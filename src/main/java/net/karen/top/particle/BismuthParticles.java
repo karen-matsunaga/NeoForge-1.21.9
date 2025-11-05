@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.particle;
+package net.karen.top.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -11,30 +11,25 @@ public class BismuthParticles extends SingleQuadParticle {
     protected BismuthParticles(ClientLevel level, double x, double y, double z,
                                double xSpeed, double ySpeed, double zSpeed, SpriteSet spriteSet) {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet.first());
-        this.friction = 0.8f;
+        this.friction = 0.8F;
         this.lifetime = 80;
         this.setSpriteFromAge(spriteSet);
-        this.rCol = 1f;
-        this.gCol = 1f;
-        this.bCol = 1f;
+        this.rCol = 1F;
+        this.gCol = 1F;
+        this.bCol = 1F;
     }
 
     @Override
-    protected @NotNull Layer getLayer() {
-        return Layer.TRANSLUCENT;
-    }
+    protected @NotNull Layer getLayer() { return Layer.TRANSLUCENT; }
 
     public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
-        public Provider(SpriteSet spriteSet) {
-            this.spriteSet = spriteSet;
-        }
+        public Provider(SpriteSet spriteSet) { this.spriteSet = spriteSet; }
 
         @Override
         public @Nullable Particle createParticle(@NotNull SimpleParticleType type, @NotNull ClientLevel level,
-                                                 double x, double y, double z,
-                                                 double xSpeed, double ySpeed, double zSpeed,
+                                                 double x, double y, double z, double xSpeed, double ySpeed, double zSpeed,
                                                  @NotNull RandomSource source) {
             return new BismuthParticles(level, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
         }

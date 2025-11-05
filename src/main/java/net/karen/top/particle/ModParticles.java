@@ -1,6 +1,6 @@
-package net.karen.mccoursemod.particle;
+package net.karen.top.particle;
 
-import net.karen.mccoursemod.MccourseMod;
+import net.karen.top.Top;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 public class ModParticles {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
-           DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, MccourseMod.MOD_ID);
+           DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, Top.MOD_ID);
 
     // Registry all custom particles
     public static final Supplier<SimpleParticleType> BISMUTH_PARTICLES =

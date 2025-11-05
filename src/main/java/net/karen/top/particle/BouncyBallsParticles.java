@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.particle;
+package net.karen.top.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -13,27 +13,25 @@ public class BouncyBallsParticles extends SingleQuadParticle {
         super(level, x, y, z, xSpeed, ySpeed, zSpeed, spriteSet.first());
 
         // Position of particle
-        this.friction = 0.8f;
+        this.friction = 0.8F;
         this.xd = xSpeed;
         this.yd = ySpeed;
         this.zd = zSpeed;
 
         // Size of particle
-        this.quadSize *= 0.75f; // 75% of size
+        this.quadSize *= 0.75F; // 75% of size
         this.lifetime = 20; // 20 ticks
         this.setSpriteFromAge(spriteSet);
 
         // RGB colors of particle
-        this.rCol = 1f;
-        this.gCol = 1f;
-        this.bCol = 1f;
+        this.rCol = 1F;
+        this.gCol = 1F;
+        this.bCol = 1F;
     }
 
     // DEFAULT METHOD - Return of particle layer
     @Override
-    protected @NotNull Layer getLayer() {
-        return Layer.TRANSLUCENT;
-    }
+    protected @NotNull Layer getLayer() { return Layer.TRANSLUCENT; }
 
     public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
@@ -44,8 +42,7 @@ public class BouncyBallsParticles extends SingleQuadParticle {
         // DEFAULT METHOD - Create custom particles
         @Override
         public @Nullable Particle createParticle(@NotNull SimpleParticleType type, @NotNull ClientLevel level,
-                                                 double x, double y, double z,
-                                                 double xSpeed, double ySpeed, double zSpeed,
+                                                 double x, double y, double z, double xSpeed, double ySpeed, double zSpeed,
                                                  @NotNull RandomSource randomSource) {
             return new BouncyBallsParticles(level, x, y, z, xSpeed, ySpeed, zSpeed, this.spriteSet);
         }
