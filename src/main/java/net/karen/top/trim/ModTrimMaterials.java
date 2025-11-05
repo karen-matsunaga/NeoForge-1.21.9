@@ -1,6 +1,6 @@
-package net.karen.mccoursemod.trim;
+package net.karen.top.trim;
 
-import net.karen.mccoursemod.MccourseMod;
+import net.karen.top.Top;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -16,18 +16,15 @@ public class ModTrimMaterials {
     // Registry all custom TRIM MATERIAL textures
     // BISMUTH
     public static final ResourceKey<TrimMaterial> BISMUTH =
-           ResourceKey.create(Registries.TRIM_MATERIAL,
-                              ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "bismuth"));
+           ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "bismuth"));
 
     // ALEXANDRITE
     public static final ResourceKey<TrimMaterial> ALEXANDRITE =
-           ResourceKey.create(Registries.TRIM_MATERIAL,
-                              ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "alexandrite"));
+           ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "alexandrite"));
 
     // PINK
     public static final ResourceKey<TrimMaterial> PINK =
-           ResourceKey.create(Registries.TRIM_MATERIAL,
-                              ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "pink"));
+           ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "pink"));
 
     // Registry all custom MATERIAL ASSET GROUP ingredients
     public static final MaterialAssetGroup BISMUTH_MATERIAL = MaterialAssetGroup.create("bismuth");
