@@ -1,9 +1,9 @@
-package net.karen.mccoursemod.network;
+package net.karen.top.network;
 
 import io.netty.buffer.ByteBuf;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.item.custom.LevelChargerItem;
-import net.karen.mccoursemod.util.ModTags;
+import net.karen.top.Top;
+import net.karen.top.item.custom.LevelChargerItem;
+import net.karen.top.util.ModTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -15,10 +15,11 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
+import static net.karen.top.util.ChatUtils.top;
 
 public record LevelChargerSlotPacketPayload(int slotIndex) implements CustomPacketPayload {
     public static final Type<LevelChargerSlotPacketPayload> TYPE =
-           new Type<>(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "level_charger_data"));
+           new Type<>(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "level_charger_data"));
 
     // TYPE
     @Override
@@ -53,9 +54,10 @@ public record LevelChargerSlotPacketPayload(int slotIndex) implements CustomPack
                                     }
                                 }
                             }
-        }).exceptionally(e -> { // Handle exception
-                         context.disconnect(Component.translatable("mccoursemod.networking.failed", e.getMessage()));
-                         return null;
-                         });
+        })
+        .exceptionally(e -> { // Handle exception
+                          context.disconnect(Component.translatable(top + "networking.failed", e.getMessage()));
+                          return null;
+                       });
     }
 }

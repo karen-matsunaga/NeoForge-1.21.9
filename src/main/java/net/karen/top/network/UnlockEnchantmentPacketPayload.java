@@ -1,10 +1,9 @@
-package net.karen.mccoursemod.network;
+package net.karen.top.network;
 
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.component.ModDataComponentTypes;
-import net.karen.mccoursemod.enchantment.ModEnchantments;
-import net.karen.mccoursemod.util.ChatUtils;
-import net.karen.mccoursemod.util.Utils;
+import net.karen.top.Top;
+import net.karen.top.component.ModDataComponentTypes;
+import net.karen.top.enchantment.ModEnchantments;
+import net.karen.top.util.Utils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -19,12 +18,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import org.jetbrains.annotations.NotNull;
+import static net.karen.top.util.ChatUtils.*;
 
 public record UnlockEnchantmentPacketPayload(boolean locked,
                                              int index) implements CustomPacketPayload {
     // TYPE
     public static final CustomPacketPayload.Type<UnlockEnchantmentPacketPayload> TYPE =
-           new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "unlock_data"));
+           new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "unlock_data"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() { return TYPE; }
@@ -47,13 +47,12 @@ public record UnlockEnchantmentPacketPayload(boolean locked,
                 // Item with UNLOCK enchantment
                 if (!target.isEmpty() && Utils.toolEnchant(ench, ModEnchantments.UNLOCK, target) > 0) {
                     target.set(ModDataComponentTypes.UNLOCK, payload.locked);
-                    ChatUtils.playerDefault(serverPlayer, payload.locked
-                                            ? "§c\uD83D\uDD12 Item locked!" : "§a\uD83D\uDD13 Item unlocked!");
+                    playerDefault(serverPlayer, payload.locked ? "§c\uD83D\uDD12 Item locked!" : "§a\uD83D\uDD13 Item unlocked!");
                 }
             }
         })
         .exceptionally(e -> { // Handle exception
-            context.disconnect(Component.translatable("mccoursemod.networking.failed", e.getMessage()));
+            context.disconnect(Component.translatable(top + ".networking.failed", e.getMessage()));
             return null;
         });
     }
