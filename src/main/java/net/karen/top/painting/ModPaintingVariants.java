@@ -1,6 +1,6 @@
-package net.karen.mccoursemod.painting;
+package net.karen.top.painting;
 
-import net.karen.mccoursemod.MccourseMod;
+import net.karen.top.Top;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -30,8 +30,7 @@ public class ModPaintingVariants {
 
     // CUSTOM METHOD - Registry all custom Painting Variant WITHOUT AUTHOR + TOOLTIP DESCRIPTION COLOR
     private static void register(BootstrapContext<PaintingVariant> context,
-                                 ResourceKey<PaintingVariant> key, int width, int height,
-                                 boolean hasAuthor) {
+                                 ResourceKey<PaintingVariant> key, int width, int height, boolean hasAuthor) {
         context.register(key, new PaintingVariant(width, height, key.location(),
                                                   Optional.of(Component.translatable(
                                                               key.location().toLanguageKey("painting", "title"))
@@ -44,6 +43,6 @@ public class ModPaintingVariants {
 
     // CUSTOM METHOD - Registry all custom Painting Variant resource key
     private static ResourceKey<PaintingVariant> create(String name) {
-        return ResourceKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, name));
+        return ResourceKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
     }
 }
