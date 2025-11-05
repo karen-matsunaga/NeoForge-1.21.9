@@ -1,8 +1,8 @@
-package net.karen.mccoursemod.fluid;
+package net.karen.top.fluid;
 
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.item.ModItems;
+import net.karen.top.Top;
+import net.karen.top.block.ModBlocks;
+import net.karen.top.item.ModItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BucketItem;
@@ -22,12 +22,12 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
-import static net.karen.mccoursemod.util.ChatUtils.*;
+import static net.karen.top.util.ChatUtils.*;
 
 public class ModFluids {
     // Registry all custom fluids
     public static final DeferredRegister<Fluid> FLUIDS =
-           DeferredRegister.create(BuiltInRegistries.FLUID, MccourseMod.MOD_ID);
+           DeferredRegister.create(BuiltInRegistries.FLUID, Top.MOD_ID);
 
     // Registry all fluids source and fluids flowing
     public static final Supplier<FlowingFluid> SOURCE_SOAP_WATER =

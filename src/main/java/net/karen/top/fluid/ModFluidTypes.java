@@ -1,6 +1,6 @@
-package net.karen.mccoursemod.fluid;
+package net.karen.top.fluid;
 
-import net.karen.mccoursemod.MccourseMod;
+import net.karen.top.Top;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.joml.Vector3f;
 import java.util.function.Supplier;
-import static net.karen.mccoursemod.util.ChatUtils.*;
+import static net.karen.top.util.ChatUtils.*;
 
 public class ModFluidTypes {
     public static final ResourceLocation WATER_STILL_RL = ResourceLocation.parse("block/water_still");
@@ -17,7 +17,7 @@ public class ModFluidTypes {
 
     // Registry all fluid types
     public static final DeferredRegister<FluidType> FLUID_TYPES =
-           DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, MccourseMod.MOD_ID);
+           DeferredRegister.create(NeoForgeRegistries.Keys.FLUID_TYPES, Top.MOD_ID);
 
     // Registry all custom fluid colors types
     public static final Supplier<FluidType> SOAP_WATER_FLUID_TYPE =

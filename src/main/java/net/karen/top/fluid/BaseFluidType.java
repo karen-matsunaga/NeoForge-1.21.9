@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.fluid;
+package net.karen.top.fluid;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Camera;
