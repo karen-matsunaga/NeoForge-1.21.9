@@ -1,6 +1,6 @@
-package net.karen.mccoursemod.sound;
+package net.karen.top.sound;
 
-import net.karen.mccoursemod.MccourseMod;
+import net.karen.top.Top;
 import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-           DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, MccourseMod.MOD_ID);
+           DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, Top.MOD_ID);
 
     // ** CUSTOM Advanced item sounds **
     // CHISEL item sound
@@ -61,18 +61,18 @@ public class ModSounds {
 
     // CUSTOM METHOD - Registry all custom songs on Jukebox
     private static ResourceKey<JukeboxSong> createSong(String name) {
-        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, name));
+        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
     }
 
     // CUSTOM METHOD - Registry all custom supplier sound event type -> Used ITEM or BLOCK
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, name);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
     }
 
     // CUSTOM METHOD - Registry all custom deferred holder sound event type -> MUSIC DISC
     private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvents(String name) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, name);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
     }
 
