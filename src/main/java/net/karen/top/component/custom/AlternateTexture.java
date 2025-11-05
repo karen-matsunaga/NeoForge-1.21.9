@@ -1,8 +1,8 @@
-package net.karen.mccoursemod.component.custom;
+package net.karen.top.component.custom;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.karen.mccoursemod.component.ModDataComponentTypes;
+import net.karen.top.component.ModDataComponentTypes;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
 import net.minecraft.core.component.DataComponentType;

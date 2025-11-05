@@ -1,12 +1,12 @@
-package net.karen.mccoursemod.component;
+package net.karen.top.component;
 
 import com.mojang.serialization.Codec;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.component.custom.Coordinates;
-import net.karen.mccoursemod.component.custom.FoundBlock;
-import net.karen.mccoursemod.enchantment.custom.AutoSmeltEnchantmentEffect;
-import net.karen.mccoursemod.enchantment.custom.MoreOresEnchantmentEffect;
-import net.karen.mccoursemod.enchantment.custom.RainbowEnchantmentEffect;
+import net.karen.top.Top;
+import net.karen.top.component.custom.Coordinates;
+import net.karen.top.component.custom.FoundBlock;
+import net.karen.top.enchantment.custom.AutoSmeltEnchantmentEffect;
+import net.karen.top.enchantment.custom.MoreOresEnchantmentEffect;
+import net.karen.top.enchantment.custom.RainbowEnchantmentEffect;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -18,11 +18,11 @@ import java.util.function.UnaryOperator;
 public class ModDataComponentTypes {
     // Data Component Type Registries
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES =
-           DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, MccourseMod.MOD_ID);
+           DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, Top.MOD_ID);
 
     // Enchantment Data Component Type Registries
     public static final DeferredRegister<DataComponentType<?>> ENCHANTMENT_COMPONENT_TYPES =
-           DeferredRegister.createDataComponents(Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE, MccourseMod.MOD_ID);
+           DeferredRegister.createDataComponents(Registries.ENCHANTMENT_EFFECT_COMPONENT_TYPE, Top.MOD_ID);
 
     // COORDINATES data component
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Coordinates>> COORDINATES =
@@ -39,7 +39,7 @@ public class ModDataComponentTypes {
            register("unlock", builder ->
                     builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));
 
-    // Mccourse Mod Bottle -> STORED LEVELS data component
+    // Special Bottle -> STORED LEVELS data component
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> STORED_LEVELS =
            register("stored_levels", builder ->
                     builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));

@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.component.custom;
+package net.karen.top.component.custom;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -17,8 +17,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import java.util.Map;
 import java.util.Objects;
-import static net.karen.mccoursemod.item.custom.MetalDetectorItem.oreColors;
-import static net.karen.mccoursemod.util.ChatUtils.*;
+import static net.karen.top.item.custom.MetalDetectorItem.oreColors;
+import static net.karen.top.util.ChatUtils.*;
 
 public record FoundBlock(BlockState block, BlockPos position,
                          ResourceKey<Level> dimension, ResourceKey<Biome> biome) {
@@ -66,9 +66,7 @@ public record FoundBlock(BlockState block, BlockPos position,
 
     // CUSTOM METHOD - Block HASH is equals with Position HASH
     @Override
-    public int hashCode() {
-        return Objects.hash(this.block, this.position, this.dimension, this.biome);
-    }
+    public int hashCode() { return Objects.hash(this.block, this.position, this.dimension, this.biome); }
 
     // CUSTOM METHOD - Block detected is equals with Position founded
     @Override
