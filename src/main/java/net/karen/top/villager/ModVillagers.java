@@ -1,9 +1,9 @@
-package net.karen.mccoursemod.villager;
+package net.karen.top.villager;
 
 import com.google.common.collect.ImmutableSet;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.sound.ModSounds;
+import net.karen.top.Top;
+import net.karen.top.block.ModBlocks;
+import net.karen.top.sound.ModSounds;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -16,11 +16,11 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModVillagers {
     // Register all custom villager POI types
     public static final DeferredRegister<PoiType> POI_TYPES =
-           DeferredRegister.create(BuiltInRegistries.POINT_OF_INTEREST_TYPE, MccourseMod.MOD_ID);
+           DeferredRegister.create(BuiltInRegistries.POINT_OF_INTEREST_TYPE, Top.MOD_ID);
 
     // Register all custom villager professions types
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS =
-           DeferredRegister.create(BuiltInRegistries.VILLAGER_PROFESSION, MccourseMod.MOD_ID);
+           DeferredRegister.create(BuiltInRegistries.VILLAGER_PROFESSION, Top.MOD_ID);
 
     // Register all custom villager POI
     // KAUPEN POI
