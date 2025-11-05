@@ -1,14 +1,14 @@
-package net.karen.mccoursemod.compat;
+package net.karen.top.compat;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.*;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.recipe.*;
-import net.karen.mccoursemod.screen.ModMenuTypes;
-import net.karen.mccoursemod.screen.custom.*;
+import net.karen.top.Top;
+import net.karen.top.block.ModBlocks;
+import net.karen.top.recipe.*;
+import net.karen.top.screen.ModMenuTypes;
+import net.karen.top.screen.custom.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.item.ItemStack;
@@ -21,7 +21,7 @@ import java.util.*;
 public class JEIModPlugin implements IModPlugin {
     @Override
     public @NotNull ResourceLocation getPluginUid() {
-        return ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "jei_plugin");
+        return ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "jei_plugin");
     }
 
     @Override

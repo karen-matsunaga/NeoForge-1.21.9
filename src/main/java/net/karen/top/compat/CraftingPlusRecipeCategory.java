@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.compat;
+package net.karen.top.compat;
 
 import com.mojang.serialization.Codec;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -10,9 +10,9 @@ import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.recipe.CraftingPlusRecipe;
+import net.karen.top.Top;
+import net.karen.top.block.ModBlocks;
+import net.karen.top.recipe.CraftingPlusRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -20,14 +20,14 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
+import static net.karen.top.util.ChatUtils.top;
 
 public class CraftingPlusRecipeCategory implements IRecipeCategory<CraftingPlusRecipe> {
     public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "crafting_plus");
+           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "crafting_plus");
 
     public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
-                                                 "textures/gui/crafting_plus/crafting_plus_gui.png");
+           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "textures/gui/crafting_plus/crafting_plus_gui.png");
 
     public static final IRecipeType<CraftingPlusRecipe> CRAFTING_PLUS_TYPE =
            IRecipeType.create(UID, CraftingPlusRecipe.class);
@@ -42,14 +42,10 @@ public class CraftingPlusRecipeCategory implements IRecipeCategory<CraftingPlusR
     }
 
     @Override
-    public @NotNull IRecipeType<CraftingPlusRecipe> getRecipeType() {
-        return CRAFTING_PLUS_TYPE;
-    }
+    public @NotNull IRecipeType<CraftingPlusRecipe> getRecipeType() { return CRAFTING_PLUS_TYPE; }
 
     @Override
-    public @NotNull Component getTitle() {
-        return Component.translatable("block.mccoursemod.crafting_plus");
-    }
+    public @NotNull Component getTitle() { return Component.translatable("block." + top + "crafting_plus"); }
 
     @Override
     public @Nullable IDrawable getIcon() { return icon; }

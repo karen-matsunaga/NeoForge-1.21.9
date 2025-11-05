@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.compat;
+package net.karen.top.compat;
 
 import com.mojang.serialization.Codec;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -12,12 +12,12 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.item.ModItems;
-import net.karen.mccoursemod.recipe.GemEmpoweringStationRecipe;
-import net.karen.mccoursemod.screen.renderer.EnergyDisplayTooltipArea;
-import net.karen.mccoursemod.util.ModEnergyStorage;
+import net.karen.top.Top;
+import net.karen.top.block.ModBlocks;
+import net.karen.top.item.ModItems;
+import net.karen.top.recipe.GemEmpoweringStationRecipe;
+import net.karen.top.screen.renderer.EnergyDisplayTooltipArea;
+import net.karen.top.util.ModEnergyStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -30,10 +30,10 @@ public class GemEmpoweringStationRecipeCategory
        implements IRecipeCategory<GemEmpoweringStationRecipe> {
 
     public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "gem_empowering_station");
+           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "gem_empowering_station");
 
     public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID,
+           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
                                                  "textures/gui/gem_empowering_station/gem_empowering_station_gui.png");
 
     public static final IRecipeType<GemEmpoweringStationRecipe> GEM_EMPOWERING_TYPE =

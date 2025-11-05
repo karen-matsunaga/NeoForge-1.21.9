@@ -1,4 +1,4 @@
-package net.karen.mccoursemod.compat;
+package net.karen.top.compat;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
@@ -9,10 +9,10 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.karen.mccoursemod.MccourseMod;
-import net.karen.mccoursemod.block.ModBlocks;
-import net.karen.mccoursemod.block.entity.KaupenFurnaceBlockEntity;
-import net.karen.mccoursemod.recipe.KaupenFurnaceRecipe;
+import net.karen.top.Top;
+import net.karen.top.block.ModBlocks;
+import net.karen.top.block.entity.KaupenFurnaceBlockEntity;
+import net.karen.top.recipe.KaupenFurnaceRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -22,13 +22,14 @@ import net.minecraft.world.item.crafting.display.FurnaceRecipeDisplay;
 import net.minecraft.world.item.crafting.display.RecipeDisplay;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
+import static net.karen.top.util.ChatUtils.top;
 
 public class KaupenFurnaceRecipeCategory implements IRecipeCategory<KaupenFurnaceRecipe> {
     public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "kaupen_furnace");
+           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "kaupen_furnace");
 
     public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "textures/gui/container/furnace.png");
+           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "textures/gui/container/furnace.png");
 
     public static final IRecipeType<KaupenFurnaceRecipe> KAUPEN_FURNACE_TYPE =
            IRecipeType.create(UID, KaupenFurnaceRecipe.class);
@@ -44,7 +45,7 @@ public class KaupenFurnaceRecipeCategory implements IRecipeCategory<KaupenFurnac
     public @NotNull IRecipeType<KaupenFurnaceRecipe> getRecipeType() { return KAUPEN_FURNACE_TYPE; }
 
     @Override
-    public @NotNull Component getTitle() { return Component.translatable("block.mccoursemod.kaupen_furnace"); }
+    public @NotNull Component getTitle() { return Component.translatable("block." + top + "kaupen_furnace"); }
 
     @Override
     public IDrawable getIcon() { return icon; }
