@@ -1,16 +1,16 @@
-// 1.21.10	2025-11-05T19:58:43.0672721	Top Item Tags
+// 1.21.10	2025-11-06T11:06:39.7785876	Top Item Tags
 480c6286126ae800fbe87e5582e0e3f3a7fbf9e9 data/c/tags/item/buckets.json
 480c6286126ae800fbe87e5582e0e3f3a7fbf9e9 data/c/tags/item/buckets/entity_water.json
 480c6286126ae800fbe87e5582e0e3f3a7fbf9e9 data/c/tags/item/buckets/water.json
 97741b5df814f0947306c5631a69e4b37c0b9a80 data/c/tags/item/tools/fishing_rod.json
 f2ed0f000c20f7835339c2bfa5a5dc0a10c1e9b9 data/c/tags/item/tools/shield.json
 1d7084ee2d7a16623d83d15c4691231ff598bc01 data/minecraft/tags/item/axes.json
-ce8aa8ecbbe66e7a638bec84fec36f2bec33e446 data/minecraft/tags/item/beacon_payment_items.json
+e60e1095e8235c8741c7574a372f8a6df720393b data/minecraft/tags/item/beacon_payment_items.json
 215941a97ccdd14fcbdc09e78276742ac5560a51 data/minecraft/tags/item/bee_food.json
-9d199393b3431dcb1e1e3129bd331679ee1c31a8 data/minecraft/tags/item/chest_armor.json
+f63ee3b5af042d4021ba3687c837b2b888c8ae0d data/minecraft/tags/item/chest_armor.json
 7ead8a791564b40e4d8ecd1c83e3d638a1dc6992 data/minecraft/tags/item/enchantable/bow.json
-f56ce93ad350967682e4677103ea1fb1c2416a81 data/minecraft/tags/item/enchantable/durability.json
-dae5855aa771639f8df4396b8cd776a6c5da5598 data/minecraft/tags/item/enchantable/equippable.json
+e2ef95b671b16b161782d4295280e91da00834a2 data/minecraft/tags/item/enchantable/durability.json
+0cb46eb4692376d9dc0f684d9fed45038471f736 data/minecraft/tags/item/enchantable/equippable.json
 97741b5df814f0947306c5631a69e4b37c0b9a80 data/minecraft/tags/item/enchantable/fishing.json
 215941a97ccdd14fcbdc09e78276742ac5560a51 data/minecraft/tags/item/flowers.json
 ba24450f1f295c16c40f83c4ea4789fcbddcfec9 data/minecraft/tags/item/foot_armor.json
@@ -57,9 +57,6 @@ f93f8f5a526509d9db92d335ade148f009a05637 data/top/tags/item/level_charger_red.js
 70c66be77bde921e54a0dd349d6432c67c90f1ae data/top/tags/item/level_charger_specif.json
 f0714618cfa522413c433d2dfdfb6c335153b24c data/top/tags/item/luck_items.json
 6949d082bc8eab958825fd8384a4f90c3c3b3cbe data/top/tags/item/magic_block.json
-33609fe8e6932dccf1dbda1e40791b3126adba04 data/top/tags/item/mccourse_elytra.json
-766ea538d22c7badc8a673aabc7d710ad7ea22b1 data/top/tags/item/mccourse_items.json
-c5fab04810a5e6b7b7d2e17382afc337b83656af data/top/tags/item/mccourse_ores_items.json
 14f2f0d7fa0b19b565d7a9c81210b119d89bc447 data/top/tags/item/ore_block_items.json
 ffc0e7d0a74e4666bd0952a5d1d4a41df1a25d1f data/top/tags/item/pink_armor.json
 59e42a81917b0f606aab85d2293124f4d1ee15f9 data/top/tags/item/pink_ores_items.json
@@ -76,6 +73,9 @@ ffc0e7d0a74e4666bd0952a5d1d4a41df1a25d1f data/top/tags/item/pink_armor.json
 658b9b3b3de4387b81e5272d692c99a82952cd39 data/top/tags/item/repairs_pink_armor.json
 5db69586b6c50b2befacf44de1aedc4a5af092fe data/top/tags/item/repairs_redstone_armor.json
 003335a81b58279bebf281d1d1082ab96ee4768c data/top/tags/item/restore_blacklist_items.json
-78454b0720cfa4396fef76616e6c46c02d613ffa data/top/tags/item/ultra_compactor_items.json
+33609fe8e6932dccf1dbda1e40791b3126adba04 data/top/tags/item/top_elytra.json
+766ea538d22c7badc8a673aabc7d710ad7ea22b1 data/top/tags/item/top_items.json
+c5fab04810a5e6b7b7d2e17382afc337b83656af data/top/tags/item/top_ores_items.json
+9f840a6b19b5016abcd28183a919cef45a078665 data/top/tags/item/ultra_compactor_items.json
 c8e699ae3664a03230a3d18147825224d180386a data/top/tags/item/ultra_compactor_result.json
 014f932a8e404d177b02794f7502a753cb0ae9f0 data/top/tags/item/walnut_logs.json

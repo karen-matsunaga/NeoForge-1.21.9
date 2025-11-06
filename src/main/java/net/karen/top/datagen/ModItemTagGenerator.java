@@ -25,14 +25,13 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         // CUSTOM Items
-        tag(ItemTags.BEACON_PAYMENT_ITEMS).addTag(ModTags.Items.MCCOURSEMOD_ITEMS);
+        tag(ItemTags.BEACON_PAYMENT_ITEMS).addTag(ModTags.Items.TOP_ITEMS);
 
-        // MCCOURSE custom items
-        this.tag(ModTags.Items.MCCOURSEMOD_ITEMS).add(ModItems.PINK.get(),
-                                                      ModItems.ALEXANDRITE.get(), ModItems.RAW_ALEXANDRITE.get(),
-                                                      ModItems.BISMUTH.get(), ModItems.RAW_BISMUTH.get());
+        // Top custom items
+        this.tag(ModTags.Items.TOP_ITEMS).add(ModItems.PINK.get(), ModItems.ALEXANDRITE.get(), ModItems.RAW_ALEXANDRITE.get(),
+                                              ModItems.BISMUTH.get(), ModItems.RAW_BISMUTH.get());
 
-        this.tag(ModTags.Items.MCCOURSE_ORES_ITEMS).addTag(ModTags.Items.PINK_ORES_ITEMS)
+        this.tag(ModTags.Items.TOP_ORES_ITEMS).addTag(ModTags.Items.PINK_ORES_ITEMS)
                                                    .addTag(ModTags.Items.ALEXANDRITE_ORES_ITEMS)
                                                    .addTag(ModTags.Items.BISMUTH_ORES_ITEMS);
 
@@ -166,15 +165,14 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
         tag(ItemTags.WITHER_SKELETON_DISLIKED_WEAPONS).addTag(ModTags.Items.BOW_TOOLS);
 
         tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(ModTags.Items.BOW_TOOLS)
-                                            .addTag(ModTags.Items.MCCOURSE_ELYTRA)
-                                            .add(ModItems.ALEXANDRITE_SHIELD.get(),
-                                                 ModItems.TOP_FISHING_ROD.get());
+                                            .addTag(ModTags.Items.TOP_ELYTRA)
+                                            .add(ModItems.ALEXANDRITE_SHIELD.get(), ModItems.TOP_FISHING_ROD.get());
 
         tag(ItemTags.BOW_ENCHANTABLE).addTag(ModTags.Items.BOW_TOOLS);
 
         // CUSTOM Elytra
-        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).addTag(ModTags.Items.MCCOURSE_ELYTRA);
-        tag(ModTags.Items.MCCOURSE_ELYTRA).add(ModItems.DIAMOND_ELYTRA.get(), ModItems.EMERALD_ELYTRA.get());
+        tag(ItemTags.EQUIPPABLE_ENCHANTABLE).addTag(ModTags.Items.TOP_ELYTRA);
+        tag(ModTags.Items.TOP_ELYTRA).add(ModItems.DIAMOND_ELYTRA.get(), ModItems.EMERALD_ELYTRA.get());
 
         // CUSTOM Shield
         this.tag(Tags.Items.TOOLS_SHIELD).add(ModItems.ALEXANDRITE_SHIELD.get());
@@ -253,7 +251,6 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                       ModItems.ULTRA_COPPER_CHESTPLATE.get(),
                                       ModItems.LAPIS_LAZULI_CHESTPLATE.get(),
                                       ModItems.REDSTONE_CHESTPLATE.get(),
-                                      ModItems.EMERALD_ELYTRA.get(),
                                       ModItems.EMERALD_CHESTPLATE.get());
 
         // CUSTOM Helmet
@@ -340,7 +337,7 @@ public class ModItemTagGenerator extends VanillaItemTagsProvider {
                                                      .addTag(Tags.Items.GEMS_EMERALD)
                                                      .addTag(Tags.Items.GEMS_LAPIS)
                                                      .addTag(Tags.Items.DUSTS_REDSTONE)
-                                                     .addTag(ModTags.Items.MCCOURSEMOD_ITEMS)
+                                                     .addTag(ModTags.Items.TOP_ITEMS)
                                                      .addTag(Tags.Items.RAW_MATERIALS)
                                                      .add(Items.ENDER_PEARL, Items.BLAZE_ROD, Items.ROTTEN_FLESH,
                                                           Items.GUNPOWDER, Items.NETHER_STAR, Items.PHANTOM_MEMBRANE,

@@ -22,11 +22,11 @@
     "top:gem_empowering_station",
     "top:pedestal",
     "top:crafting_plus",
-    "#top:mccourse_mod_ores",
+    "#top:top_ores",
     "#top:bismuth_blocks",
     "#top:alexandrite_blocks",
     "#top:ender_pearl_blocks",
     "#top:mobs_blocks_drops",
-    "#top:mccourse_mod_oxidizable_blocks"
+    "#top:top_oxidizable_blocks"
   ]
 }

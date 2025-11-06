@@ -45,12 +45,12 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                       ModBlocks.GEM_EMPOWERING_STATION.get(),
                                                       ModBlocks.PEDESTAL.get(),
                                                       ModBlocks.CRAFTING_PLUS.get())
-                                                 .addTag(ModTags.Blocks.MCCOURSE_MOD_ORES)
+                                                 .addTag(ModTags.Blocks.TOP_ORES)
                                                  .addTag(ModTags.Blocks.BISMUTH_BLOCKS)
                                                  .addTag(ModTags.Blocks.ALEXANDRITE_BLOCKS)
                                                  .addTag(ModTags.Blocks.ENDER_PEARL_BLOCKS)
                                                  .addTag(ModTags.Blocks.MOBS_BLOCKS_DROPS)
-                                                 .addTag(ModTags.Blocks.MCCOURSE_MOD_OXIDIZABLE_BLOCKS);
+                                                 .addTag(ModTags.Blocks.TOP_OXIDIZABLE_BLOCKS);
 
         // Paxel break
         this.tag(ModTags.Blocks.MINEABLE_WITH_PAXEL).addTag(BlockTags.MINEABLE_WITH_AXE)
@@ -58,24 +58,18 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                     .addTag(BlockTags.MINEABLE_WITH_SHOVEL);
 
         // ** CUSTOM ores **
-        // Mccourse Mod Ores
-        this.tag(ModTags.Blocks.MCCOURSE_MOD_ORES).add(ModBlocks.BISMUTH_ORE.get(),
-                                                       ModBlocks.BISMUTH_DEEPSLATE_ORE.get(),
-                                                       ModBlocks.BISMUTH_END_ORE.get(),
-                                                       ModBlocks.BISMUTH_NETHER_ORE.get(),
-                                                       ModBlocks.ALEXANDRITE_ORE.get(),
-                                                       ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get(),
-                                                       ModBlocks.END_STONE_ALEXANDRITE_ORE.get(),
-                                                       ModBlocks.NETHER_ALEXANDRITE_ORE.get(),
-                                                       ModBlocks.PINK_ORE.get(),
-                                                       ModBlocks.DEEPSLATE_PINK_ORE.get(),
-                                                       ModBlocks.END_STONE_PINK_ORE.get(),
-                                                       ModBlocks.NETHER_PINK_ORE.get());
+        // Top Ores
+        this.tag(ModTags.Blocks.TOP_ORES).add(ModBlocks.BISMUTH_ORE.get(), ModBlocks.BISMUTH_DEEPSLATE_ORE.get(),
+                                              ModBlocks.BISMUTH_END_ORE.get(), ModBlocks.BISMUTH_NETHER_ORE.get(),
+                                              ModBlocks.ALEXANDRITE_ORE.get(), ModBlocks.DEEPSLATE_ALEXANDRITE_ORE.get(),
+                                              ModBlocks.END_STONE_ALEXANDRITE_ORE.get(), ModBlocks.NETHER_ALEXANDRITE_ORE.get(),
+                                              ModBlocks.PINK_ORE.get(), ModBlocks.DEEPSLATE_PINK_ORE.get(),
+                                              ModBlocks.END_STONE_PINK_ORE.get(), ModBlocks.NETHER_PINK_ORE.get());
 
         // All ores
         this.tag(ModTags.Blocks.ALL_ORES).addTag(Tags.Blocks.ORES)
                                          .addTag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE)
-                                         .addTag(ModTags.Blocks.MCCOURSE_MOD_ORES);
+                                         .addTag(ModTags.Blocks.TOP_ORES);
 
         // ** CUSTOM TIER TOOLS **
         // BISMUTH as Netherite tier
@@ -95,6 +89,9 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
         tag(ModTags.Blocks.INCORRECT_FOR_LAPIS_LAZULI_TOOL);
         // REDSTONE
         tag(ModTags.Blocks.NEEDS_REDSTONE_TOOL);
+        tag(ModTags.Blocks.INCORRECT_FOR_REDSTONE_TOOL);
+        // EMERALD
+        tag(ModTags.Blocks.NEEDS_EMERALD_TOOL);
         tag(ModTags.Blocks.INCORRECT_FOR_REDSTONE_TOOL);
 
         // ** CUSTOM enchantments **
@@ -207,7 +204,7 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
         // METAL DETECTOR
         tag(ModTags.Blocks.METAL_DETECTOR_VALUABLES).addTag(Tags.Blocks.ORES)
                                                     .addTag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE)
-                                                    .addTag(ModTags.Blocks.MCCOURSE_MOD_ORES);
+                                                    .addTag(ModTags.Blocks.TOP_ORES);
 
         tag(ModTags.Blocks.METAL_DETECTOR_COLORS).addTag(Tags.Blocks.ORES_GOLD)
                                                  .addTag(Tags.Blocks.ORES_COPPER);
@@ -254,14 +251,10 @@ public class ModBlockTagGenerator extends VanillaBlockTagsProvider {
                                                        ModBlocks.SUGAR_CANE_BLOCK.get());
 
         // ** CUSTOM oxidizable block **
-        this.tag(ModTags.Blocks.MCCOURSE_MOD_OXIDIZABLE_BLOCKS).add(ModBlocks.RUBY_BLOCK.get(),
-                                                                    ModBlocks.RUBY_BLOCK_1.get(),
-                                                                    ModBlocks.RUBY_BLOCK_2.get(),
-                                                                    ModBlocks.RUBY_BLOCK_3.get(),
-                                                                    ModBlocks.WAXED_RUBY_BLOCK.get(),
-                                                                    ModBlocks.WAXED_RUBY_BLOCK_1.get(),
-                                                                    ModBlocks.WAXED_RUBY_BLOCK_2.get(),
-                                                                    ModBlocks.WAXED_RUBY_BLOCK_3.get());
+        this.tag(ModTags.Blocks.TOP_OXIDIZABLE_BLOCKS).add(ModBlocks.RUBY_BLOCK.get(), ModBlocks.RUBY_BLOCK_1.get(),
+                                                           ModBlocks.RUBY_BLOCK_2.get(), ModBlocks.RUBY_BLOCK_3.get(),
+                                                           ModBlocks.WAXED_RUBY_BLOCK.get(), ModBlocks.WAXED_RUBY_BLOCK_1.get(),
+                                                           ModBlocks.WAXED_RUBY_BLOCK_2.get(), ModBlocks.WAXED_RUBY_BLOCK_3.get());
 
         // ** CUSTOM flower and pot flowers **
         this.tag(BlockTags.FLOWERS).add(ModBlocks.SNAPDRAGON.get());

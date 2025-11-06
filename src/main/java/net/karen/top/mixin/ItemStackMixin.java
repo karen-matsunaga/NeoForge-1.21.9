@@ -60,7 +60,7 @@ public abstract class ItemStackMixin {
             }
         }
         // ELYTRA PLUS item
-        if (stack.is(ModTags.Items.MCCOURSE_ELYTRA)) {
+        if (stack.is(ModTags.Items.TOP_ELYTRA)) {
             if (item instanceof ElytraPlusItem elytraPlus) {
                 tooltipLineLiteralRGB(tooltip, COLORS, stack, elytraPlus.elytraItemName().getFirst());
                 tooltipLineLiteralRGBColors(tooltip, COLORS, elytraPlus.elytraItemName().get(1));
@@ -99,12 +99,11 @@ public abstract class ItemStackMixin {
                 tooltip.add(componentLiteral(generic.levelChargerItemDescription(), generic.getAmount() == 1 ? green : red));
             }
         }
-        // MCCOURSE MOD BOTTLE item
+        // SPECIAL BOTTLE item
         if (stack.is(ModItems.SPECIAL_BOTTLE)) {
-            if (item instanceof SpecialBottleItem mccoursemodBottle) {
-                mccoursemodBottle.mccourseBottleItemDescription(stack)
-                                 .forEach((message, color) ->
-                                          tooltip.add(componentLiteral(message, color)));
+            if (item instanceof SpecialBottleItem specialBottle) {
+                specialBottle.specialBottleItemDescription(stack).forEach((message, color) ->
+                                                                          tooltip.add(componentLiteral(message, color)));
             }
         }
         // MINER bow item

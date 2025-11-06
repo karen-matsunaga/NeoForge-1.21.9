@@ -16,8 +16,8 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 public class ModTags {
     // CUSTOM CLASS - Registry all custom block tags
     public static class Blocks {
-        // ** CUSTOM ores -> Mccourse Mod ores **
-        public static final TagKey<Block> MCCOURSE_MOD_ORES = createTag("mccourse_mod_ores");
+        // ** CUSTOM ores -> Top ores **
+        public static final TagKey<Block> TOP_ORES = createTag(Top.MOD_ID + "_ores");
         public static final TagKey<Block> ALL_ORES = createTag("all_ores");
 
         // ** CUSTOM TOOLS **
@@ -91,8 +91,8 @@ public class ModTags {
         public static final TagKey<Block> MOBS_BLOCKS_DROPS = createTag("mobs_blocks_drops");
 
         // ** CUSTOM oxidizable block **
-        public static final TagKey<Block> MCCOURSE_MOD_OXIDIZABLE_BLOCKS =
-               createTag("mccourse_mod_oxidizable_blocks");
+        public static final TagKey<Block> TOP_OXIDIZABLE_BLOCKS =
+               createTag(Top.MOD_ID + "_oxidizable_blocks");
 
         // ** CUSTOM Farmer **
         public static final TagKey<Block> FARMER_BONEMEAL_GROWABLES =
@@ -126,14 +126,14 @@ public class ModTags {
 
     // CUSTOM CLASS - Registry all custom item tags
     public static class Items {
-        // ** CUSTOM ores -> Mccourse Mod ores **
-        public static final TagKey<Item> MCCOURSEMOD_ITEMS = createTag("mccourse_items");
+        // ** CUSTOM ores -> Top ores **
+        public static final TagKey<Item> TOP_ITEMS = createTag(Top.MOD_ID + "_items");
 
-        // Created Mccourse ores tags
+        // Created Top ores tags
         public static final TagKey<Item> BISMUTH_ORES_ITEMS = createTag("bismuth_ores_items");
         public static final TagKey<Item> PINK_ORES_ITEMS = createTag("pink_ores_items");
         public static final TagKey<Item> ALEXANDRITE_ORES_ITEMS = createTag("alexandrite_ores_items");
-        public static final TagKey<Item> MCCOURSE_ORES_ITEMS = createTag("mccourse_ores_items");
+        public static final TagKey<Item> TOP_ORES_ITEMS = createTag(Top.MOD_ID + "_ores_items");
         public static final TagKey<Item> ORE_BLOCK_ITEMS = createTag("ore_block_items");
 
         // Created Fly effect item tag
@@ -218,7 +218,7 @@ public class ModTags {
         public static final TagKey<Item> RESTORE_BLACKLIST_ITEMS = createTag("restore_blacklist_items");
 
         // Elytra
-        public static final TagKey<Item> MCCOURSE_ELYTRA = createTag("mccourse_elytra");
+        public static final TagKey<Item> TOP_ELYTRA = createTag(Top.MOD_ID + "_elytra");
 
         // CUSTOM METHOD - Registry all custom item tags
         private static TagKey<Item> createTag(String name) {
@@ -286,7 +286,7 @@ public class ModTags {
     // Structures
     public static class Structures {
         // Created Structure's tags HERE
-        public static TagKey<Structure> MCCOURSEMOD_STRUCTURES = create("mccoursemod_structures");
+        public static TagKey<Structure> TOP_STRUCTURES = create(Top.MOD_ID + "_structures");
 
         // CUSTOM METHOD - Registry all custom structure tags
         private static TagKey<Structure> create(String name) {

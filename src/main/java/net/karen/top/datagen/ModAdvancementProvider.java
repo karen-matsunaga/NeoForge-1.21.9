@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import static net.karen.top.util.ChatUtils.*;
 
 public class ModAdvancementProvider extends AdvancementProvider {
     public ModAdvancementProvider(PackOutput output,
@@ -29,11 +30,11 @@ public class ModAdvancementProvider extends AdvancementProvider {
         public void generate(HolderLookup.@NotNull Provider provider,
                              @NotNull Consumer<AdvancementHolder> consumer) {
             // Adding all custom ADVANCEMENTS
-            // ** Mccourse Mod root advancement -> ALEXANDRITE **
+            // ** Top root advancement -> ALEXANDRITE **
             AdvancementHolder rootAdvancement =
                 Advancement.Builder.advancement()
                            .display(ModItems.ALEXANDRITE.get(),
-                                    Component.literal("Mccourse Mod"),
+                                    Component.literal(splitWord(itemLines(Top.MOD_ID))),
                                     Component.literal("Collect all exclusive ores, armors, tools, etc. on your journey!" +
                                                       " The Power lies in the Alexandrite!"),
                                     ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "block/alexandrite_ore"),

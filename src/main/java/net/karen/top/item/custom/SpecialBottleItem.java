@@ -26,9 +26,8 @@ public class SpecialBottleItem extends Item {
     }
 
     @Override
-    public @NotNull InteractionResult use(@NotNull Level level, @NotNull Player player,
-                                          @NotNull InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand); // Player has Mccourse Bottle on main hand
+    public @NotNull InteractionResult use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand); // Player has Special Bottle on main hand
         if (level.isClientSide() || stack.isEmpty() || !(stack.getItem() instanceof SpecialBottleItem self)) {
             return InteractionResult.FAIL;
         }
@@ -40,10 +39,10 @@ public class SpecialBottleItem extends Item {
         if (storedLevels != null && storedLevels >= 0) {
             if (player instanceof ServerPlayer serverPlayer) {
                 if (player.isShiftKeyDown()) { // SHIFT + RIGHT click
-                    mccourseXp(serverPlayer, player, storedLevels, storedLevels, 0, storedLevels + " levels!", stack);
+                    specialXp(serverPlayer, player, storedLevels, storedLevels, 0, storedLevels + " levels!", stack);
                 }
                 else { // RIGHT click
-                    mccourseXp(serverPlayer, player, storedLevels, 1, storedLevels - 1, "1 level!", stack);
+                    specialXp(serverPlayer, player, storedLevels, 1, storedLevels - 1, "1 level!", stack);
                 }
             }
         }
@@ -51,12 +50,10 @@ public class SpecialBottleItem extends Item {
     }
 
     @Override
-    public @NotNull Component getName(@NotNull ItemStack stack) {
-        return componentTranslatable(this.descriptionId, darkGreen);
-    }
+    public @NotNull Component getName(@NotNull ItemStack stack) { return componentTranslatable(this.getDescriptionId(), darkGreen); }
 
-    // CUSTOM METHOD - Mccourse Bottle tooltip
-    public Map<String, ChatFormatting> mccourseBottleItemDescription(ItemStack stack) {
+    // CUSTOM METHOD - Special Bottle tooltip
+    public Map<String, ChatFormatting> specialBottleItemDescription(ItemStack stack) {
         Integer xp = stack.get(ModDataComponentTypes.STORED_LEVELS);
         Map<String, ChatFormatting> map = new LinkedHashMap<>();
         if (xp != null && amountXp > 0 && storeXp > 0) {
@@ -70,9 +67,9 @@ public class SpecialBottleItem extends Item {
         return map;
     }
 
-    // CUSTOM METHOD - Mccourse Bottle RESTORE system
-    private void mccourseXp(ServerPlayer serverPlayer, Player player,
-                            int storedLevels, int amount, int store, String message, ItemStack heldItem) {
+    // CUSTOM METHOD - Special Bottle RESTORE system
+    private void specialXp(ServerPlayer serverPlayer, Player player,
+                           int storedLevels, int amount, int store, String message, ItemStack heldItem) {
         if (player.getCooldowns().isOnCooldown(heldItem)) { // Check if it is already on cooldown
             player(player, "Wait before using again!", yellow);
             return;

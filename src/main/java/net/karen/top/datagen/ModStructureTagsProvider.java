@@ -18,9 +18,9 @@ public class ModStructureTagsProvider extends StructureTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
-        this.tag(ModTags.Structures.MCCOURSEMOD_STRUCTURES).addOptional(ModStructures.KAUPEN_HOUSE)
-                                                           .addOptional(ModStructures.STORAGE_PLATFORM)
-                                                           .replace(false);
+        this.tag(ModTags.Structures.TOP_STRUCTURES).addOptional(ModStructures.KAUPEN_HOUSE)
+                                                   .addOptional(ModStructures.STORAGE_PLATFORM)
+                                                   .replace(false);
     }
 
     @Override

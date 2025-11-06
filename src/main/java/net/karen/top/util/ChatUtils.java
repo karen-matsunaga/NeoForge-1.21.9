@@ -186,7 +186,7 @@ public class ChatUtils {
                          Map.entry(Tags.Blocks.ORES_LAPIS, color(0, 0, 255)),
                          Map.entry(Tags.Blocks.ORES_REDSTONE, color(179, 0, 0)),
                          Map.entry(Tags.Blocks.ORES_NETHERITE_SCRAP, color(210, 44, 248)),
-                         Map.entry(ModTags.Blocks.MCCOURSE_MOD_ORES, color(255, 192, 235)),
+                         Map.entry(ModTags.Blocks.TOP_ORES, color(255, 192, 235)),
                          Map.entry(ModTags.Blocks.SPECIAL_METAL_DETECTOR_VALUABLES, color(204, 0, 0)));
 
     public static final String top = Top.MOD_ID + ".";
@@ -275,7 +275,7 @@ public class ChatUtils {
                                              int[] COLORS, ItemStack stack, String message) {
         int shift = (int) (System.currentTimeMillis() / 200L % COLORS.length); // Calculates color shift based on time
         MutableComponent minerText = Component.literal(""); // Animated text for "Miner Bow" with RGB wave effect
-        String text = itemLine(stack.getItem().getDescriptionId(), "item.mccoursemod.", "", "_", " "),
+        String text = itemLine(stack.getItem().getDescriptionId(), "item." + top, "", "_", " "),
                  on = itemLines(text) + message;
         for (int i = 0; i < on.length(); i++) {
             int colorIndex = (i - shift + COLORS.length) % COLORS.length; // Adjust to move colors from left to right
@@ -305,7 +305,7 @@ public class ChatUtils {
         return firstIndex + name.substring(1);
     }
 
-    // CUSTOM METHOD - Renamed string on TOOLTIP -> Ex: Mccourse Generator etc. (Two+ words) -> Capitalize First Letters
+    // CUSTOM METHOD - Renamed string on TOOLTIP -> Ex: Top Generator etc. (Two+ words) -> Capitalize First Letters
     public static String itemLines(String input) {
         String[] words = input.split(" "); // Separated words
         StringJoiner capitalized = new StringJoiner(" "); // Spaced words

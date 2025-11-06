@@ -25,9 +25,7 @@ import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
-import static net.karen.top.util.ChatUtils.itemLines;
-import static net.karen.top.util.ChatUtils.splitWord;
+import static net.karen.top.util.ChatUtils.*;
 
 public class ModRecipeProvider extends RecipeProvider {
     private final HolderGetter<Item> items;
@@ -246,8 +244,7 @@ public class ModRecipeProvider extends RecipeProvider {
 
         // (ERROR) ** CUSTOM Armor Trim Smithing ** -> SMITHING TABLE
         //trimSmithing(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE.get(), ModTrimPatterns.KAUPEN,
-        //             ResourceKey.create(Registries.RECIPE,
-        //             ResourceLocation.fromNamespaceAndPath(MccourseMod.MOD_ID, "kaupen")));
+        //             ResourceKey.create(Registries.RECIPE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "kaupen")));
 
         // ** CUSTOM Ores UPGRADE SMITHING TEMPLATE ** -> CRAFTING TABLE
         this.copySmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, Items.COPPER_BLOCK);

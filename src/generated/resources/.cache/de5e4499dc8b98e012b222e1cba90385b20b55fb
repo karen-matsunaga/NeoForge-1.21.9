@@ -1,4 +1,4 @@
-// 1.21.10	2025-11-05T19:58:43.0496434	Top Block Tags
+// 1.21.10	2025-11-06T10:58:14.6829293	Top Block Tags
 215941a97ccdd14fcbdc09e78276742ac5560a51 data/minecraft/tags/block/bee_attractive.json
 913ba005524179783aee438e7f5a61e6823035ba data/minecraft/tags/block/buttons.json
 fbe9d0dc0216b7ef16b41fd5260a1e8862a5d8c1 data/minecraft/tags/block/ceiling_hanging_signs.json
@@ -12,7 +12,7 @@ dcda7ef8adb4d3b1c75ddf6bc0e2bb30c1543003 data/minecraft/tags/block/geode_invalid
 ce798ec60e1bff13878e3091841c49664d955109 data/minecraft/tags/block/impermeable.json
 97ecb8be740b7accb230bb24a302c8b9227b761e data/minecraft/tags/block/leaves.json
 4a822f70fde146afbc0077a74e592e797b68cb43 data/minecraft/tags/block/logs_that_burn.json
-48d32df26a01c5324bcd53af94178550a7dfbbd0 data/minecraft/tags/block/mineable/pickaxe.json
+af11037f8cf80d3eb6a43b829326aa70d4e78c12 data/minecraft/tags/block/mineable/pickaxe.json
 dcda7ef8adb4d3b1c75ddf6bc0e2bb30c1543003 data/minecraft/tags/block/overworld_carver_replaceables.json
 d22e5d523d37f2a7a4b25cd5eb22024afafef5a6 data/minecraft/tags/block/planks.json
 a0d570cbc18a8305906b73fb0dfe62f3296b7c17 data/minecraft/tags/block/pressure_plates.json
@@ -29,7 +29,7 @@ b213fb1e7e5ba4dfac0f3f2bb9bed439ba905169 data/minecraft/tags/block/trapdoors.jso
 f14f6a6f1de5ae40dcbb4663e29bf34ac51f0637 data/minecraft/tags/block/wall_signs.json
 94d3c18f9a8db72ec544bd3755e2c7c6b8ec841d data/top/tags/block/alexandrite_blocks.json
 4a2399a715ee47d4da7cf38d3138ace4dfd738d8 data/top/tags/block/alexandrite_ores.json
-1d971bf911e3caa67273096ad017d47f3fafdeb3 data/top/tags/block/all_ores.json
+1159a1ce5acf84ba972a053498a5fdfd68705770 data/top/tags/block/all_ores.json
 3436773af2cdfef05dd8aac4528ab342aede9715 data/top/tags/block/auto_smelt_ores.json
 ebe552faad618a1a17a3a018b8b625c71e3bc6ec data/top/tags/block/bismuth_blocks.json
 df78fe3a0cd9647cca01b40ff2cf6b9a703ba7e4 data/top/tags/block/bismuth_ores.json
@@ -47,10 +47,8 @@ ddb8388965d7faf89d151d8147aa10d8da3c379d data/top/tags/block/farmer_crops_growab
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/incorrect_for_lapis_lazuli_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/incorrect_for_pink_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/incorrect_for_redstone_tool.json
-8131e4342885d27084559352c2598e7a2df3101c data/top/tags/block/mccourse_mod_ores.json
-335b55c00b32778cf6fa8415378bb5520c79de8c data/top/tags/block/mccourse_mod_oxidizable_blocks.json
 466b621472b729d2dbcd2872b39f03117f28ef8b data/top/tags/block/metal_detector_colors.json
-1d971bf911e3caa67273096ad017d47f3fafdeb3 data/top/tags/block/metal_detector_valuables.json
+1159a1ce5acf84ba972a053498a5fdfd68705770 data/top/tags/block/metal_detector_valuables.json
 13cf1fe06cf159d32d074144254a0d375f6b20e7 data/top/tags/block/mineable_with_paxel.json
 e8bb8f3fb22f9aae46477102a332beb325c17f70 data/top/tags/block/mobs_blocks_drops.json
 10b865f1ff7e849ded0dc00f8cecc718d878e5ef data/top/tags/block/more_ores_all_drops.json
@@ -65,12 +63,15 @@ a3b034ba6dfc318ff77dbd2fedd47a18e2872e02 data/top/tags/block/more_ores_six_drops
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_alexandrite_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_bismuth_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_copper_tool.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_emerald_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_lapis_lazuli_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_pink_tool.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/top/tags/block/needs_redstone_tool.json
 cf4aab0b4525ce65d4b4f196eca80924efde6579 data/top/tags/block/pink_ores.json
 10d91361fc4ba7ae3edab7f13219e07b56fbeeb4 data/top/tags/block/slimey_effect_blocks.json
 db54a62a991dd498c37615be9aec236435b1513c data/top/tags/block/special_metal_detector_valuables.json
+8131e4342885d27084559352c2598e7a2df3101c data/top/tags/block/top_ores.json
+335b55c00b32778cf6fa8415378bb5520c79de8c data/top/tags/block/top_oxidizable_blocks.json
 7d78d30b1cc01fb43cfb8364ed31026ee0640387 data/top/tags/block/vertical_blocks.json
 1042355386c9659aa330e3a97a816b5e088c7648 data/top/tags/block/vertical_grow_blocks.json
 014f932a8e404d177b02794f7502a753cb0ae9f0 data/top/tags/block/walnut_logs.json

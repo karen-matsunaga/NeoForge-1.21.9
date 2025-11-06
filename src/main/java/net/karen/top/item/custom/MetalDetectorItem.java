@@ -34,7 +34,7 @@ public class MetalDetectorItem extends Item {
            Map.ofEntries(Map.entry(Tags.Blocks.ORES_DIAMOND, aqua), Map.entry(ModTags.Blocks.METAL_DETECTOR_COLORS, gold),
                          Map.entry(Tags.Blocks.ORES_IRON, gray), Map.entry(Tags.Blocks.ORES_EMERALD, darkGreen),
                          Map.entry(Tags.Blocks.ORES_REDSTONE, darkRed), Map.entry(Tags.Blocks.ORES_LAPIS, darkBlue),
-                         Map.entry(Tags.Blocks.ORES_COAL, black), Map.entry(ModTags.Blocks.MCCOURSE_MOD_ORES, purple),
+                         Map.entry(Tags.Blocks.ORES_COAL, black), Map.entry(ModTags.Blocks.TOP_ORES, purple),
                          Map.entry(ModTags.Blocks.SPECIAL_METAL_DETECTOR_VALUABLES, red));
     TagKey<Block> type;
 

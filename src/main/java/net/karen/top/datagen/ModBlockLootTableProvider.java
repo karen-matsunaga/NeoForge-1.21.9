@@ -45,7 +45,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.CRAFTING_PLUS.get());
         dropSelf(ModBlocks.SOUND.get());
 
-        // ** CUSTOM ORES ** -> Mccourse Mod Ores
+        // ** CUSTOM ORES ** -> Top Ores
         // BISMUTH
         dropSelf(ModBlocks.BISMUTH_BLOCK.get());
         // ALEXANDRITE
