@@ -15,8 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(VibrationSystem.Listener.class)
 public class VibrationListenerMixin {
     @Inject(method = "handleGameEvent", at = @At("HEAD"), cancellable = true)
-    private void mccoursemod$handleGameEvent(ServerLevel level, Holder<GameEvent> gameEvent,
-                                          GameEvent.Context context, Vec3 pPos, CallbackInfoReturnable<Boolean> cir) {
+    private void top$handleGameEvent(ServerLevel level, Holder<GameEvent> gameEvent, GameEvent.Context context,
+                                     Vec3 pos, CallbackInfoReturnable<Boolean> cir) {
         if (context.sourceEntity() instanceof Player player) {
             if (player.hasEffect(ModEffects.NOTHING_EFFECT)) {
                 cir.setReturnValue(true); // Cancel vibration of Sculk Sensor block

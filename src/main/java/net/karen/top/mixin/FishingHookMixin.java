@@ -49,7 +49,7 @@ public abstract class FishingHookMixin {
     private void reduceFishingWaitTime(CallbackInfo ci) {
         Player player = getPlayerOwner(); // Player Fishing Rod OWNER
         if (player != null && !player.level().isClientSide()) {
-            ItemStack fishingRod = player.getMainHandItem(); // Player has Mccourse Fishing Rod on MAIN HAND
+            ItemStack fishingRod = player.getMainHandItem(); // Player has Top Fishing Rod on MAIN HAND
             if (fishingRod.is(ModItems.TOP_FISHING_ROD)) {
                 // 1- Waiting time until a FISH starts to approach
                 this.timeUntilLured = Math.min(this.timeUntilLured, 10);

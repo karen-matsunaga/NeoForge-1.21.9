@@ -15,7 +15,7 @@ import static net.karen.top.util.ChatUtils.*;
 
 @Mixin(value = Enchantment.class)
 public abstract class EnchantmentMixin {
-    // DEFAULT METHOD - Mccourse Mod and Vanilla NEW enchantment tooltips
+    // DEFAULT METHOD - Top and Vanilla NEW enchantment tooltips
     @Inject(method = "getFullname", at = @At(value = "TAIL"), cancellable = true)
     private static void getFullname(Holder<Enchantment> holder, int level, CallbackInfoReturnable<Component> cir) {
         Enchantment enchantment = holder.value(); // ENCHANTMENT name
@@ -37,7 +37,7 @@ public abstract class EnchantmentMixin {
         }
     }
 
-    // DEFAULT METHOD - Mccourse Mod and Vanilla MAX enchantment levels
+    // DEFAULT METHOD - Top and Vanilla MAX enchantment levels
     @Inject(at = @At("HEAD"), method = "getMaxLevel", cancellable = true)
     private void getMaxLevel(CallbackInfoReturnable<Integer> info) {
         Enchantment enchantment = (Enchantment) (Object) this;
