@@ -20,12 +20,11 @@ public class ModCreativeModeTabs {
     public static final Supplier<CreativeModeTab> BISMUTH_ITEMS_TAB =
            CREATIVE_MODE_TAB.register("bismuth_items_tab",
            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.BISMUTH.get()))
-                                          .title(componentTranslatableIntColor("creativetab.mccoursemod.bismuth_items",
+                                          .title(componentTranslatableIntColor("creativetab." + top + "bismuth_items",
                                                                                bismuthColor))
-                                          .displayItems((itemDisplayParameters,
-                                                         output) -> {
+                                          .displayItems((_, output) -> {
                  // ** CUSTOM items **
-                 // ** CUSTOM Mccourse Mod ore items **
+                 // ** CUSTOM Top ore items **
                  // BISMUTH
                  output.accept(ModItems.BISMUTH);
                  output.accept(ModItems.RAW_BISMUTH);
@@ -223,12 +222,10 @@ public class ModCreativeModeTabs {
     public static final Supplier<CreativeModeTab> BISMUTH_BLOCK_TAB =
            CREATIVE_MODE_TAB.register("bismuth_blocks_tab",
            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BISMUTH_BLOCK))
-                                          .withTabsBefore(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                                                "bismuth_items_tab"))
-                                          .title(componentTranslatableIntColor("creativetab.mccoursemod.bismuth_blocks",
+                                          .withTabsBefore(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "bismuth_items_tab"))
+                                          .title(componentTranslatableIntColor("creativetab." + top + "bismuth_blocks",
                                                                                bismuthColor))
-                                          .displayItems((itemDisplayParameters,
-                                                         output) -> {
+                                          .displayItems((_, output) -> {
                  // ** CUSTOM blocks **
                  // ** CUSTOM ores **
                  // BISMUTH
