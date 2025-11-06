@@ -13,26 +13,24 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
-            DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Top.MOD_ID);
+           DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, Top.MOD_ID);
 
     // Registry all custom effects
-    // Fly's effect
+    // FLY effect
     public static final Holder<MobEffect> FLY_EFFECT = MOB_EFFECTS.register("fly",
-            () -> new FlyEffect(MobEffectCategory.BENEFICIAL, 0xFFFF00)
-                  .addAttributeModifier(Attributes.FLYING_SPEED,
-                                        ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "fly"),
-                                        1.00f, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+           () -> new FlyEffect(MobEffectCategory.BENEFICIAL, 0xFFFF00).addAttributeModifier(Attributes.FLYING_SPEED,
+                               ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "fly"), 1.00F,
+                               AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
-    // Slimey's effect
+    // SLIMEY effect
     public static final Holder<MobEffect> SLIMEY_EFFECT = MOB_EFFECTS.register("slimey",
-            () -> new SlimeyEffect(MobEffectCategory.NEUTRAL, 0x36ebab)
-                  .addAttributeModifier(Attributes.MOVEMENT_SPEED,
-                                        ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "slimey"), -0.25f,
-                                        AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+           () -> new SlimeyEffect(MobEffectCategory.NEUTRAL, 0x36ebab).addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                                  ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "slimey"), -0.25F,
+                                  AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
-    // Nothing's effect
+    // NOTHING effect
     public static final Holder<MobEffect> NOTHING_EFFECT = MOB_EFFECTS.register("nothing",
-            () -> new NothingEffect(MobEffectCategory.NEUTRAL, 0x333366));
+           () -> new NothingEffect(MobEffectCategory.NEUTRAL, 0x333366));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
