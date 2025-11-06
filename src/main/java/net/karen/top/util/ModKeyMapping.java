@@ -10,7 +10,7 @@ import org.lwjgl.glfw.GLFW;
 import static net.karen.top.util.ChatUtils.top;
 
 public class ModKeyMapping {
-    // Mccourse custom category
+    // Top custom category
     public static final KeyMapping.Category KEY_CATEGORY_TOP =
            new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "main"));
 
