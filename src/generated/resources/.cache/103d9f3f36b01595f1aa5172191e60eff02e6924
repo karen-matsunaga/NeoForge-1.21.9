@@ -1,4 +1,4 @@
-// 1.21.10	2025-11-04T13:59:47.5789059	Registries
+// 1.21.10	2025-11-06T11:49:33.3200181	Registries
 e636c49f464ccf555121ad89f99f665243349237 data/top/dimension/kaupendim.json
 25eb87059b46f295c3575650d08271fb73ba8830 data/top/dimension_type/kaupendim_type.json
 55782cb410e78dcbe4145b02613f139511906c50 data/top/enchantment/auto_smelt.json
@@ -73,6 +73,6 @@ ce17d26ad8a404bb67edd01b0c4fc66685711f56 data/top/worldgen/structure/kaupen_hous
 ee3d58965bfe02a26b9f19a03ba232cad556cf2e data/top/worldgen/structure/storage_platform.json
 6170deede14bd232f2f93a126896480c7e64639d data/top/worldgen/structure_set/kaupen_house.json
 25a91da51f93914b62a5f4d41cf95557d14768f4 data/top/worldgen/structure_set/storage_platform.json
-8aa5abc6f3ff3e8a30b61e20be232afac36342e3 data/top/worldgen/template_pool/kaupen_house/start_pool.json
-508836dc89bfce3d03642b9b451d7ee873494186 data/top/worldgen/template_pool/storage_platform/side_pool.json
-2c63c6e73824a2fb8d76811d9ed89d6f88700663 data/top/worldgen/template_pool/storage_platform/start_pool.json
+18ca2b1ac6951421365510694d6bcbeb97aec83c data/top/worldgen/template_pool/kaupen_house/start_pool.json
+612199f767d4a55902b95aff8dfd19189f8ec3d4 data/top/worldgen/template_pool/storage_platform/side_pool.json
+aee4c37b82992eda7fef7065ced22e635badd042 data/top/worldgen/template_pool/storage_platform/start_pool.json

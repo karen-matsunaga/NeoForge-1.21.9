@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "mccoursemod:kaupen_house",
+        "location": "top:kaupen_house",
         "processors": {
           "processors": []
         },

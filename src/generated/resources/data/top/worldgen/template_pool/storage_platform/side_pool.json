@@ -3,7 +3,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "mccoursemod:diamond_storage_platform",
+        "location": "top:diamond_storage_platform",
         "processors": {
           "processors": []
         },
@@ -14,7 +14,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "mccoursemod:gold_storage_platform",
+        "location": "top:gold_storage_platform",
         "processors": {
           "processors": []
         },
@@ -25,7 +25,7 @@
     {
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "mccoursemod:iron_storage_platform",
+        "location": "top:iron_storage_platform",
         "processors": {
           "processors": []
         },
