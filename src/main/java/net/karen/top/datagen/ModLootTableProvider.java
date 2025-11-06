@@ -26,7 +26,7 @@ public record ModLootTableProvider(HolderLookup.Provider registries) implements 
         // CHEST loot tables
         consumer.accept(ModLootTables.KAUPEN_HOUSE_TREASURE, addKaupenHouseChestLootTables());
         // FISH loot tables
-        consumer.accept(ModLootTables.TOP_FISHING_ROD_TREASURE, addMccourseModFishingRodFishLootTable());
+        consumer.accept(ModLootTables.TOP_FISHING_ROD_TREASURE, addTopFishingRodFishLootTable());
     }
 
     // CUSTOM METHOD - KAUPEN HOUSE chest loot table
@@ -63,8 +63,8 @@ public record ModLootTableProvider(HolderLookup.Provider registries) implements 
         );
     }
 
-    // CUSTOM METHOD - MCCOURSE MOD FISHING ROD loot table
-    public LootTable.Builder addMccourseModFishingRodFishLootTable() {
+    // CUSTOM METHOD - TOP FISHING ROD loot table
+    public LootTable.Builder addTopFishingRodFishLootTable() {
         HolderLookup.Provider provider = this.registries;
         HolderLookup.RegistryLookup<Enchantment> ench = provider.lookupOrThrow(Registries.ENCHANTMENT);
         LootTable.Builder builder = LootTable.lootTable();
