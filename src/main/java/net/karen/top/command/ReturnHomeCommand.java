@@ -23,8 +23,7 @@ public class ReturnHomeCommand {
         if (player != null) {
             CompoundTag homes = PlayerHomesData.get(player.level()).getHomes(player.getUUID());
             if (!homes.contains(name)) { // If there is no Set Home - Display the message in the chat (FAIL)
-                context.getSource().sendFailure(componentLiteral("No home named §6§l" + name + "§r§4 found!",
-                                                                 darkRed));
+                context.getSource().sendFailure(componentLiteral("No home named §6§l" + name + "§r§4 found!", darkRed));
                 return -1; // Player's position not save (FALSE)
             }
             Optional<int[]> homePos = homes.getIntArray(name);
@@ -38,7 +37,7 @@ public class ReturnHomeCommand {
                 // The Player will return to the saved [X, Y, Z] position - Player's saved position from /sethome name COMMAND
                 player.teleportTo(pos[0] + 0.5, pos[1], pos[2] + 0.5);
                 context.getSource().sendSuccess(() -> // Display the message in the chat (SUCCESS)
-                        componentLiteral("Teleported to home! §6§l" + name, green), false);
+                                                componentLiteral("Teleported to home! §6§l" + name, green), false);
                 return 1; // Player's position save with success (TRUE)
             }
         }

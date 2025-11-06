@@ -12,26 +12,31 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import static net.karen.top.util.ChatUtils.*;
 
 public class PlayerHomesData extends SavedData {
     private final Map<UUID, CompoundTag> playerHomes = new HashMap<>();
 
+    // CODEC
     public static final Codec<PlayerHomesData> CODEC =
            Codec.unboundedMap(Codec.STRING.xmap(UUID::fromString, UUID::toString), CompoundTag.CODEC)
                                           .xmap(PlayerHomesData::new, PlayerHomesData::getPlayerHomes);
 
+    // Player Homes Data -> SAVED DATA TYPE
     private static final SavedDataType<PlayerHomesData> playerHomesData =
-            new SavedDataType<>("mccoursemod.pos", () -> new PlayerHomesData(Collections.emptyMap()),
+            new SavedDataType<>(top + "pos", () -> new PlayerHomesData(Collections.emptyMap()),
                                 CODEC, DataFixTypes.PLAYER);
 
     public Map<UUID, CompoundTag> getPlayerHomes() { return playerHomes; }
 
     public PlayerHomesData(Map<UUID, CompoundTag> homes) { this.playerHomes.putAll(homes); }
 
+    // CUSTOM METHOD - GET home positions
     public static PlayerHomesData get(ServerLevel level) {
         return level.getDataStorage().computeIfAbsent(playerHomesData);
     }
 
+    // CUSTOM METHOD - SAVE home positions
     public @NotNull CompoundTag save(@NotNull CompoundTag tag) {
         for (Map.Entry<UUID, CompoundTag> entry : playerHomes.entrySet()) {
             tag.put(entry.getKey().toString(), entry.getValue());
@@ -41,7 +46,7 @@ public class PlayerHomesData extends SavedData {
 
     // CUSTOM METHOD - LIST homes command
     public CompoundTag getHomes(UUID uuid) {
-        return playerHomes.computeIfAbsent(uuid, u -> new CompoundTag());
+        return playerHomes.computeIfAbsent(uuid, _ -> new CompoundTag());
     }
 
     // CUSTOM METHOD - SET home command

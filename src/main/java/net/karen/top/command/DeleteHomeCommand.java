@@ -22,13 +22,11 @@ public class DeleteHomeCommand {
             PlayerHomesData data = PlayerHomesData.get(player.level()); // Update Home list
             boolean removed = data.removeHome(player.getUUID(), name); // Remove exist Home's name from list
             if (removed) { // Home exist
-                context.getSource().sendSuccess(() ->
-                        componentLiteral("Deleted home! §6§l" + name, red), false);
+                context.getSource().sendSuccess(() -> componentLiteral("Deleted home! §6§l" + name, red), false);
                 return 1; // Appears SUCCESS message (TRUE)
             }
             else { // Home not exist
-                context.getSource().sendFailure(componentLiteral("No home named §6§l" + name + "§r§4 exists!",
-                                                                 darkRed));
+                context.getSource().sendFailure(componentLiteral("No home named §6§l" + name + "§r§4 exists!", darkRed));
                 return -1; // Appears FAIL message (FALSE)
             }
         }

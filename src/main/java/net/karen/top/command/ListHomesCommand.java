@@ -25,8 +25,7 @@ public class ListHomesCommand {
                 return -1; // Appears FAIL message (FALSE)
             }
             String homesList = String.join(" ", homeNames); // Player has set homes
-            context.getSource().sendSuccess(() -> componentLiteral("Your homes: §6§l" + homesList, aqua),
-                                            false);
+            context.getSource().sendSuccess(() -> componentLiteral("Your homes: §6§l" + homesList, aqua), false);
             return 1; // Appears SUCCESS message (TRUE)
         }
         return 0;
