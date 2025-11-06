@@ -30,6 +30,7 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.Optional;
+import static net.karen.top.util.ChatUtils.*;
 
 public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStacksResourceHandler itemHandler = new ItemStacksResourceHandler(2) {
@@ -48,14 +49,10 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
     private int maxProgress = 72;
 
     // CUSTOM METHOD - Input + Output INDEX SLOTS
-    public ItemResource indexSlot(int index) {
-        return this.itemHandler.getResource(index);
-    }
+    public ItemResource indexSlot(int index) { return this.itemHandler.getResource(index); }
 
     // CUSTOM METHOD - Input + Output SLOTS
-    public ItemStacksResourceHandler getItemHandler() {
-        return itemHandler;
-    }
+    public ItemStacksResourceHandler getItemHandler() { return itemHandler; }
 
     public GrowthChamberBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.GROWTH_CHAMBER_BE.get(), pos, blockState);
@@ -82,13 +79,11 @@ public class GrowthChamberBlockEntity extends BlockEntity implements MenuProvide
         };
     }
 
-    @Override public @NotNull Component getDisplayName() {
-        return Component.translatable("block.top.growth_chamber");
-    }
+    @Override
+    public @NotNull Component getDisplayName() { return standardTranslatable("block." + top + "growth_chamber"); }
 
-    @Nullable @Override public AbstractContainerMenu createMenu(int i,
-                                                                @NotNull Inventory inventory,
-                                                                @NotNull Player player) {
+    @Nullable
+    @Override public AbstractContainerMenu createMenu(int i, @NotNull Inventory inventory, @NotNull Player player) {
         return new GrowthChamberMenu(i, inventory, this, this.data);
     }
 

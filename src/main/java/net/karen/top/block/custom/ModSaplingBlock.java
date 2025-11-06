@@ -19,8 +19,7 @@ public class ModSaplingBlock extends SaplingBlock {
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState state,
-                                 @NotNull BlockGetter level, @NotNull BlockPos pos) {
+    protected boolean mayPlaceOn(BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos) {
         return blockToSurviveOn.get() == state.getBlock();
     }
 }

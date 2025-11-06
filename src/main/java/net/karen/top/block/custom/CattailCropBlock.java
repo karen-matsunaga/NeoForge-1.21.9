@@ -82,9 +82,7 @@ public class CattailCropBlock extends CropBlock {
     @Override
     public @NotNull TriState canSustainPlant(@NotNull BlockState state, @NotNull BlockGetter level,
                                              @NotNull BlockPos soilPosition, @NotNull Direction facing,
-                                             @NotNull BlockState plant) {
-        return TriState.DEFAULT;
-    }
+                                             @NotNull BlockState plant) { return TriState.DEFAULT; }
 
     @Override
     public boolean canSurvive(@NotNull BlockState state, @NotNull LevelReader level, @NotNull BlockPos pos) {

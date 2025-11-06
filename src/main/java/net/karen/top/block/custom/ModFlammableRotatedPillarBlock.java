@@ -19,21 +19,15 @@ public class ModFlammableRotatedPillarBlock extends RotatedPillarBlock {
 
     @Override
     public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level,
-                               @NotNull BlockPos pos, @NotNull Direction direction) {
-        return true;
-    }
+                               @NotNull BlockPos pos, @NotNull Direction direction) { return true; }
 
     @Override
     public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level,
-                               @NotNull BlockPos pos, @NotNull Direction direction) {
-        return 5;
-    }
+                               @NotNull BlockPos pos, @NotNull Direction direction) { return 5; }
 
     @Override
     public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level,
-                                  @NotNull BlockPos pos, @NotNull Direction direction) {
-        return 5;
-    }
+                                  @NotNull BlockPos pos, @NotNull Direction direction) { return 5; }
 
     @Override
     public @Nullable BlockState getToolModifiedState(@NotNull BlockState state, UseOnContext context,

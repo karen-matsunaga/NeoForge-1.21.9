@@ -3,7 +3,6 @@ package net.karen.top.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.karen.top.block.entity.PedestalBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -26,6 +25,7 @@ import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
+import static net.karen.top.util.ChatUtils.*;
 
 public class PedestalBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 13, 14);
@@ -36,37 +36,29 @@ public class PedestalBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
-                                           @NotNull BlockPos pos, @NotNull CollisionContext context) {
-        return SHAPE;
-    }
+    protected @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos,
+                                           @NotNull CollisionContext context) { return SHAPE; }
 
     @Override
-    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
+    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() { return CODEC; }
 
     /* BLOCK ENTITY */
     @Override
-    protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
-        return RenderShape.MODEL;
-    }
+    protected @NotNull RenderShape getRenderShape(@NotNull BlockState state) { return RenderShape.MODEL; }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos,
-                                      @NotNull BlockState blockState) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return new PedestalBlockEntity(blockPos, blockState);
     }
 
     @Override
-    protected @NotNull InteractionResult useItemOn(@NotNull ItemStack stack,
-                                                   @NotNull BlockState state, Level level, @NotNull BlockPos pos,
-                                                   @NotNull Player player, @NotNull InteractionHand hand,
-                                                   @NotNull BlockHitResult hitResult) {
+    protected @NotNull InteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state,
+                                                   Level level, @NotNull BlockPos pos, @NotNull Player player,
+                                                   @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
         if (level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
             if (player.isShiftKeyDown() && !level.isClientSide()) {
-                player.openMenu(new SimpleMenuProvider(pedestalBlockEntity, Component.literal("Pedestal")), pos);
+                player.openMenu(new SimpleMenuProvider(pedestalBlockEntity, standardTranslatable("block." + top + "pedestal")), pos);
                 return InteractionResult.SUCCESS;
             }
             ItemStack itemStack = pedestalBlockEntity.getRenderStack();

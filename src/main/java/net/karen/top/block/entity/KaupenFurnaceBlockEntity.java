@@ -19,6 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import static net.karen.top.util.ChatUtils.*;
 
 public class KaupenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implements MenuProvider {
     // List of items that burned on Kaupen custom furnace using ticks
@@ -30,9 +31,7 @@ public class KaupenFurnaceBlockEntity extends AbstractFurnaceBlockEntity impleme
     }
 
     @Override
-    protected @NotNull Component getDefaultName() {
-        return Component.translatable("block.mccoursemod.kaupen_furnace");
-    }
+    protected @NotNull Component getDefaultName() { return standardTranslatable("block." + top + "kaupen_furnace"); }
 
     @Override
     protected @NotNull AbstractContainerMenu createMenu(int container, @NotNull Inventory inventory) {

@@ -42,7 +42,5 @@ public class RadishCropBlock extends CropBlock {
     public int getMaxAge() { return MAX_AGE; }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(AGE);
-    }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(AGE); }
 }

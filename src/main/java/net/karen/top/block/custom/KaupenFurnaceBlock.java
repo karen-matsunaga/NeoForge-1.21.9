@@ -6,7 +6,6 @@ import net.karen.top.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -22,6 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
+import static net.karen.top.util.ChatUtils.*;
 
 public class KaupenFurnaceBlock extends AbstractFurnaceBlock {
     public static final MapCodec<KaupenFurnaceBlock> CODEC = simpleCodec(KaupenFurnaceBlock::new);
@@ -36,7 +36,7 @@ public class KaupenFurnaceBlock extends AbstractFurnaceBlock {
         BlockEntity blockentity = level.getBlockEntity(pos);
         if (blockentity instanceof KaupenFurnaceBlockEntity) {
             player.openMenu(new SimpleMenuProvider((MenuProvider) blockentity,
-                                                   Component.literal("Kaupen Furnace")), pos);
+                                                   standardTranslatable("block." + top + "kaupen_furnace")), pos);
             player.awardStat(Stats.INTERACT_WITH_FURNACE);
         }
     }
@@ -58,10 +58,8 @@ public class KaupenFurnaceBlock extends AbstractFurnaceBlock {
             double d5 = direction$axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52D : d4;
             double d6 = source.nextDouble() * 6.0D / 16.0D;
             double d7 = direction$axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52D : d4;
-            level.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7,
-                              0.0D, 0.0D, 0.0D);
-            level.addParticle(ParticleTypes.FLAME, d0 + d5, d1 + d6, d2 + d7,
-                              0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
+            level.addParticle(ParticleTypes.FLAME, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
         }
     }
 

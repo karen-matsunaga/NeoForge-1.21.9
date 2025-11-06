@@ -32,8 +32,7 @@ public class ModBlockEntities {
     // Register all custom SIGN and HANGING SIGN
     public static final Supplier<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
            BLOCK_ENTITIES.register("mod_sign",
-           () -> new BlockEntityType<>(ModSignBlockEntity::new,
-                                       ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get()));
+           () -> new BlockEntityType<>(ModSignBlockEntity::new, ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get()));
 
     public static final Supplier<BlockEntityType<ModHangingSignBlockEntity>> MOD_HANGING_SIGN =
            BLOCK_ENTITIES.register("mod_hanging_sign",

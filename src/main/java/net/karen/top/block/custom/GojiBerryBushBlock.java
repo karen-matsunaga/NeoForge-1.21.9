@@ -27,9 +27,8 @@ public class GojiBerryBushBlock extends SweetBerryBushBlock {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState state, @NotNull Level level,
-                                                        @NotNull BlockPos pos, @NotNull Player player,
-                                                        @NotNull BlockHitResult hitResult) {
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, @NotNull Level level, @NotNull BlockPos pos,
+                                                        @NotNull Player player, @NotNull BlockHitResult hitResult) {
         int i = state.getValue(AGE);
         boolean flag = i == 3;
         if (i > 1) {

@@ -37,6 +37,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
+import static net.karen.top.util.ChatUtils.*;
 
 public class GemEmpoweringStationBlockEntity extends BlockEntity implements MenuProvider {
     // Custom block entity GUI
@@ -85,9 +86,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
     }
 
     // CUSTOM METHOD - Item slot index
-    public ItemResource itemHandler(int index) {
-        return this.itemHandler.getResource(index);
-    }
+    public ItemResource itemHandler(int index) { return this.itemHandler.getResource(index); }
 
     public ItemStack getRenderStack() {
         ItemStack stack = itemHandler(OUTPUT_SLOT).toStack();
@@ -95,9 +94,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
         return stack;
     }
 
-    public ItemStacksResourceHandler getItemHandler() {
-        return itemHandler;
-    }
+    public ItemStacksResourceHandler getItemHandler() { return itemHandler; }
 
     // Variables progress and maxProgress synchronization
     public GemEmpoweringStationBlockEntity(BlockPos pos, BlockState state) {
@@ -141,7 +138,7 @@ public class GemEmpoweringStationBlockEntity extends BlockEntity implements Menu
 
     // Name that to show in screen
     @Override
-    public @NotNull Component getDisplayName() { return Component.translatable("block.mccoursemod.gem_empowering_station"); }
+    public @NotNull Component getDisplayName() { return standardTranslatable("block." + top + "gem_empowering_station"); }
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int containerId,

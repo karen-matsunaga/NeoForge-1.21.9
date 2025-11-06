@@ -1,9 +1,7 @@
 package net.karen.top.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.karen.top.Top;
 import net.karen.top.screen.custom.CraftingPlusMenu;
-import net.karen.top.util.ChatUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -18,10 +16,11 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
+import static net.karen.top.util.ChatUtils.*;
 
 public class CraftingPlusBlock extends CraftingTableBlock {
     public static final MapCodec<CraftingPlusBlock> CODEC = simpleCodec(CraftingPlusBlock::new);
-    private static final Component CONTAINER_TITLE = ChatUtils.standardTranslatable(Top.MOD_ID + ".container.crafting");
+    private static final Component CONTAINER_TITLE = standardTranslatable(top + "container.crafting");
 
     @Override
     public @NotNull MapCodec<? extends CraftingPlusBlock> codec() { return CODEC; }
@@ -31,9 +30,8 @@ public class CraftingPlusBlock extends CraftingTableBlock {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level,
-                                                        @NotNull BlockPos pos, @NotNull Player player,
-                                                        @NotNull BlockHitResult hitResult) {
+    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level, @NotNull BlockPos pos,
+                                                        @NotNull Player player, @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             player.openMenu(state.getMenuProvider(level, pos));
             player.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
@@ -42,8 +40,7 @@ public class CraftingPlusBlock extends CraftingTableBlock {
     }
 
     @Override
-    protected @NotNull MenuProvider getMenuProvider(@NotNull BlockState state,
-                                                    @NotNull Level level, @NotNull BlockPos pos) {
+    protected @NotNull MenuProvider getMenuProvider(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
         return new SimpleMenuProvider((i, inventory, _) ->
                                       new CraftingPlusMenu(i, inventory, ContainerLevelAccess.create(level, pos)),
                                       CONTAINER_TITLE);

@@ -5,7 +5,6 @@ import net.karen.top.block.entity.GemEmpoweringStationBlockEntity;
 import net.karen.top.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
@@ -27,22 +26,19 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
+import static net.karen.top.util.ChatUtils.*;
 
 public class GemEmpoweringStationBlock extends BaseEntityBlock {
-    public static final EnumProperty<Direction> FACING =
-           BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    public static final MapCodec<GemEmpoweringStationBlock> CODEC =
-           simpleCodec(GemEmpoweringStationBlock::new);
+    public static final MapCodec<GemEmpoweringStationBlock> CODEC = simpleCodec(GemEmpoweringStationBlock::new);
 
     public GemEmpoweringStationBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
-    }
+    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() { return CODEC; }
 
     // Created block state voxel shape on block
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
@@ -57,10 +53,8 @@ public class GemEmpoweringStationBlock extends BaseEntityBlock {
     }
 
     @Override
-    public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel,
-                                        @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
-        return SHAPE;
-    }
+    public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level,
+                                        @NotNull BlockPos pos, @NotNull CollisionContext context) { return SHAPE; }
 
     // Created block state position
     @Nullable @Override
@@ -70,9 +64,7 @@ public class GemEmpoweringStationBlock extends BaseEntityBlock {
 
     // Created block state definition
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(FACING); }
 
     // * BLOCK ENTITY * //
     // Required this method do not to show invisible block
@@ -81,14 +73,13 @@ public class GemEmpoweringStationBlock extends BaseEntityBlock {
 
     @Override
     protected @NotNull InteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state,
-                                                   @NotNull Level level, @NotNull BlockPos pos,
-                                                   @NotNull Player player, @NotNull InteractionHand hand,
-                                                   @NotNull BlockHitResult hitResult) {
+                                                   @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player,
+                                                   @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof GemEmpoweringStationBlockEntity gemEmpoweringStationBlockEntity) {
                 player.openMenu(new SimpleMenuProvider(gemEmpoweringStationBlockEntity,
-                                Component.literal("Gem Empowering Station")), pos);
+                                standardTranslatable("block." + top + "gem_empowering_station")), pos);
             }
             else { throw new IllegalStateException("Our Container provider is missing!"); }
         }

@@ -44,24 +44,19 @@ public class ModBlocks {
     // ** CUSTOM ores **
     // BISMUTH
     public static final DeferredBlock<Block> BISMUTH_BLOCK =
-           oresItemBlock("bismuth_block", 4.0F, 4.0F, SoundType.AMETHYST,
-                         bismuthColor, bismuthColor);
+           oresItemBlock("bismuth_block", 4.0F, 4.0F, SoundType.AMETHYST, bismuthColor, bismuthColor);
 
     public static final DeferredBlock<Block> BISMUTH_ORE =
-           oreBlock("bismuth_ore", 2, 4, 3.0F, SoundType.STONE,
-                    bismuthColor, bismuthColor);
+           oreBlock("bismuth_ore", 2, 4, 3.0F, SoundType.STONE, bismuthColor, bismuthColor);
 
     public static final DeferredBlock<Block> BISMUTH_DEEPSLATE_ORE =
-           oreBlock("bismuth_deepslate_ore", 3, 6, 4.0F, SoundType.DEEPSLATE,
-                    bismuthColor, bismuthColor);
+           oreBlock("bismuth_deepslate_ore", 3, 6, 4.0F, SoundType.DEEPSLATE, bismuthColor, bismuthColor);
 
     public static final DeferredBlock<Block> BISMUTH_END_ORE =
-           oreBlock("bismuth_end_ore", 5, 9, 7.0F, SoundType.GLASS,
-                    bismuthColor, bismuthColor);
+           oreBlock("bismuth_end_ore", 5, 9, 7.0F, SoundType.GLASS, bismuthColor, bismuthColor);
 
     public static final DeferredBlock<Block> BISMUTH_NETHER_ORE =
-           oreBlock("bismuth_nether_ore", 1, 5, 3.0F, SoundType.NETHERRACK,
-                    bismuthColor, bismuthColor);
+           oreBlock("bismuth_nether_ore", 1, 5, 3.0F, SoundType.NETHERRACK, bismuthColor, bismuthColor);
 
     // ALEXANDRITE
     public static final DeferredBlock<Block> ALEXANDRITE_BLOCK =
@@ -90,30 +85,24 @@ public class ModBlocks {
 
     // PINK
     public static final DeferredBlock<Block> PINK_BLOCK =
-           oresItemBlock("pink_block", 5.0F, 6.0F, SoundType.AMETHYST,
-                         pinkColor, pinkColor);
+           oresItemBlock("pink_block", 5.0F, 6.0F, SoundType.AMETHYST, pinkColor, pinkColor);
 
     public static final DeferredBlock<Block> PINK_ORE =
-           oreBlock("pink_ore", 2, 5, 5.0F, SoundType.STONE,
-                    pinkColor, pinkColor);
+           oreBlock("pink_ore", 2, 5, 5.0F, SoundType.STONE, pinkColor, pinkColor);
 
     public static final DeferredBlock<Block> DEEPSLATE_PINK_ORE =
-           oreBlock("deepslate_pink_ore", 3, 7, 5.0F, SoundType.DEEPSLATE,
-                    pinkColor, pinkColor);
+           oreBlock("deepslate_pink_ore", 3, 7, 5.0F, SoundType.DEEPSLATE, pinkColor, pinkColor);
 
     public static final DeferredBlock<Block> END_STONE_PINK_ORE =
-           oreBlock("end_stone_pink_ore", 5, 8, 5.0F, SoundType.GLASS,
-                    pinkColor, pinkColor);
+           oreBlock("end_stone_pink_ore", 5, 8, 5.0F, SoundType.GLASS, pinkColor, pinkColor);
 
     public static final DeferredBlock<Block> NETHER_PINK_ORE =
-           oreBlock("nether_pink_ore", 3, 6, 5.0F, SoundType.NETHERRACK,
-                    pinkColor, pinkColor);
+           oreBlock("nether_pink_ore", 3, 6, 5.0F, SoundType.NETHERRACK, pinkColor, pinkColor);
 
     // ** CUSTOM advanced block **
     public static final DeferredBlock<Block> MAGIC =
            registerBlock("magic", properties ->
-                         new MagicBlock(properties.strength(2F).sound(ModSounds.MAGIC_BLOCK_SOUNDS)),
-                         magicColor, magicColor);
+                         new MagicBlock(properties.strength(2F).sound(ModSounds.MAGIC_BLOCK_SOUNDS)), magicColor, magicColor);
 
     // CUSTOM Enchant block
     public static final DeferredBlock<Block> ENCHANT =
@@ -130,7 +119,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> DISENCHANT_GROUPED =
            disenchantBlock("disenchant_grouped", 2, disenchantGroColor, disenchantGroColor);
 
-    // CUSTOM Mccourse Mod Elevator block
+    // CUSTOM Top Elevator block
     public static final DeferredBlock<Block> TOP_ELEVATOR =
            registerBlock("top_elevator", properties ->
                          new TopElevatorBlock(properties.mapColor(MapColor.WOOL).sound(SoundType.WOOL)
@@ -138,7 +127,7 @@ public class ModBlocks {
                                                              .requiresCorrectToolForDrops()),
                          elevatorColor, elevatorColor);
 
-    // CUSTOM Mccourse Mod Generator block
+    // CUSTOM Top Generator block
     public static final DeferredBlock<Block> TOP_GENERATOR =
            registerBlock("top_generator", properties ->
                          new TopGeneratorBlock(properties.mapColor(MapColor.STONE)
@@ -278,8 +267,7 @@ public class ModBlocks {
 
     // CUSTOM sapling
     public static final DeferredBlock<Block> BLOODWOOD_SAPLING =
-           saplingBlock("bloodwood_sapling", ModTreeGrowers.BLOODWOOD, () -> Blocks.NETHERRACK,
-                        bloodColor, bloodColor);
+           saplingBlock("bloodwood_sapling", ModTreeGrowers.BLOODWOOD, () -> Blocks.NETHERRACK, bloodColor, bloodColor);
 
     // WALNUT
     public static final DeferredBlock<Block> WALNUT_LOG =
@@ -301,8 +289,7 @@ public class ModBlocks {
            leaveBlock("walnut_leaves", walnutColor, walnutColor);
 
     public static final DeferredBlock<Block> WALNUT_SAPLING =
-           saplingBlock("walnut_sapling", ModTreeGrowers.WALNUT, () -> Blocks.END_STONE,
-                        walnutColor, walnutColor);
+           saplingBlock("walnut_sapling", ModTreeGrowers.WALNUT, () -> Blocks.END_STONE, walnutColor, walnutColor);
 
     // ** CUSTOM sign and hanging sign **
     public static final DeferredBlock<Block> WALNUT_SIGN =
@@ -335,8 +322,7 @@ public class ModBlocks {
 
     // ** CUSTOM sittable block model **
     public static final DeferredBlock<Block> CHAIR =
-           registerBlock("chair", properties ->
-                         new ChairBlock(properties.noOcclusion()), chairColor, chairColor);
+           registerBlock("chair", properties -> new ChairBlock(properties.noOcclusion()), chairColor, chairColor);
 
     // ** CUSTOM block entity **
     public static final DeferredBlock<Block> PEDESTAL =
@@ -365,17 +351,14 @@ public class ModBlocks {
 
     // ** CUSTOM glass block **
     public static final DeferredBlock<Block> FORCED_STAINED_GLASS =
-           registerBlock("forced_stained_glass", properties ->
+           registerBlock("forced_stained_glass", props ->
                          new StainedGlassBlock(DyeColor.GREEN,
-                                               properties.strength(3.0F, 10.0F)
-                                                         .mapColor(DyeColor.GREEN).instrument(NoteBlockInstrument.HAT)
-                                                         .sound(SoundType.GLASS).noOcclusion().isValidSpawn(Blocks::never)
-                                                         .isRedstoneConductor((s, g, p)
-                                                                              -> false)
-                                                         .isSuffocating((s, g, p)
-                                                                        -> false)
-                                                         .isViewBlocking((s, g, p)
-                                                                         -> false)),
+                                               props.strength(3.0F, 10.0F)
+                                                    .mapColor(DyeColor.GREEN).instrument(NoteBlockInstrument.HAT)
+                                                    .sound(SoundType.GLASS).noOcclusion().isValidSpawn(Blocks::never)
+                                                    .isRedstoneConductor((_, _, _) -> false)
+                                                    .isSuffocating((_, _, _) -> false)
+                                                    .isViewBlocking((_, _, _) -> false)),
                          forcedGlassColor, forcedGlassColor);
 
     public static final DeferredBlock<Block> FORCED_STAINED_GLASS_PANE =
@@ -529,7 +512,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> KAUPEN_PORTAL =
            registerBlock("kaupen_portal", properties ->
                          new KaupenPortalBlock(properties.randomTicks().strength(-1.0F).sound(SoundType.NETHERRACK)
-                                                         .lightLevel(state -> 15)
+                                                         .lightLevel(_ -> 15)
                                                          .pushReaction(PushReaction.BLOCK).liquid().forceSolidOn()
                                                          .noLootTable().noOcclusion().noCollision()),
                          kaupenPortalLoreColor, kaupenPortalCustomNameColor);
@@ -737,7 +720,7 @@ public class ModBlocks {
         return registerBlock(name, properties ->
                              new Block(properties.mapColor(color).instrument(NoteBlockInstrument.BELL)
                                                  .requiresCorrectToolForDrops().strength(5.0F, 6.0F)
-                                                 .sound(SoundType.METAL).lightLevel(state -> 50)),
+                                                 .sound(SoundType.METAL).lightLevel(_ -> 50)),
                              lore, customName);
     }
 

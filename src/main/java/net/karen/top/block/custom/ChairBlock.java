@@ -33,9 +33,8 @@ public class ChairBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level,
-                                                        @NotNull BlockPos pos, @NotNull Player player,
-                                                        @NotNull BlockHitResult hitResult) {
+    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level, @NotNull BlockPos pos,
+                                                        @NotNull Player player, @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             Entity entity;
             List<ChairEntity> entities = level.getEntities(ModEntities.CHAIR_ENTITY.get(), new AABB(pos), _ -> true);

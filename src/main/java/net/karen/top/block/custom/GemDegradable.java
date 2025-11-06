@@ -20,8 +20,7 @@ public interface GemDegradable
                      .put(ModBlocks.RUBY_BLOCK_1.get(), ModBlocks.RUBY_BLOCK_2.get())
                      .put(ModBlocks.RUBY_BLOCK_2.get(), ModBlocks.RUBY_BLOCK_3.get()).build());
 
-    Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK =
-            Suppliers.memoize(() -> NEXT_BY_BLOCK.get().inverse());
+    Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK = Suppliers.memoize(() -> NEXT_BY_BLOCK.get().inverse());
 
     static Optional<Block> getPrevious(Block block) {
         return Optional.ofNullable(PREVIOUS_BY_BLOCK.get().get(block));

@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 import net.karen.top.block.entity.GrowthChamberBlockEntity;
 import net.karen.top.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
@@ -20,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
+import static net.karen.top.util.ChatUtils.*;
 
 public class GrowthChamberBlock extends BaseEntityBlock {
     public static final MapCodec<GrowthChamberBlock> CODEC = simpleCodec(GrowthChamberBlock::new);
@@ -40,14 +40,13 @@ public class GrowthChamberBlock extends BaseEntityBlock {
 
     @Override
     protected @NotNull InteractionResult useItemOn(@NotNull ItemStack stack, @NotNull BlockState state,
-                                                   Level level, @NotNull BlockPos pos,
-                                                   @NotNull Player player, @NotNull InteractionHand hand,
-                                                   @NotNull BlockHitResult hitResult) {
+                                                   Level level, @NotNull BlockPos pos, @NotNull Player player,
+                                                   @NotNull InteractionHand hand, @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if (entity instanceof GrowthChamberBlockEntity growthChamberBlockEntity) {
                 player.openMenu(new SimpleMenuProvider(growthChamberBlockEntity,
-                                                       Component.literal("Growth Chamber")), pos);
+                                                       standardTranslatable("block." + top + "growth_chamber")), pos);
             }
             else { throw new IllegalStateException("Our Container provider is missing!"); }
         }
@@ -60,7 +59,7 @@ public class GrowthChamberBlock extends BaseEntityBlock {
                                                                   @NotNull BlockEntityType<T> blockEntityType) {
         if (level.isClientSide()) { return null; }
         return createTickerHelper(blockEntityType, ModBlockEntities.GROWTH_CHAMBER_BE.get(),
-                                  (level1, blockPos, blockState,
-                                  blockEntity) -> blockEntity.tick(level1, blockPos, blockState));
+                                  (level1, blockPos, blockState, blockEntity) ->
+                                  blockEntity.tick(level1, blockPos, blockState));
     }
 }

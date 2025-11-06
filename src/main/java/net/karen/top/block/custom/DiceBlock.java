@@ -27,9 +27,7 @@ public class DiceBlock extends Block {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) { builder.add(FACING); }
 
     private Direction getRandomDirection() {
         Direction[] dirs = new Direction[] { Direction.UP, Direction.NORTH, Direction.EAST,
