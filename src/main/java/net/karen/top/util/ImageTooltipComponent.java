@@ -7,6 +7,7 @@ import net.minecraft.client.resources.language.I18n;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import static net.karen.top.util.ChatUtils.top;
 
 public class ImageTooltipComponent implements ClientTooltipComponent, TooltipComponent {
     private final ItemStack item;
@@ -22,7 +23,7 @@ public class ImageTooltipComponent implements ClientTooltipComponent, TooltipCom
 
     @Override
     public void renderText(@NotNull GuiGraphics graphics, @NotNull Font font, int x, int y) {
-        graphics.drawString(font, I18n.get("tooltip.mccoursemod.more_ores.tooltip") + text,
+        graphics.drawString(font, I18n.get("tooltip." + top + "more_ores.tooltip") + text,
                             x + width + 4, y + (height / 2 - font.lineHeight / 2),
                             ChatUtils.metalDetectorLoreColor, true);
     }
