@@ -202,8 +202,8 @@ public class ModEvents {
     public static void onPlayerCloned(PlayerEvent.Clone event) { // If player dies is respawned where saved the SET HOME
         Player oldPlayer = event.getEntity(); // OLD player
         Player newPlayer = event.getOriginal(); // NEW player
-        Optional<int[]> newPlayerData = newPlayer.getPersistentData().getIntArray("mccoursemod.homepos");
-        newPlayerData.ifPresent(pos -> oldPlayer.getPersistentData().putIntArray("mccoursemod.homepos", pos));
+        Optional<int[]> newPlayerData = newPlayer.getPersistentData().getIntArray(top + "homepos");
+        newPlayerData.ifPresent(pos -> oldPlayer.getPersistentData().putIntArray(top + "homepos", pos));
     }
 
     // CUSTOM EVENT - Living Damage Event -> Sheep's poison effect
@@ -279,7 +279,7 @@ public class ModEvents {
                                new ItemStack(ModItems.RADISH_SEEDS.get(), 1),
                                2, 8, 0.05F));
         }
-        // Mccourse Mod trade -> KAUPENGER trades
+        // Top trade -> KAUPENGER trades
         if (event.getType() == ModVillagers.KAUPENGER.getKey()) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             // Trade level one
@@ -298,7 +298,7 @@ public class ModEvents {
                                new ItemStack(ModItems.BISMUTH_SWORD.get(), 1),
                                2, 8, 0.05F));
         }
-        // Mccourse Mod trade -> SOUND MASTER trades
+        // Top trade -> SOUND MASTER trades
         if (event.getType() == ModVillagers.SOUND_MASTER.getKey()) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             HolderLookup.RegistryLookup<Enchantment> ench = event.getRegistries().lookupOrThrow(Registries.ENCHANTMENT);
@@ -682,9 +682,9 @@ public class ModEvents {
         if (player.hasEffect(ModEffects.NOTHING_EFFECT)) { event.setCanceled(true); }
     }
 
-    // CUSTOM EVENT - Mccourse Mod Elevator advanced block
+    // CUSTOM EVENT - Top Elevator advanced block
     @SubscribeEvent
-    public static void onMccourseModElevatorKeyInput(InputEvent.Key event) {
+    public static void onTopElevatorKeyInput(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if (player != null) { // Checks if the player is over the elevator
@@ -785,9 +785,9 @@ public class ModEvents {
         }
     }
 
-    // CUSTOM EVENT - MCCOURSE MOD BOTTLE item
+    // CUSTOM EVENT - SPECIAL BOTTLE item
     @SubscribeEvent
-    public static void onMccourseModBottleMouseButton(InputEvent.MouseButton.Post event) {
+    public static void onSpecialBottleMouseButton(InputEvent.MouseButton.Post event) {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         ClientLevel clientLevel = mc.level;
@@ -803,7 +803,7 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void onMccourseModBottleKeyInput(InputEvent.Key event) {
+    public static void onSpecialBottleKeyInput(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
         boolean shift = mc.hasShiftDown();
         if (mc.player != null && mc.level != null) {
