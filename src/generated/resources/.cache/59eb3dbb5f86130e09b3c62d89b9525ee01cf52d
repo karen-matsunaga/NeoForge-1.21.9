@@ -1,4 +1,4 @@
-// 1.21.10	2025-11-05T10:00:35.9789827	Loot Tables
+// 1.21.10	2025-11-06T10:18:09.1876563	Loot Tables
 149ce9402d1aef86c8b9033e329a62acea0cc9f7 data/minecraft/loot_table/entities/bouncy_balls.json
 03b27250656a8ed2a03d2904a7479159fc4aad05 data/minecraft/loot_table/entities/chair_entity.json
 f2b9e33b59332dc4ea8dcdf4bb25d59fa4ce557c data/minecraft/loot_table/entities/dice_projectile.json
@@ -120,4 +120,4 @@ d96aecfc4f8534c6841e3224475a23fa76fa88d5 data/top/loot_table/blocks/waxed_ruby_b
 32cbd2fd9609d179b863c3048188034857fd39d3 data/top/loot_table/blocks/white_ender_pearl_block.json
 69ef60a639847c8453202483d870a08f2ff03778 data/top/loot_table/blocks/yellow_ender_pearl_block.json
 0686a12e5d5717c288b48092a2828a9e5b195faa data/top/loot_table/chests/kaupen_house_treasure.json
-91cff7e15de8e06635c928380c7404fe2a5216a2 data/top/loot_table/gameplay/mccourse_mod_fishing_rod_treasure.json
+3126177dc0935ba566aec69b881012aec165e44e data/top/loot_table/gameplay/top_fishing_rod_treasure.json
