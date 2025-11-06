@@ -25,9 +25,8 @@ public class ModBiomes {
 
     // CUSTOM METHOD - Register all custom biomes on CLIENT EVENT
     public static void registerBiomes() {
-        Regions.register(new OverworldRegion(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                                   "mccoursemod_overworld"),
-                         5));
+        Regions.register(new OverworldRegion(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, Top.MOD_ID + "_overworld"),
+                                             5));
     }
 
     // CUSTOM METHOD - Register all custom biomes (DATA GENERATION) -> JSON file

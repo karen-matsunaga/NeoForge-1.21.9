@@ -38,23 +38,22 @@ public class ModPools {
         // KAUPEN HOUSE - CUSTOM TEMPLATE POOL
         context.register(KAUPEN_HOUSE,
                          new StructureTemplatePool(empty,
-                                                   List.of(Pair.of(StructurePoolElement.single("mccoursemod:kaupen_house"),
-                                                                   1)),
+                                                   List.of(Pair.of(StructurePoolElement.single(Top.MOD_ID + ":kaupen_house"), 1)),
                                                    StructureTemplatePool.Projection.RIGID));
 
         // STORAGE PLATFORM - CUSTOM JIGSAW TEMPLATE POOL
         // SIDE POOL
         context.register(STORAGE_PLATFORM_SIDE,
                          new StructureTemplatePool(empty,
-                         List.of(Pair.of(StructurePoolElement.single("mccoursemod:diamond_storage_platform"), 2),
-                                 Pair.of(StructurePoolElement.single("mccoursemod:gold_storage_platform"), 3),
-                                 Pair.of(StructurePoolElement.single("mccoursemod:iron_storage_platform"), 5)),
+                         List.of(Pair.of(StructurePoolElement.single(Top.MOD_ID + ":diamond_storage_platform"), 2),
+                                 Pair.of(StructurePoolElement.single(Top.MOD_ID + ":gold_storage_platform"), 3),
+                                 Pair.of(StructurePoolElement.single(Top.MOD_ID + ":iron_storage_platform"), 5)),
                          StructureTemplatePool.Projection.RIGID));
 
         // START POOL
         context.register(STORAGE_PLATFORM_START,
                          new StructureTemplatePool(empty,
-                         List.of(Pair.of(StructurePoolElement.single("mccoursemod:storage_platform"), 1)),
+                         List.of(Pair.of(StructurePoolElement.single(Top.MOD_ID + ":storage_platform"), 1)),
                          StructureTemplatePool.Projection.RIGID));
     }
 }
