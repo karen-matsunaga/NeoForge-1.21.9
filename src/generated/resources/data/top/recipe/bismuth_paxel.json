@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "top:bismuth_pickaxe",
+    "top:bismuth_axe",
+    "top:bismuth_shovel"
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:bismuth_paxel"
+  }
+}

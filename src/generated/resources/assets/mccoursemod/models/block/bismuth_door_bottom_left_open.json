@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom_left_open",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "bottom": "mccoursemod:block/bismuth_door_bottom",
-    "top": "mccoursemod:block/bismuth_door_top"
-  }
-}

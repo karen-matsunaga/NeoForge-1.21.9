@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
   "addition": "#minecraft:netherite_tool_materials",
-  "base": "mccoursemod:diamond_paxel",
+  "base": "top:diamond_paxel",
   "result": {
-    "id": "mccoursemod:netherite_paxel"
+    "id": "top:netherite_paxel"
   },
   "template": "minecraft:netherite_upgrade_smithing_template"
 }

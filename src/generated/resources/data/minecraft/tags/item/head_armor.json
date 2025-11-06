@@ -1,11 +1,11 @@
 {
   "values": [
-    "mccoursemod:bismuth_helmet",
-    "mccoursemod:alexandrite_helmet",
-    "mccoursemod:pink_helmet",
-    "mccoursemod:ultra_copper_helmet",
-    "mccoursemod:lapis_lazuli_helmet",
-    "mccoursemod:redstone_helmet",
-    "mccoursemod:emerald_helmet"
+    "top:bismuth_helmet",
+    "top:alexandrite_helmet",
+    "top:pink_helmet",
+    "top:ultra_copper_helmet",
+    "top:lapis_lazuli_helmet",
+    "top:redstone_helmet",
+    "top:emerald_helmet"
   ]
 }

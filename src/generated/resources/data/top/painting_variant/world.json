@@ -1,0 +1,13 @@
+{
+  "asset_id": "top:world",
+  "author": {
+    "color": "gray",
+    "translate": "painting.top.world.author"
+  },
+  "height": 2,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.top.world.title"
+  },
+  "width": 2
+}

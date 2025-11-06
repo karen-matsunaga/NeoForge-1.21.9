@@ -1,63 +1,63 @@
 {
   "values": [
     {
-      "id": "mccoursemod:lightning_striker",
+      "id": "top:lightning_striker",
       "required": false
     },
     {
-      "id": "mccoursemod:block_fly",
+      "id": "top:block_fly",
       "required": false
     },
     {
-      "id": "mccoursemod:auto_smelt",
+      "id": "top:auto_smelt",
       "required": false
     },
     {
-      "id": "mccoursemod:magnet",
+      "id": "top:magnet",
       "required": false
     },
     {
-      "id": "mccoursemod:magnetism",
+      "id": "top:magnetism",
       "required": false
     },
     {
-      "id": "mccoursemod:rainbow",
+      "id": "top:rainbow",
       "required": false
     },
     {
-      "id": "mccoursemod:more_ores",
+      "id": "top:more_ores",
       "required": false
     },
     {
-      "id": "mccoursemod:immortal",
+      "id": "top:immortal",
       "required": false
     },
     {
-      "id": "mccoursemod:lightstring",
+      "id": "top:lightstring",
       "required": false
     },
     {
-      "id": "mccoursemod:glowing_mobs",
+      "id": "top:glowing_mobs",
       "required": false
     },
     {
-      "id": "mccoursemod:peaceful_mobs",
+      "id": "top:peaceful_mobs",
       "required": false
     },
     {
-      "id": "mccoursemod:xp_boost",
+      "id": "top:xp_boost",
       "required": false
     },
     {
-      "id": "mccoursemod:unlock",
+      "id": "top:unlock",
       "required": false
     },
     {
-      "id": "mccoursemod:glowing_blocks",
+      "id": "top:glowing_blocks",
       "required": false
     },
     {
-      "id": "mccoursemod:mobs_critical",
+      "id": "top:mobs_critical",
       "required": false
     }
   ]

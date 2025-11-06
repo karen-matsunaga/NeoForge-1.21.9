@@ -1,0 +1,13 @@
+{
+  "values": [
+    "minecraft:swift_sneak",
+    {
+      "id": "top:peaceful_mobs",
+      "required": false
+    },
+    {
+      "id": "top:magnetism",
+      "required": false
+    }
+  ]
+}

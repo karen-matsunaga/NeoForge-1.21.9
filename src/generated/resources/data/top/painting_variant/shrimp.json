@@ -1,0 +1,13 @@
+{
+  "asset_id": "top:shrimp",
+  "author": {
+    "color": "gray",
+    "translate": "painting.top.shrimp.author"
+  },
+  "height": 1,
+  "title": {
+    "color": "yellow",
+    "translate": "painting.top.shrimp.title"
+  },
+  "width": 2
+}

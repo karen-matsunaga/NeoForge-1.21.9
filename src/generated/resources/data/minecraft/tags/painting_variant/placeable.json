@@ -1,15 +1,15 @@
 {
   "values": [
     {
-      "id": "mccoursemod:saw_them",
+      "id": "top:saw_them",
       "required": false
     },
     {
-      "id": "mccoursemod:shrimp",
+      "id": "top:shrimp",
       "required": false
     },
     {
-      "id": "mccoursemod:world",
+      "id": "top:world",
       "required": false
     }
   ]

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "top:ultra_copper_pickaxe",
+    "top:ultra_copper_axe",
+    "top:ultra_copper_shovel"
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:copper_paxel"
+  }
+}

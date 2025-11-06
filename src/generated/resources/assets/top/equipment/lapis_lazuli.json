@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "top:lapis_lazuli"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "top:lapis_lazuli"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "top:lapis_lazuli"
+      }
+    ]
+  }
+}

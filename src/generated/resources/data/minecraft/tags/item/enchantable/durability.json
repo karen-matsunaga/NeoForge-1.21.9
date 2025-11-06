@@ -1,8 +1,8 @@
 {
   "values": [
-    "#mccoursemod:bow_tools",
-    "#mccoursemod:mccourse_elytra",
-    "mccoursemod:alexandrite_shield",
-    "mccoursemod:mccourse_mod_fishing_rod"
+    "#top:bow_tools",
+    "#top:mccourse_elytra",
+    "top:alexandrite_shield",
+    "top:top_fishing_rod"
   ]
 }

@@ -1,0 +1,20 @@
+{
+  "values": [
+    "#c:storage_blocks/raw_copper",
+    "#c:storage_blocks/raw_gold",
+    "#c:storage_blocks/raw_iron",
+    "#top:ore_block_items",
+    "top:alexandrite_block",
+    "top:raw_alexandrite_block",
+    "top:pink_block",
+    "top:ender_pearl_block",
+    "top:nether_star_block",
+    "top:gunpowder_block",
+    "top:rotten_flesh_block",
+    "top:blaze_rod_block",
+    "top:phantom_membrane_block",
+    "top:string_block",
+    "top:spider_eye_block",
+    "top:fermented_spider_eye_block"
+  ]
+}

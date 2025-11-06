@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": "minecraft:stick",
+    "W": "top:walnut_log"
+  },
+  "pattern": [
+    "WWW",
+    " S ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:wooden_hammer"
+  }
+}

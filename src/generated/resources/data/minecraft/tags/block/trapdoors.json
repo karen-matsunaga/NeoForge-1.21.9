@@ -1,6 +1,6 @@
 {
   "values": [
-    "mccoursemod:bismuth_trapdoor",
-    "mccoursemod:alexandrite_trapdoor"
+    "top:bismuth_trapdoor",
+    "top:alexandrite_trapdoor"
   ]
 }

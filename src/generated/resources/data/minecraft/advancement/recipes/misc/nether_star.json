@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:nether_star_block"
+            "items": "top:nether_star_block"
           }
         ]
       },

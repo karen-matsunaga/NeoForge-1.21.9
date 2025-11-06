@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:gunpowder_block"
+            "items": "top:gunpowder_block"
           }
         ]
       },

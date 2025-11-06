@@ -1,11 +1,11 @@
 {
   "values": [
-    "mccoursemod:bismuth_boots",
-    "mccoursemod:alexandrite_boots",
-    "mccoursemod:pink_boots",
-    "mccoursemod:ultra_copper_boots",
-    "mccoursemod:lapis_lazuli_boots",
-    "mccoursemod:redstone_boots",
-    "mccoursemod:emerald_boots"
+    "top:bismuth_boots",
+    "top:alexandrite_boots",
+    "top:pink_boots",
+    "top:ultra_copper_boots",
+    "top:lapis_lazuli_boots",
+    "top:redstone_boots",
+    "top:emerald_boots"
   ]
 }

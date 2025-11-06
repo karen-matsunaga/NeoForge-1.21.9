@@ -1,0 +1,29 @@
+{
+  "parent": "top:root",
+  "criteria": {
+    "has_metal_detector": {
+      "conditions": {
+        "items": [
+          {
+            "items": "top:metal_detector"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Batteries not included! (Actually doesn't need batteries)",
+    "icon": {
+      "count": 1,
+      "id": "top:metal_detector"
+    },
+    "title": "Metal Detector"
+  },
+  "requirements": [
+    [
+      "has_metal_detector"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

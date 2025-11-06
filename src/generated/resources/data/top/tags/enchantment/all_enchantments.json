@@ -1,0 +1,16 @@
+{
+  "values": [
+    "#top:helmet_enchantments",
+    "#top:chestplate_enchantments",
+    "#top:leggings_enchantments",
+    "#top:boots_enchantments",
+    "#top:sword_enchantments",
+    "#top:bow_enchantments",
+    "#top:crossbow_enchantments",
+    "#top:trident_enchantments",
+    "#top:fishing_enchantments",
+    "#top:mace_enchantments",
+    "#top:mining_enchantments",
+    "#top:durability_enchantments"
+  ]
+}

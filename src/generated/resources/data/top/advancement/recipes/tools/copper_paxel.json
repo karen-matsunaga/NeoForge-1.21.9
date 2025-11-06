@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "top:copper_paxel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_ultra_copper_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "top:ultra_copper_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ultra_copper_pickaxe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "top:copper_paxel"
+    ]
+  }
+}

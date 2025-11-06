@@ -1,12 +1,12 @@
 {
   "values": [
-    "mccoursemod:bismuth_chestplate",
-    "mccoursemod:alexandrite_chestplate",
-    "mccoursemod:pink_chestplate",
-    "mccoursemod:ultra_copper_chestplate",
-    "mccoursemod:lapis_lazuli_chestplate",
-    "mccoursemod:redstone_chestplate",
-    "mccoursemod:emerald_elytra",
-    "mccoursemod:emerald_chestplate"
+    "top:bismuth_chestplate",
+    "top:alexandrite_chestplate",
+    "top:pink_chestplate",
+    "top:ultra_copper_chestplate",
+    "top:lapis_lazuli_chestplate",
+    "top:redstone_chestplate",
+    "top:emerald_elytra",
+    "top:emerald_chestplate"
   ]
 }

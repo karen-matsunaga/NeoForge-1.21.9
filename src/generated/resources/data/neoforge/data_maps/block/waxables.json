@@ -1,16 +1,16 @@
 {
   "values": {
-    "mccoursemod:ruby_block": {
-      "waxed": "mccoursemod:waxed_ruby_block"
+    "top:ruby_block": {
+      "waxed": "top:waxed_ruby_block"
     },
-    "mccoursemod:ruby_block_1": {
-      "waxed": "mccoursemod:waxed_ruby_block_1"
+    "top:ruby_block_1": {
+      "waxed": "top:waxed_ruby_block_1"
     },
-    "mccoursemod:ruby_block_2": {
-      "waxed": "mccoursemod:waxed_ruby_block_2"
+    "top:ruby_block_2": {
+      "waxed": "top:waxed_ruby_block_2"
     },
-    "mccoursemod:ruby_block_3": {
-      "waxed": "mccoursemod:waxed_ruby_block_3"
+    "top:ruby_block_3": {
+      "waxed": "top:waxed_ruby_block_3"
     }
   }
 }

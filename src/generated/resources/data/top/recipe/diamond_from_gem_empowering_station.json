@@ -1,0 +1,12 @@
+{
+  "type": "top:gem_empowering_station",
+  "craftTime": 40,
+  "energyAmount": 150,
+  "ingredient": [
+    "minecraft:coal"
+  ],
+  "output": {
+    "count": 7,
+    "id": "minecraft:diamond"
+  }
+}

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:fermented_spider_eye_block"
+            "items": "top:fermented_spider_eye_block"
           }
         ]
       },

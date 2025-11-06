@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:blaze_rod_block"
+            "items": "top:blaze_rod_block"
           }
         ]
       },

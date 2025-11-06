@@ -1,7 +1,7 @@
 {
   "values": [
-    "mccoursemod:bloodwood_leaves",
-    "mccoursemod:walnut_leaves",
-    "mccoursemod:colored_leaves"
+    "top:bloodwood_leaves",
+    "top:walnut_leaves",
+    "top:colored_leaves"
   ]
 }

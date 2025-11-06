@@ -1,0 +1,32 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_25",
+  "package": "net.karen.top.mixin",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "AbstractBoatMixin",
+    "AbstractContainerMenuMixin",
+    "AnvilMenuMixin",
+    "BowItemMixin",
+    "EnchantmentMenuMixin",
+    "EnchantmentMixin",
+    "EntityMixin",
+    "FishingHookMixin",
+    "HappyGhastMixin",
+    "ItemEnchantmentsMixin",
+    "ItemMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "PotionContentsMixin",
+    "SculkShriekerBlockEntityMixin",
+    "ServerPlayerMixin",
+    "ShieldDecorationRecipeMixin",
+    "VibrationListenerMixin"
+  ],
+  "client": [
+    "AnvilScreenMixin",
+    "EnchantmentScreenMixin"
+  ]
+}

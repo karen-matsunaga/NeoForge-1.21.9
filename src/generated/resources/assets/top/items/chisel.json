@@ -1,0 +1,16 @@
+{
+  "hand_animation_on_swap": false,
+  "model": {
+    "type": "minecraft:condition",
+    "component": "top:coordinates",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "top:item/chisel"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "top:item/chisel_used"
+    },
+    "property": "minecraft:has_component"
+  }
+}

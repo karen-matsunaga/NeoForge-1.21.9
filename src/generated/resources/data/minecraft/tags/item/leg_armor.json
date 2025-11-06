@@ -1,11 +1,11 @@
 {
   "values": [
-    "mccoursemod:bismuth_leggings",
-    "mccoursemod:alexandrite_leggings",
-    "mccoursemod:pink_leggings",
-    "mccoursemod:ultra_copper_leggings",
-    "mccoursemod:lapis_lazuli_leggings",
-    "mccoursemod:redstone_leggings",
-    "mccoursemod:emerald_leggings"
+    "top:bismuth_leggings",
+    "top:alexandrite_leggings",
+    "top:pink_leggings",
+    "top:ultra_copper_leggings",
+    "top:lapis_lazuli_leggings",
+    "top:redstone_leggings",
+    "top:emerald_leggings"
   ]
 }

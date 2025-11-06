@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:sugar_cane_block"
+            "items": "top:sugar_cane_block"
           }
         ]
       },

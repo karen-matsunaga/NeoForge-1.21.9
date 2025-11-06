@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:enchant"
+    "top:enchant"
   ],
   "result": {
     "count": 9,

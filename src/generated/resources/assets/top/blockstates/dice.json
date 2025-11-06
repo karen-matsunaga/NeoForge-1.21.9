@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "top:block/dice_6"
+    },
+    "facing=east": {
+      "model": "top:block/dice_3"
+    },
+    "facing=north": {
+      "model": "top:block/dice_2"
+    },
+    "facing=south": {
+      "model": "top:block/dice_5"
+    },
+    "facing=up": {
+      "model": "top:block/dice_1"
+    },
+    "facing=west": {
+      "model": "top:block/dice_4"
+    }
+  }
+}

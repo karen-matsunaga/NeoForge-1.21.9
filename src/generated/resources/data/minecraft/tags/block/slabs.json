@@ -1,6 +1,6 @@
 {
   "values": [
-    "mccoursemod:bismuth_slab",
-    "mccoursemod:alexandrite_slabs"
+    "top:bismuth_slab",
+    "top:alexandrite_slabs"
   ]
 }

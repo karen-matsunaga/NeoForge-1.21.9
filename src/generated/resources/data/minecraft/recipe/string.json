@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:string_block"
+    "top:string_block"
   ],
   "result": {
     "count": 9,

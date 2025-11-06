@@ -1,12 +1,12 @@
 {
   "values": [
-    "mccoursemod:bloodwood_log",
-    "mccoursemod:walnut_log",
-    "mccoursemod:bloodwood_wood",
-    "mccoursemod:walnut_wood",
-    "mccoursemod:stripped_bloodwood_log",
-    "mccoursemod:stripped_walnut_log",
-    "mccoursemod:stripped_bloodwood_wood",
-    "mccoursemod:stripped_walnut_wood"
+    "top:bloodwood_log",
+    "top:walnut_log",
+    "top:bloodwood_wood",
+    "top:walnut_wood",
+    "top:stripped_bloodwood_log",
+    "top:stripped_walnut_log",
+    "top:stripped_bloodwood_wood",
+    "top:stripped_walnut_wood"
   ]
 }

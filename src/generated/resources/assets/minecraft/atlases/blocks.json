@@ -31,9 +31,9 @@
       "type": "minecraft:paletted_permutations",
       "palette_key": "minecraft:trims/color_palettes/trim_palette",
       "permutations": {
-        "alexandrite": "mccoursemod:trims/color_palettes/alexandrite",
+        "alexandrite": "top:trims/color_palettes/alexandrite",
         "amethyst": "minecraft:trims/color_palettes/amethyst",
-        "bismuth": "mccoursemod:trims/color_palettes/bismuth",
+        "bismuth": "top:trims/color_palettes/bismuth",
         "copper": "minecraft:trims/color_palettes/copper",
         "copper_darker": "minecraft:trims/color_palettes/copper_darker",
         "diamond": "minecraft:trims/color_palettes/diamond",
@@ -46,7 +46,7 @@
         "lapis": "minecraft:trims/color_palettes/lapis",
         "netherite": "minecraft:trims/color_palettes/netherite",
         "netherite_darker": "minecraft:trims/color_palettes/netherite_darker",
-        "pink": "mccoursemod:trims/color_palettes/pink",
+        "pink": "top:trims/color_palettes/pink",
         "quartz": "minecraft:trims/color_palettes/quartz",
         "redstone": "minecraft:trims/color_palettes/redstone",
         "resin": "minecraft:trims/color_palettes/resin"

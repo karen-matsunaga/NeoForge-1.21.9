@@ -1,0 +1,13 @@
+{
+  "values": [
+    "top:bismuth_button",
+    "top:bismuth_door",
+    "top:bismuth_fence",
+    "top:bismuth_fence_gate",
+    "top:bismuth_pressure_plate",
+    "top:bismuth_stairs",
+    "top:bismuth_slab",
+    "top:bismuth_trapdoor",
+    "top:bismuth_wall"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:special",
+      "base": "top:item/alexandrite_shield",
+      "model": {
+        "type": "top:alexandrite_shield"
+      }
+    },
+    "on_true": {
+      "type": "minecraft:special",
+      "base": "top:item/alexandrite_shield_blocking",
+      "model": {
+        "type": "top:alexandrite_shield"
+      }
+    },
+    "property": "minecraft:using_item"
+  }
+}

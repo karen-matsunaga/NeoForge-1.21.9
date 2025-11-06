@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "top:test_biome",
+      "required": false
+    },
+    {
+      "id": "top:test_biome_2",
+      "required": false
+    }
+  ]
+}

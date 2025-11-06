@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "alexandrite",
+  "ingredients": [
+    "top:alexandrite"
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:alexandrite_button"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:green_dye",
+    "top:ender_pearl_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:green_ender_pearl_block"
+  }
+}

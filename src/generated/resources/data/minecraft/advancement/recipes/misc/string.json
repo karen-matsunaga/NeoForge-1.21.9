@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:string_block"
+            "items": "top:string_block"
           }
         ]
       },

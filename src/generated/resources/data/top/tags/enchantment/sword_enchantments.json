@@ -1,0 +1,19 @@
+{
+  "values": [
+    {
+      "id": "top:lightning_striker",
+      "required": false
+    },
+    {
+      "id": "top:mobs_critical",
+      "required": false
+    },
+    "minecraft:sharpness",
+    "minecraft:smite",
+    "minecraft:bane_of_arthropods",
+    "minecraft:sweeping_edge",
+    "minecraft:knockback",
+    "minecraft:fire_aspect",
+    "minecraft:looting"
+  ]
+}

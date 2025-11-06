@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "top:kaupen_house",
+      "required": false
+    },
+    {
+      "id": "top:storage_platform",
+      "required": false
+    }
+  ]
+}

@@ -2,10 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:pink_block"
+    "top:pink_block"
   ],
   "result": {
     "count": 9,
-    "id": "mccoursemod:pink"
+    "id": "top:pink"
   }
 }

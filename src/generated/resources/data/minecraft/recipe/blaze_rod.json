@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:blaze_rod_block"
+    "top:blaze_rod_block"
   ],
   "result": {
     "count": 9,

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:power",
+    "minecraft:punch",
+    "minecraft:flame",
+    "minecraft:infinity",
+    {
+      "id": "top:lightstring",
+      "required": false
+    }
+  ]
+}

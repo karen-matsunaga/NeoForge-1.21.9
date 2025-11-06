@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "mccoursemod:alexandrite"
+    "#": "top:alexandrite"
   },
   "pattern": [
     "###",
@@ -11,6 +11,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "mccoursemod:alexandrite_block"
+    "id": "top:alexandrite_block"
   }
 }

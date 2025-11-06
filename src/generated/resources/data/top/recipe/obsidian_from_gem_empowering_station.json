@@ -1,0 +1,12 @@
+{
+  "type": "top:gem_empowering_station",
+  "craftTime": 100,
+  "energyAmount": 200,
+  "ingredient": [
+    "minecraft:cobblestone"
+  ],
+  "output": {
+    "count": 1,
+    "id": "minecraft:obsidian"
+  }
+}

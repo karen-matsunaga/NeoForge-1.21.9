@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:ender_pearl_block"
+            "items": "top:ender_pearl_block"
           }
         ]
       },

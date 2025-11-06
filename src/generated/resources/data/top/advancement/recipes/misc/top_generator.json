@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_crafting_plus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "top:crafting_plus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "top:top_generator"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_crafting_plus"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "top:top_generator"
+    ]
+  }
+}

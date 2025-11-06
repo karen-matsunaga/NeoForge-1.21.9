@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "top:lapis_lazuli_pickaxe",
+    "top:lapis_lazuli_axe",
+    "top:lapis_lazuli_shovel"
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:lapis_lazuli_paxel"
+  }
+}

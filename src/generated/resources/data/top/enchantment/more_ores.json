@@ -1,0 +1,39 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.top.more_ores"
+  },
+  "effects": {
+    "top:more_ores_enchantment_effect": {
+      "block": "#top:more_ores_break_block",
+      "blockTagKey": [
+        "top:more_ores_one_drops",
+        "top:more_ores_two_drops",
+        "top:more_ores_three_drops",
+        "top:more_ores_four_drops",
+        "top:more_ores_five_drops",
+        "top:more_ores_six_drops",
+        "top:more_ores_all_drops"
+      ],
+      "chance": [
+        0.1,
+        0.05
+      ]
+    }
+  },
+  "max_cost": {
+    "base": 25,
+    "per_level_above_first": 7
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 7
+  },
+  "primary_items": "#minecraft:enchantable/mining",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:enchantable/mining_loot",
+  "weight": 5
+}

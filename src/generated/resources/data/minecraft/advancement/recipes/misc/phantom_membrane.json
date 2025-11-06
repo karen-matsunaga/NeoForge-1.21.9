@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:phantom_membrane_block"
+            "items": "top:phantom_membrane_block"
           }
         ]
       },

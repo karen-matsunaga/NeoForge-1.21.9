@@ -1,11 +1,11 @@
 {
   "values": [
     {
-      "id": "mccoursemod:kaupen_poi",
+      "id": "top:kaupen_poi",
       "required": false
     },
     {
-      "id": "mccoursemod:sound_poi",
+      "id": "top:sound_poi",
       "required": false
     }
   ]

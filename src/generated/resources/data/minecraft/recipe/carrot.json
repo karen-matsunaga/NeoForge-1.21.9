@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:growth"
+    "top:growth"
   ],
   "result": {
     "count": 9,

@@ -1,6 +1,6 @@
-// 1.21.10	2025-10-07T12:39:30.6501206	Advancements
-f38d903e013ac1e1afb3fa42c30d4871dc985427 data/mccoursemod/advancement/alexandrite_custom_armors.json
-fa3535b1cb93db97ab900a1d8ce3901f0871bc71 data/mccoursemod/advancement/alexandrite_custom_tools.json
-8f9908c21eb21500b27b45e117899fb244b2776d data/mccoursemod/advancement/alexandrite_vanilla_tools.json
-7caa4e5243b658f77cc1bbcc5ed2a15dcb284282 data/mccoursemod/advancement/metal_detector.json
-ea20eda497386a1e54d08be04bb1d5ccd7fcc1d7 data/mccoursemod/advancement/root.json
+// 1.21.10	2025-11-04T13:59:47.5809107	Advancements
+cd4fd40ad53336b2f7431569fdae5746382d802f data/top/advancement/alexandrite_custom_armors.json
+3b49c8894046af507d85786aac2455365725a484 data/top/advancement/alexandrite_custom_tools.json
+2d655de5f4b8c5f850f8ef8f5e25b32b4eaa5703 data/top/advancement/alexandrite_vanilla_tools.json
+091ede0efb827b52e3f47e5d971b2b6bb9542ca0 data/top/advancement/metal_detector.json
+e3e385aa4e13781a864104c3dafdd937f9422484 data/top/advancement/root.json

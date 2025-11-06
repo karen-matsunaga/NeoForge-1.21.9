@@ -1,11 +1,11 @@
 {
   "values": [
-    "mccoursemod:bismuth_shovel",
-    "mccoursemod:alexandrite_shovel",
-    "mccoursemod:pink_shovel",
-    "mccoursemod:ultra_copper_shovel",
-    "mccoursemod:lapis_lazuli_shovel",
-    "mccoursemod:redstone_shovel",
-    "mccoursemod:emerald_shovel"
+    "top:bismuth_shovel",
+    "top:alexandrite_shovel",
+    "top:pink_shovel",
+    "top:ultra_copper_shovel",
+    "top:lapis_lazuli_shovel",
+    "top:redstone_shovel",
+    "top:emerald_shovel"
   ]
 }

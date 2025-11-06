@@ -1,11 +1,11 @@
 {
   "values": [
-    "mccoursemod:bismuth_axe",
-    "mccoursemod:alexandrite_axe",
-    "mccoursemod:pink_axe",
-    "mccoursemod:ultra_copper_axe",
-    "mccoursemod:lapis_lazuli_axe",
-    "mccoursemod:redstone_axe",
-    "mccoursemod:emerald_axe"
+    "top:bismuth_axe",
+    "top:alexandrite_axe",
+    "top:pink_axe",
+    "top:ultra_copper_axe",
+    "top:lapis_lazuli_axe",
+    "top:redstone_axe",
+    "top:emerald_axe"
   ]
 }

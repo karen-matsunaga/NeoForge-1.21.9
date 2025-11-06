@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:ender_pearl_block"
+    "top:ender_pearl_block"
   ],
   "result": {
     "count": 9,

@@ -32,7 +32,7 @@
               "function": "minecraft:enchanted_count_increase"
             }
           ],
-          "name": "mccoursemod:growth"
+          "name": "top:growth"
         }
       ],
       "rolls": 1.0

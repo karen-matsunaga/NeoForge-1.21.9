@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:respiration",
+    "minecraft:aqua_affinity",
+    {
+      "id": "top:glowing_mobs",
+      "required": false
+    },
+    {
+      "id": "top:glowing_blocks",
+      "required": false
+    }
+  ]
+}

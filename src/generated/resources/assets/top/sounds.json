@@ -1,0 +1,82 @@
+{
+  "alexandrite_lamp_break": {
+    "sounds": [
+      "top:alexandrite_lamp_break"
+    ],
+    "subtitle": "sounds.top.alexandrite_lamp_break"
+  },
+  "alexandrite_lamp_fall": {
+    "sounds": [
+      "top:alexandrite_lamp_fall"
+    ],
+    "subtitle": "sounds.top.alexandrite_lamp_fall"
+  },
+  "alexandrite_lamp_hit": {
+    "sounds": [
+      "top:alexandrite_lamp_hit"
+    ],
+    "subtitle": "sounds.top.alexandrite_lamp_hit"
+  },
+  "alexandrite_lamp_place": {
+    "sounds": [
+      "top:alexandrite_lamp_place"
+    ],
+    "subtitle": "sounds.top.alexandrite_lamp_place"
+  },
+  "alexandrite_lamp_step": {
+    "sounds": [
+      "top:alexandrite_lamp_step"
+    ],
+    "subtitle": "sounds.top.alexandrite_lamp_step"
+  },
+  "bar_brawl": {
+    "sounds": [
+      {
+        "name": "top:bar_brawl",
+        "stream": true
+      }
+    ]
+  },
+  "chisel_use": {
+    "sounds": [
+      "top:chisel_use"
+    ],
+    "subtitle": "sounds.top.chisel_use"
+  },
+  "magic_block_break": {
+    "sounds": [
+      "top:magic_block_break"
+    ],
+    "subtitle": "sounds.top.magic_block_break"
+  },
+  "magic_block_fall": {
+    "sounds": [
+      "top:magic_block_fall"
+    ],
+    "subtitle": "sounds.top.magic_block_fall"
+  },
+  "magic_block_hit": {
+    "sounds": [
+      "top:magic_block_hit"
+    ],
+    "subtitle": "sounds.top.magic_block_hit"
+  },
+  "magic_block_place": {
+    "sounds": [
+      "top:magic_block_place"
+    ],
+    "subtitle": "sounds.top.magic_block_place"
+  },
+  "magic_block_step": {
+    "sounds": [
+      "top:magic_block_step"
+    ],
+    "subtitle": "sounds.top.magic_block_step"
+  },
+  "metal_detector_found_ore": {
+    "sounds": [
+      "top:metal_detector_found_ore"
+    ],
+    "subtitle": "sounds.top.metal_detector_found_ore"
+  }
+}

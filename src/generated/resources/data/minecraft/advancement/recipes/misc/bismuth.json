@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:bismuth_block"
+            "items": "top:bismuth_block"
           }
         ]
       },

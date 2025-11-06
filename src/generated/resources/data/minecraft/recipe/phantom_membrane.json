@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    "mccoursemod:phantom_membrane_block"
+    "top:phantom_membrane_block"
   ],
   "result": {
     "count": 9,

@@ -1,0 +1,12 @@
+{
+  "type": "top:gem_empowering_station",
+  "craftTime": 160,
+  "energyAmount": 50,
+  "ingredient": [
+    "top:raw_alexandrite"
+  ],
+  "output": {
+    "count": 3,
+    "id": "top:alexandrite"
+  }
+}

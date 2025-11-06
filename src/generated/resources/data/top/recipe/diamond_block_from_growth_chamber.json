@@ -1,0 +1,8 @@
+{
+  "type": "top:growth_chamber",
+  "ingredient": "minecraft:diamond",
+  "result": {
+    "count": 1,
+    "id": "minecraft:diamond_block"
+  }
+}

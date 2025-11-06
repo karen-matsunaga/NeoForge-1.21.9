@@ -84,21 +84,21 @@
           "type": "minecraft:model",
           "model": "minecraft:item/diamond_helmet_bismuth_trim"
         },
-        "when": "mccoursemod:bismuth"
+        "when": "top:bismuth"
       },
       {
         "model": {
           "type": "minecraft:model",
           "model": "minecraft:item/diamond_helmet_alexandrite_trim"
         },
-        "when": "mccoursemod:alexandrite"
+        "when": "top:alexandrite"
       },
       {
         "model": {
           "type": "minecraft:model",
           "model": "minecraft:item/diamond_helmet_pink_trim"
         },
-        "when": "mccoursemod:pink"
+        "when": "top:pink"
       }
     ],
     "fallback": {

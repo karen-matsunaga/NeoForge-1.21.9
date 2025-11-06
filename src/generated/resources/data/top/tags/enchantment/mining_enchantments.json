@@ -1,0 +1,26 @@
+{
+  "values": [
+    {
+      "id": "top:block_fly",
+      "required": false
+    },
+    {
+      "id": "top:auto_smelt",
+      "required": false
+    },
+    {
+      "id": "top:magnet",
+      "required": false
+    },
+    {
+      "id": "top:rainbow",
+      "required": false
+    },
+    {
+      "id": "top:more_ores",
+      "required": false
+    },
+    "minecraft:efficiency",
+    "#minecraft:exclusive_set/mining"
+  ]
+}

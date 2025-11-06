@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": "#mccoursemod:copper_tool_materials",
+  "addition": "#top:copper_tool_materials",
   "base": "minecraft:copper_leggings",
   "result": {
-    "id": "mccoursemod:ultra_copper_leggings"
+    "id": "top:ultra_copper_leggings"
   },
-  "template": "mccoursemod:copper_upgrade_smithing_template"
+  "template": "top:copper_upgrade_smithing_template"
 }

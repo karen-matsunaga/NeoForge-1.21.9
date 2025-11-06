@@ -2,11 +2,11 @@
   "sources": [
     {
       "type": "minecraft:single",
-      "resource": "mccoursemod:entity/alexandrite_shield_base"
+      "resource": "top:entity/alexandrite_shield_base"
     },
     {
       "type": "minecraft:single",
-      "resource": "mccoursemod:entity/alexandrite_shield_base_nopattern"
+      "resource": "top:entity/alexandrite_shield_base_nopattern"
     }
   ]
 }

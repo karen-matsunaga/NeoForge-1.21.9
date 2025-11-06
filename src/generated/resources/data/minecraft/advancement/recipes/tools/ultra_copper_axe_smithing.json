@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "#mccoursemod:copper_tool_materials"
+            "items": "#top:copper_tool_materials"
           }
         ]
       },

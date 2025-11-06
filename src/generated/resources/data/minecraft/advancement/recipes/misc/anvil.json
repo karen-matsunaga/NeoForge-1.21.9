@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:enchant"
+            "items": "top:enchant"
           }
         ]
       },

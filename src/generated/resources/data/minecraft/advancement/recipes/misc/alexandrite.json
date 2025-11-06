@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "mccoursemod:alexandrite_block"
+            "items": "top:alexandrite_block"
           }
         ]
       },

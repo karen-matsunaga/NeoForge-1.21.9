@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "clicked=false": {
+      "model": "top:block/alexandrite_lamp"
+    },
+    "clicked=true": {
+      "model": "top:block/alexandrite_lamp_on"
+    }
+  }
+}

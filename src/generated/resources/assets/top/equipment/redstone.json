@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "horse_body": [
+      {
+        "texture": "top:redstone"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "top:redstone"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "top:redstone"
+      }
+    ]
+  }
+}

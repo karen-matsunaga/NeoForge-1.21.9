@@ -1,0 +1,296 @@
+package net.karen.top.util;
+
+import net.karen.top.Top;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
+
+public class ModTags {
+    // CUSTOM CLASS - Registry all custom block tags
+    public static class Blocks {
+        // ** CUSTOM ores -> Mccourse Mod ores **
+        public static final TagKey<Block> MCCOURSE_MOD_ORES = createTag("mccourse_mod_ores");
+        public static final TagKey<Block> ALL_ORES = createTag("all_ores");
+
+        // ** CUSTOM TOOLS **
+        // PAXEL tool
+        public static final TagKey<Block> MINEABLE_WITH_PAXEL = createTag("mineable_with_paxel");
+
+        // TOOL MATERIALS -> Blocks break
+        public static final TagKey<Block> NEEDS_BISMUTH_TOOL = createTag("needs_bismuth_tool");
+        public static final TagKey<Block> NEEDS_ALEXANDRITE_TOOL =
+               createTag("needs_alexandrite_tool");
+        public static final TagKey<Block> NEEDS_PINK_TOOL = createTag("needs_pink_tool");
+        public static final TagKey<Block> NEEDS_COPPER_TOOL = createTag("needs_copper_tool");
+        public static final TagKey<Block> NEEDS_LAPIS_LAZULI_TOOL =
+               createTag("needs_lapis_lazuli_tool");
+        public static final TagKey<Block> NEEDS_REDSTONE_TOOL = createTag("needs_redstone_tool");
+        public static final TagKey<Block> NEEDS_EMERALD_TOOL = createTag("needs_emerald_tool");
+
+        // TOOL MATERIALS -> Blocks not break
+        public static final TagKey<Block> INCORRECT_FOR_BISMUTH_TOOL = createTag("incorrect_for_bismuth_tool");
+        public static final TagKey<Block> INCORRECT_FOR_ALEXANDRITE_TOOL =
+               createTag("incorrect_for_alexandrite_tool");
+        public static final TagKey<Block> INCORRECT_FOR_PINK_TOOL = createTag("incorrect_for_pink_tool");
+        public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = createTag("incorrect_for_copper_tool");
+        public static final TagKey<Block> INCORRECT_FOR_LAPIS_LAZULI_TOOL =
+               createTag("incorrect_for_lapis_lazuli_tool");
+        public static final TagKey<Block> INCORRECT_FOR_REDSTONE_TOOL =
+               createTag("incorrect_for_redstone_tool");
+        public static final TagKey<Block> INCORRECT_FOR_EMERALD_TOOL = createTag("incorrect_for_emerald_tool");
+
+        // Created More Ores's drops - More Ores I, II, III, IV, V, VI and Max Level
+        public static final TagKey<Block> MORE_ORES_ONE_DROPS = createTag("more_ores_one_drops");
+        public static final TagKey<Block> MORE_ORES_TWO_DROPS = createTag("more_ores_two_drops");
+        public static final TagKey<Block> MORE_ORES_THREE_DROPS = createTag("more_ores_three_drops");
+        public static final TagKey<Block> MORE_ORES_FOUR_DROPS = createTag("more_ores_four_drops");
+        public static final TagKey<Block> MORE_ORES_FIVE_DROPS = createTag("more_ores_five_drops");
+        public static final TagKey<Block> MORE_ORES_SIX_DROPS = createTag("more_ores_six_drops");
+        public static final TagKey<Block> MORE_ORES_ALL_DROPS = createTag("more_ores_all_drops");
+        public static final TagKey<Block> MORE_ORES_BREAK_BLOCK = createTag("more_ores_break_block");
+
+        // Ores
+        public static final TagKey<Block> AUTO_SMELT_ORES = createTag("auto_smelt_ores");
+
+        // Block Fly effect
+        public static final TagKey<Block> BLOCK_FLY_BLOCK_SPEED = createTag("block_fly_block_speed");
+
+        // BISMUTH blocks
+        public static final TagKey<Block> BISMUTH_BLOCKS = createTag("bismuth_blocks");
+        public static final TagKey<Block> BISMUTH_ORES = createTag("bismuth_ores");
+
+        // ALEXANDRITE blocks
+        public static final TagKey<Block> ALEXANDRITE_BLOCKS = createTag("alexandrite_blocks");
+        public static final TagKey<Block> ALEXANDRITE_ORES = createTag("alexandrite_ores");
+
+        // PINK blocks
+        public static final TagKey<Block> PINK_ORES = createTag("pink_ores");
+
+        // METAL DETECTOR
+        public static final TagKey<Block> METAL_DETECTOR_VALUABLES = createTag("metal_detector_valuables");
+        public static final TagKey<Block> METAL_DETECTOR_COLORS = createTag("metal_detector_colors");
+        public static final TagKey<Block> SPECIAL_METAL_DETECTOR_VALUABLES =
+               createTag("special_metal_detector_valuables");
+
+        // ** CUSTOM log **
+        public static final TagKey<Block> BLOODWOOD_LOGS = createTag("bloodwood_logs");
+        public static final TagKey<Block> WALNUT_LOGS = createTag("walnut_logs");
+
+        // ** CUSTOM Ender pearl block **
+        public static final TagKey<Block> ENDER_PEARL_BLOCKS = createTag("ender_pearl_blocks");
+
+        // ** CUSTOM mob blocks **
+        public static final TagKey<Block> MOBS_BLOCKS_DROPS = createTag("mobs_blocks_drops");
+
+        // ** CUSTOM oxidizable block **
+        public static final TagKey<Block> MCCOURSE_MOD_OXIDIZABLE_BLOCKS =
+               createTag("mccourse_mod_oxidizable_blocks");
+
+        // ** CUSTOM Farmer **
+        public static final TagKey<Block> FARMER_BONEMEAL_GROWABLES =
+               createTag("farmer_bonemeal_growables");
+
+        public static final TagKey<Block> FARMER_CROPS_GROWABLES =
+               createTag("farmer_crops_growables");
+
+        public static final TagKey<Block> FARMER_TREE_GROWABLES =
+               createTag("farmer_tree_growables");
+
+        public static final TagKey<Block> FARMER_VERTICAL_GROWABLES =
+               createTag("farmer_vertical_growables");
+
+        public static final TagKey<Block> FARMER_AGE_GROWABLES =
+               createTag("farmer_age_growables");
+
+        // ** CUSTOM Crop replant **
+        public static final TagKey<Block> MUSHROOM_BLOCKS = createTag("mushroom_blocks");
+        public static final TagKey<Block> VERTICAL_BLOCKS = createTag("vertical_blocks");
+        public static final TagKey<Block> VERTICAL_GROW_BLOCKS = createTag("vertical_grow_blocks");
+
+        // ** CUSTOM Slimey effect blocks **
+        public static final TagKey<Block> SLIMEY_EFFECT_BLOCKS = createTag("slimey_effect_blocks");
+
+        // CUSTOM METHOD - Registry all custom block tags
+        private static TagKey<Block> createTag(String name) {
+            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        }
+    }
+
+    // CUSTOM CLASS - Registry all custom item tags
+    public static class Items {
+        // ** CUSTOM ores -> Mccourse Mod ores **
+        public static final TagKey<Item> MCCOURSEMOD_ITEMS = createTag("mccourse_items");
+
+        // Created Mccourse ores tags
+        public static final TagKey<Item> BISMUTH_ORES_ITEMS = createTag("bismuth_ores_items");
+        public static final TagKey<Item> PINK_ORES_ITEMS = createTag("pink_ores_items");
+        public static final TagKey<Item> ALEXANDRITE_ORES_ITEMS = createTag("alexandrite_ores_items");
+        public static final TagKey<Item> MCCOURSE_ORES_ITEMS = createTag("mccourse_ores_items");
+        public static final TagKey<Item> ORE_BLOCK_ITEMS = createTag("ore_block_items");
+
+        // Created Fly effect item tag
+        public static final TagKey<Item> HELMET_FLY = createTag("helmet_fly");
+        public static final TagKey<Item> CHESTPLATE_FLY = createTag("chestplate_fly");
+        public static final TagKey<Item> LEGGINGS_FLY = createTag("leggings_fly");
+        public static final TagKey<Item> BOOTS_FLY = createTag("boots_fly");
+
+        // Level Charger items
+        public static final TagKey<Item> LEVEL_CHARGER_ITEMS = createTag("level_charger_items");
+        public static final TagKey<Item> LEVEL_CHARGER_GENERIC = createTag("level_charger_generic");
+        public static final TagKey<Item> LEVEL_CHARGER_SPECIF = createTag("level_charger_specif");
+        public static final TagKey<Item> LEVEL_CHARGER_GREEN = createTag("level_charger_green");
+        public static final TagKey<Item> LEVEL_CHARGER_RED = createTag("level_charger_red");
+
+        // Luck items
+        public static final TagKey<Item> LUCK_ITEMS = createTag("luck_items");
+
+        // Magic block
+        public static final TagKey<Item> MAGIC_BLOCK = createTag("magic_block");
+
+        // Bow items
+        public static final TagKey<Item> BOW_TOOLS = createTag("bow_tools");
+
+        // TOOL MATERIALS items - TOOLS
+        public static final TagKey<Item> BISMUTH_TOOLS = createTag("bismuth_tools");
+        public static final TagKey<Item> ALEXANDRITE_TOOLS = createTag("alexandrite_tools");
+        public static final TagKey<Item> EMERALD_TOOLS = createTag("emerald_tools");
+
+        // ARMOR MATERIALS items - ARMORS
+        public static final TagKey<Item> BISMUTH_ARMOR = createTag("bismuth_armor");
+        public static final TagKey<Item> ALEXANDRITE_ARMOR = createTag("alexandrite_armor");
+        public static final TagKey<Item> PINK_ARMOR = createTag("pink_armor");
+        public static final TagKey<Item> COPPER_ARMOR = createTag("copper_armor");
+        public static final TagKey<Item> LAPIS_LAZULI_ARMOR = createTag("lapis_lazuli_armor");
+        public static final TagKey<Item> REDSTONE_ARMOR = createTag("redstone_armor");
+        public static final TagKey<Item> EMERALD_ARMOR = createTag("emerald_armor");
+
+        // TOOL MATERIALS items - REPAIR TOOL ingredients
+        public static final TagKey<Item> BISMUTH_TOOL_MATERIALS = createTag("bismuth_tool_materials");
+        public static final TagKey<Item> ALEXANDRITE_TOOL_MATERIALS =
+               createTag("alexandrite_tool_materials");
+        public static final TagKey<Item> PINK_TOOL_MATERIALS = createTag("pink_tool_materials");
+        public static final TagKey<Item> COPPER_TOOL_MATERIALS = createTag("copper_tool_materials");
+        public static final TagKey<Item> LAPIS_LAZULI_TOOL_MATERIALS =
+               createTag("lapis_lazuli_tool_materials");
+        public static final TagKey<Item> REDSTONE_TOOL_MATERIALS = createTag("redstone_tool_materials");
+        public static final TagKey<Item> EMERALD_TOOL_MATERIALS = createTag("emerald_tool_materials");
+
+        // ARMOR MATERIALS items - REPAIR ARMOR ingredients
+        public static final TagKey<Item> REPAIRS_BISMUTH_ARMOR = createTag("repairs_bismuth_armor");
+        public static final TagKey<Item> REPAIRS_ALEXANDRITE_ARMOR = createTag("repairs_alexandrite_armor");
+        public static final TagKey<Item> REPAIRS_PINK_ARMOR = createTag("repairs_pink_armor");
+        public static final TagKey<Item> REPAIRS_COPPER_ARMOR = createTag("repairs_copper_armor");
+        public static final TagKey<Item> REPAIRS_LAPIS_LAZULI_ARMOR =
+               createTag("repairs_lapis_lazuli_armor");
+        public static final TagKey<Item> REPAIRS_REDSTONE_ARMOR = createTag("repairs_redstone_armor");
+        public static final TagKey<Item> REPAIRS_EMERALD_ARMOR = createTag("repairs_emerald_armor");
+
+        // ** CUSTOM log **
+        public static final TagKey<Item> BLOODWOOD_LOGS = createTag("bloodwood_logs");
+        public static final TagKey<Item> WALNUT_LOGS = createTag("walnut_logs");
+
+        // ** CUSTOM Compactor items **
+        public static final TagKey<Item> COMPACTOR_ITEMS = createTag("compactor_items");
+
+        // Ultra Compactor item
+        public static final TagKey<Item> ULTRA_COMPACTOR_ITEMS =
+               createTag("ultra_compactor_items");
+
+        public static final TagKey<Item> ULTRA_COMPACTOR_RESULT =
+               createTag("ultra_compactor_result");
+
+        // Pink Ultra Compactor item
+        public static final TagKey<Item> PINK_ULTRA_COMPACTOR_ITEMS =
+               createTag("pink_ultra_compactor_items");
+
+        public static final TagKey<Item> PINK_ULTRA_COMPACTOR_RESULT =
+               createTag("pink_ultra_compactor_result");
+
+        // Restore item
+        public static final TagKey<Item> RESTORE_BLACKLIST_ITEMS = createTag("restore_blacklist_items");
+
+        // Elytra
+        public static final TagKey<Item> MCCOURSE_ELYTRA = createTag("mccourse_elytra");
+
+        // CUSTOM METHOD - Registry all custom item tags
+        private static TagKey<Item> createTag(String name) {
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        }
+    }
+
+    // CUSTOM CLASS - Registry all custom enchantment tags
+    public static class Enchantments {
+        public static final TagKey<Enchantment> MINING_ENCHANTMENTS = createTag("mining_enchantments");
+        public static final TagKey<Enchantment> DURABILITY_ENCHANTMENTS = createTag("durability_enchantments");
+        public static final TagKey<Enchantment> FISHING_ENCHANTMENTS = createTag("fishing_enchantments");
+        public static final TagKey<Enchantment> HELMET_ENCHANTMENTS = createTag("helmet_enchantments");
+        public static final TagKey<Enchantment> BOOTS_ENCHANTMENTS = createTag("boots_enchantments");
+        public static final TagKey<Enchantment> LEGGINGS_ENCHANTMENTS = createTag("leggings_enchantments");
+        public static final TagKey<Enchantment> CHESTPLATE_ENCHANTMENTS = createTag("chestplate_enchantments");
+        public static final TagKey<Enchantment> SWORD_ENCHANTMENTS = createTag("sword_enchantments");
+        public static final TagKey<Enchantment> BOW_ENCHANTMENTS = createTag("bow_enchantments");
+        public static final TagKey<Enchantment> CROSSBOW_ENCHANTMENTS = createTag("crossbow_enchantments");
+        public static final TagKey<Enchantment> TRIDENT_ENCHANTMENTS = createTag("trident_enchantments");
+        public static final TagKey<Enchantment> MACE_ENCHANTMENTS = createTag("mace_enchantments");
+        public static final TagKey<Enchantment> ALL_ENCHANTMENTS = createTag("all_enchantments");
+
+        // CUSTOM METHOD - Registry all custom enchantment tags
+        private static TagKey<Enchantment> createTag(String name) {
+            return TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        }
+    }
+
+    // Entities
+    public static class Entities {
+        // Created Entities's tags HERE
+        public static final TagKey<EntityType<?>> ALL_ENTITIES = createTag("all_entities");
+        public static final TagKey<EntityType<?>> BOSSES = createTag("bosses");
+        public static final TagKey<EntityType<?>> NETHER = createTag("nether");
+        public static final TagKey<EntityType<?>> END = createTag("end");
+        public static final TagKey<EntityType<?>> OVERWORLD = createTag("overworld");
+        public static final TagKey<EntityType<?>> MONSTERS = createTag("monsters");
+        public static final TagKey<EntityType<?>> ANIMALS = createTag("animals");
+        public static final TagKey<EntityType<?>> VILLAGER = createTag("villager");
+        public static final TagKey<EntityType<?>> WATER_ANIMALS = createTag("water_animals");
+
+        // CUSTOM METHOD - Registry all custom entities tags
+        private static TagKey<EntityType<?>> createTag(String name) {
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        }
+    }
+
+    // Biomes
+    public static class Biomes {
+        // Created Biome's tags HERE
+        // CUSTOM STRUCTURES
+        public static final TagKey<Biome> HAS_KAUPEN_HOUSE = create("has_structure/kaupen_house");
+        // CUSTOM JIGSAW STRUCTURES
+        public static final TagKey<Biome> HAS_STORAGE_PLATFORM = create("has_structure/storage_platform");
+        // CUSTOM BIOMES
+        public static final TagKey<Biome> IS_KAUPENDIM = create("is_kaupendim");
+
+        // CUSTOM METHOD - Registry all custom biome tags
+        private static TagKey<Biome> create(String name) {
+            return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        }
+    }
+
+    // Structures
+    public static class Structures {
+        // Created Structure's tags HERE
+        public static TagKey<Structure> MCCOURSEMOD_STRUCTURES = create("mccoursemod_structures");
+
+        // CUSTOM METHOD - Registry all custom structure tags
+        private static TagKey<Structure> create(String name) {
+            return TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        }
+    }
+}

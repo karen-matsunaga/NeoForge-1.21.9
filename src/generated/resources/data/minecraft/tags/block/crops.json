@@ -1,7 +1,7 @@
 {
   "values": [
-    "mccoursemod:radish_crop",
-    "mccoursemod:kohlrabi_crop",
-    "mccoursemod:cattail_crop"
+    "top:radish_crop",
+    "top:kohlrabi_crop",
+    "top:cattail_crop"
   ]
 }

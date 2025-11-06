@@ -1,9 +1,9 @@
 {
   "type": "minecraft:smithing_transform",
-  "addition": "#mccoursemod:copper_tool_materials",
+  "addition": "#top:copper_tool_materials",
   "base": "minecraft:copper_pickaxe",
   "result": {
-    "id": "mccoursemod:ultra_copper_pickaxe"
+    "id": "top:ultra_copper_pickaxe"
   },
-  "template": "mccoursemod:copper_upgrade_smithing_template"
+  "template": "top:copper_upgrade_smithing_template"
 }

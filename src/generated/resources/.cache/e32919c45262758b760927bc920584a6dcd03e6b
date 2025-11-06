@@ -1,0 +1,10 @@
+// 1.21.10	2025-11-05T19:58:43.0506434	Top Entity Type Tags
+57f48212436ae75fb3ab0df1dd48f9c6b3a4839e data/top/tags/entity_type/all_entities.json
+765e0255fa25c01737ff5dff5a0f0f722c9daccb data/top/tags/entity_type/animals.json
+7d8ddddfbbb5cffbba07c755d16781c953c6c151 data/top/tags/entity_type/bosses.json
+a26182e8687abedcef79e6adbf4440708b12d3e0 data/top/tags/entity_type/end.json
+d009338385901fe78ff91922ca5eb995bad13994 data/top/tags/entity_type/monsters.json
+8a05f13ed84373e8512ca19c7ac964e8b5a8cc40 data/top/tags/entity_type/nether.json
+83c801e448d24569c35f57c0423b54122be9d2c8 data/top/tags/entity_type/overworld.json
+e4098db828a803f857470a72ae3eda3edd0fe7c5 data/top/tags/entity_type/villager.json
+c988eb2365334ab1f4d85e2fbb3fb5e3d762f8ea data/top/tags/entity_type/water_animals.json

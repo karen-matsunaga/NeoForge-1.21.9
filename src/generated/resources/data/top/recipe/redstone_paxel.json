@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "top:redstone_pickaxe",
+    "top:redstone_axe",
+    "top:redstone_shovel"
+  ],
+  "result": {
+    "count": 1,
+    "id": "top:redstone_paxel"
+  }
+}

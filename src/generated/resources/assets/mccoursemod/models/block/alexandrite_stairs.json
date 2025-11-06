@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "mccoursemod:block/alexandrite_block",
-    "side": "mccoursemod:block/alexandrite_block",
-    "top": "mccoursemod:block/alexandrite_block"
-  }
-}

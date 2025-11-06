@@ -1,0 +1,8 @@
+{
+  "type": "top:growth_chamber",
+  "ingredient": "top:raw_bismuth",
+  "result": {
+    "count": 1,
+    "id": "top:bismuth"
+  }
+}
