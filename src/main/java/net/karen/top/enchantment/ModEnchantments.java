@@ -53,7 +53,7 @@ public class ModEnchantments {
         HolderGetter<Block> blocks = context.lookup(Registries.BLOCK);
         HolderGetter<EntityType<?>> entities = context.lookup(Registries.ENTITY_TYPE);
 
-        // Lightning Striker - Sword
+        // LIGHTNING STRIKER -> Sword
         register(context, LIGHTNING_STRIKER,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
@@ -66,7 +66,7 @@ public class ModEnchantments {
                                         new LightningStrikerEnchantmentEffect(
                                         LevelBasedValue.perLevel(0.5F, 0.15F))));
 
-        // Auto Smelt - Pickaxe
+        // AUTO SMELT -> Pickaxe
         register(context, AUTO_SMELT,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
@@ -77,7 +77,7 @@ public class ModEnchantments {
                             .withSpecialEffect(ModDataComponentTypes.AUTO_SMELT_ENCHANTMENT_EFFECT.get(),
                                                new AutoSmeltEnchantmentEffect(ModTags.Blocks.AUTO_SMELT_ORES)));
 
-        // Block Fly - Pickaxe
+        // BLOCK FLY -> Pickaxe
         register(context, BLOCK_FLY,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
@@ -86,7 +86,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.MAINHAND)));
 
-        // Magnet - Pickaxe
+        // MAGNET -> Pickaxe
         register(context, MAGNET,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
@@ -95,7 +95,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.MAINHAND)));
 
-        // Immortal - Armor and Tools
+        // IMMORTAL -> Armor and Tools
         register(context, IMMORTAL,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.DURABILITY_ENCHANTABLE),
                                                                 5, 1,
@@ -103,7 +103,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.ANY)));
 
-        // Peaceful Mobs - Leggings
+        // PEACEFUL MOBS -> Leggings
         register(context, PEACEFUL_MOBS,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.LEG_ARMOR_ENCHANTABLE),
                                                                 5, 1,
@@ -111,7 +111,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.LEGS)));
 
-        // Magnetism - Leggings
+        // MAGNETISM -> Leggings
         register(context, MAGNETISM,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.LEG_ARMOR_ENCHANTABLE),
                                                                 5, 2,
@@ -119,7 +119,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.LEGS)));
 
-        // Lightning - Bow and Crossbow
+        // LIGHTSTRING -> Bow and Crossbow
         register(context, LIGHTSTRING,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.BOW_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.CROSSBOW_ENCHANTABLE),
@@ -128,7 +128,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.MAINHAND)));
 
-        // Glowing Mobs - Head
+        // GLOWING MOBS -> Head
         register(context, GLOWING_MOBS,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.HEAD_ARMOR_ENCHANTABLE),
                                                                 5, 1,
@@ -136,7 +136,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.HEAD)));
 
-        // More Ores - Pickaxe
+        // MORE ORES -> Pickaxe
         register(context, MORE_ORES,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
@@ -156,7 +156,7 @@ public class ModEnchantments {
                                                blocks.getOrThrow(ModTags.Blocks.MORE_ORES_BREAK_BLOCK),
                                                List.of(0.1F, 0.05F))));
 
-        // Rainbow - Pickaxe
+        // RAINBOW -> Pickaxe
         register(context, RAINBOW,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
@@ -179,7 +179,7 @@ public class ModEnchantments {
                                                Map.entry(ModBlocks.BISMUTH_BLOCK.get(), ModTags.Blocks.BISMUTH_ORES),
                                                Map.entry(ModBlocks.PINK_BLOCK.get(), ModTags.Blocks.PINK_ORES)))));
 
-        // Xp Boost - Armor and Tools
+        // XP BOOST -> Armor and Tools
         register(context, XP_BOOST,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.DURABILITY_ENCHANTABLE),
                                                                 5, 2,
@@ -187,7 +187,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.ANY)));
 
-        // Unlock - Armor and Tools
+        // UNLOCK -> Armor and Tools
         register(context, UNLOCK,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.DURABILITY_ENCHANTABLE),
                                                                 5, 1,
@@ -195,7 +195,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.ANY)));
 
-        // Glowing Blocks - Helmet
+        // GLOWING BLOCKS -> Helmet
         register(context, GLOWING_BLOCKS,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.HEAD_ARMOR_ENCHANTABLE),
                                                                 5, 1,
@@ -203,7 +203,7 @@ public class ModEnchantments {
                                                                 Enchantment.dynamicCost(25, 7),
                                                                 2, EquipmentSlotGroup.HEAD)));
 
-        // Mobs Critical - Sword
+        // MOBS CRITICAL -> Sword
         register(context, MOBS_CRITICAL,
                  Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                                                                 items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
@@ -219,7 +219,7 @@ public class ModEnchantments {
                                                                                           ModTags.Entities.ALL_ENTITIES)))));
     }
 
-    // CUSTOM METHOD - Registry all custom enchantments -> DATA GEN
+    // CUSTOM METHOD - Registry all custom enchantments -> DATA GENERATION
     private static void register(BootstrapContext<Enchantment> registry,
                                  ResourceKey<Enchantment> key, Enchantment.Builder builder) {
         registry.register(key, builder.build(key.location()));
