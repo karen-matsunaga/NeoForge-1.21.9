@@ -39,47 +39,30 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // ** CUSTOM Top Enchantment names **
         topEnch("Lightning Striker",
-                "When applied on sword when player hits on entities appears lightning, " +
-                "but player receive damage if attacked.");
-
+                "When applied on sword when player hits on entities appears lightning, but player receive damage if attacked.");
         topEnch("Auto Smelt", "When applied on pickaxe transform all items that can be roasted on furnace.");
-
         topEnch("More Ores", "When applied on pickaxe if a stone block is break has a percentage to receive ores.");
-
-        topEnch("Block Fly",
-                "When applied on pickaxe if player has flying speed mining equals if player has on ground.");
-
+        topEnch("Block Fly", "When applied on pickaxe if player has flying speed mining equals if player has on ground.");
         topEnch("Magnet", "When applied on pickaxe all mined blocks automatically store on Player's inventory.");
-
         topEnch("Rainbow", "When applied on pickaxe the broken ore is replaced and turned on an ore block.");
-
         topEnch("Immortal",
                 "When applied to tools, armor, etc., it prevents the loss of the item in cactus, TNT, lava, void, etc.");
-
         topEnch("Peaceful Mobs", "When applied on leggings armor all entities not attack Player.");
-
         topEnch("Lightstring", "When applied on bow increases bow loading speed.");
-
         topEnch("Glowing Mobs",
                 "When applied on helmet armor all entities are detected with X-Ray of mobs. " +
                 "(Press M key to activated or disabled)");
-
         topEnch("Magnetism",
                 "When applied on leggings armor searches for items and Experience Orbs on the ground within " +
                 "a radius and returns them to the Player's inventory.");
-
         topEnch("Xp Boost",
                 "When applied to tools, armor, etc. gain more experience orb when killing mobs, mining blocks, " +
                 "cooking items, walking, mining, attacking, etc.");
-
         topEnch("Unlock",
                 "When applied to tools, armor, etc., item is locked from being dropped " +
                 "until you press the V key to unlock the item drop.");
-
-        topEnch("Glowing Blocks",
-                "When applied on helmet armor all ores blocks are detected with X-Ray of blocks. " +
-                          "(Press G key to activated or disabled)");
-
+        topEnch("Glowing Blocks", "When applied on helmet armor all ores blocks are detected with X-Ray of blocks. " +
+                                              "(Press G key to activated or disabled)");
         topEnch("Mobs Critical", "When applied on sword when player attack all entities receive critical damage.");
 
         // ** VANILLA ENCHANTMENTS **
@@ -112,25 +95,17 @@ public class ModLanguageProvider extends LanguageProvider {
         ench("feather_falling",
              "When applied on boots armor reduces fall damage the player takes, but it does not affect falling speed.");
         ench("depth_strider", "When applied on boots armor increases underwater movement speed.");
-
-        ench("frost_walker",
-             "When applied on boots armor creates frosted ice blocks when walking over water, " +
+        ench("frost_walker", "When applied on boots armor creates frosted ice blocks when walking over water, " +
              "and causes the wearer to be immune to damage from certain blocks such as campfires and magma blocks " +
              "when stepped on, but not working with lava.");
-
         ench("soul_speed", "When applied on boots armor walk more quickly on soul sand and soul soil blocks.");
 
         // SWORD
         ench("sharpness", "When applied on sword or axe increases melee damage attack on entities.");
-
-        ench("smite",
-             "When applied on sword or axe increases damage dealt to undead mobs " +
-             "also Skeleton, Zombie, Wither, Phantom, Zoglin, etc.");
-
-        ench("bane_of_arthropods",
-             "When applied on sword or axe increases damage to arthropod mobs also " +
-             "Spiders, Bees, Silverfish, Endermites, etc.");
-
+        ench("smite", "When applied on sword or axe increases damage dealt to undead mobs " +
+                                  "also Skeleton, Zombie, Wither, Phantom, Zoglin, etc.");
+        ench("bane_of_arthropods", "When applied on sword or axe increases damage to arthropod mobs also " +
+                                               "Spiders, Bees, Silverfish, Endermites, etc.");
         ench("knockback", "When applied on sword or axe increases knockback distance of entities.");
         ench("fire_aspect", "When applied on sword or axe an entity received fire attack when hit.");
         ench("looting", "When applied on sword or axe increases amount of drop loot of entities.");
@@ -141,35 +116,24 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // BOW
         ench("power", "When applied on bow increases arrow damage.");
-
-        ench("punch",
-             "When applied on bow increases an arrow's knockback, but it not affect damage dealt of arrows.");
-
+        ench("punch", "When applied on bow increases an arrow's knockback, but it not affect damage dealt of arrows.");
         ench("flame", "When applied on bow shoots flaming arrows.");
-
-        ench("infinity",
-             "When applied on bow one arrow is needed to used the enchantment that prevents regular arrows " +
-             "from being consumed when slot.");
+        ench("infinity", "When applied on bow one arrow is needed to used the enchantment that prevents regular arrows " +
+                                     "from being consumed when slot.");
 
         // FISHING ROD
         ench("luck_of_the_sea",
              "When applied on fishing rod increases luck while fishing to received enchantments, armors, tools, etc.");
-
         ench("lure", "When applied on fishing rod decreases the wait time for a bite on the hook.");
 
         // TRIDENT
         ench("loyalty", "When applied on trident causing it to return to the owner once thrown.");
-
-        ench("impaling",
-             "When applied on trident deal extra damage on each hit against aquatic mobs also axolotls, " +
-             "dolphins, guardians, squid, turtles, all variants of fish, etc. Except drowned is an undead mob.");
-
-        ench("riptide",
-             "When applied on trident hurls the user in the direction the user is facing, but only when they are wet.");
-
-        ench("channeling",
-             "When applied on trident produces lightning when thrown at a mob or " +
-             "lightning rod while a thunderstorm is occurring.");
+        ench("impaling", "When applied on trident deal extra damage on each hit against aquatic mobs also axolotls, " +
+                                    "dolphins, guardians, squid, turtles, all variants of fish, etc. Except drowned is an undead mob.");
+        ench("riptide", "When applied on trident hurls the user in the direction the user is facing, " +
+                                    "but only when they are wet.");
+        ench("channeling", "When applied on trident produces lightning when thrown at a mob or " +
+                                       "lightning rod while a thunderstorm is occurring.");
 
         // CROSSBOW
         ench("quick_charge", "When applied on crossbow quickly reloading a crossbow.");
@@ -182,12 +146,9 @@ public class ModLanguageProvider extends LanguageProvider {
 
         // MACE
         ench("breach", "When applied on mace ignores 15 percent of armor damage reduction per level.");
-
-        ench("density",
-             "When applied on mace increases 0.5 additional damage per level for each block fallen with tool.");
-
-        ench("wind_burst",
-             "When applied on mace the player into the air seven blocks per level after performing a smash attack.");
+        ench("density", "When applied on mace increases 0.5 additional damage per level for each block fallen with tool.");
+        ench("wind_burst", "When applied on mace the player into the air seven blocks per level " +
+                                       "after performing a smash attack.");
 
         // ** CUSTOM player display screen messages **
         add("item." + top + "metal_detector.no_valuable_values", "§4No Valuables Found!");
@@ -420,8 +381,8 @@ public class ModLanguageProvider extends LanguageProvider {
         blockLang(ModBlocks.DICE);
 
         // ** CUSTOM Sign and Hanging sign **
-        blockLang(ModBlocks.WALNUT_SIGN);
-        blockLang(ModBlocks.WALNUT_HANGING_SIGN);
+        signBlock(ModBlocks.WALNUT_SIGN, "Decorate sign block.");
+        signBlock(ModBlocks.WALNUT_HANGING_SIGN, "Decorate hanging sign block.");
         blockLang(ModBlocks.WALNUT_WALL_SIGN);
         blockLang(ModBlocks.WALNUT_WALL_HANGING_SIGN);
 
@@ -504,7 +465,7 @@ public class ModLanguageProvider extends LanguageProvider {
         item(ModItems.TOP_FISHING_ROD, "More faster than vanilla Fishing Rod.");
 
         // ** CUSTOM Shield **
-        shield(ModItems.ALEXANDRITE_SHIELD, "Shield.");
+        shield(ModItems.ALEXANDRITE_SHIELD, "Alexandrite Shield");
 
         // ** CUSTOM Paxel **
         paxel(List.of(ModItems.BISMUTH_PAXEL, ModItems.ALEXANDRITE_PAXEL, ModItems.PINK_PAXEL,
@@ -565,10 +526,7 @@ public class ModLanguageProvider extends LanguageProvider {
         item(ModItems.REDSTONE_SWORD, "Sword.");
         item(ModItems.EMERALD_SWORD, "Sword.");
 
-        // ** CUSTOM TRIM SMITHING TEMPLATE **
-        item(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "Armor Trim Smithing Template.");
-        item(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "Upgrade Smithing Template.");
-
+        // ** CUSTOM TOOLTIP **
         add("tooltip." + top + "auto_smelt.tooltip",
             "When applied on pickaxe transform all items that can be roasted on furnace.");
         add("tooltip." + top + "more_ores.tooltip",
@@ -612,10 +570,6 @@ public class ModLanguageProvider extends LanguageProvider {
         item(ModItems.LUCK_PICKAXE, "Gain random pickaxe enchantments.");
         item(ModItems.LUCK_WEAPON, "Gain random sword enchantments.");
 
-        // ** CUSTOM Sign and Hanging sign **
-        item(ModItems.WALNUT_SIGN, "Decorate sign block.");
-        item(ModItems.WALNUT_HANGING_SIGN, "Decorate hanging sign block.");
-
         // ** CUSTOM Boat **
         item(ModItems.WALNUT_BOAT, "Travel with special boat block item.");
         item(ModItems.WALNUT_CHEST_BOAT, "Travel with special chest boat block item.");
@@ -630,10 +584,11 @@ public class ModLanguageProvider extends LanguageProvider {
         // EMERALD
         elytra(ModItems.EMERALD_ELYTRA, "Emerald Elytra");
 
-        // ** CUSTOM ARMOR TRIM SMITHING TEMPLATE **
+        // ** CUSTOM TRIM SMITHING TEMPLATE **
+        // ** ARMOR TRIM SMITHING TEMPLATE **
         oresArmorTrimSmithingTemplate(ModItems.KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE, "kaupen");
 
-        // ** CUSTOM ORES UPGRADE SMITHING TEMPLATE **
+        // ** UPGRADE SMITHING TEMPLATE **
         oresUpgradeSmithingTemplate(ModItems.COPPER_UPGRADE_SMITHING_TEMPLATE, "copper", false);
 
         // ** CUSTOM TRIM MATERIAL **
@@ -752,6 +707,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item." + top + "smithing_template." + ore + "_upgrade.base_slot_description",
             "Add " + oreName + " armor, weapon or tool");
         add("item." + top + "smithing_template." + ore + "_upgrade.ingredients", repairItem);
+        add("tooltip.item." + top + ore + "_upgrade_smithing_template", "Upgrade Smithing Template.");
     }
 
     // CUSTOM METHOD - Ores Armor Trim Smithing Upgrade
@@ -764,11 +720,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add("item." + top + "smithing_template.applies_to", "Applies to:");
         add("item." + top + "smithing_template.ingredients", "Ingredients:");
         add("item." + top + "smithing_template", topUpper + " Smithing Template");
+        add("tooltip.item." + top + ore + "_armor_trim_smithing_template", "Armor Trim Smithing Template.");
     }
 
     // CUSTOM METHOD - Shield
     private <I extends Item> void shield(DeferredItem<I> shield, String name) {
-//        addItem(shield, name);
         item(shield, name);
         List<String> colors = List.of("black", "white", "blue", "brown", "cyan", "gray",
                                       "green", "light_blue", "light_gray", "lime", "magenta",
@@ -781,7 +737,6 @@ public class ModLanguageProvider extends LanguageProvider {
 
     // CUSTOM METHOD - ELYTRA -> Register item + description
     private <I extends Item> void elytra(DeferredItem<I> elytra, String name) {
-        itemLang(elytra);
         add("item." + top + name.replace(" ", "_").toLowerCase() + "_broken", "Broken " + name);
         item(elytra, "Elytra.");
     }
@@ -793,14 +748,14 @@ public class ModLanguageProvider extends LanguageProvider {
     }
 
     // CUSTOM METHOD - TOP ENCHANTMENT
-    private void topEnch(String name, String description) {
+    private void topEnch(String name, String desc) {
         add("enchantment." + top + name.replace(" ", "_").toLowerCase(), name);
-        add("enchantment." + top + name.replace(" ", "_").toLowerCase() + ".desc", description);
+        add("enchantment." + top + name.replace(" ", "_").toLowerCase() + ".desc", desc);
     }
 
     // CUSTOM METHOD - VANILLA ENCHANTMENT
-    private void ench(String name, String description) {
-        add("enchantment.minecraft." + name + ".desc", description);
+    private void ench(String name, String desc) {
+        add("enchantment.minecraft." + name + ".desc", desc);
     }
 
     // CUSTOM METHOD - Block name + description
@@ -812,6 +767,14 @@ public class ModLanguageProvider extends LanguageProvider {
     // CUSTOM METHOD - ENDER BLOCK description
     private <T extends Block> void enderBlockDescription(List<DeferredBlock<T>> block) {
         for (DeferredBlock<T> id : block) { block(id, "Decorate ender block."); }
+    }
+
+    // CUSTOM METHOD - SIGN description
+    private <T extends Block> void signBlock(DeferredBlock<T> block,
+                                             String text) {
+        blockLang(block);
+        add("tooltip.item." + block.getRegisteredName().replace(":", ".")
+                                                       .replace("block.", ""), text);
     }
 
     // CUSTOM METHOD - Item description
@@ -844,8 +807,6 @@ public class ModLanguageProvider extends LanguageProvider {
     private <I extends Item> void hammer(List<DeferredItem<I>> items) {
         for (DeferredItem<I> item : items) {
             if (item.get() instanceof HammerItem hammerItem) {
-//                addItem(item, itemLines(splitWord(item.getRegisteredName().replace(":", ".")
-//                                                                          .replace(top, ""))));
                 int radius = hammerItem.getRadius() * 2 + 1;
                 item(item, "§6Hammer breaks: §r" + radius + "§fx§r" + radius + " §6radius area.§r");
             }
@@ -855,8 +816,6 @@ public class ModLanguageProvider extends LanguageProvider {
     // CUSTOM METHOD - PAXEL item + description
     private <I extends Item> void paxel(List<DeferredItem<I>> items) {
         for (DeferredItem<I> item : items) {
-//            addItem(item, itemLines(splitWord(item.getRegisteredName().replace(":", ".")
-//                                                                      .replace(top, ""))));
             item(item, "Break blocks as Axe, Pickaxe or Shovel.");
         }
     }
@@ -873,7 +832,8 @@ public class ModLanguageProvider extends LanguageProvider {
     private void topPotionDescription(Map<Holder<MobEffect>, String> effects) {
         for (Map.Entry<Holder<MobEffect>, String> effect : effects.entrySet()) {
             String id = effect.getKey().getRegisteredName().replace(":", ".");
-            String idName = id.replace(top, "").replace(" ", "_");
+            String idName = id.replace(top, "").replace("minecraft.", "")
+                                                          .replace(" ", "_");
             String name = itemLines(splitWord(id.replace(top, "").replace("minecraft.", "")));
             add("effect." + id, name);
             add("item.minecraft.potion.effect." + idName + "_potion", name + " Potion");
