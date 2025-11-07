@@ -58,7 +58,7 @@ public class PotionContentsMixin {
             }
             consumer.accept(componentTranslatableIntColor("tooltip.effect." +
                                                           holder.getRegisteredName().replace(":", "."),
-                                                          redBedrockColor));
+                                                          darkGreenColor));
         }
         if (flag) {
             consumer.accept(componentTranslatableIntColor("effect.none", ARGB.color(206, 202, 202)));
