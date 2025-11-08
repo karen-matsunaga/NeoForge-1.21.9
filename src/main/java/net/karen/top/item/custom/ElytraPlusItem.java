@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,6 +27,11 @@ public class ElytraPlusItem extends Item {
         this.effectAmplifier = effectAmplifier;
     }
 
+    // DEFAULT METHOD - Piglins neutral
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, @NotNull LivingEntity wearer) { return stack.is(this); }
+
+    // DEFAULT METHOD - Inventory tick
     @Override
     public void inventoryTick(@NotNull ItemStack stack, @NotNull ServerLevel level,
                               @NotNull Entity entity, @Nullable EquipmentSlot slot) {
@@ -39,10 +45,11 @@ public class ElytraPlusItem extends Item {
         super.inventoryTick(stack, level, entity, slot);
     }
 
+    // DEFAULT METHOD - Elytra Plus item name
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) { return rgbItemName(stack); }
 
-    // CUSTOM METHOD - Elytra Plus item name
+    // CUSTOM METHOD - Elytra Plus item description
     public List<String> elytraItemName() {
         String effectHolder = this.effectHolder.getRegisteredName().replace("minecraft:", "");
         String upperLetter = effectHolder.substring(0, 1).toUpperCase();
