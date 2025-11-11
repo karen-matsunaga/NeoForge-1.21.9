@@ -45,8 +45,7 @@ public class ModFluids {
                                    new LiquidBlock(ModFluids.SOURCE_SOAP_WATER.get(),
                                                    props.mapColor(MapColor.WATER).replaceable().noCollision()
                                                         .strength(100.0F).pushReaction(PushReaction.DESTROY)
-                                                        .noLootTable().liquid().sound(SoundType.EMPTY)),
-                                   soapWaterTintColor, soapWaterTintColor);
+                                                        .noLootTable().liquid().sound(SoundType.EMPTY)), soapWaterTintColor);
 
     // ** CUSTOM bucket fluid **
     // Soap Water Bucket custom fluid
