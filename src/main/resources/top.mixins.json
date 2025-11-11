@@ -16,7 +16,6 @@
     "FishingHookMixin",
     "HappyGhastMixin",
     "ItemEnchantmentsMixin",
-    "ItemMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "PotionContentsMixin",

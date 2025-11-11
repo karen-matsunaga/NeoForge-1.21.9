@@ -2,7 +2,6 @@ package net.karen.top.util;
 
 import com.mojang.datafixers.util.Either;
 import net.karen.top.Top;
-import net.karen.top.item.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -17,11 +16,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -349,33 +346,71 @@ public class ChatUtils {
         return gray;
     }
 
-    // CUSTOM METHOD - Enchantment Icon compatibility
-    public static String icon(Holder<Enchantment> holder) {
-        String armor = "§6⭐", pick = "§5⛏", hammer = "§3🔨", shield = "§1🛡",
-                 bow = "§a\uD83C\uDFF9", sword = "§4\uD83D\uDDE1", trident = "§b\uD83D\uDD31",
-                fish = "§e\uD83C\uDFA3", axe = "§5\uD83E\uDE93";
-        Map<List<TagKey<Enchantment>>, String> enchantmentIcons = new HashMap<>();
-        enchantmentIcons.put(List.of(EnchantmentTags.CURSE), "§c🔥"); // CURSE
-        enchantmentIcons.put(List.of(EnchantmentTags.ARMOR_EXCLUSIVE), armor); // ARMOR
-        // HELMET, CHESTPLATE, LEGGINGS, BOOTS ARMORS AND MACE
-        enchantmentIcons.put(List.of(ModTags.Enchantments.HELMET_ENCHANTMENTS, ModTags.Enchantments.CHESTPLATE_ENCHANTMENTS,
-                                     ModTags.Enchantments.LEGGINGS_ENCHANTMENTS, ModTags.Enchantments.BOOTS_ENCHANTMENTS,
-                                     ModTags.Enchantments.MACE_ENCHANTMENTS), "");
-        enchantmentIcons.put(List.of(ModTags.Enchantments.FISHING_ENCHANTMENTS), fish); // FISHING ROD
-        enchantmentIcons.put(List.of(ModTags.Enchantments.MINING_ENCHANTMENTS), pick + " " + axe); // PICKAXE + AXE + SHOVEL
-        enchantmentIcons.put(List.of(ModTags.Enchantments.DURABILITY_ENCHANTMENTS),
-                                     axe + " " + fish + " " + pick + " " + armor + " " + sword + " " +
-                                     bow + " " + trident + " " + hammer + " " + shield); // DURABILITY
-        enchantmentIcons.put(List.of(ModTags.Enchantments.TRIDENT_ENCHANTMENTS), trident); // TRIDENT
-        enchantmentIcons.put(List.of(ModTags.Enchantments.SWORD_ENCHANTMENTS), sword); // SWORD
-        enchantmentIcons.put(List.of(ModTags.Enchantments.BOW_ENCHANTMENTS,
-                                     ModTags.Enchantments.CROSSBOW_ENCHANTMENTS), bow); // BOW or CROSSBOW
-        for (Map.Entry<List<TagKey<Enchantment>>, String> value : enchantmentIcons.entrySet()) {
-            for (TagKey<Enchantment> tagKey : value.getKey()) {
-                if (holder.is(tagKey)) { return value.getValue(); }
-            }
+    // CUSTOM METHOD - ATLAS SPRITE -> ENCHANTMENT ICON COMPATIBILITY
+    public static MutableComponent atlasEnchIcon(Holder<Enchantment> holder) {
+        // ENCHANTMENT ICONS
+        Map<TagKey<Enchantment>, List<ResourceLocation>> enchIcons = new HashMap<>();
+        ResourceLocation helmet = itemIcon("diamond_helmet");
+        ResourceLocation chestplate = itemIcon("diamond_chestplate");
+        ResourceLocation leggings = itemIcon("diamond_leggings");
+        ResourceLocation boots = itemIcon("diamond_boots");
+        ResourceLocation mace = itemIcon("mace");
+        ResourceLocation fishingRod = itemIcon("fishing_rod");
+        ResourceLocation axe = itemIcon("diamond_axe");
+        ResourceLocation pickaxe = itemIcon("diamond_pickaxe");
+        ResourceLocation shovel = itemIcon("diamond_shovel");
+        ResourceLocation hoe = itemIcon("diamond_hoe");
+        ResourceLocation trident = itemIcon("trident");
+        ResourceLocation bow = itemIcon("bow");
+        ResourceLocation crossbow = itemIcon("crossbow_standby");
+        ResourceLocation hammer = topItemIcon("diamond_hammer");
+        ResourceLocation paxel = topItemIcon("diamond_paxel");
+        ResourceLocation sword = itemIcon("diamond_sword");
+        // ENCHANTMENTS
+        enchIcons.put(EnchantmentTags.CURSE, List.of(itemIcon("fire_charge"))); // CURSE
+        enchIcons.put(EnchantmentTags.ARMOR_EXCLUSIVE, List.of(chestplate)); // ARMOR
+        enchIcons.put(ModTags.Enchantments.HELMET_ENCHANTMENTS, List.of(helmet)); // HELMET
+        enchIcons.put(ModTags.Enchantments.CHESTPLATE_ENCHANTMENTS, List.of(chestplate)); // CHESTPLATE
+        enchIcons.put(ModTags.Enchantments.LEGGINGS_ENCHANTMENTS, List.of(leggings)); // LEGGINGS
+        enchIcons.put(ModTags.Enchantments.BOOTS_ENCHANTMENTS, List.of(boots)); // BOOTS
+        enchIcons.put(ModTags.Enchantments.MACE_ENCHANTMENTS, List.of(mace)); // MACE
+        enchIcons.put(ModTags.Enchantments.FISHING_ENCHANTMENTS, List.of(fishingRod)); // FISHING ROD
+        enchIcons.put(ModTags.Enchantments.MINING_ENCHANTMENTS, List.of(pickaxe, axe, shovel)); // PICKAXE + AXE + SHOVEL
+        enchIcons.put(ModTags.Enchantments.SWORD_ENCHANTMENTS, List.of(sword)); // SWORD
+        // DURABILITY
+        enchIcons.put(ModTags.Enchantments.DURABILITY_ENCHANTMENTS,
+                      List.of(helmet, chestplate, leggings, boots, sword, axe, pickaxe, shovel,
+                              hoe, hammer, paxel, fishingRod, mace, trident, bow, crossbow));
+        enchIcons.put(ModTags.Enchantments.TRIDENT_ENCHANTMENTS, List.of(trident)); // TRIDENT
+        enchIcons.put(ModTags.Enchantments.BOW_ENCHANTMENTS, List.of(bow)); // BOW
+        enchIcons.put(ModTags.Enchantments.CROSSBOW_ENCHANTMENTS, List.of(crossbow)); // CROSSBOW
+        // DISPLAY ICONS
+        for (Map.Entry<TagKey<Enchantment>, List<ResourceLocation>> value : enchIcons.entrySet()) {
+            if (holder.is(value.getKey())) { return atlasCompIcons(value.getValue()); }
         }
-        return "";
+        return atlasComp(itemIcon("air"));
+    }
+
+    // CUSTOM METHOD - VANILLA ATLAS SPRITE ITEM ICON
+    private static ResourceLocation itemIcon(String item) {
+        return ResourceLocation.withDefaultNamespace("item/" + item);
+    }
+
+    // CUSTOM METHOD - TOP ATLAS SPRITE ITEM ICON
+    private static ResourceLocation topItemIcon(String item) {
+        return ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "item/" + item);
+    }
+
+    // CUSTOM METHOD - ATLAS SPRITE COMPONENT
+    public static MutableComponent atlasComp(ResourceLocation resourceLocation) {
+        return Component.object(new AtlasSprite(AtlasSprite.DEFAULT_ATLAS, resourceLocation));
+    }
+
+    // CUSTOM METHOD - ATLAS SPRITE
+    public static MutableComponent atlasCompIcons(List<ResourceLocation> resourceLocations) {
+        MutableComponent result = atlasComp(resourceLocations.getFirst()); // Get first icon resourceLocations[0]
+        for (int i = 1; i < resourceLocations.size(); i++) { result.append(atlasComp(resourceLocations.get(i))); }
+        return result.withColor(whiteColor);
     }
 
     // CUSTOM METHOD - Display Icon message TOOLTIP -> IMAGE TOOLTIP COMPONENT
@@ -512,75 +547,5 @@ public class ChatUtils {
                      .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(COLORS[colorIndex]))));
         }
         return minerText;
-    }
-
-    // CUSTOM METHOD - ATLAS SPRITE
-    public static MutableComponent atlas() {
-        ResourceLocation icon = ResourceLocation.withDefaultNamespace("item/diamond_helmet");
-        MutableComponent font = Component.object(new AtlasSprite(AtlasSprite.DEFAULT_ATLAS, icon));
-        return font.withColor(ARGB.color(222, 177, 45));
-    }
-
-    // CUSTOM METHOD - MULTI IMAGE TOOLTIP
-    public static MultiImageTooltipComponent multiImageTooltipComponent(List<ItemStack> stacks) {
-        return new MultiImageTooltipComponent(stacks, 16, "");
-    }
-
-    // CUSTOM METHOD - ENCHANTMENT ICON
-    public static MultiImageTooltipComponent enchantmentIcon(Holder<Enchantment> holder) {
-        // ENCHANTMENT ICONS
-        Map<TagKey<Enchantment>, List<ItemStack>> enchantmentIcons = new HashMap<>();
-        ItemStack curse = new ItemStack(Items.FIRE_CHARGE);
-        ItemStack helmet = new ItemStack(Items.DIAMOND_HELMET);
-        ItemStack chestplate = new ItemStack(Items.DIAMOND_CHESTPLATE);
-        ItemStack leggings = new ItemStack(Items.DIAMOND_LEGGINGS);
-        ItemStack boots = new ItemStack(Items.DIAMOND_BOOTS);
-        ItemStack mace = new ItemStack(Items.MACE);
-        ItemStack fishingRod = new ItemStack(Items.FISHING_ROD);
-        ItemStack sword = new ItemStack(Items.DIAMOND_SWORD);
-        ItemStack axe = new ItemStack(Items.DIAMOND_AXE);
-        ItemStack pickaxe = new ItemStack(Items.DIAMOND_PICKAXE);
-        ItemStack shovel = new ItemStack(Items.DIAMOND_SHOVEL);
-        ItemStack hoe = new ItemStack(Items.DIAMOND_HOE);
-        ItemStack trident = new ItemStack(Items.TRIDENT);
-        ItemStack bow = new ItemStack(Items.BOW);
-        ItemStack crossbow = new ItemStack(Items.CROSSBOW);
-        ItemStack shield = new ItemStack(Items.SHIELD);
-        ItemStack hammer = ModItems.DIAMOND_HAMMER.toStack();
-        ItemStack paxel = ModItems.DIAMOND_PAXEL.toStack();
-        // CURSE
-        enchantmentIcons.put(EnchantmentTags.CURSE, List.of(curse));
-        // ARMOR
-        enchantmentIcons.put(EnchantmentTags.ARMOR_EXCLUSIVE, List.of(chestplate));
-        // HELMET, CHESTPLATE, LEGGINGS and BOOTS ARMORS
-        enchantmentIcons.put(ModTags.Enchantments.HELMET_ENCHANTMENTS, List.of(helmet));
-        enchantmentIcons.put(ModTags.Enchantments.CHESTPLATE_ENCHANTMENTS, List.of(chestplate));
-        enchantmentIcons.put(ModTags.Enchantments.LEGGINGS_ENCHANTMENTS, List.of(leggings));
-        enchantmentIcons.put(ModTags.Enchantments.BOOTS_ENCHANTMENTS, List.of(boots));
-        // MACE
-        enchantmentIcons.put(ModTags.Enchantments.MACE_ENCHANTMENTS, List.of(mace));
-        // FISHING ROD
-        enchantmentIcons.put(ModTags.Enchantments.FISHING_ENCHANTMENTS, List.of(fishingRod));
-        // PICKAXE + AXE + SHOVEL
-        enchantmentIcons.put(ModTags.Enchantments.MINING_ENCHANTMENTS,
-                             List.of(pickaxe, axe, shovel));
-        // DURABILITY
-        enchantmentIcons.put(ModTags.Enchantments.DURABILITY_ENCHANTMENTS,
-                             List.of(helmet, chestplate, leggings, boots,
-                                     sword, axe, pickaxe, shovel, hoe, hammer, paxel,
-                                     fishingRod, mace, trident, shield, bow, crossbow));
-        // TRIDENT
-        enchantmentIcons.put(ModTags.Enchantments.TRIDENT_ENCHANTMENTS, List.of(trident));
-        // SWORD
-        enchantmentIcons.put(ModTags.Enchantments.SWORD_ENCHANTMENTS, List.of(sword));
-        // BOW
-        enchantmentIcons.put(ModTags.Enchantments.BOW_ENCHANTMENTS, List.of(bow));
-        // CROSSBOW
-        enchantmentIcons.put(ModTags.Enchantments.CROSSBOW_ENCHANTMENTS, List.of(crossbow));
-        // DISPLAY ICONS
-        for (Map.Entry<TagKey<Enchantment>, List<ItemStack>> value : enchantmentIcons.entrySet()) {
-            if (holder.is(value.getKey())) { return multiImageTooltipComponent(value.getValue()); }
-        }
-        return multiImageTooltipComponent(List.of(new ItemStack(Blocks.AIR)));
     }
 }
