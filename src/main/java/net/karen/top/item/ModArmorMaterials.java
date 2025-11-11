@@ -7,6 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.equipment.ArmorMaterial;
@@ -55,8 +56,21 @@ public class ModArmorMaterials {
     // EMERALD
     public static final ArmorMaterial EMERALD_ARMOR_MATERIAL =
            armorMaterial(10, 2, 5, 6, 2, 5,
-                         10, SoundEvents.ARMOR_EQUIP_ELYTRA, 1.0F, 0.1F,
+                         10, SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 0.1F,
                          ModTags.Items.REPAIRS_EMERALD_ARMOR, ModEquipmentAssetProvider.EMERALD);
+
+    // ELYTRA
+    // DIAMOND
+    public static final ArmorMaterial DIAMOND_ELYTRA_ARMOR_MATERIAL =
+           armorMaterial(33, 3, 6, 8, 3, 11,
+                         20, SoundEvents.ARMOR_EQUIP_ELYTRA, 2.0F, 0.2F,
+                         ItemTags.DIAMOND_TOOL_MATERIALS, ModEquipmentAssetProvider.DIAMOND_ELYTRA);
+
+    // EMERALD
+    public static final ArmorMaterial EMERALD_ELYTRA_ARMOR_MATERIAL =
+           armorMaterial(20, 2, 5, 6, 2, 5,
+                         10, SoundEvents.ARMOR_EQUIP_ELYTRA, 1.0F, 0.1F,
+                         ModTags.Items.EMERALD_TOOL_MATERIALS, ModEquipmentAssetProvider.EMERALD_ELYTRA);
 
     // CUSTOM METHOD - Armor Type Defense
     private static Map<ArmorType, Integer> makeArmorTypeDefense() {

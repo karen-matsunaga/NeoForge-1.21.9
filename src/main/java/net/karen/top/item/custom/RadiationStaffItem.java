@@ -12,7 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import static net.karen.top.util.ChatUtils.radiationStaffLoreColor;
+import static net.karen.top.util.ChatUtils.radiationStaffColor;
 import static net.karen.top.util.Utils.neutralSound;
 
 public class RadiationStaffItem extends Item {
@@ -39,6 +39,6 @@ public class RadiationStaffItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), radiationStaffLoreColor);
+        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), radiationStaffColor);
     }
 }

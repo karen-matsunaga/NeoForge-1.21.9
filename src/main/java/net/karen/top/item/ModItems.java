@@ -2,7 +2,6 @@ package net.karen.top.item;
 
 import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
-import net.karen.top.datagen.ModEquipmentAssetProvider;
 import net.karen.top.entity.ModEntities;
 import net.karen.top.item.custom.*;
 import net.karen.top.sound.ModSounds;
@@ -14,7 +13,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Unit;
 import net.minecraft.world.effect.MobEffect;
@@ -68,13 +66,13 @@ public class ModItems {
            shiftItem("chisel", props -> new ChiselItem(props.durability(32)));
 
     public static final DeferredItem<Item> RESTORE =
-           customItem("restore", RestoreItem::new, Properties::fireResistant, restoreLoreColor);
+           customItem("restore", RestoreItem::new, Properties::fireResistant, restoreColor);
 
     public static final DeferredItem<Item> FARMER =
-           customItem("farmer", FarmerItem::new, Properties::fireResistant, farmerLoreColor);
+           customItem("farmer", FarmerItem::new, Properties::fireResistant, farmerColor);
 
     public static final DeferredItem<Item> CATTAIL =
-           customItem("cattail", ModWaxingItem::new, Properties::fireResistant, cattailLoreColor);
+           customItem("cattail", ModWaxingItem::new, Properties::fireResistant, cattailColor);
 
     // ** CUSTOM Foods **
     public static final DeferredItem<Item> RADISH =
@@ -137,55 +135,55 @@ public class ModItems {
 
     // COPPER
     public static final DeferredItem<Item> ULTRA_COPPER_HELMET =
-           helmetArmor("ultra_copper_helmet", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperLoreColor);
+           helmetArmor("ultra_copper_helmet", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_CHESTPLATE =
-           chestplateArmor("ultra_copper_chestplate", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperLoreColor);
+           chestplateArmor("ultra_copper_chestplate", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_LEGGINGS =
-           leggingsArmor("ultra_copper_leggings", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperLoreColor);
+           leggingsArmor("ultra_copper_leggings", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_BOOTS =
-           bootsArmor("ultra_copper_boots", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperLoreColor);
+           bootsArmor("ultra_copper_boots", ModArmorMaterials.COPPER_ARMOR_MATERIAL, copperColor);
 
     // LAPIS LAZULI
     public static final DeferredItem<Item> LAPIS_LAZULI_HELMET =
-           helmetArmor("lapis_lazuli_helmet", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisLoreColor);
+           helmetArmor("lapis_lazuli_helmet", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_CHESTPLATE =
-           chestplateArmor("lapis_lazuli_chestplate", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisLoreColor);
+           chestplateArmor("lapis_lazuli_chestplate", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_LEGGINGS =
-           leggingsArmor("lapis_lazuli_leggings", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisLoreColor);
+           leggingsArmor("lapis_lazuli_leggings", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_BOOTS =
-           bootsArmor("lapis_lazuli_boots", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisLoreColor);
+           bootsArmor("lapis_lazuli_boots", ModArmorMaterials.LAPIS_LAZULI_ARMOR_MATERIAL, lapisColor);
 
     // REDSTONE
     public static final DeferredItem<Item> REDSTONE_HELMET =
-           helmetArmor("redstone_helmet", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneLoreColor);
+           helmetArmor("redstone_helmet", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneColor);
 
     public static final DeferredItem<Item> REDSTONE_CHESTPLATE =
-           chestplateArmor("redstone_chestplate", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneLoreColor);
+           chestplateArmor("redstone_chestplate", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneColor);
 
     public static final DeferredItem<Item> REDSTONE_LEGGINGS =
-           leggingsArmor("redstone_leggings", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneLoreColor);
+           leggingsArmor("redstone_leggings", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneColor);
 
     public static final DeferredItem<Item> REDSTONE_BOOTS =
-           bootsArmor("redstone_boots", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneLoreColor);
+           bootsArmor("redstone_boots", ModArmorMaterials.REDSTONE_ARMOR_MATERIAL, redstoneColor);
 
     // EMERALD
     public static final DeferredItem<Item> EMERALD_HELMET =
-           helmetArmor("emerald_helmet", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+           helmetArmor("emerald_helmet", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldColor);
 
     public static final DeferredItem<Item> EMERALD_CHESTPLATE =
-           chestplateArmor("emerald_chestplate", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+           chestplateArmor("emerald_chestplate", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldColor);
 
     public static final DeferredItem<Item> EMERALD_LEGGINGS =
-           leggingsArmor("emerald_leggings", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+           leggingsArmor("emerald_leggings", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldColor);
 
     public static final DeferredItem<Item> EMERALD_BOOTS =
-           bootsArmor("emerald_boots", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldElytraLoreColor);
+           bootsArmor("emerald_boots", ModArmorMaterials.EMERALD_ARMOR_MATERIAL, emeraldColor);
 
     // ** CUSTOM Horse armor **
     public static final DeferredItem<Item> BISMUTH_HORSE_ARMOR =
@@ -212,9 +210,9 @@ public class ModItems {
                                        // DEFAULT METHOD - Appears on name item
                                        @Override
                                        public @NotNull Component getName(@NotNull ItemStack stack) {
-                                           return componentTranslatableIntColor(this.getDescriptionId(), fishingRodLoreColor);
+                                           return componentTranslatableIntColor(this.getDescriptionId(), fishingRodColor);
                                        }},
-                    fishingRodLoreColor);
+                    fishingRodColor);
 
     // ** CUSTOM Shield tools **
     public static final DeferredItem<Item> ALEXANDRITE_SHIELD =
@@ -222,271 +220,255 @@ public class ModItems {
 
     // ** CUSTOM Paxel tools **
     public static final DeferredItem<Item> BISMUTH_PAXEL =
-           paxelItem("bismuth_paxel", ModToolMaterials.BISMUTH, 1F, -2.8F,
-                     ModTags.Items.BISMUTH_TOOL_MATERIALS, bismuthColor);
+           paxelItem("bismuth_paxel", ModToolMaterials.BISMUTH, 1F, -2.8F, bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_PAXEL =
            paxelItem("alexandrite_paxel", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                     ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+                     alexandriteColor);
 
     public static final DeferredItem<Item> PINK_PAXEL =
-           paxelItem("pink_paxel", ModToolMaterials.PINK, 1.0F, 2.0F,
-                     ModTags.Items.PINK_TOOL_MATERIALS, pinkColor);
+           paxelItem("pink_paxel", ModToolMaterials.PINK, 1.0F, 2.0F, pinkColor);
 
     public static final DeferredItem<Item> COPPER_PAXEL =
-           paxelItem("copper_paxel", ModToolMaterials.COPPER, 1.0F, 2.5F,
-                     ModTags.Items.COPPER_TOOL_MATERIALS, copperLoreColor);
+           paxelItem("copper_paxel", ModToolMaterials.COPPER, 1.0F, 2.5F, copperColor);
 
     public static final DeferredItem<Item> DIAMOND_PAXEL =
-           paxelItem("diamond_paxel", ToolMaterial.DIAMOND, 1.0F, 4.5F,
-                     ItemTags.DIAMOND_TOOL_MATERIALS, diamondLoreColor);
+           paxelItem("diamond_paxel", ToolMaterial.DIAMOND, 1.0F, 4.5F, diamondColor);
 
     public static final DeferredItem<Item> GOLD_PAXEL =
-           paxelItem("gold_paxel", ToolMaterial.GOLD, 1.0F, 4.0F,
-                     ItemTags.GOLD_TOOL_MATERIALS, goldLoreColor);
+           paxelItem("gold_paxel", ToolMaterial.GOLD, 1.0F, 4.0F, goldColor);
 
     public static final DeferredItem<Item> IRON_PAXEL =
-           paxelItem("iron_paxel", ToolMaterial.IRON, 1.0F, 3.0F,
-                     ItemTags.IRON_TOOL_MATERIALS, ironLoreColor);
+           paxelItem("iron_paxel", ToolMaterial.IRON, 1.0F, 3.0F, ironColor);
 
     public static final DeferredItem<Item> STONE_PAXEL =
-           paxelItem("stone_paxel", ToolMaterial.STONE, 1.0F, 1.5F,
-                     ItemTags.STONE_TOOL_MATERIALS, stoneLoreColor);
+           paxelItem("stone_paxel", ToolMaterial.STONE, 1.0F, 1.5F, stoneColor);
 
     public static final DeferredItem<Item> WOODEN_PAXEL =
-           paxelItem("wooden_paxel", ToolMaterial.WOOD, 1.0F, 1.0F,
-                     ItemTags.WOODEN_TOOL_MATERIALS, woodenLoreColor);
+           paxelItem("wooden_paxel", ToolMaterial.WOOD, 1.0F, 1.0F, woodenColor);
 
     public static final DeferredItem<Item> NETHERITE_PAXEL =
            paxelItem("netherite_paxel", ToolMaterial.NETHERITE, 1.0F, 5.0F,
-                     ItemTags.NETHERITE_TOOL_MATERIALS, netheriteLoreColor);
+                     netheriteColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_PAXEL =
            paxelItem("lapis_lazuli_paxel", ModToolMaterials.LAPIS_LAZULI, 1.0F, 3.5F,
-                     ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, lapisLoreColor);
+                     lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_PAXEL =
            paxelItem("redstone_paxel", ModToolMaterials.REDSTONE, 1.0F, 4.5F,
-                     ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+                     redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_PAXEL =
            paxelItem("emerald_paxel", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                     ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+                     emeraldColor);
 
     // ** CUSTOM Hammer tools **
     public static final DeferredItem<Item> BISMUTH_HAMMER =
            hammerItem("bismuth_hammer", ModToolMaterials.BISMUTH, 7F, -3.5F,
-                      ModTags.Items.BISMUTH_TOOL_MATERIALS, 2, bismuthColor, bismuthColor);
+                      2, bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_HAMMER =
            hammerItem("alexandrite_hammer", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                      ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, 2, alexandriteColor, alexandriteColor);
+                      2, alexandriteColor);
 
     public static final DeferredItem<Item> PINK_HAMMER =
            hammerItem("pink_hammer", ModToolMaterials.PINK, 2.0F, 2.0F,
-                      ModTags.Items.PINK_TOOL_MATERIALS, 3, pinkColor, pinkColor);
+                      3, pinkColor);
 
     public static final DeferredItem<Item> COPPER_HAMMER =
            hammerItem("copper_hammer", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                      ModTags.Items.COPPER_TOOL_MATERIALS, 2, copperLoreColor, copperLoreColor);
+                      2, copperColor);
 
     public static final DeferredItem<Item> DIAMOND_HAMMER =
            hammerItem("diamond_hammer", ToolMaterial.DIAMOND, 2.0F, 4.5F,
-                      ItemTags.DIAMOND_TOOL_MATERIALS, 3, diamondLoreColor, diamondLoreColor);
+                      3, diamondColor);
 
     public static final DeferredItem<Item> GOLD_HAMMER =
            hammerItem("gold_hammer", ToolMaterial.GOLD, 2.0F, 4.0F,
-                      ItemTags.GOLD_TOOL_MATERIALS, 2, goldLoreColor, goldLoreColor);
+                      2, goldColor);
 
     public static final DeferredItem<Item> IRON_HAMMER =
            hammerItem("iron_hammer", ToolMaterial.IRON, 2.0F, 3.0F,
-                      ItemTags.IRON_TOOL_MATERIALS, 2, ironLoreColor, ironLoreColor);
+                      2, ironColor);
 
     public static final DeferredItem<Item> STONE_HAMMER =
            hammerItem("stone_hammer", ToolMaterial.STONE, 2.0F, 1.5F,
-                      ItemTags.STONE_TOOL_MATERIALS, 1, stoneLoreColor, stoneLoreColor);
+                      1, stoneColor);
 
     public static final DeferredItem<Item> WOODEN_HAMMER =
            hammerItem("wooden_hammer", ToolMaterial.WOOD, 2.0F, 1.0F,
-                      ItemTags.WOODEN_TOOL_MATERIALS, 1, woodenLoreColor, woodenLoreColor);
+                      1, woodenColor);
 
     public static final DeferredItem<Item> NETHERITE_HAMMER =
            hammerItem("netherite_hammer", ToolMaterial.NETHERITE, 2.0F, 5.0F,
-                      ItemTags.NETHERITE_TOOL_MATERIALS, 5, netheriteLoreColor, netheriteLoreColor);
+                      5, netheriteColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_HAMMER =
            hammerItem("lapis_lazuli_hammer", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                      ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, 4, lapisLoreColor, lapisLoreColor);
+                      4, lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_HAMMER =
            hammerItem("redstone_hammer", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                      ModTags.Items.REDSTONE_TOOL_MATERIALS, 4, redstoneLoreColor, redstoneLoreColor);
+                      4, redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_HAMMER =
            hammerItem("emerald_hammer", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                      ModTags.Items.EMERALD_TOOL_MATERIALS, 4, emeraldElytraLoreColor, emeraldElytraLoreColor);
+                      4, emeraldColor);
 
     // ** CUSTOM Shovel tools **
     public static final DeferredItem<Item> BISMUTH_SHOVEL =
            shovelItem("bismuth_shovel", ModToolMaterials.BISMUTH, 1.5F, -3.0F,
-                      ModTags.Items.BISMUTH_TOOL_MATERIALS, bismuthColor);
+                      bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_SHOVEL =
            shovelItem("alexandrite_shovel", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                      ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+                      alexandriteColor);
 
     public static final DeferredItem<Item> PINK_SHOVEL =
-           shovelItem("pink_shovel", ModToolMaterials.PINK, 2.0F, 2.0F,
-                      ModTags.Items.PINK_TOOL_MATERIALS, pinkColor);
+           shovelItem("pink_shovel", ModToolMaterials.PINK, 2.0F, 2.0F, pinkColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_SHOVEL =
            shovelItem("ultra_copper_shovel", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                      ModTags.Items.COPPER_TOOL_MATERIALS, copperLoreColor);
+                      copperColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_SHOVEL =
            shovelItem("lapis_lazuli_shovel", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                      ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, lapisLoreColor);
+                      lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_SHOVEL =
            shovelItem("redstone_shovel", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                      ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+                      redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_SHOVEL =
            shovelItem("emerald_shovel", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                      ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+                      emeraldColor);
 
     // ** CUSTOM Axe tools **
     public static final DeferredItem<Item> BISMUTH_AXE =
-           axeItem("bismuth_axe", ModToolMaterials.BISMUTH, 6.0F, -3.2F,
-                   ModTags.Items.BISMUTH_TOOL_MATERIALS, bismuthColor);
+           axeItem("bismuth_axe", ModToolMaterials.BISMUTH, 6.0F, -3.2F, bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_AXE =
            axeItem("alexandrite_axe", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                   ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+                   alexandriteColor);
 
     public static final DeferredItem<Item> PINK_AXE =
-           axeItem("pink_axe", ModToolMaterials.PINK, 2.0F, 2.0F,
-                   ModTags.Items.PINK_TOOL_MATERIALS, pinkColor);
+           axeItem("pink_axe", ModToolMaterials.PINK, 2.0F, 2.0F, pinkColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_AXE =
            axeItem("ultra_copper_axe", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                   ModTags.Items.COPPER_TOOL_MATERIALS, copperLoreColor);
+                   copperColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_AXE =
            axeItem("lapis_lazuli_axe", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                   ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, lapisLoreColor);
+                   lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_AXE =
            axeItem("redstone_axe", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                   ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+                   redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_AXE =
            axeItem("emerald_axe", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                   ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+                   emeraldColor);
 
     // ** CUSTOM hoe **
     public static final DeferredItem<Item> BISMUTH_HOE =
-           hoeItem("bismuth_hoe", ModToolMaterials.BISMUTH, 0.0F, -3.0F,
-                   ModTags.Items.BISMUTH_TOOL_MATERIALS, bismuthColor);
+           hoeItem("bismuth_hoe", ModToolMaterials.BISMUTH, 0.0F, -3.0F, bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_HOE =
            hoeItem("alexandrite_hoe", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                   ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+                   alexandriteColor);
 
     public static final DeferredItem<Item> PINK_HOE =
-           hoeItem("pink_hoe", ModToolMaterials.PINK, 2.0F, 2.0F,
-                   ModTags.Items.PINK_TOOL_MATERIALS, pinkColor);
+           hoeItem("pink_hoe", ModToolMaterials.PINK, 2.0F, 2.0F, pinkColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_HOE =
            hoeItem("ultra_copper_hoe", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                   ModTags.Items.COPPER_TOOL_MATERIALS, copperLoreColor);
+                   copperColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_HOE =
            hoeItem("lapis_lazuli_hoe", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                   ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, lapisLoreColor);
+                   lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_HOE =
            hoeItem("redstone_hoe", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                   ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+                   redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_HOE =
            hoeItem("emerald_hoe", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                   ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+                   emeraldColor);
 
     // ** CUSTOM pickaxe **
     public static final DeferredItem<Item> BISMUTH_PICKAXE =
            pickaxeItem("bismuth_pickaxe", ModToolMaterials.BISMUTH, 1.0F, -2.8F,
-                       ModTags.Items.BISMUTH_TOOL_MATERIALS, bismuthColor);
+                       bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_PICKAXE =
            pickaxeItem("alexandrite_pickaxe", ModToolMaterials.ALEXANDRITE, 1.0F, 2.0F,
-                       ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+                       alexandriteColor);
 
     public static final DeferredItem<Item> PINK_PICKAXE =
-           pickaxeItem("pink_pickaxe", ModToolMaterials.PINK, 2.0F, 2.0F,
-                       ModTags.Items.PINK_TOOL_MATERIALS, pinkColor);
+           pickaxeItem("pink_pickaxe", ModToolMaterials.PINK, 2.0F, 2.0F, pinkColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_PICKAXE =
            pickaxeItem("ultra_copper_pickaxe", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                       ModTags.Items.COPPER_TOOL_MATERIALS, copperLoreColor);
+                       copperColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_PICKAXE =
            pickaxeItem("lapis_lazuli_pickaxe", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                       ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, lapisLoreColor);
+                       lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_PICKAXE =
            pickaxeItem("redstone_pickaxe", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                       ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+                       redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_PICKAXE =
            pickaxeItem("emerald_pickaxe", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                       ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+                       emeraldColor);
 
     // ** CUSTOM sword **
     public static final DeferredItem<Item> BISMUTH_SWORD =
-           swordItem("bismuth_sword", ModToolMaterials.BISMUTH, 5.0F, -2.4F,
-                     ModTags.Items.BISMUTH_TOOL_MATERIALS, bismuthColor);
+           swordItem("bismuth_sword", ModToolMaterials.BISMUTH, 5.0F, -2.4F, bismuthColor);
 
     public static final DeferredItem<Item> ALEXANDRITE_SWORD =
            swordItem("alexandrite_sword", ModToolMaterials.ALEXANDRITE, 2.0F, 3.0F,
-                     ModTags.Items.ALEXANDRITE_TOOL_MATERIALS, alexandriteColor);
+                     alexandriteColor);
 
     public static final DeferredItem<Item> PINK_SWORD =
-           swordItem("pink_sword", ModToolMaterials.PINK, 2.0F, 2.0F,
-                     ModTags.Items.PINK_TOOL_MATERIALS, pinkColor);
+           swordItem("pink_sword", ModToolMaterials.PINK, 2.0F, 2.0F, pinkColor);
 
     public static final DeferredItem<Item> ULTRA_COPPER_SWORD =
            swordEffectItem("ultra_copper_sword", ModToolMaterials.COPPER, 2.0F, 2.5F,
-                           ModTags.Items.COPPER_TOOL_MATERIALS, copperLoreColor);
+                           copperColor);
 
     public static final DeferredItem<Item> LAPIS_LAZULI_SWORD =
            swordItem("lapis_lazuli_sword", ModToolMaterials.LAPIS_LAZULI, 2.0F, 3.5F,
-                     ModTags.Items.LAPIS_LAZULI_TOOL_MATERIALS, lapisLoreColor);
+                           lapisColor);
 
     public static final DeferredItem<Item> REDSTONE_SWORD =
            swordItem("redstone_sword", ModToolMaterials.REDSTONE, 2.0F, 4.5F,
-                     ModTags.Items.REDSTONE_TOOL_MATERIALS, redstoneLoreColor);
+                           redstoneColor);
 
     public static final DeferredItem<Item> EMERALD_SWORD =
            swordItem("emerald_sword", ModToolMaterials.EMERALD, 1.0F, 1.0F,
-                     ModTags.Items.EMERALD_TOOL_MATERIALS, emeraldElytraLoreColor);
+                           emeraldColor);
 
     // ** CUSTOM Elytra armor **
     public static final DeferredItem<Item> DIAMOND_ELYTRA =
-           elytraArmor("diamond_elytra", 10000, ModEquipmentAssetProvider.DIAMOND_ELYTRA,
-                       ItemTags.DIAMOND_TOOL_MATERIALS, MobEffects.REGENERATION, 4, elytraLoreColor);
+           elytraArmor("diamond_elytra", MobEffects.REGENERATION, ModArmorMaterials.DIAMOND_ELYTRA_ARMOR_MATERIAL,
+                       4, elytraColor);
 
     public static final DeferredItem<Item> EMERALD_ELYTRA =
-           elytraArmor("emerald_elytra", 8000, ModEquipmentAssetProvider.EMERALD_ELYTRA,
-                       ModTags.Items.EMERALD_TOOL_MATERIALS, MobEffects.LUCK, 2, emeraldElytraLoreColor);
+           elytraArmor("emerald_elytra", MobEffects.LUCK, ModArmorMaterials.EMERALD_ELYTRA_ARMOR_MATERIAL,
+                       2, emeraldColor);
 
     // ** CUSTOM Armor Trim Smithing Template **
     public static final DeferredItem<Item> KAUPEN_ARMOR_TRIM_SMITHING_TEMPLATE =
-           oresArmorTrimSmithingTemplate("kaupen_armor_trim_smithing_template", "kaupen", kaupenTrimLoreColor);
+           oresArmorTrimSmithingTemplate("kaupen_armor_trim_smithing_template", "kaupen", kaupenTrimColor);
 
     // ** CUSTOM Ores Smithing Upgrade Template **
     public static final DeferredItem<Item> COPPER_UPGRADE_SMITHING_TEMPLATE =
-           oresSmithingTemplate("copper_upgrade_smithing_template", "copper", copperUpgradeSmithingLoreColor);
+           oresSmithingTemplate("copper_upgrade_smithing_template", "copper", copperUpgradeSmithingColor);
 
     // ** CUSTOM Music Disc **
     public static final DeferredItem<Item> BAR_BRAWL_MUSIC_DISC =
@@ -494,9 +476,9 @@ public class ModItems {
                     new Item(props.jukeboxPlayable(ModSounds.BAR_BRAWL_KEY).stacksTo(1)) {
                              @Override
                              public @NotNull Component getName(@NotNull ItemStack stack) {
-                                 return componentTranslatableIntColor(this.getDescriptionId(), barBrawlLoreColor);
+                                 return componentTranslatableIntColor(this.getDescriptionId(), barBrawlColor);
                              }},
-                    barBrawlLoreColor);
+                   barBrawlColor);
 
     // ** CUSTOM Seeds **
     public static final DeferredItem<Item> RADISH_SEEDS =
@@ -518,7 +500,7 @@ public class ModItems {
                     new BlockItem(ModBlocks.CATTAIL_CROP.get(),
                                   props.component(DataComponents.CUSTOM_NAME,
                                                   componentTranslatableIntColor("item." + top + "cattail_seeds",
-                                                                                cattailLoreColor))), cattailLoreColor);
+                                                                                cattailColor))), cattailColor);
 
     // ** CUSTOM Bush Crop **
     public static final DeferredItem<Item> GOJI_BERRIES =
@@ -536,9 +518,9 @@ public class ModItems {
                     new SpawnEggItem(props.spawnEgg(ModEntities.GECKO.get())) {
                                      @Override
                                      public @NotNull Component getName(@NotNull ItemStack stack) {
-                                         return componentTranslatableIntColor(this.getDescriptionId(), geckoLoreColor);
+                                         return componentTranslatableIntColor(this.getDescriptionId(), geckoColor);
                                      }},
-                    geckoLoreColor);
+                    geckoColor);
 
     // RHINO
     public static final DeferredItem<Item> RHINO_SPAWN_EGG =
@@ -546,21 +528,21 @@ public class ModItems {
                     new SpawnEggItem(props.spawnEgg(ModEntities.RHINO.get())) {
                                      @Override
                                      public @NotNull Component getName(@NotNull ItemStack stack) {
-                                         return componentTranslatableIntColor(this.getDescriptionId(), rhinoLoreColor);
+                                         return componentTranslatableIntColor(this.getDescriptionId(), rhinoColor);
                                      }},
-                    rhinoLoreColor);
+                    rhinoColor);
 
     // ** CUSTOM Throwable Projectiles **
     public static final DeferredItem<Item> TOMAHAWK =
-           customItem("tomahawk", TomahawkItem::new, props -> props.stacksTo(16), tomahawkLoreColor);
+           customItem("tomahawk", TomahawkItem::new, props -> props.stacksTo(16), tomahawkColor);
 
     public static final DeferredItem<Item> DICE_ITEM =
-           customItem("dice_item", DiceItem::new, props -> props, diceLoreColor);
+           customItem("dice_item", DiceItem::new, props -> props, diceColor);
 
     // ** CUSTOM Animated Textures **
     public static final DeferredItem<Item> RADIATION_STAFF =
            customItem("radiation_staff", RadiationStaffItem::new, props ->
-                      props.stacksTo(1).durability(1024), radiationStaffLoreColor);
+                      props.stacksTo(1).durability(1024), radiationStaffColor);
 
     // ** CUSTOM Advanced Items **
     // Level Charger items
@@ -594,22 +576,23 @@ public class ModItems {
     public static final DeferredItem<Item> SPECIAL_BOTTLE =
            editItem("special_bottle", props ->
                     new SpecialBottleItem(props.fireResistant().stacksTo(1), 100000, 1),
-                    specialBottleLoreColor);
+                    specialBottleColor);
 
     // METAL DETECTOR item
     public static final DeferredItem<Item> METAL_DETECTOR =
            shiftItem("metal_detector", props ->
-                     new MetalDetectorItem(props.fireResistant().stacksTo(1), ModTags.Blocks.METAL_DETECTOR_VALUABLES));
+                     new MetalDetectorItem(props.fireResistant().stacksTo(1),
+                                           ModTags.Blocks.METAL_DETECTOR_VALUABLES));
 
     // DATA TABLET item
     public static final DeferredItem<Item> DATA_TABLET =
            customItem("data_tablet", DataTabletItem::new, props -> props.stacksTo(1),
-                      dataTabletLoreColor);
+                      dataTabletColor);
 
     // GROWTH item
     public static final DeferredItem<Item> GROWTH =
            customItem("growth", GrowthItem::new, props ->
-                      props.stacksTo(64).fireResistant(), growthLoreColor);
+                      props.stacksTo(64).fireResistant(), growthColor);
 
     // ** CUSTOM sign and Hanging sign **
     public static final DeferredItem<Item> WALNUT_SIGN =
@@ -632,20 +615,20 @@ public class ModItems {
     // TORCH BALL item
     public static final DeferredItem<Item> TORCH_BALL =
            customItem("torch_ball", TorchBallItem::new,
-                      props -> props.fireResistant().stacksTo(1), torchBallLoreColor);
+                      props -> props.fireResistant().stacksTo(1), torchBallColor);
 
     public static final DeferredItem<Item> BOUNCY_BALLS =
            customItem("bouncy_balls", BouncyBallsItem::new,
-                      props -> props.fireResistant().stacksTo(1), bouncyBallsLoreColor);
+                      props -> props.fireResistant().stacksTo(1), bouncyBallsColor);
 
     public static final DeferredItem<Item> BOUNCY_BALLS_PARTICLES =
            editItem("bouncy_balls_particles", props ->
                     new Item(props.stacksTo(64).fireResistant()) {
                              @Override
                              public @NotNull Component getName(@NotNull ItemStack stack) {
-                                 return componentTranslatableIntColor(this.getDescriptionId(), bouncyBallsLoreColor);
+                                 return componentTranslatableIntColor(this.getDescriptionId(), bouncyBallsColor);
                              }},
-                    bouncyBallsLoreColor);
+                   bouncyBallsColor);
 
     // ** CUSTOM boats **
     public static final DeferredItem<Item> WALNUT_BOAT =
@@ -659,15 +642,15 @@ public class ModItems {
     // ** Luck items **
     public static final DeferredItem<Item> LUCK_GENERAL =
            luckItem("luck_general", 3, 3, 0, 0,
-                    ModTags.Enchantments.ALL_ENCHANTMENTS, luckGeneralLoreColor, null);
+                    ModTags.Enchantments.ALL_ENCHANTMENTS, luckGeneralColor, null);
 
     public static final DeferredItem<Item> LUCK_PICKAXE =
            luckItem("luck_pickaxe", 1, 2, 10, 1,
-                    ModTags.Enchantments.MINING_ENCHANTMENTS, luckPickaxeLoreColor, "pickaxe");
+                    ModTags.Enchantments.MINING_ENCHANTMENTS, luckPickaxeColor, "pickaxe");
 
     public static final DeferredItem<Item> LUCK_WEAPON =
            luckItem("luck_weapon", 1, 1, 6, 2,
-                    ModTags.Enchantments.SWORD_ENCHANTMENTS, luckWeaponLoreColor, "weapon");
+                    ModTags.Enchantments.SWORD_ENCHANTMENTS, luckWeaponColor, "weapon");
 
     // ** CUSTOM METHOD - Raw ore items **
     public static DeferredItem<Item> rawItem(String name, int color) {
@@ -709,7 +692,8 @@ public class ModItems {
                                                        .onConsume(new ApplyStatusEffectsConsumeEffect(
                                                                   new MobEffectInstance(effect, duration),
                                                                   chance)).build())) {
-                                 @Override public @NotNull Component getName(@NotNull ItemStack stack) {
+                                 @Override
+                                 public @NotNull Component getName(@NotNull ItemStack stack) {
                                      return componentTranslatableIntColor(this.getDescriptionId(), color);
                                  }},
                         color);
@@ -726,29 +710,29 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Paxel tool **
-    public static DeferredItem<Item> paxelItem(String name, ToolMaterial material,
-                                               float attackDamage, float attackSpeed,
-                                               TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new PaxelItem(material, attackDamage, attackSpeed,
-                                      properties.fireResistant().repairable(repair), color), color);
+    public static DeferredItem<Item> paxelItem(String name, ToolMaterial tool,
+                                               float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new PaxelItem(tool, attackDamage, attackSpeed,
+                                      props.fireResistant().repairable(tool.repairItems()), color), color);
     }
 
     // ** CUSTOM METHOD - Hammer tool **
-    public static DeferredItem<Item> hammerItem(String name, ToolMaterial material,
-                                               float attackDamage, float attackSpeed, TagKey<Item> repair,
-                                               int radius, int argbColors, int textColor) {
-        return editItem(name, properties ->
-                        new HammerItem(material, attackDamage, attackSpeed, properties.fireResistant().repairable(repair),
-                                       radius, argbColors, textColor), textColor);
+    public static DeferredItem<Item> hammerItem(String name, ToolMaterial tool,
+                                                float attackDamage, float attackSpeed,
+                                                int radius, int color) {
+        return editItem(name, props ->
+                        new HammerItem(tool, attackDamage, attackSpeed,
+                                       props.fireResistant().repairable(tool.repairItems()),
+                                       radius, color, color), color);
     }
 
     // ** CUSTOM METHOD - Shovel tool **
-    public static DeferredItem<Item> shovelItem(String name, ToolMaterial material,
-                                                float attackDamage, float attackSpeed, TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new ShovelItem(material, attackDamage, attackSpeed,
-                                       properties.fireResistant().repairable(repair)) {
+    public static DeferredItem<Item> shovelItem(String name, ToolMaterial tool,
+                                                float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new ShovelItem(tool, attackDamage, attackSpeed,
+                                       props.fireResistant().repairable(tool.repairItems())) {
                                             @Override
                                             public @NotNull Component getName(@NotNull ItemStack stack) {
                                                 return componentTranslatableIntColor(this.getDescriptionId(), color);
@@ -757,11 +741,11 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Axe tool **
-    public static DeferredItem<Item> axeItem(String name, ToolMaterial material,
-                                             float attackDamage, float attackSpeed, TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new AxeItem(material, attackDamage, attackSpeed,
-                                    properties.fireResistant().repairable(repair)) {
+    public static DeferredItem<Item> axeItem(String name, ToolMaterial tool,
+                                             float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new AxeItem(tool, attackDamage, attackSpeed,
+                                    props.fireResistant().repairable(tool.repairItems())) {
                                          @Override
                                          public @NotNull Component getName(@NotNull ItemStack stack) {
                                              return componentTranslatableIntColor(this.getDescriptionId(), color);
@@ -770,11 +754,11 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Hoe tool **
-    public static DeferredItem<Item> hoeItem(String name, ToolMaterial material,
-                                             float attackDamage, float attackSpeed, TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new HoeItem(material, attackDamage, attackSpeed,
-                                    properties.fireResistant().repairable(repair)) {
+    public static DeferredItem<Item> hoeItem(String name, ToolMaterial tool,
+                                             float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new HoeItem(tool, attackDamage, attackSpeed,
+                                    props.fireResistant().repairable(tool.repairItems())) {
                                          @Override
                                          public @NotNull Component getName(@NotNull ItemStack stack) {
                                              return componentTranslatableIntColor(this.getDescriptionId(), color);
@@ -783,11 +767,11 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Pickaxe tool **
-    public static DeferredItem<Item> pickaxeItem(String name, ToolMaterial material,
-                                                 float attackDamage, float attackSpeed, TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new Item(properties.pickaxe(material, attackDamage, attackSpeed)
-                                           .fireResistant().repairable(repair)) {
+    public static DeferredItem<Item> pickaxeItem(String name, ToolMaterial tool,
+                                                 float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new Item(props.pickaxe(tool, attackDamage, attackSpeed)
+                                           .fireResistant().repairable(tool.repairItems())) {
                                       @Override
                                       public @NotNull Component getName(@NotNull ItemStack stack) {
                                           return componentTranslatableIntColor(this.getDescriptionId(), color);
@@ -796,11 +780,11 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Sword tool **
-    public static DeferredItem<Item> swordItem(String name, ToolMaterial material,
-                                               float attackDamage, float attackSpeed, TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new Item(properties.sword(material, attackDamage, attackSpeed)
-                                           .fireResistant().repairable(repair)) {
+    public static DeferredItem<Item> swordItem(String name, ToolMaterial tool,
+                                               float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new Item(props.sword(tool, attackDamage, attackSpeed)
+                                      .fireResistant().repairable(tool.repairItems())) {
                                       @Override
                                       public @NotNull Component getName(@NotNull ItemStack stack) {
                                           return componentTranslatableIntColor(this.getDescriptionId(), color);
@@ -809,64 +793,63 @@ public class ModItems {
     }
 
     // ** CUSTOM METHOD - Special SWORD tool **
-    public static DeferredItem<Item> swordEffectItem(String name, ToolMaterial material,
-                                                     float attackDamage, float attackSpeed,
-                                                     TagKey<Item> repair, int color) {
-        return editItem(name, properties ->
-                        new SwordEffectItem(properties, material, attackDamage, attackSpeed, repair, color), color);
+    public static DeferredItem<Item> swordEffectItem(String name, ToolMaterial tool,
+                                                     float attackDamage, float attackSpeed, int color) {
+        return editItem(name, props ->
+                        new SwordEffectItem(props, tool, attackDamage, attackSpeed, tool.repairItems(), color),
+                        color);
     }
 
     // ** CUSTOM METHOD - Helmet armor **
     public static DeferredItem<Item> helmetArmor(String name,
-                                                 ArmorMaterial material, int color) {
-        return editItem(name, properties ->
-                        new ModArmorItem(properties.humanoidArmor(material, ArmorType.HELMET)
-                                                   .fireResistant(), color), color);
+                                                 ArmorMaterial armor, int color) {
+        return editItem(name, props -> new ModArmorItem(props.humanoidArmor(armor, ArmorType.HELMET)
+                                                                       .fireResistant(), color), color);
     }
 
     // ** CUSTOM METHOD - Chestplate armor **
     public static DeferredItem<Item> chestplateArmor(String name,
-                                                     ArmorMaterial material, int color) {
-        return editItem(name, properties ->
-                        new ModArmorItem(properties.humanoidArmor(material, ArmorType.CHESTPLATE)
-                                                   .fireResistant(), color), color);
+                                                     ArmorMaterial armor, int color) {
+        return editItem(name, props -> new ModArmorItem(props.humanoidArmor(armor, ArmorType.CHESTPLATE)
+                                                                       .fireResistant(), color), color);
     }
 
     // ** CUSTOM METHOD - Leggings armor **
     public static DeferredItem<Item> leggingsArmor(String name,
-                                                   ArmorMaterial material, int color) {
-        return editItem(name, properties ->
-                        new ModArmorItem(properties.humanoidArmor(material, ArmorType.LEGGINGS)
-                                                   .fireResistant(), color), color);
+                                                   ArmorMaterial armor, int color) {
+        return editItem(name, props -> new ModArmorItem(props.humanoidArmor(armor, ArmorType.LEGGINGS)
+                                                                       .fireResistant(), color), color);
     }
 
     // ** CUSTOM METHOD - Boots armor **
-    public static DeferredItem<Item> bootsArmor(String name, ArmorMaterial material, int color) {
-        return editItem(name, properties ->
-                        new ModArmorItem(properties.humanoidArmor(material, ArmorType.BOOTS)
-                                                   .fireResistant(), color), color);
+    public static DeferredItem<Item> bootsArmor(String name,
+                                                ArmorMaterial armor, int color) {
+        return editItem(name, props -> new ModArmorItem(props.humanoidArmor(armor, ArmorType.BOOTS)
+                                                                       .fireResistant(), color), color);
     }
 
     // ** CUSTOM METHOD - Elytra armor **
-    public static DeferredItem<Item> elytraArmor(String name,
-                                                 int durability, ResourceKey<EquipmentAsset> equipAsset,
-                                                 TagKey<Item> repair, Holder<MobEffect> effectHolder,
-                                                 int effectAmplifier, int color) {
+    public static DeferredItem<Item> elytraArmor(String name, Holder<MobEffect> effectHolder,
+                                                 ArmorMaterial armor, int effectAmplifier, int color) {
         return editItem(name, props ->
                         new ElytraPlusItem(effectHolder, effectAmplifier,
-                                           props.fireResistant().durability(durability).rarity(Rarity.EPIC)
+                                           props.fireResistant().durability(armor.durability()).rarity(Rarity.EPIC)
                                                 .component(DataComponents.GLIDER, Unit.INSTANCE)
                                                 .component(DataComponents.EQUIPPABLE,
                                                            Equippable.builder(EquipmentSlot.CHEST)
-                                                                     .setEquipSound(SoundEvents.ARMOR_EQUIP_ELYTRA)
-                                                                     .setAsset(equipAsset).setDamageOnHurt(false)
-                                                                     .build()).repairable(repair)), color);
+                                                                     .setEquipSound(armor.equipSound())
+                                                                     .setAsset(armor.assetId())
+                                                                     .setDamageOnHurt(false).build())
+                                                .repairable(armor.repairIngredient())
+                                                .humanoidArmor(armor, ArmorType.CHESTPLATE)),
+                        color);
     }
 
     // ** CUSTOM METHOD - Bow tool **
     public static DeferredItem<Item> bowItem(String name,
                                              TagKey<Item> repair, int color) {
-        return editItem(name, props -> new BowItem(props.repairable(repair).stacksTo(1)) {
+        return editItem(name, props ->
+                        new BowItem(props.repairable(repair).stacksTo(1)) {
                                     @Override
                                     public @NotNull Component getName(@NotNull ItemStack stack) {
                                         return componentTranslatableIntColor(this.getDescriptionId(), color);

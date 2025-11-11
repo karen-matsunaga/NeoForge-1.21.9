@@ -37,6 +37,6 @@ public class DiceItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), ChatUtils.diceLoreColor);
+        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), ChatUtils.diceColor);
     }
 }

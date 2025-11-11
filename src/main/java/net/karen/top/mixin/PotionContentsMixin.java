@@ -48,7 +48,7 @@ public class PotionContentsMixin {
             }
             ChatFormatting potionTooltipColor = holder.value().getCategory().getTooltipFormatting();
             if (potionTooltipColor == MobEffectCategory.BENEFICIAL.getTooltipFormatting()) {
-                consumer.accept(mutableComponent.withColor(copperLoreColor));
+                consumer.accept(mutableComponent.withColor(copperColor));
             }
             else if (potionTooltipColor == MobEffectCategory.HARMFUL.getTooltipFormatting()) {
                 consumer.accept(mutableComponent.withColor(redBedrockColor));

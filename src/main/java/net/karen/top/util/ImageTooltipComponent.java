@@ -25,7 +25,7 @@ public class ImageTooltipComponent implements ClientTooltipComponent, TooltipCom
     public void renderText(@NotNull GuiGraphics graphics, @NotNull Font font, int x, int y) {
         graphics.drawString(font, I18n.get("tooltip." + top + "more_ores.tooltip") + text,
                             x + width + 4, y + (height / 2 - font.lineHeight / 2),
-                            ChatUtils.metalDetectorLoreColor, true);
+                            ChatUtils.metalDetectorColor, true);
     }
 
     @Override

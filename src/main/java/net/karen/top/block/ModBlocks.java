@@ -505,8 +505,7 @@ public class ModBlocks {
 
     // ** CUSTOM colored block **
     public static final DeferredBlock<Block> COLORED_LEAVES =
-           registerBlock("colored_leaves", properties ->
-                         new Block(properties.noOcclusion()), coloredLoreColor, coloredCustomNameColor);
+           registerBlock("colored_leaves", props -> new Block(props.noOcclusion()), coloredColor, coloredCNColor);
 
     // ** CUSTOM portal block **
     public static final DeferredBlock<Block> KAUPEN_PORTAL =
@@ -515,7 +514,7 @@ public class ModBlocks {
                                                          .lightLevel(_ -> 15)
                                                          .pushReaction(PushReaction.BLOCK).liquid().forceSolidOn()
                                                          .noLootTable().noOcclusion().noCollision()),
-                         kaupenPortalLoreColor, kaupenPortalCustomNameColor);
+                         kaupenPortalColor, kaupenPortalCNColor);
 
     // ** CUSTOM block projectile **
     public static final DeferredBlock<Block> DICE =

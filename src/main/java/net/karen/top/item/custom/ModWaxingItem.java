@@ -16,7 +16,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.common.DataMapHooks;
 import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
-import static net.karen.top.util.ChatUtils.cattailLoreColor;
+import static net.karen.top.util.ChatUtils.cattailColor;
 
 public class ModWaxingItem extends Item {
     public ModWaxingItem(Properties properties) {
@@ -51,6 +51,6 @@ public class ModWaxingItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), cattailLoreColor);
+        return ChatUtils.componentTranslatableIntColor(this.getDescriptionId(), cattailColor);
     }
 }

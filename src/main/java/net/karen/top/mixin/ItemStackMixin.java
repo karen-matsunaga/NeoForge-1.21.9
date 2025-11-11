@@ -81,7 +81,7 @@ public abstract class ItemStackMixin {
                 int color = isShift ? blueBedrockColor : redBedrockColor;
                 tooltip.add(componentTranslatableIntColor(chisel.chiselShiftDescription(), color));
                 if (coordinates != null) {
-                    tooltip.add(componentLiteralIntColor(coordinates.description(), chiselLoreColor));
+                    tooltip.add(componentLiteralIntColor(coordinates.description(), chiselColor));
                 }
             }
         }
@@ -89,7 +89,7 @@ public abstract class ItemStackMixin {
         if (stack.is(ModItems.METAL_DETECTOR.get().asItem())) {
             if (item instanceof MetalDetectorItem metalDetector) {
                 boolean isShift = Minecraft.getInstance().hasShiftDown();
-                int color = isShift ? yellowEnderColor : metalDetectorColor;
+                int color = isShift ? yellowEnderColor : metalDetectorLColor;
                 tooltip.add(componentTranslatableIntColor(metalDetector.metalDetectorShiftDescription(), color));
             }
         }

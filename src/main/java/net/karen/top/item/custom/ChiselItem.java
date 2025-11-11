@@ -75,7 +75,7 @@ public class ChiselItem extends Item {
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack stack) {
-        return componentTranslatableIntColor(this.getDescriptionId(), chiselLoreColor);
+        return componentTranslatableIntColor(this.getDescriptionId(), chiselColor);
     }
 
     // CUSTOM METHOD - CHISEL shift description
