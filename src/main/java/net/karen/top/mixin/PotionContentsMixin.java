@@ -48,13 +48,13 @@ public class PotionContentsMixin {
             }
             ChatFormatting potionTooltipColor = holder.value().getCategory().getTooltipFormatting();
             if (potionTooltipColor == MobEffectCategory.BENEFICIAL.getTooltipFormatting()) {
-                consumer.accept(mutableComponent.withColor(copperColor));
+                consumer.accept(potionIcon(holder).append(mutableComponent.withColor(copperColor)));
             }
             else if (potionTooltipColor == MobEffectCategory.HARMFUL.getTooltipFormatting()) {
-                consumer.accept(mutableComponent.withColor(redBedrockColor));
+                consumer.accept(potionIcon(holder).append(mutableComponent.withColor(redBedrockColor)));
             }
             else if (potionTooltipColor == MobEffectCategory.NEUTRAL.getTooltipFormatting()){
-                consumer.accept(mutableComponent.withColor(blueBedrockColor));
+                consumer.accept(potionIcon(holder).append(mutableComponent.withColor(blueBedrockColor)));
             }
             consumer.accept(componentTranslatableIntColor("tooltip.effect." +
                                                           holder.getRegisteredName().replace(":", "."),
