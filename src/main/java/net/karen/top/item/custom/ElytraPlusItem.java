@@ -1,8 +1,10 @@
 package net.karen.top.item.custom;
 
+import net.karen.top.util.ModTags;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -11,6 +13,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
@@ -25,6 +29,13 @@ public class ElytraPlusItem extends Item {
         super(properties);
         this.effectHolder = effectHolder;
         this.effectAmplifier = effectAmplifier;
+    }
+
+    // DEFAULT METHOD - Enchantment support (COMPATIBILITY)
+    @Override
+    public boolean supportsEnchantment(ItemStack stack, @NotNull Holder<Enchantment> enchantment) {
+        return stack.is(Items.ENCHANTED_BOOK) || enchantment.is(ModTags.Enchantments.DURABILITY_ENCHANTMENTS) ||
+               enchantment.is(EnchantmentTags.ARMOR_EXCLUSIVE);
     }
 
     // DEFAULT METHOD - Piglins neutral
