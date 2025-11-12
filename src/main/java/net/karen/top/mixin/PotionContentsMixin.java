@@ -6,7 +6,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.ARGB;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -27,43 +26,44 @@ import static net.minecraft.world.item.alchemy.PotionContents.getPotionDescripti
 
 @Mixin(PotionContents.class)
 public class PotionContentsMixin {
+    // DEFAULT METHOD - POTION description
     @Inject(method = "addPotionTooltip", at = @At("HEAD"), cancellable = true)
     private static void potionDescription(Iterable<MobEffectInstance> effects, Consumer<Component> consumer,
                                           float durationFactor, float ticksPerSecond, CallbackInfo ci) {
         ci.cancel(); // Cancels DEFAULT potion tooltip
         List<Pair<Holder<Attribute>, AttributeModifier>> list = Lists.newArrayList();
         boolean flag = true;
-        for (MobEffectInstance mobeffectinstance : effects) {
+        for (MobEffectInstance effect : effects) {
             flag = false;
-            Holder<MobEffect> holder = mobeffectinstance.getEffect();
-            int i = mobeffectinstance.getAmplifier();
+            Holder<MobEffect> holder = effect.getEffect();
+            int i = effect.getAmplifier();
             holder.value().createModifiers(i, (attHolder, attModifier) ->
                                            list.add(new Pair<>(attHolder, attModifier)));
-            MutableComponent mutableComponent = getPotionDescription(holder, i);
-            if (!mobeffectinstance.endsWithin(20)) {
-                mutableComponent = Component.translatable("potion.withDuration",
-                                                          mutableComponent,
-                                                          MobEffectUtil.formatDuration(mobeffectinstance,
-                                                                                       durationFactor, ticksPerSecond));
+            Component comp = getPotionDescription(holder, i); // EFFECT name
+            if (!effect.endsWithin(20)) { // EFFECT duration
+                comp = Component.translatable("potion.withDuration", comp,
+                                              MobEffectUtil.formatDuration(effect, durationFactor, ticksPerSecond));
             }
+            // EFFECT name + duration color
             ChatFormatting potionTooltipColor = holder.value().getCategory().getTooltipFormatting();
             if (potionTooltipColor == MobEffectCategory.BENEFICIAL.getTooltipFormatting()) {
-                consumer.accept(potionIcon(holder).append(mutableComponent.withColor(copperColor)));
+                consumer.accept(potionIcon(holder).append(comp.copy().withColor(copperColor)));
             }
             else if (potionTooltipColor == MobEffectCategory.HARMFUL.getTooltipFormatting()) {
-                consumer.accept(potionIcon(holder).append(mutableComponent.withColor(redBedrockColor)));
+                consumer.accept(potionIcon(holder).append(comp.copy().withColor(redBedrockColor)));
             }
             else if (potionTooltipColor == MobEffectCategory.NEUTRAL.getTooltipFormatting()){
-                consumer.accept(potionIcon(holder).append(mutableComponent.withColor(blueBedrockColor)));
+                consumer.accept(potionIcon(holder).append(comp.copy().withColor(blueBedrockColor)));
             }
+            // EFFECT description
             consumer.accept(componentTranslatableIntColor("tooltip.effect." +
                                                           holder.getRegisteredName().replace(":", "."),
                                                           darkGreenColor));
         }
-        if (flag) {
+        if (flag) { // NO EFFECTS
             consumer.accept(componentTranslatableIntColor("effect.none", ARGB.color(206, 202, 202)));
         }
-        if (!list.isEmpty()) {
+        if (!list.isEmpty()) { // WHEN APPLIED
             consumer.accept(CommonComponents.EMPTY);
             consumer.accept(componentTranslatable("potion.whenDrank", aqua));
             AttributeUtil.addPotionTooltip(list, consumer);
