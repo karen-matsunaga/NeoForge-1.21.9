@@ -22,58 +22,55 @@ public class ModSounds {
 
     // ** CUSTOM Advanced item sounds **
     // CHISEL item sound
-    public static final Supplier<SoundEvent> CHISEL_USE = registerSoundEvent("chisel_use");
+    public static final Supplier<SoundEvent> CHISEL_USE = createSE("chisel_use");
 
     // METAL DETECTOR item sound
-    public static final Supplier<SoundEvent> METAL_DETECTOR_FOUND_ORE =
-           registerSoundEvents("metal_detector_found_ore");
+    public static final Supplier<SoundEvent> METAL_DETECTOR_FOUND_ORE = createSE("metal_detector_found_ore");
 
     // ** CUSTOM Advanced block sounds **
-    /* MAGIC block sounds   * Position 1: Break sound (when block is broken)
-                            * Position 2: Step sound (when walking on block)
-                            * Position 3: Place sound (when block is placed)
-                            * Position 4: Hit sound (when block is punched)
-                            * Position 5: Fall sound (when falling onto block) */
-    public static final Supplier<SoundEvent> MAGIC_BLOCK_BREAK = registerSoundEvent("magic_block_break");
-    public static final Supplier<SoundEvent> MAGIC_BLOCK_STEP = registerSoundEvent("magic_block_step");
-    public static final Supplier<SoundEvent> MAGIC_BLOCK_PLACE = registerSoundEvent("magic_block_place");
-    public static final Supplier<SoundEvent> MAGIC_BLOCK_HIT = registerSoundEvent("magic_block_hit");
-    public static final Supplier<SoundEvent> MAGIC_BLOCK_FALL = registerSoundEvent("magic_block_fall");
+    /* MAGIC block sounds * Position 1: BREAK sound (when block is broken) * Position 2: STEP sound (when walking on block)
+                          * Position 3: PLACE sound (when block is placed) * Position 4: HIT sound (when block is punched)
+                          * Position 5: FALL sound (when falling onto block)                                                */
+    public static final Supplier<SoundEvent> MAGIC_BLOCK_BREAK = createSE("magic_block_break");
+    public static final Supplier<SoundEvent> MAGIC_BLOCK_STEP = createSE("magic_block_step");
+    public static final Supplier<SoundEvent> MAGIC_BLOCK_PLACE = createSE("magic_block_place");
+    public static final Supplier<SoundEvent> MAGIC_BLOCK_HIT = createSE("magic_block_hit");
+    public static final Supplier<SoundEvent> MAGIC_BLOCK_FALL = createSE("magic_block_fall");
     public static final DeferredSoundType MAGIC_BLOCK_SOUNDS =
-           new DeferredSoundType(1F, 1F, ModSounds.MAGIC_BLOCK_BREAK, ModSounds.MAGIC_BLOCK_STEP,
-                                 ModSounds.MAGIC_BLOCK_PLACE, ModSounds.MAGIC_BLOCK_HIT, ModSounds.MAGIC_BLOCK_FALL);
+           createST(ModSounds.MAGIC_BLOCK_BREAK, ModSounds.MAGIC_BLOCK_STEP, ModSounds.MAGIC_BLOCK_PLACE,
+                    ModSounds.MAGIC_BLOCK_HIT, ModSounds.MAGIC_BLOCK_FALL);
 
     // ALEXANDRITE LAMP block sounds to registry in NeoForge events
-    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_BREAK = registerSoundEvents("alexandrite_lamp_break");
-    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_STEP = registerSoundEvents("alexandrite_lamp_step");
-    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_FALL = registerSoundEvents("alexandrite_lamp_fall");
-    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_PLACE = registerSoundEvents("alexandrite_lamp_place");
-    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_HIT = registerSoundEvents("alexandrite_lamp_hit");
+    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_BREAK = createSE("alexandrite_lamp_break");
+    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_STEP = createSE("alexandrite_lamp_step");
+    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_PLACE = createSE("alexandrite_lamp_place");
+    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_HIT = createSE("alexandrite_lamp_hit");
+    public static final Supplier<SoundEvent> ALEXANDRITE_LAMP_FALL = createSE("alexandrite_lamp_fall");
     public static final DeferredSoundType ALEXANDRITE_LAMP_SOUNDS =
-           new DeferredSoundType(1F, 1F, ModSounds.ALEXANDRITE_LAMP_BREAK, ModSounds.ALEXANDRITE_LAMP_STEP,
-                                 ModSounds.ALEXANDRITE_LAMP_FALL, ModSounds.ALEXANDRITE_LAMP_PLACE, ModSounds.ALEXANDRITE_LAMP_HIT);
+           createST(ModSounds.ALEXANDRITE_LAMP_BREAK, ModSounds.ALEXANDRITE_LAMP_STEP, ModSounds.ALEXANDRITE_LAMP_PLACE,
+                    ModSounds.ALEXANDRITE_LAMP_HIT, ModSounds.ALEXANDRITE_LAMP_FALL);
 
     // ** CUSTOM Jukebox songs **
-    // Bar Brawl item sounds
+    // BAR BRAWL music disc item sounds
     public static final ResourceKey<JukeboxSong> BAR_BRAWL_KEY = createSong("bar_brawl");
-    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_DISC_BAR_BRAWL =
-           registerSoundEvents("bar_brawl");
+    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_DISC_BAR_BRAWL = createSE("bar_brawl");
 
-    // CUSTOM METHOD - Registry all custom songs on Jukebox
+    // CUSTOM METHOD - Registry all songs on JUKEBOX block
     private static ResourceKey<JukeboxSong> createSong(String name) {
         return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
     }
 
-    // CUSTOM METHOD - Registry all custom supplier sound event type -> Used ITEM or BLOCK
-    private static Supplier<SoundEvent> registerSoundEvent(String name) {
+    // CUSTOM METHOD - Registry all Supplier or Deferred Holder SOUND EVENT TYPE -> ITEM, BLOCK, MUSIC DISC, BIOME etc.
+    private static DeferredHolder<SoundEvent, SoundEvent> createSE(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
     }
 
-    // CUSTOM METHOD - Registry all custom deferred holder sound event type -> MUSIC DISC
-    private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvents(String name) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name);
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
+    // CUSTOM METHOD - Registry all SOUND TYPE (BREAK sound, STEP sound, PLACE sound, HIT sound and FALL sound)
+    private static DeferredSoundType createST(Supplier<SoundEvent> breakSound,
+                                              Supplier<SoundEvent> step, Supplier<SoundEvent> place,
+                                              Supplier<SoundEvent> hit, Supplier<SoundEvent> fall) {
+        return new DeferredSoundType(1F, 1F, breakSound, step, place, hit, fall);
     }
 
     // CUSTOM METHOD - Registry all custom sounds on event bus
@@ -83,13 +80,12 @@ public class ModSounds {
 
     // CUSTOM METHOD - Register all parameters of Data Generation JSON file
     private static void registerGen(BootstrapContext<JukeboxSong> context,
-                                    ResourceKey<JukeboxSong> key,
-                                    DeferredHolder<SoundEvent, SoundEvent> soundEvent,
+                                    ResourceKey<JukeboxSong> key, DeferredHolder<SoundEvent, SoundEvent> soundEvent,
                                     int lengthInSeconds, int comparatorOutput) {
         context.register(key, new JukeboxSong(soundEvent,
-                Component.translatable(Util.makeDescriptionId("item",
-                                                              key.location().withSuffix("_music_disc.desc"))),
-                (float) lengthInSeconds, comparatorOutput));
+                                              Component.translatable(Util.makeDescriptionId("item",
+                                                                     key.location().withSuffix("_music_disc.desc"))),
+                                              (float) lengthInSeconds, comparatorOutput));
     }
 
     // CUSTOM METHOD - Data generation of all custom sound events on JSON file
