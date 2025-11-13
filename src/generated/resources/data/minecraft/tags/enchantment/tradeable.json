@@ -59,6 +59,10 @@
     {
       "id": "top:mobs_critical",
       "required": false
+    },
+    {
+      "id": "top:dash",
+      "required": false
     }
   ]
 }

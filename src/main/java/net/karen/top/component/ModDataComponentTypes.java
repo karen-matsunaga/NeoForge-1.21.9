@@ -5,6 +5,7 @@ import net.karen.top.Top;
 import net.karen.top.component.custom.Coordinates;
 import net.karen.top.component.custom.FoundBlock;
 import net.karen.top.enchantment.custom.AutoSmeltEnchantmentEffect;
+import net.karen.top.enchantment.custom.DashEnchantmentEffect;
 import net.karen.top.enchantment.custom.MoreOresEnchantmentEffect;
 import net.karen.top.enchantment.custom.RainbowEnchantmentEffect;
 import net.minecraft.core.component.DataComponentType;
@@ -64,6 +65,13 @@ public class ModDataComponentTypes {
            registerEnch("auto_smelt_enchantment_effect", builder ->
                         builder.persistent(AutoSmeltEnchantmentEffect.CODEC)
                                .networkSynchronized(AutoSmeltEnchantmentEffect.STREAM_CODEC));
+
+    // DASH ENCHANTMENT EFFECT data component
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<DashEnchantmentEffect>>
+           DASH_ENCHANTMENT_EFFECT =
+           registerEnch("dash_enchantment_effect", builder ->
+                        builder.persistent(DashEnchantmentEffect.CODEC)
+                               .networkSynchronized(DashEnchantmentEffect.STREAM_CODEC));
 
     // CUSTOM METHOD - Registry all custom DATA COMPONENT
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>>

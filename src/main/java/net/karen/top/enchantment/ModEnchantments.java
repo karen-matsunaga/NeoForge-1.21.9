@@ -46,6 +46,7 @@ public class ModEnchantments {
     public static final ResourceKey<Enchantment> UNLOCK = createTag("unlock");
     public static final ResourceKey<Enchantment> GLOWING_BLOCKS = createTag("glowing_blocks");
     public static final ResourceKey<Enchantment> MOBS_CRITICAL = createTag("mobs_critical");
+    public static final ResourceKey<Enchantment> DASH = createTag("dash");
 
     // CUSTOM METHOD - Registry all custom enchantments (JSON file)
     public static void bootstrap(BootstrapContext<Enchantment> context) {
@@ -217,6 +218,16 @@ public class ModEnchantments {
                                         EntityPredicate.Builder.entity()
                                                        .entityType(EntityTypePredicate.of(entities,
                                                                                           ModTags.Entities.ALL_ENTITIES)))));
+
+        // DASH -> Boots
+        register(context, DASH,
+                 Enchantment.enchantment(Enchantment.definition(items.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
+                                                                1, 1,
+                                                                Enchantment.dynamicCost(5, 7),
+                                                                Enchantment.dynamicCost(25, 7),
+                                                                2, EquipmentSlotGroup.FEET))
+                            .withSpecialEffect(ModDataComponentTypes.DASH_ENCHANTMENT_EFFECT.get(),
+                                               new DashEnchantmentEffect(3, 100)));
     }
 
     // CUSTOM METHOD - Registry all custom enchantments -> DATA GENERATION

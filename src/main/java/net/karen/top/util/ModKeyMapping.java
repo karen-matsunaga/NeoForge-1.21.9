@@ -23,6 +23,8 @@ public class ModKeyMapping {
     public static final String KEY_SPECIAL_BOTTLE_RESTORED = "key." + top + "special_bottle_restored";
     // Unlock custom key input
     public static final String KEY_UNLOCK = "key." + top + "unlock";
+    // Dash custom key input
+    public static final String KEY_DASH = "key." + top + "dash";
 
     // Register all custom key binding
     // GLOWING BLOCKS
@@ -45,4 +47,9 @@ public class ModKeyMapping {
     public static final Lazy<KeyMapping> UNLOCK_KEY =
            Lazy.of(() -> new KeyMapping(KEY_UNLOCK, KeyConflictContext.UNIVERSAL,
                                         InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, KEY_CATEGORY_TOP));
+
+    // DASH
+    public static final Lazy<KeyMapping> DASH_KEY =
+           Lazy.of(() -> new KeyMapping(KEY_DASH, KeyConflictContext.IN_GAME,
+                                        InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Y, KEY_CATEGORY_TOP));
 }

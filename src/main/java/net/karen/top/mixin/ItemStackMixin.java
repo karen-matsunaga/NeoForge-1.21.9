@@ -4,6 +4,7 @@ import net.karen.top.component.ModDataComponentTypes;
 import net.karen.top.component.custom.Coordinates;
 import net.karen.top.component.custom.FoundBlock;
 import net.karen.top.enchantment.ModEnchantments;
+import net.karen.top.enchantment.custom.DashEnchantmentEffect;
 import net.karen.top.item.ModItems;
 import net.karen.top.item.custom.*;
 import net.karen.top.util.ModTags;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -147,6 +149,15 @@ public abstract class ItemStackMixin {
                 }
                 else { stack.set(ModDataComponentTypes.UNLOCK, false); }
             }
+            // DASH enchantment
+            EnchantmentHelper.runIterationOnItem(stack, (holder, _) -> {
+                DashEnchantmentEffect effect =
+                    holder.value().effects().get(ModDataComponentTypes.DASH_ENCHANTMENT_EFFECT.get());
+                if (effect != null) {
+                    tooltip.add(componentLiteralIntColor("Block boost: " + effect.boost() + " ", blueEnderColor).copy()
+                                .append(componentLiteralIntColor("Cooldown: " + effect.cooldown() + " ", redstoneColor)));
+                }
+            });
         }
         cir.setReturnValue(tooltip); // New tooltip
     }

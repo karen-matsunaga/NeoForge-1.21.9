@@ -1,8 +1,9 @@
-// 1.21.10	2025-11-06T11:49:33.3200181	Registries
+// 1.21.10	2025-11-13T15:56:43.3323384	Registries
 e636c49f464ccf555121ad89f99f665243349237 data/top/dimension/kaupendim.json
 25eb87059b46f295c3575650d08271fb73ba8830 data/top/dimension_type/kaupendim_type.json
 55782cb410e78dcbe4145b02613f139511906c50 data/top/enchantment/auto_smelt.json
 1925c09fc997415001819197de61947f444537a1 data/top/enchantment/block_fly.json
+76b201929f805c17c365a801b32327e841bba80d data/top/enchantment/dash.json
 f2f6e7627d29d5cc1ed45f2165f34acf2cbfef5a data/top/enchantment/glowing_blocks.json
 c81984cf7af5bd79ee7ee5fb4ea874f3694ae552 data/top/enchantment/glowing_mobs.json
 b5b3b7e8d33c8604fb0cbe964ef4f182a0ed5e65 data/top/enchantment/immortal.json

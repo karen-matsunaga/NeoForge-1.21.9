@@ -1,10 +1,11 @@
-// 1.21.10	2025-11-05T19:58:43.0516401	Top Enchantment Tags
-6f19247ac625d6b84c4b7391431d63d4e64db9ca data/minecraft/tags/enchantment/in_enchanting_table.json
-6f19247ac625d6b84c4b7391431d63d4e64db9ca data/minecraft/tags/enchantment/non_treasure.json
-6f19247ac625d6b84c4b7391431d63d4e64db9ca data/minecraft/tags/enchantment/tooltip_order.json
-6f19247ac625d6b84c4b7391431d63d4e64db9ca data/minecraft/tags/enchantment/tradeable.json
+// 1.21.10	2025-11-13T14:16:16.3905585	Top Enchantment Tags
+26ed6b6a76feda5855476c676f3ab3e072669b06 data/minecraft/tags/enchantment/exclusive_set/boots.json
+82ea6e6171b5a90f525ed49fac3ba72a2de22802 data/minecraft/tags/enchantment/in_enchanting_table.json
+82ea6e6171b5a90f525ed49fac3ba72a2de22802 data/minecraft/tags/enchantment/non_treasure.json
+82ea6e6171b5a90f525ed49fac3ba72a2de22802 data/minecraft/tags/enchantment/tooltip_order.json
+82ea6e6171b5a90f525ed49fac3ba72a2de22802 data/minecraft/tags/enchantment/tradeable.json
 ed81986857c71d96a417fe18914a75740b0fb3ab data/top/tags/enchantment/all_enchantments.json
-07173cc2b2b9dae300de39fb690d3cef6c484092 data/top/tags/enchantment/boots_enchantments.json
+b245d4dc47d72ec88e0bbb104b4ea6cc60dae1b7 data/top/tags/enchantment/boots_enchantments.json
 daa654d5f1806bfbcfbde77f47e11309cf240cf8 data/top/tags/enchantment/bow_enchantments.json
 ff315407079774fe2d1b8b1b4afbf2fc3215bd92 data/top/tags/enchantment/chestplate_enchantments.json
 13693e9abdfb90f8d38f705545c4ad4f8ab50bf3 data/top/tags/enchantment/crossbow_enchantments.json

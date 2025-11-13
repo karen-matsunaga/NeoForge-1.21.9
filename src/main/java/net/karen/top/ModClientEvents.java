@@ -5,16 +5,14 @@ import net.karen.top.block.entity.ModBlockEntities;
 import net.karen.top.block.entity.renderer.GemEmpoweringStationBlockEntityRenderer;
 import net.karen.top.block.entity.renderer.PedestalBlockEntityRenderer;
 import net.karen.top.component.custom.AlternateTexture;
+import net.karen.top.enchantment.custom.DashEnchantmentEffect;
 import net.karen.top.entity.ModEntities;
 import net.karen.top.entity.client.*;
 import net.karen.top.entity.layers.ModModelLayers;
 import net.karen.top.fluid.BaseFluidType;
 import net.karen.top.fluid.ModFluidTypes;
 import net.karen.top.fluid.ModFluids;
-import net.karen.top.network.LevelChargerSlotPacketPayload;
-import net.karen.top.network.SpecialBottlePacketPayload;
-import net.karen.top.network.TopElevatorPacketPayload;
-import net.karen.top.network.UnlockEnchantmentPacketPayload;
+import net.karen.top.network.*;
 import net.karen.top.particle.AlexandriteParticles;
 import net.karen.top.particle.BismuthParticles;
 import net.karen.top.particle.BouncyBallsParticles;
@@ -55,15 +53,10 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import terrablender.api.SurfaceRuleManager;
 import java.util.function.Function;
 
-// This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = Top.MOD_ID, dist = Dist.CLIENT)
-// You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
 @EventBusSubscriber(modid = Top.MOD_ID, value = Dist.CLIENT)
 public class ModClientEvents {
     public ModClientEvents(ModContainer container) {
-        // Allows NeoForge to create a config screen for this mod's configs.
-        // The config screen is accessed by going to the Mods screen > clicking on your mod > clicking on config.
-        // Do not forget to add translations for your config options to the en_us.json file.
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 
@@ -153,6 +146,11 @@ public class ModClientEvents {
                                UnlockEnchantmentPacketPayload.STREAM_CODEC,
                                // Server Payload Handler
                                UnlockEnchantmentPacketPayload::onUnlockEnchantmentServerPayloadHandler);
+
+        // Network -> Dash enchantment
+        registrar.playToServer(DashEnchantmentPacketPayload.TYPE, // TYPE
+                               DashEnchantmentPacketPayload.STREAM_CODEC, // STREAM CODEC
+                               DashEnchantmentPacketPayload::onDashEnchantmentServerPayloadHandler); // SERVER PAYLOAD HANDLER
     }
 
     // CUSTOM EVENT - Register all custom Key Inputs
@@ -167,6 +165,7 @@ public class ModClientEvents {
         event.register(ModKeyMapping.SPECIAL_BOTTLE_STORED_KEY.get()); // Special Bottle stored 10 levels
         event.register(ModKeyMapping.SPECIAL_BOTTLE_RESTORED_KEY.get()); // Special Bottle restored 10 levels
         event.register(ModKeyMapping.UNLOCK_KEY.get()); // Unlock custom enchantment
+        event.register(ModKeyMapping.DASH_KEY.get()); // Dash custom enchantment
     }
 
     // CUSTOM EVENT - Register all custom item model property conditionals
@@ -259,5 +258,11 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerRenderPipelines(RegisterRenderPipelinesEvent event) {
         event.registerPipeline(ModRenderPipeline.LINES_NO_DEPTH_RENDER_PIPELINE);
+    }
+
+    // CUSTOM METHOD - DASH custom enchantment
+    @SubscribeEvent
+    public static void activatedDash(ClientTickEvent.Post event) {
+        DashEnchantmentEffect.onKeyPressEvent();
     }
 }

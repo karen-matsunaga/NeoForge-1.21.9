@@ -64,6 +64,7 @@ public class ModLanguageProvider extends LanguageProvider {
         topEnch("Glowing Blocks", "When applied on helmet armor all ores blocks are detected with X-Ray of blocks. " +
                                               "(Press G key to activated or disabled)");
         topEnch("Mobs Critical", "When applied on sword when player attack all entities receive critical damage.");
+        topEnch("Dash", "When applied on boots armor receive impulse walk speed.");
 
         // ** VANILLA ENCHANTMENTS **
         // MINING
@@ -163,6 +164,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("key." + top + "special_bottle_stored", "Special Bottle Stored");
         add("key." + top + "special_bottle_restored", "Special Bottle Restored");
         add("key." + top + "unlock", "Unlock");
+        add("key." + top + "dash", "Dash");
 
         // ** CUSTOM mob **
         // GECKO

@@ -953,7 +953,7 @@ public class ModEvents {
         boolean locked = false;
         Boolean effect = hoveredStack.get(ModDataComponentTypes.UNLOCK);
         if (effect != null) { locked = effect; }
-        if (index > 0) {
+        if (index >= 0) {
             ClientPacketDistributor.sendToServer(new UnlockEnchantmentPacketPayload(!locked, index));
             event.setCanceled(true); // Prevents other mods or the game from consuming the key
         }
