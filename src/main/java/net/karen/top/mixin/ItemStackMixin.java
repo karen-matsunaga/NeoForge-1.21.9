@@ -14,6 +14,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.ARGB;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -131,10 +132,10 @@ public abstract class ItemStackMixin {
             }
         }
         // ** CUSTOM ENCHANTMENTS **
+        // UNLOCK enchantment
         if (level != null) {
             HolderLookup.RegistryLookup<Enchantment> ench = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-            // Item checked is UNLOCK enchantment
-            if (Utils.toolEnchant(ench, ModEnchantments.UNLOCK, stack) > 0) {
+            if (Utils.toolEnchant(ench, ModEnchantments.UNLOCK, stack) > 0) { // Item checked is UNLOCK enchantment
                 if (stack.has(ModDataComponentTypes.UNLOCK)) {
                     Boolean values = stack.get(ModDataComponentTypes.UNLOCK);
                     if (values != null) {
@@ -149,16 +150,17 @@ public abstract class ItemStackMixin {
                 }
                 else { stack.set(ModDataComponentTypes.UNLOCK, false); }
             }
-            // DASH enchantment
-            EnchantmentHelper.runIterationOnItem(stack, (holder, _) -> {
-                DashEnchantmentEffect effect =
-                    holder.value().effects().get(ModDataComponentTypes.DASH_ENCHANTMENT_EFFECT.get());
-                if (effect != null) {
-                    tooltip.add(componentLiteralIntColor("Block boost: " + effect.boost() + " ", blueEnderColor).copy()
-                                .append(componentLiteralIntColor("Cooldown: " + effect.cooldown() + " ", redstoneColor)));
-                }
-            });
         }
+        // DASH enchantment
+        EnchantmentHelper.runIterationOnItem(stack, (holder, _) -> {
+            DashEnchantmentEffect effect =
+                holder.value().effects().get(ModDataComponentTypes.DASH_ENCHANTMENT_EFFECT.get());
+            if (effect != null) {
+                tooltip.add(componentLiteralIntColor("Block boost: " + effect.boost() + " ", blueEnderColor).copy()
+                           .append(componentLiteralIntColor("Cooldown: " + effect.cooldown() + " ", redstoneColor))
+                           .append(potionIcon(MobEffects.SPEED).withColor(whiteColor)));
+            }
+        });
         cir.setReturnValue(tooltip); // New tooltip
     }
 
