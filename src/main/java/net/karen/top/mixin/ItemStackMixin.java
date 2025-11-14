@@ -126,9 +126,7 @@ public abstract class ItemStackMixin {
         if (stack.is(ModItems.RESTORE)) {
             if (item instanceof RestoreItem restore) {
                 List<String> lines = restore.restoreItemDescription();
-                for (int i = 0; i < lines.size(); i++) {
-                     tooltip.add(i + 1, standardLiteral(lines.get(i)));
-                }
+                for (int i = 0; i < lines.size(); i++) { tooltip.add(i + 1, standardLiteral(lines.get(i))); }
             }
         }
         // ** CUSTOM ENCHANTMENTS **
@@ -140,11 +138,9 @@ public abstract class ItemStackMixin {
                     Boolean values = stack.get(ModDataComponentTypes.UNLOCK);
                     if (values != null) {
                         boolean locked = values; // Locked Data Component change stage
-                        tooltip.add(standardLiteral(locked ? "§c\uD83D\uDD12 Item locked! " +
-                                                             "§7- Press §eV§7 §ato UNLOCK! " +
+                        tooltip.add(standardLiteral(locked ? "§c\uD83D\uDD12 Item locked! §7- Press §eV§7 §ato UNLOCK! " +
                                                              String.valueOf(locked).toUpperCase()
-                                                           : "§a\uD83D\uDD13 Item unlocked! " +
-                                                             "§7- Press §eV§7 §cto LOCK! " +
+                                                           : "§a\uD83D\uDD13 Item unlocked! §7- Press §eV§7 §cto LOCK! " +
                                                              String.valueOf(locked).toUpperCase()));
                     }
                 }
