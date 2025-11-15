@@ -4,9 +4,9 @@ import net.karen.top.Top;
 import net.karen.top.item.ModItems;
 import net.karen.top.loot.AddItemModifier;
 import net.karen.top.loot.AddSusSandItemModifier;
+import net.karen.top.util.Utils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -117,7 +117,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
             if (name.contains(local.getKey())) {
                 LootItemCondition[] conditions =
                     new LootItemCondition[] {
-                            new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace(local.getValue())).build(),
+                            new LootTableIdCondition.Builder(Utils.vanPath(local.getValue())).build(),
                             LootItemRandomChanceCondition.randomChance(chance).build()
                     };
                 // CUSTOM STRUCTURE DROP
@@ -129,9 +129,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     // CUSTOM METHOD - Item on SUSPICIOUS SAND
     private void addDropOnSuspiciousSand(String name, String local, Item drop) {
         LootItemCondition[] conditions =
-            new LootItemCondition[] {
-                    new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace(local)).build()
-            };
+            new LootItemCondition[] { new LootTableIdCondition.Builder(Utils.vanPath(local)).build() };
         // CUSTOM SUSPICIOUS SAND DROP
         this.add(name, new AddSusSandItemModifier(conditions, drop));
     }
@@ -139,9 +137,7 @@ public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     // CUSTOM METHOD - Item on hit ENTITIES
     private void addDropOnEntity(String name, String entity, Item drop) {
         LootItemCondition[] conditions =
-            new LootItemCondition[] {
-                    new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace(entity)).build()
-            };
+            new LootItemCondition[] { new LootTableIdCondition.Builder(Utils.vanPath(entity)).build() };
         // CUSTOM ENTITY DROP
         this.add(name, new AddItemModifier(conditions, drop));
     }

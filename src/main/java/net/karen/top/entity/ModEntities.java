@@ -3,10 +3,10 @@ package net.karen.top.entity;
 import net.karen.top.Top;
 import net.karen.top.entity.custom.*;
 import net.karen.top.item.ModItems;
+import net.karen.top.util.Utils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
@@ -19,46 +19,39 @@ public class ModEntities {
 
     // Registry all custom Entities -> Resource Key
     public static ResourceKey<EntityType<?>> GECKO_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.withDefaultNamespace("gecko"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("gecko"));
 
     public static ResourceKey<EntityType<?>> RHINO_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.withDefaultNamespace("rhino"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("rhino"));
 
     // Registry all custom Throwable Projectiles -> Resource Key
     public static ResourceKey<EntityType<?>> TOMAHAWK_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.withDefaultNamespace("tomahawk"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("tomahawk"));
 
     public static ResourceKey<EntityType<?>> TORCH_BALL_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("torch_ball"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("torch_ball"));
 
     public static ResourceKey<EntityType<?>> BOUNCY_BALLS_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("bouncy_balls"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("bouncy_balls"));
 
     public static ResourceKey<EntityType<?>> DICE_PROJECTILE_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("dice_projectile"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("dice_projectile"));
 
     public static ResourceKey<EntityType<?>> MAGIC_PROJECTILE_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("magic_projectile"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("magic_projectile"));
 
     public static ResourceKey<EntityType<?>> MINER_BOW_ARROW_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("miner_bow_arrow_entity"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("miner_bow_arrow_entity"));
 
     public static ResourceKey<EntityType<?>> MOD_BOAT_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("mod_boat"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("mod_boat"));
 
     public static ResourceKey<EntityType<?>> MOD_CHEST_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE,
-                              ResourceLocation.withDefaultNamespace("mod_chest_boat"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("mod_chest_boat"));
 
     // Registry all custom sittable blocks -> Resource Key
     public static ResourceKey<EntityType<?>> CHAIR_KEY =
-           ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.withDefaultNamespace("chair_entity"));
+           Utils.rKey(Registries.ENTITY_TYPE, Utils.vanPath("chair_entity"));
 
     // Registry all custom Entities -> Entity Type
     public static final Supplier<EntityType<GeckoEntity>> GECKO =

@@ -1,11 +1,15 @@
 package net.karen.top.util;
 
+import net.karen.top.Top;
 import net.karen.top.component.ModDataComponentTypes;
 import net.karen.top.network.UnlockEnchantmentPacketPayload;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -256,5 +260,26 @@ public class Utils {
     // CUSTOM METHOD - RESTORE -> Item used is on offhand or main hand
     public static ItemStack hasItem(Player player, InteractionHand hand) {
         return player.getItemInHand(hand);
+    }
+
+    // CUSTOM METHOD - TOP Resource Location
+    public static ResourceLocation topPath(String path) {
+        return ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, path);
+    }
+
+    // CUSTOM METHOD - VANILLA Resource Location
+    public static ResourceLocation vanPath(String path) {
+        return ResourceLocation.withDefaultNamespace(path);
+    }
+
+    // CUSTOM METHOD - RESOURCE KEY
+    public static <T> ResourceKey<T> rKey(ResourceKey<? extends Registry<T>> registries,
+                                          ResourceLocation resourceLocation) {
+        return ResourceKey.create(registries, resourceLocation);
+    }
+
+    // CUSTOM METHOD - MODEL LAYER location
+    public static ModelLayerLocation modelLayer(String path) {
+        return new ModelLayerLocation(Utils.topPath(path), "main");
     }
 }

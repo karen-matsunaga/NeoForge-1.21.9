@@ -2,7 +2,7 @@ package net.karen.top.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.serialization.MapCodec;
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.client.model.ShieldModel;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.Sheets;
@@ -13,7 +13,6 @@ import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.MaterialSet;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Unit;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemDisplayContext;
@@ -28,11 +27,9 @@ import java.util.Set;
 public record ShieldSpecialModelRenderer(MaterialSet materials, ShieldModel model)
        implements SpecialModelRenderer<DataComponentMap> {
     public static final Material ALEXANDRITE_SHIELD_BASE =
-           new Material(Sheets.SHIELD_SHEET,
-                        ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "entity/alexandrite_shield_base"));
+           new Material(Sheets.SHIELD_SHEET, Utils.topPath("entity/alexandrite_shield_base"));
     public static final Material ALEXANDRITE_SHIELD_BASE_NO_PATTERN =
-           new Material(Sheets.SHIELD_SHEET,
-                        ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "entity/alexandrite_shield_base_nopattern"));
+           new Material(Sheets.SHIELD_SHEET, Utils.topPath("entity/alexandrite_shield_base_nopattern"));
 
     public @NotNull DataComponentMap extractArgument(ItemStack stack) {
         return stack.immutableComponents();
@@ -50,21 +47,18 @@ public record ShieldSpecialModelRenderer(MaterialSet materials, ShieldModel mode
         poseStack.pushPose();
         poseStack.scale(1.0F, -1.0F, -1.0F);
         Material material = flag ? ALEXANDRITE_SHIELD_BASE : ALEXANDRITE_SHIELD_BASE_NO_PATTERN;
-        submitNodeCollector.submitModelPart(this.model.handle(), poseStack,
-                                            this.model.renderType(material.atlasLocation()),
-                                            i, i1, this.materials.get(material), false,
-                                            false, -1, null, i2);
+        ShieldModel model = this.model;
+        MaterialSet materials = this.materials;
+        submitNodeCollector.submitModelPart(model.handle(), poseStack, model.renderType(material.atlasLocation()),
+                                            i, i1, materials.get(material), false, false, -1, null, i2);
         if (flag) {
-            BannerRenderer.submitPatterns(this.materials, poseStack, submitNodeCollector,
-                                          i, i1, this.model, Unit.INSTANCE, material,
+            BannerRenderer.submitPatterns(materials, poseStack, submitNodeCollector, i, i1, model, Unit.INSTANCE, material,
                                           false, Objects.requireNonNullElse(dyecolor, DyeColor.WHITE),
                                           bannerpatternlayers, b, null, i2);
         }
         else {
-            submitNodeCollector.submitModelPart(this.model.plate(), poseStack,
-                                                this.model.renderType(material.atlasLocation()),
-                                                i, i1, this.materials.get(material), false,
-                                                b, -1, null, i2);
+            submitNodeCollector.submitModelPart(model.plate(), poseStack, model.renderType(material.atlasLocation()),
+                                                i, i1, materials.get(material), false, b, -1, null, i2);
         }
         poseStack.popPose();
     }

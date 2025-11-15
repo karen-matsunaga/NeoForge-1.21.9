@@ -1,6 +1,6 @@
 package net.karen.top.screen.custom;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -11,8 +11,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CraftingPlusScreen extends AbstractContainerScreen<CraftingPlusMenu> {
     private static final ResourceLocation CRAFTING_TABLE_LOCATION =
-            ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                  "textures/gui/crafting_plus/crafting_plus_gui.png");
+            Utils.topPath("textures/gui/crafting_plus/crafting_plus_gui.png");
 
     public CraftingPlusScreen(CraftingPlusMenu menu,
                               Inventory inventory, Component title) {
@@ -31,13 +30,12 @@ public class CraftingPlusScreen extends AbstractContainerScreen<CraftingPlusMenu
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int k = this.leftPos;
         int j = (this.height - this.imageHeight) / 2;
-        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, CRAFTING_TABLE_LOCATION, k, j,
-                         0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
+        guiGraphics.blit(RenderPipelines.GUI_TEXTURED, CRAFTING_TABLE_LOCATION, k, j, 0.0F, 0.0F,
+                         this.imageWidth, this.imageHeight, 256, 256);
     }
 
     @Override
-    public void render(@NotNull GuiGraphics graphics, int mouseX,
-                       int mouseY, float partialTick) {
+    public void render(@NotNull GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(graphics, mouseX, mouseY, partialTick);
         this.renderTooltip(graphics, mouseX, mouseY);
         super.render(graphics, mouseX, mouseY, partialTick);

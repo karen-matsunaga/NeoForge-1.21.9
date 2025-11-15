@@ -3,6 +3,7 @@ package net.karen.top.datagen;
 import net.karen.top.Top;
 import net.karen.top.entity.client.ShieldSpecialModelRenderer;
 import net.karen.top.trim.ModTrimPatterns;
+import net.karen.top.util.Utils;
 import net.minecraft.client.data.AtlasProvider;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.renderer.MaterialMapper;
@@ -36,17 +37,14 @@ import static net.karen.top.util.ChatUtils.*;
 public class ModAtlasProvider extends AtlasProvider {
     private static final String path = "trims/color_palettes/";
 
-    private static final ResourceLocation TRIM_PALETTE_KEY =
-            ResourceLocation.withDefaultNamespace(path + "trim_palette");
+    private static final ResourceLocation TRIM_PALETTE_KEY = Utils.vanPath(path + "trim_palette");
 
     private static final List<String> items = List.of("alexandrite", "bismuth", "pink");
 
     private static final Map<String, ResourceLocation> TRIM_PALETTE_VALUES =
             extractAllMaterialAssets().collect(Collectors.toMap(MaterialAssetGroup.AssetInfo::suffix, info ->
-                                               items.contains(info.suffix())
-                                                              ? ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                                                      path + info.suffix())
-                                                              : ResourceLocation.withDefaultNamespace(path + info.suffix())));
+                                               items.contains(info.suffix()) ? Utils.topPath(path + info.suffix())
+                                                                             : Utils.vanPath(path + info.suffix())));
 
     private static final List<ResourceKey<TrimPattern>> VANILLA_PATTERNS =
             List.of(TrimPatterns.SENTRY, TrimPatterns.DUNE, TrimPatterns.COAST, TrimPatterns.WILD, TrimPatterns.WARD,

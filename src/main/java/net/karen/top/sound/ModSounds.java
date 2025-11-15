@@ -1,13 +1,13 @@
 package net.karen.top.sound;
 
 import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.JukeboxSong;
 import net.neoforged.bus.api.IEventBus;
@@ -57,13 +57,12 @@ public class ModSounds {
 
     // CUSTOM METHOD - Registry all songs on JUKEBOX block
     private static ResourceKey<JukeboxSong> createSong(String name) {
-        return ResourceKey.create(Registries.JUKEBOX_SONG, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        return Utils.rKey(Registries.JUKEBOX_SONG, Utils.topPath(name));
     }
 
     // CUSTOM METHOD - Registry all Supplier or Deferred Holder SOUND EVENT TYPE -> ITEM, BLOCK, MUSIC DISC, BIOME etc.
     private static DeferredHolder<SoundEvent, SoundEvent> createSE(String name) {
-        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name);
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(Utils.topPath(name)));
     }
 
     // CUSTOM METHOD - Registry all SOUND TYPE (BREAK sound, STEP sound, PLACE sound, HIT sound and FALL sound)

@@ -1,13 +1,12 @@
 package net.karen.top.worldgen.dimension;
 
 import com.mojang.datafixers.util.Pair;
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.karen.top.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.Level;
@@ -24,18 +23,15 @@ import java.util.OptionalLong;
 public class ModDimensions {
     // Register all custom LEVEL STEMS
     public static final ResourceKey<LevelStem> KAUPENDIM_KEY =
-           ResourceKey.create(Registries.LEVEL_STEM,
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "kaupendim"));
+           Utils.rKey(Registries.LEVEL_STEM, Utils.topPath("kaupendim"));
 
     // Register all custom CUSTOM DIMENSIONS
     public static final ResourceKey<Level> KAUPENDIM_LEVEL_KEY =
-           ResourceKey.create(Registries.DIMENSION,
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "kaupendim"));
+           Utils.rKey(Registries.DIMENSION, Utils.topPath("kaupendim"));
 
     // Register all custom CUSTOM DIMENSION TYPES
     public static final ResourceKey<DimensionType> KAUPEN_DIM_TYPE =
-           ResourceKey.create(Registries.DIMENSION_TYPE,
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "kaupendim_type"));
+           Utils.rKey(Registries.DIMENSION_TYPE, Utils.topPath("kaupendim_type"));
 
     // CUSTOM METHOD - Register all custom DIMENSION TYPES (Data Generation) -> JSON file
     public static void bootstrapType(BootstrapContext<DimensionType> context) {
@@ -55,9 +51,9 @@ public class ModDimensions {
                                                             1.0f, // ambientLight
                                                             Optional.of(192), // cloudHeight
                                                             // monsterSettings
-                                                            new DimensionType.MonsterSettings(false,
-                                                            false,
-                                                            ConstantInt.of(0), 0)));
+                                                            new DimensionType.MonsterSettings(false, false,
+                                                                                              ConstantInt.of(0),
+                                                                                              0)));
     }
 
     // CUSTOM METHOD - Register all custom LEVEL STEM (Data Generation) -> JSON file
@@ -73,20 +69,16 @@ public class ModDimensions {
         NoiseBasedChunkGenerator noiseBasedChunkGenerator = new NoiseBasedChunkGenerator(
              MultiNoiseBiomeSource.createFromList(
                   new Climate.ParameterList<>(List.of(
-                             Pair.of(Climate.parameters(0.0F, 0.0F,
-                                                        0.0F, 0.0F,
+                             Pair.of(Climate.parameters(0.0F, 0.0F, 0.0F, 0.0F,
                                                         0.0F, 0.0F, 0.0F),
                                      biomeRegistry.getOrThrow(ModBiomes.TEST_BIOME_2)),
-                             Pair.of(Climate.parameters(0.1F, 0.2F,
-                                                        0.0F, 0.2F,
+                             Pair.of(Climate.parameters(0.1F, 0.2F, 0.0F, 0.2F,
                                                         0.0F, 0.0F, 0.0F),
                                      biomeRegistry.getOrThrow(Biomes.BIRCH_FOREST)),
-                             Pair.of(Climate.parameters(0.3F, 0.6F,
-                                                        0.1F, 0.1F,
+                             Pair.of(Climate.parameters(0.3F, 0.6F, 0.1F, 0.1F,
                                                         0.0F, 0.0F, 0.0F),
                                      biomeRegistry.getOrThrow(Biomes.OCEAN)),
-                             Pair.of(Climate.parameters(0.4F, 0.3F,
-                                                        0.2F, 0.1F,
+                             Pair.of(Climate.parameters(0.4F, 0.3F, 0.2F, 0.1F,
                                                         0.0F, 0.0F, 0.0F),
                                      biomeRegistry.getOrThrow(Biomes.DARK_FOREST))))),
                  noiseGenSettings.getOrThrow(NoiseGeneratorSettings.AMPLIFIED));

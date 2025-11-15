@@ -1,21 +1,19 @@
 package net.karen.top.entity.client;
 
-import net.karen.top.Top;
 import net.karen.top.entity.animations.RhinoAnimations;
+import net.karen.top.util.Utils;
 import net.minecraft.client.animation.KeyframeAnimation;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
 public class RhinoModel extends EntityModel<RhinoRenderState> {
     // RHINO layer
-    public static final ModelLayerLocation LAYER_LOCATION =
-           new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "rhino"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = Utils.modelLayer("rhino");
 
     // RHINO animations
     private final ModelPart body;
@@ -247,7 +245,6 @@ public class RhinoModel extends EntityModel<RhinoRenderState> {
         this.head.xRot = headPitch * 0.017453292F;
     }
 
-    public ModelPart getHead() {
-        return head;
-    }
+    // CUSTOM METHOD - RHINO head model
+    public ModelPart getHead() { return head; }
 }

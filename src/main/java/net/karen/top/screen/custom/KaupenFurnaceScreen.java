@@ -1,5 +1,6 @@
 package net.karen.top.screen.custom;
 
+import net.karen.top.util.Utils;
 import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
 import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.gui.screens.recipebook.SearchRecipeBookCategory;
@@ -11,19 +12,11 @@ import net.minecraft.world.item.crafting.RecipeBookCategories;
 import java.util.List;
 
 public class KaupenFurnaceScreen extends AbstractFurnaceScreen<KaupenFurnaceMenu> {
-    private static final ResourceLocation LIT_PROGRESS_SPRITE =
-            ResourceLocation.withDefaultNamespace("container/furnace/lit_progress");
-
-    private static final ResourceLocation BURN_PROGRESS_SPRITE =
-            ResourceLocation.withDefaultNamespace("container/furnace/burn_progress");
-
-    private static final ResourceLocation TEXTURE =
-            ResourceLocation.withDefaultNamespace("textures/gui/container/furnace.png");
-
+    private static final ResourceLocation LIT_PROGRESS_SPRITE = Utils.vanPath("container/furnace/lit_progress");
+    private static final ResourceLocation BURN_PROGRESS_SPRITE = Utils.vanPath("container/furnace/burn_progress");
+    private static final ResourceLocation TEXTURE = Utils.vanPath("textures/gui/container/furnace.png");
     private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.smeltable");
-
     private static final List<RecipeBookComponent.TabInfo> TABS;
-
 
     public KaupenFurnaceScreen(KaupenFurnaceMenu menu,
                                 Inventory inventory, Component component) {

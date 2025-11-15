@@ -2,8 +2,8 @@ package net.karen.top.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.karen.top.Top;
 import net.karen.top.entity.custom.TomahawkProjectileEntity;
+import net.karen.top.util.Utils;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,9 +26,7 @@ public class TomahawkProjectileRenderer extends EntityRenderer<TomahawkProjectil
     }
 
     @Override
-    public @NotNull EntityRenderState createRenderState() {
-        return new EntityRenderState();
-    }
+    public @NotNull EntityRenderState createRenderState() { return new EntityRenderState(); }
 
     @Override
     public void extractRenderState(@NotNull TomahawkProjectileEntity entity,
@@ -41,8 +38,7 @@ public class TomahawkProjectileRenderer extends EntityRenderer<TomahawkProjectil
 
     @Override
     public void submit(@NotNull EntityRenderState state, @NotNull PoseStack poseStack,
-                       @NotNull SubmitNodeCollector submitNodeCollector,
-                       @NotNull CameraRenderState cameraRenderState) {
+                       @NotNull SubmitNodeCollector submitNodeCollector, @NotNull CameraRenderState cameraRenderState) {
         poseStack.pushPose();
         if (!entity.neverIsInGround() && entity != null) {
             poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partial, entity.yRotO, entity.getYRot())));
@@ -56,17 +52,12 @@ public class TomahawkProjectileRenderer extends EntityRenderer<TomahawkProjectil
                 poseStack.translate(0, -1.0F, 0);
             }
         }
-        // Render item
+        // Render item - Tomahawk texture
         submitNodeCollector.submitModel(this.model, state, poseStack,
-                                        RenderType.entityCutout(this.getTextureLocation()),
+                                        RenderType.entityCutout(Utils.topPath("textures/entity/tomahawk/tomahawk.png")),
                                         state.lightCoords, OverlayTexture.NO_OVERLAY, -1,
                                         null, state.outlineColor, null);
         poseStack.popPose();
         super.submit(state, poseStack, submitNodeCollector, cameraRenderState);
-    }
-
-    // CUSTOM METHOD - Tomahawk texture
-    public ResourceLocation getTextureLocation() {
-        return ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "textures/entity/tomahawk/tomahawk.png");
     }
 }

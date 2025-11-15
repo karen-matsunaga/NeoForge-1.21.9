@@ -2,7 +2,6 @@ package net.karen.top.util;
 
 import net.karen.top.Top;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -120,7 +119,7 @@ public class ModTags {
 
         // CUSTOM METHOD - Registry all custom block tags
         private static TagKey<Block> createTag(String name) {
-            return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+            return BlockTags.create(Utils.topPath(name));
         }
     }
 
@@ -222,7 +221,7 @@ public class ModTags {
 
         // CUSTOM METHOD - Registry all custom item tags
         private static TagKey<Item> createTag(String name) {
-            return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+            return ItemTags.create(Utils.topPath(name));
         }
     }
 
@@ -244,7 +243,7 @@ public class ModTags {
 
         // CUSTOM METHOD - Registry all custom enchantment tags
         private static TagKey<Enchantment> createTag(String name) {
-            return TagKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+            return TagKey.create(Registries.ENCHANTMENT, Utils.topPath(name));
         }
     }
 
@@ -263,7 +262,7 @@ public class ModTags {
 
         // CUSTOM METHOD - Registry all custom entities tags
         private static TagKey<EntityType<?>> createTag(String name) {
-            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+            return TagKey.create(Registries.ENTITY_TYPE, Utils.topPath(name));
         }
     }
 
@@ -279,7 +278,7 @@ public class ModTags {
 
         // CUSTOM METHOD - Registry all custom biome tags
         private static TagKey<Biome> create(String name) {
-            return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+            return TagKey.create(Registries.BIOME, Utils.topPath(name));
         }
     }
 
@@ -290,7 +289,7 @@ public class ModTags {
 
         // CUSTOM METHOD - Registry all custom structure tags
         private static TagKey<Structure> create(String name) {
-            return TagKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+            return TagKey.create(Registries.STRUCTURE, Utils.topPath(name));
         }
     }
 }

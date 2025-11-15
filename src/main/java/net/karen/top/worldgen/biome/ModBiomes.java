@@ -3,6 +3,7 @@ package net.karen.top.worldgen.biome;
 import net.karen.top.Top;
 import net.karen.top.entity.ModEntities;
 import net.karen.top.sound.ModSounds;
+import net.karen.top.util.Utils;
 import net.karen.top.worldgen.ModPlacedFeatures;
 import net.karen.top.worldgen.biome.region.OverworldRegion;
 import net.minecraft.core.registries.Registries;
@@ -10,7 +11,6 @@ import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.Musics;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -25,8 +25,7 @@ public class ModBiomes {
 
     // CUSTOM METHOD - Register all custom biomes on CLIENT EVENT
     public static void registerBiomes() {
-        Regions.register(new OverworldRegion(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, Top.MOD_ID + "_overworld"),
-                                             5));
+        Regions.register(new OverworldRegion(Utils.topPath(Top.MOD_ID + "_overworld"), 5));
     }
 
     // CUSTOM METHOD - Register all custom biomes (DATA GENERATION) -> JSON file
@@ -74,17 +73,13 @@ public class ModBiomes {
         BiomeDefaultFeatures.addFerns(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addExtraGold(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                                VegetationPlacements.TREES_PLAINS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_PLAINS);
 
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder, true);
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,
-                                ModPlacedFeatures.ALEXANDRITE_GEODE_PLACED_KEY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                                ModPlacedFeatures.SNAPDRAGON_PLACED_KEY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                                ModPlacedFeatures.WALNUT_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.ALEXANDRITE_GEODE_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SNAPDRAGON_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WALNUT_PLACED_KEY);
 
         // CUSTOMIZE rain, sky, special effects, etc.
         return new Biome.BiomeBuilder()
@@ -134,17 +129,13 @@ public class ModBiomes {
         BiomeDefaultFeatures.addFerns(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addExtraGold(biomeBuilder);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                                VegetationPlacements.TREES_PLAINS);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.TREES_PLAINS);
 
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder, true);
-        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS,
-                                ModPlacedFeatures.ALEXANDRITE_GEODE_PLACED_KEY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                                ModPlacedFeatures.SNAPDRAGON_PLACED_KEY);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION,
-                                ModPlacedFeatures.WALNUT_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, ModPlacedFeatures.ALEXANDRITE_GEODE_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.SNAPDRAGON_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WALNUT_PLACED_KEY);
 
         // CUSTOMIZE rain, sky, special effects, etc.
         return new Biome.BiomeBuilder()
@@ -166,7 +157,6 @@ public class ModBiomes {
 
     // CUSTOM METHOD - Register all custom biomes on REGISTRIES BIOME
     public static ResourceKey<Biome> register(String name) {
-        return ResourceKey.create(Registries.BIOME,
-                                  ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        return Utils.rKey(Registries.BIOME, Utils.topPath(name));
     }
 }

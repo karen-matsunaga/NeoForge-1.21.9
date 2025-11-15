@@ -10,9 +10,9 @@ import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
 import net.karen.top.recipe.CraftingPlusRecipe;
+import net.karen.top.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -23,11 +23,9 @@ import java.util.Optional;
 import static net.karen.top.util.ChatUtils.top;
 
 public class CraftingPlusRecipeCategory implements IRecipeCategory<CraftingPlusRecipe> {
-    public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "crafting_plus");
+    public static final ResourceLocation UID = Utils.topPath("crafting_plus");
 
-    public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "textures/gui/crafting_plus/crafting_plus_gui.png");
+    public static final ResourceLocation TEXTURE = Utils.topPath("textures/gui/crafting_plus/crafting_plus_gui.png");
 
     public static final IRecipeType<CraftingPlusRecipe> CRAFTING_PLUS_TYPE =
            IRecipeType.create(UID, CraftingPlusRecipe.class);

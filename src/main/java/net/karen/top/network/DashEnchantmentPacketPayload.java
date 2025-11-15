@@ -1,14 +1,13 @@
 package net.karen.top.network;
 
-import net.karen.top.Top;
 import net.karen.top.component.ModDataComponentTypes;
 import net.karen.top.enchantment.custom.DashEnchantmentEffect;
+import net.karen.top.util.Utils;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -25,7 +24,7 @@ import static net.karen.top.util.ChatUtils.*;
 public record DashEnchantmentPacketPayload(ItemStack target) implements CustomPacketPayload {
     // TYPE
     public static final CustomPacketPayload.Type<DashEnchantmentPacketPayload> TYPE =
-           new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "dash_data"));
+           new CustomPacketPayload.Type<>(Utils.topPath("dash_data"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() { return TYPE; }

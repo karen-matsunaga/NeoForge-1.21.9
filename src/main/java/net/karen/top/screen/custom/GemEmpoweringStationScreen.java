@@ -1,8 +1,8 @@
 package net.karen.top.screen.custom;
 
-import net.karen.top.Top;
 import net.karen.top.screen.renderer.EnergyDisplayTooltipArea;
 import net.karen.top.util.MouseUtil;
+import net.karen.top.util.Utils;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
@@ -14,8 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class GemEmpoweringStationScreen extends AbstractContainerScreen<GemEmpoweringStationMenu> {
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                  "textures/gui/gem_empowering_station/gem_empowering_station_gui.png");
+            Utils.topPath("textures/gui/gem_empowering_station/gem_empowering_station_gui.png");
 
     private EnergyDisplayTooltipArea energyInfoArea;
 

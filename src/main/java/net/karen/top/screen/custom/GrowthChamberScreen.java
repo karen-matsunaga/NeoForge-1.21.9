@@ -1,6 +1,6 @@
 package net.karen.top.screen.custom;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -11,10 +11,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class GrowthChamberScreen extends AbstractContainerScreen<GrowthChamberMenu> {
     private static final ResourceLocation GUI_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,"textures/gui/growth_chamber/growth_chamber_gui.png");
+            Utils.topPath("textures/gui/growth_chamber/growth_chamber_gui.png");
 
     private static final ResourceLocation ARROW_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,"textures/gui/arrow_progress.png");
+            Utils.topPath("textures/gui/arrow_progress.png");
 
     public GrowthChamberScreen(GrowthChamberMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);

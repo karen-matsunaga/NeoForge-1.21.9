@@ -1,9 +1,9 @@
 package net.karen.top.loot;
 
 import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootTable;
 import java.util.Collections;
 import java.util.HashSet;
@@ -23,7 +23,7 @@ public class ModLootTables {
 
     // CUSTOM METHOD - Register all CHEST loot tables
     private static ResourceKey<LootTable> register(String name) {
-        return register(ResourceKey.create(Registries.LOOT_TABLE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name)));
+        return register(Utils.rKey(Registries.LOOT_TABLE, Utils.topPath(name)));
     }
 
     // CUSTOM METHOD - Register all CHEST loot tables on SET

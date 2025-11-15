@@ -2,9 +2,9 @@ package net.karen.top.entity.client;
 
 import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.karen.top.Top;
 import net.karen.top.entity.custom.RhinoEntity;
 import net.karen.top.entity.variant.RhinoVariant;
+import net.karen.top.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -17,13 +17,8 @@ import java.util.Map;
 public class RhinoRenderer extends MobRenderer<RhinoEntity, RhinoRenderState, RhinoModel> {
     private static final Map<RhinoVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(RhinoVariant.class), map -> {
-                      map.put(RhinoVariant.DEFAULT,
-                              ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                    "textures/entity/rhino/rhino.png"));
-                      map.put(RhinoVariant.WHITE,
-                              ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                    "textures/entity/rhino/white_rhino.png"));
-            });
+                      map.put(RhinoVariant.DEFAULT, Utils.topPath("textures/entity/rhino/rhino.png"));
+                      map.put(RhinoVariant.WHITE, Utils.topPath("textures/entity/rhino/white_rhino.png")); });
 
     public RhinoRenderer(EntityRendererProvider.Context context) {
         super(context, new RhinoModel(context.bakeLayer(RhinoModel.LAYER_LOCATION)), 2F);
@@ -50,8 +45,7 @@ public class RhinoRenderer extends MobRenderer<RhinoEntity, RhinoRenderState, Rh
 
     @Override
     public void submit(RhinoRenderState entity, @NotNull PoseStack poseStack,
-                       @NotNull SubmitNodeCollector submitNodeCollector,
-                       @NotNull CameraRenderState cameraRenderState) {
+                       @NotNull SubmitNodeCollector submitNodeCollector, @NotNull CameraRenderState cameraRenderState) {
         if (entity.isBaby) { poseStack.scale(0.45F, 0.45F, 0.45F); } // Rhino's baby
         else { poseStack.scale(1F, 1F, 1F); }
         super.submit(entity, poseStack, submitNodeCollector, cameraRenderState);

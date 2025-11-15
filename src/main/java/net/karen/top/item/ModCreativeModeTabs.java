@@ -3,8 +3,8 @@ package net.karen.top.item;
 import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
 import net.karen.top.fluid.ModFluids;
+import net.karen.top.util.Utils;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
@@ -222,7 +222,7 @@ public class ModCreativeModeTabs {
     public static final Supplier<CreativeModeTab> BISMUTH_BLOCK_TAB =
            CREATIVE_MODE_TAB.register("bismuth_blocks_tab",
            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.BISMUTH_BLOCK))
-                                          .withTabsBefore(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "bismuth_items_tab"))
+                                          .withTabsBefore(Utils.topPath("bismuth_items_tab"))
                                           .title(componentTranslatableIntColor("creativetab." + top + "bismuth_blocks",
                                                                                bismuthColor))
                                           .displayItems((_, output) -> {

@@ -1,6 +1,6 @@
 package net.karen.top.trim;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -8,23 +8,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.equipment.trim.MaterialAssetGroup;
 import net.minecraft.world.item.equipment.trim.TrimMaterial;
 
 public class ModTrimMaterials {
     // Registry all custom TRIM MATERIAL textures
     // BISMUTH
-    public static final ResourceKey<TrimMaterial> BISMUTH =
-           ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "bismuth"));
+    public static final ResourceKey<TrimMaterial> BISMUTH = Utils.rKey(Registries.TRIM_MATERIAL, Utils.topPath("bismuth"));
 
     // ALEXANDRITE
-    public static final ResourceKey<TrimMaterial> ALEXANDRITE =
-           ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "alexandrite"));
+    public static final ResourceKey<TrimMaterial> ALEXANDRITE = Utils.rKey(Registries.TRIM_MATERIAL, Utils.topPath("alexandrite"));
 
     // PINK
-    public static final ResourceKey<TrimMaterial> PINK =
-           ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "pink"));
+    public static final ResourceKey<TrimMaterial> PINK = Utils.rKey(Registries.TRIM_MATERIAL, Utils.topPath("pink"));
 
     // Registry all custom MATERIAL ASSET GROUP ingredients
     public static final MaterialAssetGroup BISMUTH_MATERIAL = MaterialAssetGroup.create("bismuth");

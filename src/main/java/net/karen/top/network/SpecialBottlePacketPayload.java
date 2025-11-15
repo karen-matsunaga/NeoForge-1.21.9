@@ -1,15 +1,14 @@
 package net.karen.top.network;
 
 import io.netty.buffer.ByteBuf;
-import net.karen.top.Top;
 import net.karen.top.component.ModDataComponentTypes;
 import net.karen.top.item.custom.SpecialBottleItem;
+import net.karen.top.util.Utils;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ByIdMap;
 import net.minecraft.util.StringRepresentable;
@@ -44,8 +43,7 @@ public record SpecialBottlePacketPayload(SpecialBottleEnum actionItem, int amoun
 
     // Special Bottle PACKET PAYLOAD -> TYPE
     public static final CustomPacketPayload.Type<SpecialBottlePacketPayload> TYPE =
-           new CustomPacketPayload.Type<>
-               (ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "special_bottle_data"));
+           new CustomPacketPayload.Type<>(Utils.topPath("special_bottle_data"));
 
     // Special Bottle PACKET PAYLOAD -> STREAM CODEC
     public static final StreamCodec<RegistryFriendlyByteBuf, SpecialBottlePacketPayload> STREAM_CODEC =

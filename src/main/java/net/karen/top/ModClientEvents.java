@@ -33,7 +33,6 @@ import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Blocks;
@@ -172,8 +171,7 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void registerConditionalProperties(RegisterConditionalItemModelPropertyEvent event) {
         // The name to reference as the type
-        event.register(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "has_data_info"),
-                       AlternateTexture.MAP_CODEC); // The map codec
+        event.register(Utils.topPath("has_data_info"), AlternateTexture.MAP_CODEC); // The map codec
     }
 
     // CUSTOM EVENT - Register all custom bows zoom
@@ -208,6 +206,8 @@ public class ModClientEvents {
         // CUSTOM ELYTRA
         // DIAMOND Elytra
         event.registerLayerDefinition(ModModelLayers.DIAMOND_ELYTRA_LAYER, ElytraModel::createLayer);
+        // EMERALD Elytra
+        event.registerLayerDefinition(ModModelLayers.EMERALD_ELYTRA_LAYER, ElytraModel::createLayer);
     }
 
     // CUSTOM EVENT - Registry all custom block entity renderers
@@ -242,8 +242,7 @@ public class ModClientEvents {
     // CUSTOM EVENT - Registry all custom shield special model renderers
     @SubscribeEvent
     public static void registerSpecialModelRenderers(RegisterSpecialModelRendererEvent event) {
-        event.register(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "alexandrite_shield"),
-                       ShieldSpecialModelRenderer.Unbaked.MAP_CODEC);
+        event.register(Utils.topPath("alexandrite_shield"), ShieldSpecialModelRenderer.Unbaked.MAP_CODEC);
     }
 
     // CUSTOM EVENT - Register all custom colored blocks

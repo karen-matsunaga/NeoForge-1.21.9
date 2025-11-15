@@ -2,8 +2,8 @@ package net.karen.top.datagen;
 
 import net.karen.top.Top;
 import net.karen.top.particle.ModParticles;
+import net.karen.top.util.Utils;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.data.ParticleDescriptionProvider;
 import org.jetbrains.annotations.NotNull;
 import static net.karen.top.util.ChatUtils.*;
@@ -16,10 +16,10 @@ public class ModParticleDescriptionProvider extends ParticleDescriptionProvider 
     @Override
     protected void addDescriptions() {
         // Bismuth particles
-        spriteSet(ModParticles.BISMUTH_PARTICLES.get(), ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "bismuth"));
+        spriteSet(ModParticles.BISMUTH_PARTICLES.get(), Utils.topPath("bismuth"));
 
         // Alexandrite particles
-        spriteSet(ModParticles.ALEXANDRITE_PARTICLES.get(), ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "alexandrite"));
+        spriteSet(ModParticles.ALEXANDRITE_PARTICLES.get(), Utils.topPath("alexandrite"));
     }
 
     @Override

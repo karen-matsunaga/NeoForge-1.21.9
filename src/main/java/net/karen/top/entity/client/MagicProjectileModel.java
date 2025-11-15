@@ -1,20 +1,17 @@
 package net.karen.top.entity.client;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public class MagicProjectileModel extends EntityModel<EntityRenderState> {
     private final ModelPart bb_main;
-
-    public static final ModelLayerLocation MAGIC_PROJECTILE_LAYER = new ModelLayerLocation(
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "magic_projectile_layer"), "main");
+    public static final ModelLayerLocation MAGIC_PROJECTILE_LAYER = Utils.modelLayer("magic_projectile_layer");
 
     public MagicProjectileModel(ModelPart root) {
         super(root);

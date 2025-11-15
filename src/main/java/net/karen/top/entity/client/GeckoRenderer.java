@@ -2,9 +2,9 @@ package net.karen.top.entity.client;
 
 import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.karen.top.Top;
 import net.karen.top.entity.variant.GeckoVariant;
 import net.karen.top.entity.custom.GeckoEntity;
+import net.karen.top.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -17,15 +17,10 @@ import java.util.Map;
 public class GeckoRenderer extends MobRenderer<GeckoEntity, GeckoRenderState, GeckoModel> {
     private static final Map<GeckoVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(GeckoVariant.class), map -> {
-                      map.put(GeckoVariant.BLUE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                              "textures/entity/gecko/gecko_blue.png"));
-                      map.put(GeckoVariant.GREEN, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                              "textures/entity/gecko/gecko_green.png"));
-                      map.put(GeckoVariant.PINK, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                              "textures/entity/gecko/gecko_pink.png"));
-                      map.put(GeckoVariant.BROWN, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                              "textures/entity/gecko/gecko_brown.png"));
-            });
+                      map.put(GeckoVariant.BLUE, Utils.topPath("textures/entity/gecko/gecko_blue.png"));
+                      map.put(GeckoVariant.GREEN, Utils.topPath("textures/entity/gecko/gecko_green.png"));
+                      map.put(GeckoVariant.PINK, Utils.topPath("textures/entity/gecko/gecko_pink.png"));
+                      map.put(GeckoVariant.BROWN, Utils.topPath("textures/entity/gecko/gecko_brown.png")); });
 
     public GeckoRenderer(EntityRendererProvider.Context context) {
         super(context, new GeckoModel(context.bakeLayer(GeckoModel.LAYER_LOCATION)), 0.25F);
@@ -37,13 +32,10 @@ public class GeckoRenderer extends MobRenderer<GeckoEntity, GeckoRenderState, Ge
     }
 
     @Override
-    public @NotNull GeckoRenderState createRenderState() {
-        return new GeckoRenderState();
-    }
+    public @NotNull GeckoRenderState createRenderState() { return new GeckoRenderState(); }
 
     @Override
-    public void extractRenderState(@NotNull GeckoEntity entity,
-                                   @NotNull GeckoRenderState reusedState, float partialTick) {
+    public void extractRenderState(@NotNull GeckoEntity entity, @NotNull GeckoRenderState reusedState, float partialTick) {
         super.extractRenderState(entity, reusedState, partialTick);
         reusedState.idleAnimationState.copyFrom(entity.idleAnimationState);
         reusedState.variant = entity.getVariant();
@@ -51,8 +43,7 @@ public class GeckoRenderer extends MobRenderer<GeckoEntity, GeckoRenderState, Ge
 
     @Override
     public void submit(@NotNull GeckoRenderState entity, @NotNull PoseStack poseStack,
-                       @NotNull SubmitNodeCollector submitNodeCollector,
-                       @NotNull CameraRenderState cameraRenderState) {
+                       @NotNull SubmitNodeCollector submitNodeCollector, @NotNull CameraRenderState cameraRenderState) {
         if (entity.isBaby) { poseStack.scale(0.45F, 0.45F, 0.45F); }
         else { poseStack.scale(1F, 1F, 1F); }
         super.submit(entity, poseStack, submitNodeCollector, cameraRenderState);

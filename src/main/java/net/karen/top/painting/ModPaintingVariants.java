@@ -1,12 +1,11 @@
 package net.karen.top.painting;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import java.util.Optional;
 
@@ -43,6 +42,6 @@ public class ModPaintingVariants {
 
     // CUSTOM METHOD - Registry all custom Painting Variant resource key
     private static ResourceKey<PaintingVariant> create(String name) {
-        return ResourceKey.create(Registries.PAINTING_VARIANT, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        return Utils.rKey(Registries.PAINTING_VARIANT, Utils.topPath(name));
     }
 }

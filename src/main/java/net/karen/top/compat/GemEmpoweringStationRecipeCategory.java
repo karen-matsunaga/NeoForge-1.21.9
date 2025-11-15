@@ -12,12 +12,12 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
 import net.karen.top.item.ModItems;
 import net.karen.top.recipe.GemEmpoweringStationRecipe;
 import net.karen.top.screen.renderer.EnergyDisplayTooltipArea;
 import net.karen.top.util.ModEnergyStorage;
+import net.karen.top.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -29,12 +29,10 @@ import org.jetbrains.annotations.Nullable;
 public class GemEmpoweringStationRecipeCategory
        implements IRecipeCategory<GemEmpoweringStationRecipe> {
 
-    public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "gem_empowering_station");
+    public static final ResourceLocation UID = Utils.topPath("gem_empowering_station");
 
     public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                 "textures/gui/gem_empowering_station/gem_empowering_station_gui.png");
+           Utils.topPath("textures/gui/gem_empowering_station/gem_empowering_station_gui.png");
 
     public static final IRecipeType<GemEmpoweringStationRecipe> GEM_EMPOWERING_TYPE =
            IRecipeType.create(UID, GemEmpoweringStationRecipe.class);

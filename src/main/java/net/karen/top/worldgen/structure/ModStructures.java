@@ -2,6 +2,7 @@ package net.karen.top.worldgen.structure;
 
 import net.karen.top.Top;
 import net.karen.top.util.ModTags;
+import net.karen.top.util.Utils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -30,7 +31,7 @@ public class ModStructures {
 
     // CUSTOM METHOD - Register all custom structures
     private static ResourceKey<Structure> create(String name) {
-        return ResourceKey.create(Registries.STRUCTURE, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        return Utils.rKey(Registries.STRUCTURE, Utils.topPath(name));
     }
 
     // DEFAULT METHOD - Data Generation of structure for each structure and jigsaw structure (JSON file)

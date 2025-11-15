@@ -2,6 +2,7 @@ package net.karen.top.datagen;
 
 import net.karen.top.Top;
 import net.karen.top.item.ModItems;
+import net.karen.top.util.Utils;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRequirements;
@@ -12,7 +13,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.advancements.AdvancementSubProvider;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -37,11 +37,11 @@ public class ModAdvancementProvider extends AdvancementProvider {
                                     Component.literal(splitWord(itemLines(Top.MOD_ID))),
                                     Component.literal("Collect all exclusive ores, armors, tools, etc. on your journey!" +
                                                       " The Power lies in the Alexandrite!"),
-                                    ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "block/alexandrite_ore"),
+                                    Utils.topPath("block/alexandrite_ore"),
                                     AdvancementType.TASK, true, true, false)
                            .addCriterion("has_alexandrite",
                                          InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ALEXANDRITE.get()))
-                           .save(consumer, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "root"));
+                           .save(consumer, Utils.topPath("root"));
 
             // ** CUSTOM items advancement -> METAL DETECTOR **
             AdvancementHolder metalDetector =
@@ -53,7 +53,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                                     null, AdvancementType.TASK, true, true, false)
                            .addCriterion("has_metal_detector",
                                          InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.METAL_DETECTOR.get()))
-                           .save(consumer, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "metal_detector"));
+                           .save(consumer, Utils.topPath("metal_detector"));
 
             // ** CUSTOM tools advancement **
             // ** CUSTOM VANILLA TOOLS -> Sword, Pickaxe, Shovel, Axe, Hoe, etc. **
@@ -75,8 +75,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                            .addCriterion("has_alexandrite_hoe",
                                          InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ALEXANDRITE_HOE.get()))
                            .requirements(AdvancementRequirements.Strategy.AND)
-                           .save(consumer, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                                 "alexandrite_vanilla_tools"));
+                           .save(consumer, Utils.topPath("alexandrite_vanilla_tools"));
 
             // ** CUSTOM TOOLS -> Hammer, Paxel, etc. **
             AdvancementHolder alexandriteCustomTools =
@@ -89,8 +88,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                            .addCriterion("has_alexandrite_hammer",
                                          InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ALEXANDRITE_HAMMER.get()))
                            .requirements(AdvancementRequirements.Strategy.AND)
-                           .save(consumer, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                                 "alexandrite_custom_tools"));
+                           .save(consumer, Utils.topPath("alexandrite_custom_tools"));
 
             // ** CUSTOM ARMORS -> Helmet, Chestplate, Leggings, Boots or Elytra **
             AdvancementHolder alexandriteCustomArmors =
@@ -109,8 +107,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                            .addCriterion("has_alexandrite_boots",
                                          InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ALEXANDRITE_BOOTS.get()))
                            .requirements(AdvancementRequirements.Strategy.AND)
-                           .save(consumer, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                                                 "alexandrite_custom_armors"));
+                           .save(consumer, Utils.topPath("alexandrite_custom_armors"));
         }
     }
 }

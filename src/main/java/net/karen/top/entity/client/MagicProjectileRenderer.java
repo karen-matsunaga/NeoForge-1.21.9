@@ -2,8 +2,8 @@ package net.karen.top.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.karen.top.Top;
 import net.karen.top.entity.custom.MagicProjectileEntity;
+import net.karen.top.util.Utils;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -17,8 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class MagicProjectileRenderer extends EntityRenderer<MagicProjectileEntity, EntityRenderState> {
     private static final ResourceLocation TEXTURE =
-            ResourceLocation.fromNamespaceAndPath(Top.MOD_ID,
-                                                 "textures/entity/magic_projectile/magic_projectile.png");
+            Utils.topPath("textures/entity/magic_projectile/magic_projectile.png");
     private final MagicProjectileModel model;
     private MagicProjectileEntity entity;
     private float partial;
@@ -30,13 +29,11 @@ public class MagicProjectileRenderer extends EntityRenderer<MagicProjectileEntit
     }
 
     @Override
-    public @NotNull EntityRenderState createRenderState() {
-        return new EntityRenderState();
-    }
+    public @NotNull EntityRenderState createRenderState() { return new EntityRenderState(); }
 
     @Override
-    public void extractRenderState(@NotNull MagicProjectileEntity entity,
-                                   @NotNull EntityRenderState reusedState, float partialTick) {
+    public void extractRenderState(@NotNull MagicProjectileEntity entity, @NotNull EntityRenderState reusedState,
+                                   float partialTick) {
         this.entity = entity;
         this.partial = partialTick;
         super.extractRenderState(entity, reusedState, partialTick);
@@ -44,20 +41,15 @@ public class MagicProjectileRenderer extends EntityRenderer<MagicProjectileEntit
 
     @Override
     public void submit(@NotNull EntityRenderState state, @NotNull PoseStack poseStack,
-                       @NotNull SubmitNodeCollector submitNodeCollector,
-                       @NotNull CameraRenderState cameraRenderState) {
+                       @NotNull SubmitNodeCollector submitNodeCollector, @NotNull CameraRenderState cameraRenderState) {
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(partial, entity.yRotO, entity.getYRot()) - 90.0F));
         poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(partial, entity.xRotO, entity.getXRot()) + 90.0F));
-        // Render item
-        submitNodeCollector.submitModel(this.model, state, poseStack,
-                                        RenderType.entityCutout(this.getTextureLocation()),
-                                        state.lightCoords, OverlayTexture.NO_OVERLAY, -1,
-                                        null, state.outlineColor, null);
+        // Render item - Magic texture
+        submitNodeCollector.submitModel(this.model, state, poseStack, RenderType.entityCutout(TEXTURE),
+                                        state.lightCoords, OverlayTexture.NO_OVERLAY, -1, null,
+                                        state.outlineColor, null);
         poseStack.popPose();
         super.submit(state, poseStack, submitNodeCollector, cameraRenderState);
     }
-
-    // CUSTOM METHOD - Magic texture
-    public ResourceLocation getTextureLocation() { return TEXTURE; }
 }

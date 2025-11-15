@@ -1,13 +1,12 @@
 package net.karen.top.worldgen;
 
-import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
+import net.karen.top.util.Utils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -194,8 +193,7 @@ public class ModConfiguredFeatures {
 
     // CUSTOM METHOD - Registry all configured features (JSON file)
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE,
-                                  ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        return Utils.rKey(Registries.CONFIGURED_FEATURE, Utils.topPath(name));
     }
 
     // CUSTOM METHOD - Registry all configured features

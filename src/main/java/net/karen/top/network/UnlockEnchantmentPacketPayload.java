@@ -1,6 +1,5 @@
 package net.karen.top.network;
 
-import net.karen.top.Top;
 import net.karen.top.component.ModDataComponentTypes;
 import net.karen.top.enchantment.ModEnchantments;
 import net.karen.top.util.Utils;
@@ -11,7 +10,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +22,7 @@ public record UnlockEnchantmentPacketPayload(boolean locked,
                                              int index) implements CustomPacketPayload {
     // TYPE
     public static final CustomPacketPayload.Type<UnlockEnchantmentPacketPayload> TYPE =
-           new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "unlock_data"));
+           new CustomPacketPayload.Type<>(Utils.topPath("unlock_data"));
 
     @Override
     public @NotNull Type<? extends CustomPacketPayload> type() { return TYPE; }

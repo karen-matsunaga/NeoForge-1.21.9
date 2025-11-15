@@ -397,18 +397,17 @@ public class ChatUtils {
 
     // CUSTOM METHOD - VANILLA ATLAS SPRITE POTION ICON
     public static MutableComponent potionIcon(Holder<MobEffect> effect) {
-        ResourceLocation resourceLocation = Gui.getMobEffectSprite(effect);
-        return Component.object(new AtlasSprite(AtlasIds.GUI, resourceLocation)).append(CommonComponents.SPACE);
+        return Component.object(new AtlasSprite(AtlasIds.GUI, Gui.getMobEffectSprite(effect))).append(CommonComponents.SPACE);
     }
 
     // CUSTOM METHOD - VANILLA ATLAS SPRITE ITEM ICON
     private static ResourceLocation itemIcon(String item) {
-        return ResourceLocation.withDefaultNamespace("item/" + item);
+        return Utils.vanPath("item/" + item);
     }
 
     // CUSTOM METHOD - TOP ATLAS SPRITE ITEM ICON
     private static ResourceLocation topItemIcon(String item) {
-        return ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "item/" + item);
+        return Utils.topPath("item/" + item);
     }
 
     // CUSTOM METHOD - ATLAS SPRITE COMPONENT

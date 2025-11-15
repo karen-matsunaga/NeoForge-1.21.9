@@ -1,9 +1,7 @@
 package net.karen.top.util;
 
 import com.mojang.blaze3d.platform.InputConstants;
-import net.karen.top.Top;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import net.neoforged.neoforge.common.util.Lazy;
 import org.lwjgl.glfw.GLFW;
@@ -11,8 +9,7 @@ import static net.karen.top.util.ChatUtils.top;
 
 public class ModKeyMapping {
     // Top custom category
-    public static final KeyMapping.Category KEY_CATEGORY_TOP =
-           new KeyMapping.Category(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "main"));
+    public static final KeyMapping.Category KEY_CATEGORY_TOP = new KeyMapping.Category(Utils.topPath("main"));
 
     // Glowing Blocks custom key input
     public static final String KEY_GLOWING_BLOCKS = "key." + top + "glowing_blocks";

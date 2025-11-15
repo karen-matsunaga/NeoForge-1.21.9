@@ -9,10 +9,10 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.types.IRecipeType;
-import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
 import net.karen.top.block.entity.KaupenFurnaceBlockEntity;
 import net.karen.top.recipe.KaupenFurnaceRecipe;
+import net.karen.top.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -25,11 +25,9 @@ import javax.annotation.Nullable;
 import static net.karen.top.util.ChatUtils.top;
 
 public class KaupenFurnaceRecipeCategory implements IRecipeCategory<KaupenFurnaceRecipe> {
-    public static final ResourceLocation UID =
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "kaupen_furnace");
+    public static final ResourceLocation UID = Utils.topPath("kaupen_furnace");
 
-    public static final ResourceLocation TEXTURE =
-           ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "textures/gui/container/furnace.png");
+    public static final ResourceLocation TEXTURE = Utils.topPath("textures/gui/container/furnace.png");
 
     public static final IRecipeType<KaupenFurnaceRecipe> KAUPEN_FURNACE_TYPE =
            IRecipeType.create(UID, KaupenFurnaceRecipe.class);

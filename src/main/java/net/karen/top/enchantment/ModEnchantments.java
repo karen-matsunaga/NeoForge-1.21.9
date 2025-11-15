@@ -1,17 +1,16 @@
 package net.karen.top.enchantment;
 
-import net.karen.top.Top;
 import net.karen.top.block.ModBlocks;
 import net.karen.top.component.ModDataComponentTypes;
 import net.karen.top.enchantment.custom.*;
 import net.karen.top.util.ModTags;
+import net.karen.top.util.Utils;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -238,6 +237,6 @@ public class ModEnchantments {
 
     // CUSTOM METHOD - Registry all custom enchantment resource keys
     private static ResourceKey<Enchantment> createTag(String name) {
-        return ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, name));
+        return Utils.rKey(Registries.ENCHANTMENT, Utils.topPath(name));
     }
 }

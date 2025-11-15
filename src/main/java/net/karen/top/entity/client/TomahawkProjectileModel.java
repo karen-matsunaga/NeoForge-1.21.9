@@ -1,18 +1,16 @@
 package net.karen.top.entity.client;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
-import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 public class TomahawkProjectileModel extends EntityModel<EntityRenderState> {
-    public static final ModelLayerLocation LAYER_LOCATION =
-           new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, "tomahawk"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = Utils.modelLayer("tomahawk");
     private final ModelPart tomahawk;
 
     public TomahawkProjectileModel(ModelPart root) {

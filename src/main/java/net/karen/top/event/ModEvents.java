@@ -137,39 +137,35 @@ public class ModEvents {
         if (world == null || player == null || !glowingBlocksEnabled) { return; }
         HolderLookup.RegistryLookup<Enchantment> ench = world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
         ItemStack mainHand = player.getMainHandItem();
-        ItemStack helmetSlot = player.getItemBySlot(EquipmentSlot.HEAD);
+        ItemStack helmetSlot = Utils.has(player, EquipmentSlot.HEAD);
         boolean metalDetector = !mainHand.isEmpty() && mainHand.is(ModItems.METAL_DETECTOR.get());
         boolean glowingBlocks = !helmetSlot.isEmpty() && toolEnchant(ench, ModEnchantments.GLOWING_BLOCKS, helmetSlot) > 0;
         if (metalDetector || glowingBlocks) {
             PoseStack poseStack = event.getPoseStack();
             CameraRenderState camera = event.getLevelRenderState().cameraRenderState;
             MultiBufferSource.BufferSource buffer = mc.renderBuffers().bufferSource();
-            double camX = camera.pos.x;
-            double camY = camera.pos.y;
-            double camZ = camera.pos.z;
             BlockPos center = player.blockPosition();
-            int radius = 10;
+            int radius = 10; // Render block around radius
             poseStack.pushPose();
-            poseStack.translate(-camX, -camY, -camZ);
+            poseStack.translate(-camera.pos.x, -camera.pos.y, -camera.pos.z); // CAMERA x, y and z
             Iterable<BlockPos> glowingBlocksXray = BlockPos.betweenClosed(center.offset(-radius, -radius, -radius),
                                                                           center.offset(radius, radius, radius));
             for (BlockPos pos : glowingBlocksXray) {
                 BlockState state = world.getBlockState(pos);
                 ChatUtils.renderColors.forEach((blockTags, color) -> {
                     Optional<HolderSet.Named<Block>> tag = BuiltInRegistries.BLOCK.get(blockTags);
-                    tag.ifPresent(holders ->
-                                  holders.forEach(blockHolder -> {
-                                                 Block block = blockHolder.value();
-                                                 if (block == state.getBlock()) {
-                                                     VoxelShape shape = Shapes.block();
-                                                     poseStack.pushPose();
-                                                     poseStack.translate(pos.getX(), pos.getY(), pos.getZ());
-                                                     ShapeRenderer.renderShape(poseStack, buffer.getBuffer(
-                                                                               ModRenderType.LINES_NO_DEPTH_RENDER_TYPE),
-                                                                               shape, 0.0F, 0.0F, 0.0F, color);
-                                                     poseStack.popPose();
-                                                 }
-                    }));
+                    tag.ifPresent(holders -> holders.forEach(blockHolder -> {
+                                    Block block = blockHolder.value();
+                                    if (block == state.getBlock()) {
+                                        VoxelShape shape = Shapes.block();
+                                        poseStack.pushPose();
+                                        poseStack.translate(pos.getX(), pos.getY(), pos.getZ());
+                                        ShapeRenderer.renderShape(poseStack, buffer.getBuffer(
+                                                                  ModRenderType.LINES_NO_DEPTH_RENDER_TYPE),
+                                                                  shape, 0.0F, 0.0F, 0.0F, color);
+                                        poseStack.popPose();
+                                    }
+                                  }));
                 });
             }
             poseStack.popPose();

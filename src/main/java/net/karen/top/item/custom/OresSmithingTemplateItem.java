@@ -1,6 +1,6 @@
 package net.karen.top.item.custom;
 
-import net.karen.top.Top;
+import net.karen.top.util.Utils;
 import net.minecraft.Util;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
@@ -67,12 +67,12 @@ public class OresSmithingTemplateItem extends SmithingTemplateItem {
 
     // CUSTOM METHOD - Texture empty slot
     public static ResourceLocation emptySlot(String item) {
-       return ResourceLocation.withDefaultNamespace("container/slot/" + item);
+       return Utils.vanPath("container/slot/" + item);
     }
 
     // CUSTOM METHOD - Ores Upgrade Smithing Template item description
     public static Component lines(String text, int lore) {
-        return Component.translatable(Util.makeDescriptionId("item", ResourceLocation.fromNamespaceAndPath(Top.MOD_ID, text)))
+        return Component.translatable(Util.makeDescriptionId("item", Utils.topPath(text)))
                         .withStyle(Style.EMPTY.withColor(lore));
     }
 
